@@ -238,6 +238,11 @@ merge-traces project:
 lift-trace project *flags:
   pipenv run python -m binrec.lift  "{{project}}" {{flags}}
 
+
+# Lift a recovered binary from a project's merged traces. Add -o to perform extra optimizations.
+rebuild project *flags:
+  pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
+
 recover project-name:
   @just run "{{project-name}}"
   @just merge-traces "{{project-name}}"
