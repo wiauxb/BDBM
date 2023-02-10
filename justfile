@@ -239,8 +239,9 @@ lift-trace project *flags:
   pipenv run python -m binrec.lift  "{{project}}" {{flags}}
 
 
-# Lift a recovered binary from a project's merged traces. Add -o to perform extra optimizations.
-rebuild project *flags:
+# [Memoire] recompile recovered.ll to custom_recovered.
+recompile project *flags:
+  llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll" -o "s2e/projects/{{project}}/s2e-out/recovered.bc"
   pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
 
 recover project-name:

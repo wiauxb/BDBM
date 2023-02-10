@@ -135,9 +135,9 @@ def lift_trace(
     _link_recovered_binary(merged_trace_dir, harden)
 
     logger.info(
-        "successfully lifted and recovered binary for project %s: %s",
+        "successfully recovered binary for project %s: %s",
         project_name,
-        merged_trace_dir / "recovered",
+        merged_trace_dir / "custom_recovered",
     )
 
 
