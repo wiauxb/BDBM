@@ -58,7 +58,7 @@ _binrec-init:
     git lfs pull
     cd ./s2e-env && pipenv run pip install .
     pipenv run s2e init {{justdir}}/s2e
-    @just _freeze-s2e
+    # @just _freeze-s2e
     @just s2e-insert-binrec-plugins
 
 # Freeze all S2E repositories to commits that have been tested against
@@ -102,8 +102,8 @@ clean-binrec:
 _clean-s2e:
     rm -rf ./s2e/build
 
-# Build an s2e image. Default is x86 Debian-9.2.1.
-build-s2e-image image="debian-9.2.1-i386":
+# Build an s2e image. Default is x86 Ubuntu 22.04.
+build-s2e-image image="ubuntu-22.04-x86_64":
   @just _s2e-command image_build -d \"{{image}}\"
 
 # This will trigger a rebuild of libs2e, which contains the plugins
