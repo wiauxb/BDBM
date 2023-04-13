@@ -15,7 +15,7 @@ void print_func(){
 
 void print_file(){
     FILE *fp;
-    fp = fopen("text_file3§.txt", "r+");
+    fp = fopen("text_file3.txt", "r+");
     if( fp == NULL ) {
     fprintf(stderr, "Couldn't open:\n");
     exit(1);

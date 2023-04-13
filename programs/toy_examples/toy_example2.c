@@ -12,38 +12,31 @@ void print_func(){
 
 void print_file(){
     FILE *fp;
-    fp = fopen("text_file2.txt", "r+");
+    fp = fopen("text_file3.txt", "w");
     if( fp == NULL ) {
     fprintf(stderr, "Couldn't open:\n");
     exit(1);
 }
-    fseek(fp, 0L, SEEK_END);
-    long sz = ftell(fp);
+    //fseek(fp, 0L, SEEK_END);
+    //long sz = ftell(fp);
 
-    rewind(fp);
-    char* buffer = (char*) malloc((size_t) sz);
-    fread(buffer, sizeof *buffer, (size_t) sz, fp);
+    //rewind(fp);
+    //char* buffer = (char*) malloc((size_t) sz);
+    //fread(buffer, sizeof *buffer, (size_t) sz, fp);
     
-    printf("%s", buffer);
+    //printf("%s", buffer);
 
     char add_text[] = "I altered the file!";
 
     fwrite(add_text, sizeof(char), sizeof(add_text), fp);
-
     fclose(fp);
-    free(buffer);
+    //free(buffer);
     return;
 }
 
 int main(int argc, char **argv){
     print_func();
-    if(!strcmp(argv[1],"1")){
-        print_func();
-    }
-    else if (!strcmp(argv[1],"2"))
-    {
-        print_file();
-    }
+    print_file();
     
 	return 0;
 }

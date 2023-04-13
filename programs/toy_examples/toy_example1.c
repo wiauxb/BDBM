@@ -6,7 +6,7 @@
 
 void print_func(){
     char *hello = "Hello World";
-	char *bye = "Bye Bye";
+    char *bye = "Bye Bye";
     return;
 }
 
@@ -33,15 +33,10 @@ void print_file(){
 
 int main(int argc, char **argv){
     print_func();
-    if(!strcmp(argv[1],"1")){
-        print_func();
-    }
-    else if (!strcmp(argv[1],"2"))
-    {
-        print_file();
-    }
-    
-	return 0;
+
+    print_file();
+
+    return 0;
 }
 
 
