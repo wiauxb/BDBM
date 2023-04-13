@@ -2,14 +2,21 @@ import os
 import shutil
 import subprocess
 
-copy = "s2e/projects/toy2/s2e-out/recovered.ll"
-original = "s2e/projects/toy2/s2e-out/original_recovered.ll"
+print("Enter project name : ")
+project  = input()
+
+if not os.path.isfile("s2e/projects/"+str(project)+ "/s2e-out/recovered.ll"):
+    print("Incorrect project, or project hasn't been recovered")
+    quit()
+
+copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+original = "s2e/projects/" + project + "/s2e-out/original_recovered.ll"
 
 if not os.path.isfile(original):
     os.rename(copy, original)
 
 #Dossier où vont aller tous les compilés mutés
-mutation_folder = "s2e/projects/toy2/s2e-out/mutations"
+mutation_folder = "s2e/projects/" + project + "/s2e-out/mutations"
 if not os.path.isdir(mutation_folder):
     os.mkdir(mutation_folder)
 
@@ -20,7 +27,7 @@ size_main = 0
 line_num=0
 
 #trouve les lignes où il faudra insérer le call API
-with open("s2e/projects/toy2/s2e-out/original_recovered.ll", 'r') as fp:
+with open("s2e/projects/" + project + "/s2e-out/original_recovered.ll", 'r') as fp:
     lines = fp.readlines()
     for line in lines : 
         line_num +=1
@@ -59,10 +66,10 @@ for i in range(1, size_main):
         fp.writelines(lines)
 
     #just recompile
-    command = "just recompile toy2"
+    command = "just recompile " + project 
     subprocess.check_output(command, shell=True)
 
     #rename the compiled file
-    new_name = "s2e/projects/toy2/s2e-out/custom_recovered"+str(i)
-    os.rename("s2e/projects/toy2/s2e-out/custom_recovered",new_name)
+    new_name = "s2e/projects/" + project + "/s2e-out/custom_recovered"+str(i)
+    os.rename("s2e/projects/" + project + "/s2e-out/custom_recovered",new_name)
     shutil.move(new_name, mutation_folder+"/custom_recovered"+str(i))
