@@ -58,7 +58,7 @@ for i in range(1, size_main-1):
 
     with open(copy, "r") as fp:
         lines = fp.readlines()
-
+ 
     #ajout déclaration sleep avant le main
     lines.insert(begin_main-2, "declare i32 @sleep(i32) local_unnamed_addr #8\n")
     lines.insert(begin_main+i, "  %a = tail call i32 @sleep(i32 2)\n")

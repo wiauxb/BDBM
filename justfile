@@ -247,7 +247,7 @@ recompile project *flags:
 # [Memoire] Mutate a recovered project
 mutate project:
   python3 mutator/src/auto_mutation.py "{{project}}"
-
+ 
 recover project-name:
   @just run "{{project-name}}"
   @just merge-traces "{{project-name}}"
