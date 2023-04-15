@@ -1,9 +1,9 @@
 import os
 import shutil
 import subprocess
+import sys
 
-print("Enter project name : ")
-project  = input()
+project  = sys.argv[1]
 
 if not os.path.isfile("s2e/projects/"+str(project)+ "/s2e-out/recovered.ll"):
     print("Incorrect project, or project hasn't been recovered")
@@ -47,11 +47,12 @@ with open("s2e/projects/" + project + "/s2e-out/original_recovered.ll", 'r') as 
             print("length of main = ", size_main)
             break
 
-#a cause de l'ajout de la déclaration de sleep
+#+1 a cause de l'ajout de la déclaration de sleep
 begin_main+=1
 end_main+=1
 
-for i in range(1, size_main):
+# i commence a 1 au cas où c'est une fonction et pas écrire avant la déclaration.
+for i in range(1, size_main-1):
     #Clone avec le bon nom pour pour pouvoir recompiler
     shutil.copyfile(original, copy)
 

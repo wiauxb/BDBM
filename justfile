@@ -244,6 +244,10 @@ recompile project *flags:
   llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll" -o "s2e/projects/{{project}}/s2e-out/recovered.bc"
   pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
 
+# [Memoire] Mutate a recovered project
+mutate project:
+  python3 mutator/src/auto_mutation.py "{{project}}"
+
 recover project-name:
   @just run "{{project-name}}"
   @just merge-traces "{{project-name}}"
