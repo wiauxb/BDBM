@@ -268,6 +268,10 @@ run-web-server:
   @just _launch-web-browser-with-delay 3
   pipenv run python -m binrec.web
 
+# Starts BinRec's web server and GUI, accessible via browser at http://localhost:8080
+run-api:
+  pipenv run python -m binrec.rest-api
+
 # Lint a campaign file or directory and display validation errors
 lint-campaign filename:
     pipenv run python -m binrec.campaign lint "{{filename}}"
