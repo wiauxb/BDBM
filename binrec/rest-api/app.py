@@ -43,7 +43,7 @@ UPLOAD_DIRECTORY = Path(__file__).parent / "uploads"
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = str(UPLOAD_DIRECTORY.absolute())
-# app.jinja_env.add_extension("jinja_markdown.MarkdownExtension")
+app.jinja_env.add_extension("jinja_markdown.MarkdownExtension")
 
 
 @dataclass
@@ -146,59 +146,27 @@ def add_project():
     return {"error": "Request must be JSON"}, 415
 
 
-@app.route("/projects/<project>/add-trace", methods=["GET", "POST"])
+@app.route("/projects/<project>/add-trace", methods=["POST"])
 def add_trace(project: str):
     campaign = load_campaign(project)
-    if request.method == "POST":
+    if request.is_json:
+        req = request.get_json()
         try:
             trace_params = _validate_trace_params(
-                request.form["trace_name"],
-                request.form["trace_args"],
-                request.form["trace_symbolic_args"],
-                request.form["trace_stdin"],
+                req["trace_name"],
+                req["trace_args"],
+                req["trace_symbolic_args"],
+                req["trace_stdin"],
             )
         except ValueError as err:
-            return render_template(
-                "add-trace.html",
-                project=project,
-                campaign=campaign,
-                trace_name=request.form["trace_name"],
-                trace_args=request.form["trace_args"],
-                trace_symbolic_args=request.form["trace_symbolic_args"],
-                trace_stdin=request.form["trace_stdin"],
-                error=str(err),
-            )
+            return {"error": str(err)}, 400
 
         campaign.traces.append(trace_params)
         campaign.save()
 
-        return redirect(url_for("project_details", project=project))
+        return {"status": "success"}, 200
 
-    return render_template(
-        "add-trace.html", project=project, trace_name="", trace_args="", trace_stdin=""
-    )
-
-
-@app.post("/projects/<project>/remove-trace/<int:trace_id>")
-def remove_trace(project: str, trace_id: int):
-    campaign = load_campaign(project)
-    try:
-        campaign.remove_trace(trace_id)
-    except IndexError:
-        abort(404)
-
-    campaign.save()
-    return redirect(url_for("project_details", project=project))
-
-
-@app.post("/projects/<project>/clear-trace-data")
-def clear_trace_data(project: str):
-    if not campaign_filename(project).is_file():
-        abort(404)
-
-    clear_project_trace_data(project)
-    return redirect(url_for("project_details", project=project))
-
+    return {"error": "Request must be JSON"}, 415
 
 # def _save_uploaded_file() -> Tuple[str, Path]:
 #     if "binary_filename" not in request.files:
@@ -232,92 +200,4 @@ def start_recover_project(project: str):
     )
     g.state.set_running_project(project, worker)
 
-    return redirect(url_for("project_details", project=project))
-
-
-@app.get("/projects/<project>/web_worker.log")
-def download_worker_log(project: str):
-    log = worker_log_filename(project)
-    if not log.is_file():
-        abort(404)
-
-    return send_file(log)
-
-def _validate_input_file(
-    source: str, destination: str, permissions: str
-) -> TraceInputFile:
-    src = Path(source).absolute()
-    if not src.is_file():
-        raise ValueError(f"source file does not exist: {src}")
-
-    perms: Union[str, bool] = permissions
-    dest = Path(destination) if destination else None
-    if permissions:
-        perms = permissions
-        try:
-            _validate_file_permission(permissions)
-        except ValueError as err:
-            raise ValueError(f"invalid file permissions: {err}")
-    else:
-        perms = True
-
-    return TraceInputFile(src, dest, perms)
-
-
-@app.route(
-    "/project/<project>/traces/<int:trace_id>/add-input-file", methods=["GET", "POST"]
-)
-def add_input_file(project: str, trace_id: int):
-    campaign = load_campaign(project)
-    try:
-        trace = campaign.get_trace(trace_id)
-    except IndexError:
-        abort(404)
-
-    trace_name = trace.name or str(trace_id)
-
-    if request.method == "POST":
-        try:
-            input_file = _validate_input_file(
-                request.form["source"],
-                request.form["destination"],
-                request.form["permissions"],
-            )
-        except ValueError as err:
-            return render_template(
-                "add-trace-input-file.html",
-                project=project,
-                trace=trace,
-                trace_name=trace_name,
-                source=request.form["source"],
-                destination=request.form["destination"],
-                permissions=request.form["permissions"],
-                error=err,
-            )
-
-        trace.input_files.append(input_file)
-        campaign.save()
-        return redirect(url_for("project_details", project=project))
-
-    return render_template(
-        "add-trace-input-file.html", project=project, trace=trace, trace_name=trace_name
-    )
-
-
-@app.post(
-    "/project/<project>/traces/<int:trace_id>/remove-input-file/<int:input_file_id>"
-)
-def remove_input_file(project: str, trace_id: int, input_file_id: int):
-    campaign = load_campaign(project)
-    try:
-        trace = campaign.get_trace(trace_id)
-    except IndexError:
-        abort(404)
-
-    try:
-        trace.input_files.pop(input_file_id)
-    except IndexError:
-        abort(404)
-
-    campaign.save()
-    return redirect(url_for("project_details", project=project))
+    return {"status": "success"}, 200
