@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from tempfile import mkstemp
 from typing import Dict, Optional, Tuple, Union
+from mutator.src.auto_mutation import main as mutator
 
 from flask import (
     Flask,
@@ -199,5 +200,13 @@ def start_recover_project(project: str):
         stderr=log,
     )
     g.state.set_running_project(project, worker)
+
+    return {"status": "success"}, 200
+
+@app.post("/projects/<project>/mutate")
+def start_mutate_project(project: str):
+    
+    _ = load_campaign(project)  # make sure the project/campaign exists and is valid
+    mutator(project)
 
     return {"status": "success"}, 200
