@@ -85,7 +85,7 @@ def main(project):
     with open(copy, "r") as fp:
         for i,line in enumerate(fp):
             try:
-                if line[2] == "%" and i > begin_main and i < end_main:
+                if line[2] == "%" and i > begin_main-1 and i < end_main:
                     if(type(int(line[3:5]))):
                         list.append(line[2:5])
 
