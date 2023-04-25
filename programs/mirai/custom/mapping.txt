@@ -1,0 +1,10 @@
+compilé avec -DMIRAI_TELNET
+
+botX -> ecrit dans le fichier watchdog pour empecher le reboot
+bot0 -> mirai original
+bot1 -> botX + cache argv0, process name and print system exec
+bot2 -> botX + cache argv0
+bot3 -> botX + cache argv0, process name
+bot4 -> bot1 + attack_init, killer_init
+bot5 -> bot4 + scanner_init
+    
