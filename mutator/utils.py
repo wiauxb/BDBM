@@ -1,6 +1,8 @@
 import os
 import shutil
 import re
+import subprocess
+
 current_index = -1
 
 def get_new_index():
@@ -39,6 +41,37 @@ def clone_recovered(project):
     if not os.path.isfile(original):
         shutil.copyfile(copy, original)
     return 0
+
+def address_to_offset(project, address):
+
+    table = get_section_table(project)
+    i = 0
+    while table[i][1] < address:
+        #TODO condition if adress not in table
+        i+=1
+    print(f"Found address {address} in section {table[i-1][0]}")
+    return table[i-1][2] + (address - table[i-1][1])
+
+def get_section_table(project):
+    
+    binary_path = "s2e/projects/" + project + "/s2e-out/binary"
+
+    try:
+        readelf = subprocess.check_output(["readelf", "-S", binary_path])
+    except subprocess.CalledProcessError:
+        print(
+            f"failed to extract sections infos from binary."
+        )
+
+    table = []
+
+    for line in readelf.decode("utf-8").splitlines():
+        match = re.search(r"\[\s?\d+\] (.*?)\s+[A-Z_]*\s+([\da-f]*)\s+([\da-f]*)", line)
+        if match != None:
+            table.append((match[1], int(match[2], base=16), int(match[3], base=16)))
+
+    return table
+
 
 def make_mutation_folder(project):
     """Create folder to store mutations

@@ -245,8 +245,8 @@ recompile project *flags:
   pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
 
 # [Memoire] Mutate a recovered project
-mutate project:
-  python3 mutator/src/auto_mutation.py "{{project}}"
+mutate project *flags:
+  pipenv run python -m mutator.auto_mutation "{{project}}" {{flags}}
  
 recover project-name:
   @just run "{{project-name}}"

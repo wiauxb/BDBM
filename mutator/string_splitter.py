@@ -1,5 +1,4 @@
-from utils import *
-import numpy as np
+from .utils import *
 
 def find_strings(project, begin_main, end_main):
     """find string adresses in the binary
@@ -20,7 +19,8 @@ def find_strings(project, begin_main, end_main):
                 if i > begin_main and i < end_main:
                     match = re.search(r"store i32 (\d{4,}),.* align 16\n", line)
                     if(match != None and address_could_be_string(int(match[1]), ro_add, txt_add)):
-                        list.append((i,int(match[1])))
+                        offset = address_to_offset(project, int(match[1]))
+                        list.append((i,offset))
                     
             except:
                 print("not usable line")
@@ -74,13 +74,13 @@ def split_string_at(project, address, line_num):
     clean le binaire d'origine
     introduit les instructions avec le string split
     """
+
     string = get_string_from_binary(project, address)
     if(remove_string_from_binary(project, address, len(string))):
         print("Cannot modify original binary, stop mutation")
     if(inject_splitted_string(project, string, line_num)):
         print("Cannot inject in recovered LLVM, stop mutation")
-    return 0
-        
+    return 0   
 
 def get_string_from_binary(project, address):
     """sumary_line
@@ -89,10 +89,12 @@ def get_string_from_binary(project, address):
     argument -- description
     Return: return_description
     """
+
     string = b''
     with open("s2e/projects/" + project + "/binary", 'br') as f:
         string = f.read()[address:]
-    return string.split(b'\x00')[0]
+    
+    return string.split(b'\x00')[0].decode("utf-8") #FIXME We assume the string encoding
 
 def remove_string_from_binary(project, address, length):
     """sumary_line
@@ -101,11 +103,18 @@ def remove_string_from_binary(project, address, length):
     argument -- description
     Return: return_description
     """
+    
+    copy = "s2e/projects/" + project + "/s2e-out/binary"
+    original = "s2e/projects/" + project + "/s2e-out/original_binary"
+
+    if not os.path.isfile(original):
+        shutil.copyfile(copy, original)
+    
     content = b''
-    with open("s2e/projects/" + project + "/binary", 'br') as f:
+    with open(copy, 'br') as f:
         content = bytearray(f.read())
     content[address: address+length] = b'\x00'*length
-    with open("s2e/projects/" + project + "/binary", 'bw') as f:
+    with open(copy, 'bw') as f:
         f.write(content)
     return 0
 
@@ -119,33 +128,36 @@ def inject_splitted_string(project, string, line_num):
     recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     with open(recovered, "r") as f:
         lines = f.readlines()
-    # get_call_linked_by_var()
-    var, decl_line = get_variable_to_override(project, lines, line_num)
+
+    var = get_variable_to_override(lines, line_num)
     ind = get_new_index()
 
-    for line in decl_line:
-        delete_overriden_var(recovered, line)
+    delete_overriden_var(recovered, line_num)
 
     with open(recovered, "r") as f:
         lines = f.readlines()
     
-    #Pas sur de l'ordre
-    lines.insert(decl_line, f"  %{var} = bitcast [{len(string)+1} x i8]* %sp{ind} to i8*\n")
-    lines.insert(decl_line, f"  store [{len(string)+1} x i8] c\"{string}\\00\", [{len(string)+1} x i8]* %sp{ind}\n")
-    lines.insert(decl_line, f"  %sp{ind} = alloca [{len(string)+1} x i8]\n")
+    lines.insert(line_num, f";-------------------------------\n")
+    lines.insert(line_num, f"  store i32 %spi{ind}, i32* %{var}\n")
+    lines.insert(line_num, f"  %spi{ind} = ptrtoint [{len(string)+1} x i8]* %sp{ind} to i32\n")
+    lines.insert(line_num, f"  store [{len(string)+1} x i8] c\"{string}\\00\", [{len(string)+1} x i8]* %sp{ind}\n")
+    lines.insert(line_num, f"  %sp{ind} = alloca [{len(string)+1} x i8]\n")
+    lines.insert(line_num, f";-------------------------------\n")
 
     with open(recovered, "w") as f:
             f.writelines(lines)
     
+    #in th right order
     f"""
     %sp{ind} = alloca [{len(string)+1} x i8]
-    store [{len(string)+1} x i8] c"{string}\00", [{len(string)+1} x i8]* %sp{ind}
-    %{var} = bitcast [{len(string)+1} x i8]* %sp{ind} to i8*
+    store [{len(string)+1} x i8] c"{string}\\00", [{len(string)+1} x i8]* %sp{ind}
+    %spi{ind} = ptrtoint [{len(string)+1} x i8]* %sp{ind} to i32
+    store i32 %spi{ind}, i32* %{var}
     """
     
-    return 1
+    return 0
 
-def get_variable_to_override(project, lines, line_num):
+def get_variable_to_override(lines, line_num):
     """sumary_line
     
     Keyword arguments:
@@ -158,19 +170,7 @@ def get_variable_to_override(project, lines, line_num):
         print(f"Cannot find store instruction in line {line_num+1}")
         return -1
     var = match[1]
-    begin, end = find_main(project)
-    n = find_indices(lines, "%"+var, lambda name, line, line_num: line_num > begin and line_num <= end and name in line)
-    if len(n) == 0:
-        print(f"Cannot find declaration of %{var}")
-        return var, -1
-    return var, n[1:]
-
-def get_call_linked_by_var():
-    pass
-
-# Finding Indices of Items Matching a Condition
-def find_indices(search_list, search_item, condition = lambda name, line, _: name in line):
-    return [index for (index, item) in enumerate(search_list) if condition(search_item,item, index)]
+    return var
 
 def split_strings(project):
     """sumary_line
@@ -180,7 +180,6 @@ def split_strings(project):
     Return: return_description
     """
     start_main, end_main = init_mutation(project)
-    
     for line_num, address in find_strings(project, start_main, end_main):
         split_string_at(project, address, line_num)
 
@@ -200,11 +199,3 @@ def delete_overriden_var(recovered, decl_line):
         f.writelines(lines)
     
     return 0
-
-if __name__ == "__main__":
-    init_mutation("string")
-    with open("s2e/projects/string/s2e-out/recovered.ll", "r") as f:
-        lines = f.readlines()
-    # print(ro_txt_addresses("string"))
-    # print(find_strings("string", 37, 64))
-    inject_splitted_string("string", "I am a splitted evil!!!", 56)

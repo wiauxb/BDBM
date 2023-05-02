@@ -1,5 +1,4 @@
-import sleeper
-import string_splitter
+from . import sleeper, string_splitter
 import argparse
 
 
