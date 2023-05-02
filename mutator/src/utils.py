@@ -1,7 +1,12 @@
 import os
 import shutil
 import re
+current_index = -1
 
+def get_new_index():
+    global current_index
+    current_index += 1
+    return current_index
 
 def init_mutation(project):
     """ Execute all the initialization functions before mutation
