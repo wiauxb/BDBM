@@ -1,33 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 
-int main(){
-	printf("");
-	printf("a");
-	printf("aa");
-	printf("aaa");
-	printf("aaaa");
-	printf("aaaaa");
-	printf("aaaaaa");
-	printf("aaaaaaa");
-	printf("aaaaaaaa");
-	printf("aaaaaaaaa");
-	printf("aaaaaaaaaa");
-	printf("aaaaaaaaaaa");
-	printf("aaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaaaaaaa");
-	printf("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+int main(int argc, char** argv){
+	printf("Bonjour à tous je suis ");
+    if(!strcmp(argv[1],"1")){
+        printf("countent !\n");
+    } else {
+		printf("triste :(\n");
+	}
 	return 0;
 }

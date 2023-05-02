@@ -132,6 +132,7 @@ def inject_splitted_string(project, string, line_num):
     var = get_variable_to_override(lines, line_num)
     ind = get_new_index()
 
+    store_line = lines[line_num].strip()
     delete_overriden_var(recovered, line_num)
 
     with open(recovered, "r") as f:
@@ -142,6 +143,7 @@ def inject_splitted_string(project, string, line_num):
     lines.insert(line_num, f"  %spi{ind} = ptrtoint [{len(string)+1} x i8]* %sp{ind} to i32\n")
     lines.insert(line_num, f"  store [{len(string)+1} x i8] c\"{string}\\00\", [{len(string)+1} x i8]* %sp{ind}\n")
     lines.insert(line_num, f"  %sp{ind} = alloca [{len(string)+1} x i8]\n")
+    lines.insert(line_num, f"; Replace: {store_line}\n")
     lines.insert(line_num, f";-------------------------------\n")
 
     with open(recovered, "w") as f:
