@@ -137,12 +137,14 @@ def inject_splitted_string(project, string, line_num):
 
     with open(recovered, "r") as f:
         lines = f.readlines()
+
+    length = len(string.encode()) + 1
     
     lines.insert(line_num, f";-------------------------------\n")
     lines.insert(line_num, f"  store i32 %spi{ind}, i32* %{var}\n")
-    lines.insert(line_num, f"  %spi{ind} = ptrtoint [{len(string)+1} x i8]* %sp{ind} to i32\n")
-    lines.insert(line_num, f"  store [{len(string)+1} x i8] c\"{string}\\00\", [{len(string)+1} x i8]* %sp{ind}\n")
-    lines.insert(line_num, f"  %sp{ind} = alloca [{len(string)+1} x i8]\n")
+    lines.insert(line_num, f"  %spi{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32\n")
+    lines.insert(line_num, f"  store [{length} x i8] c\"{string}\\00\", [{length} x i8]* %sp{ind}\n")
+    lines.insert(line_num, f"  %sp{ind} = alloca [{length} x i8]\n")
     lines.insert(line_num, f"; Replace: {store_line}\n")
     lines.insert(line_num, f";-------------------------------\n")
 
