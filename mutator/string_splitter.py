@@ -7,7 +7,7 @@ def find_strings(project, begin_main, end_main):
     project - Project Name
     begin_main - Beginning of the main function recovered.ll
     end_main - End of the main function recovered.ll
-    Return: list of tuples (integer (= line), integer (= offsets))
+    Return: list of lists, [line_numbers, offset1, offset2, ...)
     """
     
     copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
@@ -20,8 +20,14 @@ def find_strings(project, begin_main, end_main):
                     match = re.search(r"store i32 (\d{4,}),.* align 16\n", line)
                     if(match != None and address_could_be_string(int(match[1]), ro_add, txt_add)):
                         offset = address_to_offset(project, int(match[1]))
-                        list.append((i,offset))
-                    
+                        list.append([i,offset])
+
+                    # In the case of an if, we only want string in the rodata section
+                    match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
+                    if(match != None and address_could_be_string(int(match[1]), ro_add, [0,0]) and address_could_be_string(int(match[2]), ro_add, [0,0])):
+                        offset1 = address_to_offset(project, int(match[1]))
+                        offset2 = address_to_offset(project, int(match[2]))
+                        list.append([i,offset1, offset2])
             except:
                 print("not usable line")
     return list
@@ -68,8 +74,8 @@ def ro_txt_addresses(project):
                 txt.append(int(matchTxt[2], 16))
     return ro, txt
 
-def split_string_at(project, offset, line_num):
-    """get and remove string at <offset> in the binary of <project>
+def split_string_at(project, tuple_string):
+    """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the string.
     
@@ -77,16 +83,34 @@ def split_string_at(project, offset, line_num):
     project -- project name
     offset -- offset of string in binary
     line_num -- line num of the store instruction of the string
-    Return: number of added lines
+    Return: number of added lines 
     """
+    if(len(tuple_string)==2):
+        line_num = tuple_string[0]
+        offset = tuple_string[1]
+        string = get_string_from_binary(project, offset)
 
-    string = get_string_from_binary(project, offset)
+        remove_string_from_binary(project, offset, len(string.encode()))
+        added_lines = inject_splitted_string(project, string, line_num)
+        if(added_lines == -1):
+            print("Cannot inject in recovered LLVM, stop mutation")
+        return added_lines
 
-    remove_string_from_binary(project, offset, len(string.encode()))
+    elif(len(tuple_string) == 3):
+        line_num = tuple_string[0]
+        print(line_num)
+        offsets = (tuple_string[1], tuple_string[2])
+        strings = []
+        for i, offset in enumerate(offsets):
+            strings.append(get_string_from_binary(project, offset))
+            remove_string_from_binary(project, offset, len(strings[i].encode()))
 
-    if(inject_splitted_string(project, string, line_num) == -1):
-        print("Cannot inject in recovered LLVM, stop mutation")
-    return 0   
+        added_lines = inject_splitted_strings(project, strings, line_num)
+        if(added_lines == -1):
+            print("Cannot inject in recovered LLVM, stop mutation")
+        return added_lines
+
+
 
 def get_string_from_binary(project, offset):
     """get string at <offset> in binary of <project> 
@@ -161,7 +185,50 @@ def inject_splitted_string(project, string, line_num):
     """
 
     
-    return 6
+    return 7-1
+
+def inject_splitted_strings(project, strings, line_num):
+    """Replace the reference at line <line_num> in recovered.ll
+       by an hardcoded splitted version of the <string>. This
+       function if for lines with multiple strings
+    
+    Keyword arguments:
+    project -- project name
+    strings -- strings to inject
+    line_num -- line number where to inject 
+    Return: number of added lines
+    """
+    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+    with open(recovered, "r") as f:
+        lines = f.readlines()
+
+    #var = get_variable_to_override(lines, line_num)
+    ind = get_new_index()
+
+    store_line = lines[line_num].strip()
+    delete_overriden_var(recovered, line_num)
+
+    with open(recovered, "r") as f:
+        lines = f.readlines()
+
+    line_start = store_line.split(",")[0]
+    lines.insert(line_num, f";-------------------------------\n")
+    lines.insert(line_num, f"  {line_start}, i32 %spi0{ind}, i32 %spi1{ind}\n")
+    for i in range(len(strings)):
+        length = len(strings[i].encode()) + 1
+        string = strings[i]
+        lines.insert(line_num, f"  %spi{i}{ind} = ptrtoint [{length} x i8]* %sp{i}{ind} to i32\n")
+        lines.insert(line_num, f"  store [{length} x i8] c\"{string}\\00\", [{length} x i8]* %sp{i}{ind}\n")
+        lines.insert(line_num, f"  %sp{i}{ind} = alloca [{length} x i8]\n")
+    
+    lines.insert(line_num, f"; Replace: {store_line}\n")
+    lines.insert(line_num, f";-------------------------------\n")
+
+    with open(recovered, "w") as f:
+            f.writelines(lines)
+
+    
+    return 10-1
 
 def generate_llvm_split_string_code(string, var, infos):
     ind = get_new_index()
@@ -249,8 +316,13 @@ def split_strings(project):
     project -- project name
     """
     start_main, end_main = init_mutation(project)
-    for line_num, address in find_strings(project, start_main, end_main):
-        split_string_at(project, address, line_num)
+    tuples = find_strings(project, start_main, end_main)
+    for tuple in tuples:
+            added_lines = split_string_at(project, tuple)
+            for i, tuple_add in enumerate(tuples) : 
+                if tuple_add != tuple:
+                    tuples[i][0] = tuples[i][0] + added_lines
+                    
 
 def delete_overriden_var(recovered, decl_line):
     """delete original line
@@ -269,3 +341,7 @@ def delete_overriden_var(recovered, decl_line):
         f.writelines(lines)
     
     return 0
+
+
+if __name__ == "__main__":
+    print(find_strings("humeur", 103, 157))
