@@ -91,7 +91,7 @@ def split_string_at(project, tuple_string):
         string = get_string_from_binary(project, offset)
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        added_lines = inject_splitted_string(project, string, line_num)
+        added_lines = inject_store_splitted_string(project, string, line_num)
         if(added_lines == -1):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
@@ -105,12 +105,10 @@ def split_string_at(project, tuple_string):
             strings.append(get_string_from_binary(project, offset))
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
-        added_lines = inject_splitted_strings(project, strings, line_num)
+        added_lines = inject_select_splitted_strings(project, strings, line_num)
         if(added_lines == -1):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
-
-
 
 def get_string_from_binary(project, offset):
     """get string at <offset> in binary of <project> 
@@ -149,7 +147,8 @@ def remove_string_from_binary(project, offset, length):
     with open(copy, 'bw') as f:
         f.write(content)
 
-def inject_splitted_string(project, string, line_num):
+#TODO Bastien handle nbr de ligne
+def inject_store_splitted_string(project, string, line_num):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -187,7 +186,8 @@ def inject_splitted_string(project, string, line_num):
     
     return 7-1
 
-def inject_splitted_strings(project, strings, line_num):
+#TODO Arnold use generate_llvm et handle nbr de ligne
+def inject_select_splitted_strings(project, strings, line_num):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>. This
        function if for lines with multiple strings
@@ -230,6 +230,7 @@ def inject_splitted_strings(project, strings, line_num):
     
     return 10-1
 
+# TODO Bastien get ind en arg et utiliser var comme pointeur de fin, le store bouge ailleur
 def generate_llvm_split_string_code(string, var, infos):
     ind = get_new_index()
     length = len(string.encode()) + 1
@@ -287,9 +288,8 @@ def generate_llvm_split_string_code(string, var, infos):
   store i32 %spi0, i32* %6
     """
 
-
 def generate_splitted_string(string):
-    cut = 3
+    cut = 3 #TODO polish changer la valeur
     return [string[i * len(string)//cut:(i + 1) * len(string)//cut] for i in range(cut)]
 
 def get_variable_to_override(lines, line_num):
