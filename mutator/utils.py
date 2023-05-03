@@ -72,7 +72,6 @@ def get_section_table(project):
 
     return table
 
-
 def make_mutation_folder(project):
     """Create folder to store mutations
     

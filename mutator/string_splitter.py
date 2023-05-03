@@ -1,13 +1,13 @@
 from .utils import *
 
 def find_strings(project, begin_main, end_main):
-    """find string adresses in the binary
+    """find string offsets in the binary
     
     Keyword arguments:
     project - Project Name
     begin_main - Beginning of the main function recovered.ll
     end_main - End of the main function recovered.ll
-    Return: list of tuples (ligne, integer (= adresses))
+    Return: list of tuples (integer (= line), integer (= offsets))
     """
     
     copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
@@ -68,40 +68,48 @@ def ro_txt_addresses(project):
                 txt.append(int(matchTxt[2], 16))
     return ro, txt
 
-def split_string_at(project, address, line_num):
-    """
-    lire le string
-    clean le binaire d'origine
-    introduit les instructions avec le string split
+def split_string_at(project, offset, line_num):
+    """get and remove string at <offset> in the binary of <project>
+       Then replace the reference at line <line_num> in recovered.ll
+       by an hardcoded splitted version of the string.
+    
+    Keyword arguments:
+    project -- project name
+    offset -- offset of string in binary
+    line_num -- line num of the store instruction of the string
+    Return: number of added lines
     """
 
-    string = get_string_from_binary(project, address)
-    if(remove_string_from_binary(project, address, len(string))):
-        print("Cannot modify original binary, stop mutation")
-    if(inject_splitted_string(project, string, line_num)):
+    string = get_string_from_binary(project, offset)
+
+    remove_string_from_binary(project, offset, len(string.encode()))
+
+    if(inject_splitted_string(project, string, line_num) == -1):
         print("Cannot inject in recovered LLVM, stop mutation")
     return 0   
 
-def get_string_from_binary(project, address):
-    """sumary_line
+def get_string_from_binary(project, offset):
+    """get string at <offset> in binary of <project> 
     
     Keyword arguments:
-    argument -- description
-    Return: return_description
+    project -- project name
+    offset -- offset in binary
+    Return: string (decoded from utf-8)
     """
 
     string = b''
     with open("s2e/projects/" + project + "/binary", 'br') as f:
-        string = f.read()[address:]
+        string = f.read()[offset:]
     
     return string.split(b'\x00')[0].decode("utf-8") #FIXME We assume the string encoding
 
-def remove_string_from_binary(project, address, length):
-    """sumary_line
+def remove_string_from_binary(project, offset, length):
+    """ Remove <length> bytes at <offset> in binary of <project>
     
     Keyword arguments:
-    argument -- description
-    Return: return_description
+    project -- project name
+    offset -- offset in binary
+    length -- length to wipe in bytes
     """
     
     copy = "s2e/projects/" + project + "/s2e-out/binary"
@@ -113,16 +121,18 @@ def remove_string_from_binary(project, address, length):
     content = b''
     with open(copy, 'br') as f:
         content = bytearray(f.read())
-    content[address: address+length] = b'\x00'*length
+    content[offset: offset+length] = b'\x00'*length
     with open(copy, 'bw') as f:
         f.write(content)
-    return 0
 
 def inject_splitted_string(project, string, line_num):
-    """sumary_line
+    """Replace the reference at line <line_num> in recovered.ll
+       by an hardcoded splitted version of the <string>.
     
     Keyword arguments:
-    argument -- description
+    project -- project name
+    string -- string to inject
+    line_num -- line number where to inject 
     Return: number of added lines
     """
     recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
@@ -159,14 +169,15 @@ def inject_splitted_string(project, string, line_num):
     store i32 %spi{ind}, i32* %{var}
     """
     
-    return 0
+    return 6
 
 def get_variable_to_override(lines, line_num):
-    """sumary_line
+    """get variable name the string is stored in
     
     Keyword arguments:
-    argument -- description
-    Return: return_description
+    lines -- context of lines from which find the var name
+    line_num -- line from which find the var name
+    Return: var name (string)
     """
     var = ""
     match = re.search(r"store i32 \d{4,},.* %(.*), align 16\n", lines[line_num])
@@ -177,22 +188,23 @@ def get_variable_to_override(lines, line_num):
     return var
 
 def split_strings(project):
-    """sumary_line
+    """Mutation of <project> by removing strings from their data section
+       and splitting 
     
     Keyword arguments:
-    argument -- description
-    Return: return_description
+    project -- project name
     """
     start_main, end_main = init_mutation(project)
     for line_num, address in find_strings(project, start_main, end_main):
         split_string_at(project, address, line_num)
 
 def delete_overriden_var(recovered, decl_line):
-    """sumary_line
+    """delete original line
     
     Keyword arguments:
-    argument -- description
-    Return: return_description
+    recovered - path to the recovered file
+    decl_line - line to remove from file
+    Return: 0 if success
     """
     with open(recovered, "r") as f :
         lines = f.readlines()
