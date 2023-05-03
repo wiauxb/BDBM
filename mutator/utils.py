@@ -56,6 +56,8 @@ def get_section_table(project):
     
     binary_path = "s2e/projects/" + project + "/s2e-out/binary"
 
+    readelf = b''
+
     try:
         readelf = subprocess.check_output(["readelf", "-S", binary_path])
     except subprocess.CalledProcessError:

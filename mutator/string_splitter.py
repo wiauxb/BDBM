@@ -140,7 +140,6 @@ def inject_splitted_string(project, string, line_num):
         lines = f.readlines()
 
     var = get_variable_to_override(lines, line_num)
-    ind = get_new_index()
 
     store_line = lines[line_num].strip()
     delete_overriden_var(recovered, line_num)
@@ -148,28 +147,83 @@ def inject_splitted_string(project, string, line_num):
     with open(recovered, "r") as f:
         lines = f.readlines()
 
-    length = len(string.encode()) + 1
+    lines.insert(line_num, generate_llvm_split_string_code(string, var, store_line))
     
-    lines.insert(line_num, f";-------------------------------\n")
-    lines.insert(line_num, f"  store i32 %spi{ind}, i32* %{var}\n")
-    lines.insert(line_num, f"  %spi{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32\n")
-    lines.insert(line_num, f"  store [{length} x i8] c\"{string}\\00\", [{length} x i8]* %sp{ind}\n")
-    lines.insert(line_num, f"  %sp{ind} = alloca [{length} x i8]\n")
-    lines.insert(line_num, f"; Replace: {store_line}\n")
-    lines.insert(line_num, f";-------------------------------\n")
-
     with open(recovered, "w") as f:
             f.writelines(lines)
     
     #in th right order
     f"""
-    %sp{ind} = alloca [{len(string)+1} x i8]
-    store [{len(string)+1} x i8] c"{string}\\00", [{len(string)+1} x i8]* %sp{ind}
-    %spi{ind} = ptrtoint [{len(string)+1} x i8]* %sp{ind} to i32
-    store i32 %spi{ind}, i32* %{var}
+    %sp0 = alloca [{len(string)+1} x i8]
+    store [{len(string)+1} x i8] c"{string}\\00", [{len(string)+1} x i8]* %sp0
+    %spi0 = ptrtoint [{len(string)+1} x i8]* %sp0 to i32
+    store i32 %spi0, i32* %{var}
     """
+
     
     return 6
+
+def generate_llvm_split_string_code(string, var, infos):
+    ind = get_new_index()
+    length = len(string.encode()) + 1
+
+    code = f""";-------------------------------
+; Replace: {infos}
+  %sp{ind} = alloca [{length} x i8]
+  """
+    
+    splits = generate_splitted_string(string)
+    print(splits)
+    split_len = len(splits[0].encode())
+    code += f"""
+  %sp0.{ind} = bitcast [{length} x i8]* %sp{ind} to [{split_len} x i8]*
+  store [{split_len} x i8] c"{splits[0]}", [{split_len} x i8]* %sp0.{ind}
+  %next0.{ind} = getelementptr [{length} x i8], [{length} x i8]* %sp{ind}, i32 0, i32 {split_len}
+  """
+    prev_added_len = split_len
+    for i in range(1, len(splits)-1):
+        split_len = len(splits[i].encode())
+        code += f"""
+  %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
+  store [{split_len} x i8] c"{splits[i]}", [{split_len} x i8]* %sp{i}.{ind}
+  %next{i}.{ind} = getelementptr [{length} x i8], [{length} x i8]* %sp{ind}, i32 0, i32 {prev_added_len + split_len}
+  """
+        prev_added_len += split_len
+    i = len(splits)-1
+    split_len = len(splits[-1].encode()) + 1
+    code += f"""
+  %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
+  store [{split_len} x i8] c"{splits[i]}\\00", [{split_len} x i8]* %sp{i}.{ind}
+  
+  %spi{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32
+  store i32 %spi{ind}, i32* %{var}
+;-------------------------------
+"""
+
+    return code
+# example code result
+    """
+  %sp0 = alloca [17 x i8]
+
+  %sp0.0 = bitcast [17 x i8]* %sp0 to [4 x i8]*
+  store [4 x i8] c"I am", [4 x i8]* %sp0.0
+  %next0.0 = getelementptr [17 x i8], [17 x i8]* %sp0, i32 0, i32 4
+
+  %sp1.0 = bitcast i8* %next0.0 to [4 x i8]*
+  store [4 x i8] c" not", [4 x i8]* %sp1.0
+  %next1.0 = getelementptr [17 x i8], [17 x i8]* %sp0, i32 0, i32 8
+
+  %sp2.0 = bitcast i8* %next1.0 to [9 x i8]*
+  store [9 x i8] c" evil!!!\00", [9 x i8]* %sp2.0
+  
+  %spi0 = ptrtoint [17 x i8]* %sp0 to i32
+  store i32 %spi0, i32* %6
+    """
+
+
+def generate_splitted_string(string):
+    cut = 3
+    return [string[i * len(string)//cut:(i + 1) * len(string)//cut] for i in range(cut)]
 
 def get_variable_to_override(lines, line_num):
     """get variable name the string is stored in
