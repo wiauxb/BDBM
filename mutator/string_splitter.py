@@ -1,4 +1,5 @@
 from .utils import *
+from .string_ref import TYPES, stringRef
 
 def find_strings(project, begin_main, end_main):
     """find string offsets in the binary
@@ -21,6 +22,7 @@ def find_strings(project, begin_main, end_main):
                     if(match != None and address_could_be_string(int(match[1]), ro_add, txt_add)):
                         offset = address_to_offset(project, int(match[1]))
                         list.append([i,offset])
+                        # list.append(stringRef(TYPES.STORE, i, offset))
 
                     # In the case of an if, we only want string in the rodata section
                     match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
@@ -28,6 +30,7 @@ def find_strings(project, begin_main, end_main):
                         offset1 = address_to_offset(project, int(match[1]))
                         offset2 = address_to_offset(project, int(match[2]))
                         list.append([i,offset1, offset2])
+                        # list.append(stringRef(TYPES.SELECT, i, [offset1, offset2]))
             except:
                 print("not usable line")
     return list
@@ -147,7 +150,6 @@ def remove_string_from_binary(project, offset, length):
     with open(copy, 'bw') as f:
         f.write(content)
 
-#TODO Bastien handle nbr de ligne
 def inject_store_splitted_string(project, string, line_num):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
@@ -163,6 +165,7 @@ def inject_store_splitted_string(project, string, line_num):
         lines = f.readlines()
 
     var = get_variable_to_override(lines, line_num)
+    ind = get_new_index()
 
     store_line = lines[line_num].strip()
     delete_overriden_var(recovered, line_num)
@@ -170,21 +173,16 @@ def inject_store_splitted_string(project, string, line_num):
     with open(recovered, "r") as f:
         lines = f.readlines()
 
-    lines.insert(line_num, generate_llvm_split_string_code(string, var, store_line))
+    code = generate_llvm_split_string_code(string, "spi", store_line, ind)
+
+    lines.insert(line_num, f";-------------------------------\n")
+    lines.insert(line_num, f"  store i32 %spi{ind}, i32* %{var}\n")
+    lines.insert(line_num, code)
     
     with open(recovered, "w") as f:
             f.writelines(lines)
-    
-    #in th right order
-    f"""
-    %sp0 = alloca [{len(string)+1} x i8]
-    store [{len(string)+1} x i8] c"{string}\\00", [{len(string)+1} x i8]* %sp0
-    %spi0 = ptrtoint [{len(string)+1} x i8]* %sp0 to i32
-    store i32 %spi0, i32* %{var}
-    """
-
-    
-    return 7-1
+        
+    return len(code.splitlines()) + 2 - 1
 
 #TODO Arnold use generate_llvm et handle nbr de ligne
 def inject_select_splitted_strings(project, strings, line_num):
@@ -205,13 +203,13 @@ def inject_select_splitted_strings(project, strings, line_num):
     #var = get_variable_to_override(lines, line_num)
     ind = get_new_index()
 
-    store_line = lines[line_num].strip()
+    select_line = lines[line_num].strip()
     delete_overriden_var(recovered, line_num)
 
     with open(recovered, "r") as f:
         lines = f.readlines()
 
-    line_start = store_line.split(",")[0]
+    line_start = select_line.split(",")[0]
     lines.insert(line_num, f";-------------------------------\n")
     lines.insert(line_num, f"  {line_start}, i32 %spi0{ind}, i32 %spi1{ind}\n")
     for i in range(len(strings)):
@@ -221,7 +219,7 @@ def inject_select_splitted_strings(project, strings, line_num):
         lines.insert(line_num, f"  store [{length} x i8] c\"{string}\\00\", [{length} x i8]* %sp{i}{ind}\n")
         lines.insert(line_num, f"  %sp{i}{ind} = alloca [{length} x i8]\n")
     
-    lines.insert(line_num, f"; Replace: {store_line}\n")
+    lines.insert(line_num, f"; Replace: {select_line}\n")
     lines.insert(line_num, f";-------------------------------\n")
 
     with open(recovered, "w") as f:
@@ -230,9 +228,7 @@ def inject_select_splitted_strings(project, strings, line_num):
     
     return 10-1
 
-# TODO Bastien get ind en arg et utiliser var comme pointeur de fin, le store bouge ailleur
-def generate_llvm_split_string_code(string, var, infos):
-    ind = get_new_index()
+def generate_llvm_split_string_code(string, var, infos, ind):
     length = len(string.encode()) + 1
 
     code = f""";-------------------------------
@@ -263,8 +259,7 @@ def generate_llvm_split_string_code(string, var, infos):
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
   store [{split_len} x i8] c"{splits[i]}\\00", [{split_len} x i8]* %sp{i}.{ind}
   
-  %spi{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32
-  store i32 %spi{ind}, i32* %{var}
+  %{var}{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32
 ;-------------------------------
 """
 

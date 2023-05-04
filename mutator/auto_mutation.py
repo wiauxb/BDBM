@@ -3,7 +3,7 @@ import argparse
 
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #FIXME think about ordering the mutations
     parser = argparse.ArgumentParser()
     parser.add_argument("project_name")
     parser.add_argument("--sleep", action='store_true')
