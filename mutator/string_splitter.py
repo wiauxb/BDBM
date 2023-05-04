@@ -201,7 +201,8 @@ def inject_select_splitted_strings(project, strings, line_num):
         lines = f.readlines()
 
     #var = get_variable_to_override(lines, line_num)
-    ind = get_new_index()
+    ind1 = get_new_index()
+    ind2 = get_new_index()
 
     select_line = lines[line_num].strip()
     delete_overriden_var(recovered, line_num)
@@ -211,22 +212,23 @@ def inject_select_splitted_strings(project, strings, line_num):
 
     line_start = select_line.split(",")[0]
     lines.insert(line_num, f";-------------------------------\n")
-    lines.insert(line_num, f"  {line_start}, i32 %spi0{ind}, i32 %spi1{ind}\n")
-    for i in range(len(strings)):
-        length = len(strings[i].encode()) + 1
-        string = strings[i]
-        lines.insert(line_num, f"  %spi{i}{ind} = ptrtoint [{length} x i8]* %sp{i}{ind} to i32\n")
-        lines.insert(line_num, f"  store [{length} x i8] c\"{string}\\00\", [{length} x i8]* %sp{i}{ind}\n")
-        lines.insert(line_num, f"  %sp{i}{ind} = alloca [{length} x i8]\n")
-    
-    lines.insert(line_num, f"; Replace: {select_line}\n")
-    lines.insert(line_num, f";-------------------------------\n")
+    lines.insert(line_num, f"  {line_start}, i32 %spi{ind1}, i32 %spi{ind2}\n")
+    added_lines = 2
+
+    code = generate_llvm_split_string_code(strings[0], "spi", select_line, ind1)
+    added_lines += len(code.splitlines())
+    lines.insert(line_num, code)
+
+    code = generate_llvm_split_string_code(strings[1], "spi", select_line, ind2)
+    added_lines += len(code.splitlines())
+    lines.insert(line_num, code)
+
 
     with open(recovered, "w") as f:
-            f.writelines(lines)
+        f.writelines(lines)
 
     
-    return 10-1
+    return added_lines-1
 
 def generate_llvm_split_string_code(string, var, infos, ind):
     length = len(string.encode()) + 1
