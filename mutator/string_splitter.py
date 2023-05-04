@@ -22,7 +22,7 @@ def find_strings(project, begin_main, end_main):
                     if(match != None and address_could_be_string(int(match[1]), ro_add, txt_add)):
                         offset = address_to_offset(project, int(match[1]))
                         # list.append([i,offset])
-                        list.append(stringRef(TYPES.STORE, i, offset))
+                        list.append(stringRef(TYPES.ONE, i, line, offset))
 
                     # In the case of an if, we only want string in the rodata section
                     match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
@@ -30,7 +30,7 @@ def find_strings(project, begin_main, end_main):
                         offset1 = address_to_offset(project, int(match[1]))
                         offset2 = address_to_offset(project, int(match[2]))
                         # list.append([i,offset1, offset2])
-                        list.append(stringRef(TYPES.SELECT, i, [offset1, offset2]))
+                        list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
             except:
                 print("not usable line")
     return list
@@ -77,7 +77,7 @@ def ro_txt_addresses(project):
                 txt.append(int(matchTxt[2], 16))
     return ro, txt
 
-def split_string_at(project, ref_string: stringRef):
+def split_string_at(project, ref: stringRef):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the string.
@@ -88,27 +88,24 @@ def split_string_at(project, ref_string: stringRef):
     line_num -- line num of the store instruction of the string
     Return: number of added lines 
     """
-    if(ref_string.type == TYPES.STORE):
-        line_num = ref_string.line_num
-        offset = ref_string.offset
+    if(ref.type == TYPES.ONE):
+        offset = ref.offset
         string = get_string_from_binary(project, offset)
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        added_lines = inject_store_splitted_string(project, string, line_num)
+        added_lines = inject_splitted_string(project, string, ref)
         if(added_lines == -1):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
 
-    elif(ref_string.type == TYPES.SELECT):
-        line_num = ref_string.line_num
-        print(line_num)
-        offsets = ref_string.offset
+    elif(ref.type == TYPES.TWO):
+        offsets = ref.offset
         strings = []
         for i, offset in enumerate(offsets):
             strings.append(get_string_from_binary(project, offset))
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
-        added_lines = inject_select_splitted_strings(project, strings, line_num)
+        added_lines = inject_splitted_string(project, strings, ref)
         if(added_lines == -1):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
@@ -150,7 +147,7 @@ def remove_string_from_binary(project, offset, length):
     with open(copy, 'bw') as f:
         f.write(content)
 
-def inject_store_splitted_string(project, string, line_num):
+def inject_splitted_string(project, string, ref: stringRef):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -164,71 +161,46 @@ def inject_store_splitted_string(project, string, line_num):
     with open(recovered, "r") as f:
         lines = f.readlines()
 
-    var = get_variable_to_override(lines, line_num)
-    ind = get_new_index()
+    line_num = ref.line_num
 
-    store_line = lines[line_num].strip()
     delete_overriden_var(recovered, line_num)
 
     with open(recovered, "r") as f:
         lines = f.readlines()
 
-    code = generate_llvm_split_string_code(string, "spi", store_line, ind)
+    added_lines = 0
 
-    lines.insert(line_num, f";-------------------------------\n")
-    lines.insert(line_num, f"  store i32 %spi{ind}, i32* %{var}\n")
-    lines.insert(line_num, code)
+    if ref.type == TYPES.ONE:
+        ind = get_new_index()
+
+        code = generate_llvm_split_string_code(string, "spi", ref.line.strip(), ind)
+
+        lines.insert(line_num, f";-------------------------------\n")
+        lines.insert(line_num, ref.get_mutated_line(f"%spi{ind}"))
+        lines.insert(line_num, code)
+        added_lines += 2 + len(code.splitlines())
+
+    elif ref.type == TYPES.TWO:
+        ind1 = get_new_index()
+        ind2 = get_new_index()
+        lines.insert(line_num, f";-------------------------------\n")
+        lines.insert(line_num, ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
+        added_lines += 2
+
+        code = generate_llvm_split_string_code(string[0], "spi", ref.line.strip(), ind1)
+        added_lines += len(code.splitlines())
+        lines.insert(line_num, code)
+
+        code = generate_llvm_split_string_code(string[1], "spi", ref.line.strip(), ind2)
+        added_lines += len(code.splitlines())
+        lines.insert(line_num, code)
+    else:
+        raise ValueError(f"Unknown Type: {ref.type}")
     
     with open(recovered, "w") as f:
             f.writelines(lines)
         
-    return len(code.splitlines()) + 2 - 1
-
-#TODO Arnold use generate_llvm et handle nbr de ligne
-def inject_select_splitted_strings(project, strings, line_num):
-    """Replace the reference at line <line_num> in recovered.ll
-       by an hardcoded splitted version of the <string>. This
-       function if for lines with multiple strings
-    
-    Keyword arguments:
-    project -- project name
-    strings -- strings to inject
-    line_num -- line number where to inject 
-    Return: number of added lines
-    """
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
-    with open(recovered, "r") as f:
-        lines = f.readlines()
-
-    #var = get_variable_to_override(lines, line_num)
-    ind1 = get_new_index()
-    ind2 = get_new_index()
-
-    select_line = lines[line_num].strip()
-    delete_overriden_var(recovered, line_num)
-
-    with open(recovered, "r") as f:
-        lines = f.readlines()
-
-    line_start = select_line.split(",")[0]
-    lines.insert(line_num, f";-------------------------------\n")
-    lines.insert(line_num, f"  {line_start}, i32 %spi{ind1}, i32 %spi{ind2}\n")
-    added_lines = 2
-
-    code = generate_llvm_split_string_code(strings[0], "spi", select_line, ind1)
-    added_lines += len(code.splitlines())
-    lines.insert(line_num, code)
-
-    code = generate_llvm_split_string_code(strings[1], "spi", select_line, ind2)
-    added_lines += len(code.splitlines())
-    lines.insert(line_num, code)
-
-
-    with open(recovered, "w") as f:
-        f.writelines(lines)
-
-    
-    return added_lines-1
+    return added_lines - 1
 
 def generate_llvm_split_string_code(string, var, infos, ind):
     length = len(string.encode()) + 1
@@ -288,22 +260,6 @@ def generate_llvm_split_string_code(string, var, infos, ind):
 def generate_splitted_string(string):
     cut = 3 #TODO polish changer la valeur
     return [string[i * len(string)//cut:(i + 1) * len(string)//cut] for i in range(cut)]
-
-def get_variable_to_override(lines, line_num):
-    """get variable name the string is stored in
-    
-    Keyword arguments:
-    lines -- context of lines from which find the var name
-    line_num -- line from which find the var name
-    Return: var name (string)
-    """
-    var = ""
-    match = re.search(r"store i32 \d{4,},.* %(.*), align 16\n", lines[line_num])
-    if(match == None):
-        print(f"Cannot find store instruction in line {line_num+1}")
-        return -1
-    var = match[1]
-    return var
 
 def split_strings(project):
     """Mutation of <project> by removing strings from their data section
