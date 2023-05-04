@@ -21,16 +21,16 @@ def find_strings(project, begin_main, end_main):
                     match = re.search(r"store i32 (\d{4,}),.* align 16\n", line)
                     if(match != None and address_could_be_string(int(match[1]), ro_add, txt_add)):
                         offset = address_to_offset(project, int(match[1]))
-                        list.append([i,offset])
-                        # list.append(stringRef(TYPES.STORE, i, offset))
+                        # list.append([i,offset])
+                        list.append(stringRef(TYPES.STORE, i, offset))
 
                     # In the case of an if, we only want string in the rodata section
                     match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
                     if(match != None and address_could_be_string(int(match[1]), ro_add, [0,0]) and address_could_be_string(int(match[2]), ro_add, [0,0])):
                         offset1 = address_to_offset(project, int(match[1]))
                         offset2 = address_to_offset(project, int(match[2]))
-                        list.append([i,offset1, offset2])
-                        # list.append(stringRef(TYPES.SELECT, i, [offset1, offset2]))
+                        # list.append([i,offset1, offset2])
+                        list.append(stringRef(TYPES.SELECT, i, [offset1, offset2]))
             except:
                 print("not usable line")
     return list
@@ -77,7 +77,7 @@ def ro_txt_addresses(project):
                 txt.append(int(matchTxt[2], 16))
     return ro, txt
 
-def split_string_at(project, tuple_string):
+def split_string_at(project, ref_string: stringRef):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the string.
@@ -88,9 +88,9 @@ def split_string_at(project, tuple_string):
     line_num -- line num of the store instruction of the string
     Return: number of added lines 
     """
-    if(len(tuple_string)==2):
-        line_num = tuple_string[0]
-        offset = tuple_string[1]
+    if(ref_string.type == TYPES.STORE):
+        line_num = ref_string.line_num
+        offset = ref_string.offset
         string = get_string_from_binary(project, offset)
 
         remove_string_from_binary(project, offset, len(string.encode()))
@@ -99,10 +99,10 @@ def split_string_at(project, tuple_string):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
 
-    elif(len(tuple_string) == 3):
-        line_num = tuple_string[0]
+    elif(ref_string.type == TYPES.SELECT):
+        line_num = ref_string.line_num
         print(line_num)
-        offsets = (tuple_string[1], tuple_string[2])
+        offsets = ref_string.offset
         strings = []
         for i, offset in enumerate(offsets):
             strings.append(get_string_from_binary(project, offset))
@@ -313,12 +313,12 @@ def split_strings(project):
     project -- project name
     """
     start_main, end_main = init_mutation(project)
-    tuples = find_strings(project, start_main, end_main)
-    for tuple in tuples:
-            added_lines = split_string_at(project, tuple)
-            for i, tuple_add in enumerate(tuples) : 
-                if tuple_add != tuple:
-                    tuples[i][0] = tuples[i][0] + added_lines
+    refs = find_strings(project, start_main, end_main)
+    for ref in refs:
+            added_lines = split_string_at(project, ref)
+            for i, ref_add in enumerate(refs) : 
+                if ref_add != ref:
+                    refs[i].line_num += added_lines
                     
 
 def delete_overriden_var(recovered, decl_line):
