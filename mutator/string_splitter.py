@@ -28,20 +28,6 @@ def find_strings(project, begin_main, end_main):
                             list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
                         else:
                             raise ValueError(f"Unhandled number of addresses in one instruction:\n{len(match)} addresses in\n{line}")
-
-
-                    # if(match != None and address_could_be_string(project, int(match[1]))):
-                    #     offset = address_to_offset(project, int(match[1]))
-                        # list.append([i,offset])
-                        # list.append(stringRef(TYPES.ONE, i, line, offset))
-
-                    # In the case of an if, we only want string in the rodata section
-                    # match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
-                    # if(match != None and address_could_be_string(project, int(match[1])) and address_could_be_string(project, int(match[2]))):
-                    #     offset1 = address_to_offset(project, int(match[1]))
-                    #     offset2 = address_to_offset(project, int(match[2]))
-                        # list.append([i,offset1, offset2])
-                        # list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
             except Exception as e:
                 print(f"not usable line: {e}")
     return list
