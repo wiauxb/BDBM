@@ -13,29 +13,46 @@ def find_strings(project, begin_main, end_main):
     
     copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     list = []
-    ro_add, txt_add = ro_txt_addresses(project)
     with open(copy, "r") as fp:
         for i,line in enumerate(fp):
             try:
                 if i > begin_main and i < end_main:
-                    match = re.search(r"store i32 (\d{4,}),.* align 16\n", line)
-                    if(match != None and address_could_be_string(int(match[1]), ro_add, txt_add)):
-                        offset = address_to_offset(project, int(match[1]))
+                    match = re.findall(r"i32 (\d{4,})", line)
+                    if match and all_addresses_could_be_string(project, match):
+                        if len(match) == 1:
+                            offset = address_to_offset(project, int(match[0]))
+                            list.append(stringRef(TYPES.ONE, i, line, offset))
+                        elif len(match) == 2:
+                            offset1 = address_to_offset(project, int(match[0]))
+                            offset2 = address_to_offset(project, int(match[1]))
+                            list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
+                        else:
+                            raise ValueError(f"Unhandled number of addresses in one instruction:\n{len(match)} addresses in\n{line}")
+
+
+                    # if(match != None and address_could_be_string(project, int(match[1]))):
+                    #     offset = address_to_offset(project, int(match[1]))
                         # list.append([i,offset])
-                        list.append(stringRef(TYPES.ONE, i, line, offset))
+                        # list.append(stringRef(TYPES.ONE, i, line, offset))
 
                     # In the case of an if, we only want string in the rodata section
-                    match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
-                    if(match != None and address_could_be_string(int(match[1]), ro_add, [0,0]) and address_could_be_string(int(match[2]), ro_add, [0,0])):
-                        offset1 = address_to_offset(project, int(match[1]))
-                        offset2 = address_to_offset(project, int(match[2]))
+                    # match = re.search(r".* select .* (\d{4,}), .* (\d{4,})", line)
+                    # if(match != None and address_could_be_string(project, int(match[1])) and address_could_be_string(project, int(match[2]))):
+                    #     offset1 = address_to_offset(project, int(match[1]))
+                    #     offset2 = address_to_offset(project, int(match[2]))
                         # list.append([i,offset1, offset2])
-                        list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
-            except:
-                print("not usable line")
+                        # list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
+            except Exception as e:
+                print(f"not usable line: {e}")
     return list
 
-def address_could_be_string(address, ro, txt):
+def all_addresses_could_be_string(project, addresses: list):
+    for address in addresses:
+        if not address_could_be_string(project, int(address)):
+            return False
+    return True
+
+def address_could_be_string(project, address):
     """ Check whether address can potentially be a string by checking if it is in the rodata or text section.
 
     Keyword arguments:
@@ -45,11 +62,12 @@ def address_could_be_string(address, ro, txt):
 
     return True if the address is a potential string, False otherwise
     """
+    ro, txt = ro_txt_addresses(project)
             
     if address > ro[0] and address < ro[0]+ro[1]:
         return True
-    if address > txt[0] and address < txt[0]+txt[1]:
-        return True
+    # if address > txt[0] and address < txt[0]+txt[1]:
+    #     return True
     
     return False
 
