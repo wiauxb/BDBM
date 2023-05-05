@@ -49,7 +49,7 @@ def address_to_offset(project, address):
     while table[i][1] < address:
         #TODO condition if adress not in table
         i+=1
-    print(f"Found address {address} in section {table[i-1][0]}")
+    # print(f"Found address {address} in section {table[i-1][0]}")
     return table[i-1][2] + (address - table[i-1][1])
 
 def get_section_table(project):

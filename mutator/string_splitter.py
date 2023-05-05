@@ -49,13 +49,25 @@ def address_could_be_string(project, address):
     return True if the address is a potential string, False otherwise
     """
     ro, txt = ro_txt_addresses(project)
+    offset = address_to_offset(project, address)
             
-    if address > ro[0] and address < ro[0]+ro[1]:
-        return True
+    if not (address > ro[0] and address < ro[0]+ro[1]) and not (address > txt[0] and address < txt[0]+txt[1]):
+        return False
+    
+    with open("s2e/projects/" + project + "/binary", 'br') as f:
+        byte = f.read()[offset:]
+    supposed_string = byte.split(b'\x00')[0]
+    if len(supposed_string) == 0:
+        return False
+    try:
+        supposed_string.decode()
+    except Exception as e:
+        # print(e)
+        return False
     # if address > txt[0] and address < txt[0]+txt[1]:
     #     return True
     
-    return False
+    return True
 
 def ro_txt_addresses(project):
     """ Find the address and length of the rodata and text section
@@ -301,4 +313,8 @@ def delete_overriden_var(recovered, decl_line):
 
 
 if __name__ == "__main__":
-    print(find_strings("humeur", 103, 157))
+    pass
+    # for offset in range(200):
+    #     if address_could_be_string("tmp", 134520840+offset):
+    #         off = address_to_offset("tmp", 134520840+offset)
+    #         print(f'{134520840+offset:x}', get_string_from_binary("tmp", off))
