@@ -2,9 +2,7 @@
 #include <string.h>
 
 int main() {
-    
-    char string1[] = "I am evil!!!\n";
-    char * string2 = strchr(string1, 'v');
+    char * string2 = strchr("I am evil!!!\n", 'v');
 
     printf("%s", string2);
 

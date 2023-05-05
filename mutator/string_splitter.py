@@ -1,5 +1,7 @@
 from .utils import *
 from .string_ref import TYPES, stringRef
+import random
+from string import ascii_letters, digits
 
 def find_strings(project, begin_main, end_main):
     """find string offsets in the binary
@@ -177,7 +179,7 @@ def inject_splitted_string(project, string, ref: stringRef):
     if ref.type == TYPES.ONE:
         ind = get_new_index()
 
-        code = generate_llvm_split_string_code(string, "spi", ref.line.strip(), ind)
+        code = generate_llvm_xor_string_code(string, "spi", ref.line.strip(), ind)
 
         lines.insert(line_num, f";-------------------------------\n")
         lines.insert(line_num, ref.get_mutated_line(f"%spi{ind}"))
@@ -206,12 +208,48 @@ def inject_splitted_string(project, string, ref: stringRef):
         
     return added_lines - 1
 
+def generate_llvm_xor_string_code(string, var, infos, ind):
+    length = len(string.encode()) +1
+    #probleme avec la fonction string.ascii_letters
+    #ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz'
+    #ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    #ascii_letters = ascii_lowercase + ascii_uppercase
+    #digits = '0123456789'
+    
+    xor_key = ''.join(random.choices(ascii_letters + digits, k=length-1))
+    try : 
+        xor_string_list = [chr(ord(a) ^ ord(b)) for a,b in zip(string, xor_key)]
+        xor_string = "".join(xor_string_list)
+    except :
+        print("xor ko")
+    code = f""";-------------------------------
+; Replace: {infos}
+  %sp0.{ind} = alloca [{length} x i8]
+  store [{length} x i8] c"{xor_string}\\00", [{length} x i8]* %sp0.{ind}
+  %sp0.1.{ind} = bitcast [{length} x i8]* %sp0.{ind} to i{length*8}*
+  %i0.{ind} = load i{length*8}, i{length*8}* %sp0.1.{ind}
+
+  %sp1.{ind} = alloca [{length} x i8]
+  store [{length} x i8] c"{xor_key}\\00", [{length} x i8]* %sp1.{ind}
+  %sp1.1.{ind} = bitcast [{length} x i8]* %sp1.{ind} to i{length*8}*
+  %i1.{ind} = load i{length*8}, i{length*8}* %sp1.1.{ind}
+
+  %xp{ind} = xor i{length*8} %i0.{ind}, %i1.{ind}
+
+  %sp{ind} = alloca i{length*8}
+  store i{length*8} %xp{ind}, i{length*8}* %sp{ind}
+  %{var}{ind} = ptrtoint i{length*8}* %sp{ind} to i32
+;-------------------------------
+  """ 
+    return code
+
 def generate_llvm_split_string_code(string, var, infos, ind):
     length = len(string.encode()) + 1
 
-    code = f""";-------------------------------
+    code = f""";-------------------------------git
 ; Replace: {infos}
   %sp{ind} = alloca [{length} x i8]
+
   """
     
     splits = generate_splitted_string(string)
@@ -238,7 +276,6 @@ def generate_llvm_split_string_code(string, var, infos, ind):
   store [{split_len} x i8] c"{splits[i]}\\00", [{split_len} x i8]* %sp{i}.{ind}
   
   %{var}{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32
-;-------------------------------
 """
 
     return code
