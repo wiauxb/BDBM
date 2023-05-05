@@ -2,11 +2,8 @@
 #include <string.h>
 
 int main() {
-    
-    char* string1 = "I am evil!!!\n";
-    char* string2 = "I AM eVil!!!\n";
 
-    int result = strcasecmp(string1, string2);
+    int result = strcasecmp("I am evil!!!\n", "I AM eVil!!!\n");
     printf("%d\n", result);
 
     return 0;

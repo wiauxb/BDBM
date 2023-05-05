@@ -4,7 +4,7 @@
 int main(){
     char * sent = "I am evil!!!\n";
     printf("%s", sent);
-    print("%d", strlen(sent));
+    printf("%d\n", strlen(sent));
 
     return 0;
 }
