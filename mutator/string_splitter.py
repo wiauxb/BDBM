@@ -180,8 +180,6 @@ def inject_splitted_string(project, string, ref: stringRef):
         lines = f.readlines()
 
     line_num = ref.line_num
-    print("delete line")
-    print(line_num)
 
     delete_overriden_var(recovered, line_num)
 
@@ -198,8 +196,6 @@ def inject_splitted_string(project, string, ref: stringRef):
         lines.insert(line_num, f";-------------------------------\n")
         lines.insert(line_num, ref.get_mutated_line(f"%spi{ind}"))
         lines.insert(line_num, code)
-        print("len added")
-        print(len(code.splitlines()))
         added_lines += 2 + len(code.splitlines())
 
     elif ref.type == TYPES.TWO:
@@ -226,7 +222,6 @@ def inject_splitted_string(project, string, ref: stringRef):
 
 def generate_llvm_xor_string_code(string, var, infos, ind):
     length = len(string.encode()) +1
-    
     xor_string = ""
     while len(xor_string) != length-1 or "\"" in xor_string:
         xor_key = ''.join(random.choices(ascii_letters + digits, k=length-1))
@@ -265,7 +260,6 @@ def generate_llvm_split_string_code(string, var, infos, ind):
   """
     
     splits = generate_splitted_string(string)
-    print(splits)
     split_len = len(splits[0].encode())
     code += f"""
   %sp0.{ind} = bitcast [{length} x i8]* %sp{ind} to [{split_len} x i8]*
@@ -327,12 +321,8 @@ def split_strings(project):
             added_lines = split_string_at(project, ref)
             for i, ref_add in enumerate(refs) : 
                 if ref_add != ref:
-                    print(refs[i].line_num)
                     refs[i].line_num += added_lines
-                    print(refs[i].line_num)
-                    print(added_lines)
-                    print()
-                    
+
 
 def delete_overriden_var(recovered, decl_line):
     """delete original line
