@@ -180,6 +180,8 @@ def inject_splitted_string(project, string, ref: stringRef):
         lines = f.readlines()
 
     line_num = ref.line_num
+    print("delete line")
+    print(line_num)
 
     delete_overriden_var(recovered, line_num)
 
@@ -196,6 +198,8 @@ def inject_splitted_string(project, string, ref: stringRef):
         lines.insert(line_num, f";-------------------------------\n")
         lines.insert(line_num, ref.get_mutated_line(f"%spi{ind}"))
         lines.insert(line_num, code)
+        print("len added")
+        print(len(code.splitlines()))
         added_lines += 2 + len(code.splitlines())
 
     elif ref.type == TYPES.TWO:
@@ -222,18 +226,15 @@ def inject_splitted_string(project, string, ref: stringRef):
 
 def generate_llvm_xor_string_code(string, var, infos, ind):
     length = len(string.encode()) +1
-    #probleme avec la fonction string.ascii_letters
-    #ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz'
-    #ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    #ascii_letters = ascii_lowercase + ascii_uppercase
-    #digits = '0123456789'
     
-    xor_key = ''.join(random.choices(ascii_letters + digits, k=length-1))
-    try : 
-        xor_string_list = [chr(ord(a) ^ ord(b)) for a,b in zip(string, xor_key)]
-        xor_string = "".join(xor_string_list)
-    except :
-        print("xor ko")
+    xor_string = ""
+    while len(xor_string) != length-1 or "\"" in xor_string:
+        xor_key = ''.join(random.choices(ascii_letters + digits, k=length-1))
+        try : 
+            xor_string_list = [chr(ord(a) ^ ord(b)) for a,b in zip(string, xor_key)]
+            xor_string = "".join(xor_string_list)
+        except :
+            print("xor ko")
     code = f""";-------------------------------
 ; Replace: {infos}
   %sp0.{ind} = alloca [{length} x i8]
@@ -251,8 +252,7 @@ def generate_llvm_xor_string_code(string, var, infos, ind):
   %sp{ind} = alloca i{length*8}
   store i{length*8} %xp{ind}, i{length*8}* %sp{ind}
   %{var}{ind} = ptrtoint i{length*8}* %sp{ind} to i32
-;-------------------------------
-  """ 
+;-------------------------------\n""" 
     return code
 
 def generate_llvm_split_string_code(string, var, infos, ind):
@@ -327,7 +327,11 @@ def split_strings(project):
             added_lines = split_string_at(project, ref)
             for i, ref_add in enumerate(refs) : 
                 if ref_add != ref:
+                    print(refs[i].line_num)
                     refs[i].line_num += added_lines
+                    print(refs[i].line_num)
+                    print(added_lines)
+                    print()
                     
 
 def delete_overriden_var(recovered, decl_line):
