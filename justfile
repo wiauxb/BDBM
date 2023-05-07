@@ -258,6 +258,10 @@ full-mutate project *flags:
 # [Memoire] Test yara rules from programs/yara onto original binary and mutated one
 yara project:
   "{{justdir}}/run_yara.sh" {{project}}
+
+# [Memoire] Execute mutated binary of project
+exec-mutated project *args:
+  "s2e/projects/{{project}}/s2e-out/custom_recovered" {{args}}
  
 recover project-name:
   @just run "{{project-name}}"

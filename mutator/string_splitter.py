@@ -128,6 +128,39 @@ def split_string_at(project, ref: stringRef):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
 
+def xor_string_at(project, ref: stringRef):
+    """get and remove string(s) at <offset> in the binary of <project>
+       Then replace the reference at line <line_num> in recovered.ll
+       by an hardcoded XORed version of the string.
+    
+    Keyword arguments:
+    project -- project name
+    offset -- offset of string in binary
+    line_num -- line num of the store instruction of the string
+    Return: number of added lines 
+    """
+    if(ref.type == TYPES.ONE):
+        offset = ref.offset
+        string = get_string_from_binary(project, offset)
+
+        remove_string_from_binary(project, offset, len(string.encode()))
+        added_lines = inject_xored_string(project, string, ref)
+        if(added_lines == -1):
+            print("Cannot inject in recovered LLVM, stop mutation")
+        return added_lines
+
+    elif(ref.type == TYPES.TWO):
+        offsets = ref.offset
+        strings = []
+        for i, offset in enumerate(offsets):
+            strings.append(get_string_from_binary(project, offset))
+            remove_string_from_binary(project, offset, len(strings[i].encode()))
+
+        added_lines = inject_xored_string(project, strings, ref)
+        if(added_lines == -1):
+            print("Cannot inject in recovered LLVM, stop mutation")
+        return added_lines
+    
 def get_string_from_binary(project, offset):
     """get string at <offset> in binary of <project> 
     
@@ -181,7 +214,62 @@ def inject_splitted_string(project, string, ref: stringRef):
 
     line_num = ref.line_num
 
-    delete_overriden_var(recovered, line_num)
+    delete_overriden_var(recovered, ref)
+
+    with open(recovered, "r") as f:
+        lines = f.readlines()
+
+    added_lines = 0
+
+    if ref.type == TYPES.ONE:
+        ind = get_new_index()
+
+        code = generate_llvm_split_string_code(string, "spi", ref.line.strip(), ind)
+
+        lines.insert(line_num, f";-------------------------------\n")
+        lines.insert(line_num, ref.get_mutated_line(f"%spi{ind}"))
+        lines.insert(line_num, code)
+        added_lines += 2 + len(code.splitlines())
+
+    elif ref.type == TYPES.TWO:
+        ind1 = get_new_index()
+        ind2 = get_new_index()
+        lines.insert(line_num, f";-------------------------------\n")
+        lines.insert(line_num, ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
+        added_lines += 2
+
+        code = generate_llvm_split_string_code(string[0], "spi", ref.line.strip(), ind1)
+        added_lines += len(code.splitlines())
+        lines.insert(line_num, code)
+
+        code = generate_llvm_split_string_code(string[1], "spi", ref.line.strip(), ind2)
+        added_lines += len(code.splitlines())
+        lines.insert(line_num, code)
+    else:
+        raise ValueError(f"Unknown Type: {ref.type}")
+    
+    with open(recovered, "w") as f:
+            f.writelines(lines)
+        
+    return added_lines - 1
+
+def inject_xored_string(project, string, ref: stringRef):
+    """Replace the reference at line <line_num> in recovered.ll
+       by an hardcoded splitted version of the <string>.
+    
+    Keyword arguments:
+    project -- project name
+    string -- string to inject
+    line_num -- line number where to inject 
+    Return: number of added lines
+    """
+    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+    with open(recovered, "r") as f:
+        lines = f.readlines()
+
+    line_num = ref.line_num
+
+    delete_overriden_var(recovered, ref)
 
     with open(recovered, "r") as f:
         lines = f.readlines()
@@ -205,11 +293,11 @@ def inject_splitted_string(project, string, ref: stringRef):
         lines.insert(line_num, ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
         added_lines += 2
 
-        code = generate_llvm_split_string_code(string[0], "spi", ref.line.strip(), ind1)
+        code = generate_llvm_xor_string_code(string[0], "spi", ref.line.strip(), ind1)
         added_lines += len(code.splitlines())
         lines.insert(line_num, code)
 
-        code = generate_llvm_split_string_code(string[1], "spi", ref.line.strip(), ind2)
+        code = generate_llvm_xor_string_code(string[1], "spi", ref.line.strip(), ind2)
         added_lines += len(code.splitlines())
         lines.insert(line_num, code)
     else:
@@ -247,13 +335,13 @@ def generate_llvm_xor_string_code(string, var, infos, ind):
   %sp{ind} = alloca i{length*8}
   store i{length*8} %xp{ind}, i{length*8}* %sp{ind}
   %{var}{ind} = ptrtoint i{length*8}* %sp{ind} to i32
-;-------------------------------\n""" 
+""" 
     return code
 
 def generate_llvm_split_string_code(string, var, infos, ind):
     length = len(string.encode()) + 1
 
-    code = f""";-------------------------------git
+    code = f""";-------------------------------
 ; Replace: {infos}
   %sp{ind} = alloca [{length} x i8]
 
@@ -310,7 +398,7 @@ def generate_splitted_string(string):
 
 def split_strings(project):
     """Mutation of <project> by removing strings from their data section
-       and splitting 
+       and splitting them in the text section
     
     Keyword arguments:
     project -- project name
@@ -323,19 +411,37 @@ def split_strings(project):
                 if ref_add != ref:
                     refs[i].line_num += added_lines
 
+def xor_strings(project):
+    """Mutation of <project> by removing strings from their data section
+       and xoring them in the text section
+    
+    Keyword arguments:
+    project -- project name
+    """
+    start_main, end_main = init_mutation(project)
+    refs = find_strings(project, start_main, end_main)
+    for ref in refs:
+            added_lines = xor_string_at(project, ref)
+            for i, ref_add in enumerate(refs) : 
+                if ref_add != ref:
+                    refs[i].line_num += added_lines
 
-def delete_overriden_var(recovered, decl_line):
+
+def delete_overriden_var(recovered, ref):
     """delete original line
     
     Keyword arguments:
     recovered - path to the recovered file
-    decl_line - line to remove from file
+    ref - stringRef to the line to remove from file
     Return: 0 if success
     """
     with open(recovered, "r") as f :
         lines = f.readlines()
 
-    del lines[decl_line]
+    if lines[ref.line_num] != ref.line:
+        raise ValueError(f"Line {ref.line_num} does not correspond to '{ref.line}'")
+    
+    del lines[ref.line_num]
     
     with open(recovered, "w") as f :
         f.writelines(lines)
