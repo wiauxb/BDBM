@@ -247,6 +247,17 @@ recompile project *flags:
 # [Memoire] Mutate a recovered project
 mutate project *flags:
   pipenv run python -m mutator.auto_mutation "{{project}}" {{flags}}
+
+# [Memoire] Mutate a project binary
+full-mutate project *flags:
+  @just recover {{project}}
+  @just mutate {{project}} {{flags}}
+  @just recompile {{project}}
+  @just yara {{project}}
+
+# [Memoire] Test yara rules from programs/yara onto original binary and mutated one
+yara project:
+  "{{justdir}}/run_yara.sh" {{project}}
  
 recover project-name:
   @just run "{{project-name}}"
