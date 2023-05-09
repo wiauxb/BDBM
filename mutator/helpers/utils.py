@@ -2,6 +2,7 @@ import os
 import shutil
 import re
 import subprocess
+from .ref import ref
 
 current_index = -1
 
@@ -49,7 +50,7 @@ def address_to_offset(project, address):
     while table[i][1] < address:
         #TODO condition if adress not in table
         i+=1
-    # print(f"Found address {address} in section {table[i-1][0]}")
+    print(f"Found address {address} in section {table[i-1][0]}")
     return table[i-1][2] + (address - table[i-1][1])
 
 def get_section_table(project):
@@ -126,3 +127,50 @@ def find_main(project):
                 break
 
     return begin_main, end_main
+
+
+def ro_txt_addresses(project):
+    """ Find the address and length of the rodata and text section
+
+    Keyword arguments:
+    project - Project name
+
+    return list of rodata address and length, list of text address and length
+    """
+    ro = []
+    txt = []
+    sections = "s2e/projects/" + project + "/s2e-out/sections"
+    with open(sections,"r") as fp:
+        for i, line in enumerate(fp):
+            matchRo = re.search(r"([\da-fA-F]*) ([\da-fA-F]*).* .rodata", line)
+            if matchRo != None:
+                ro.append(int(matchRo[1], 16))
+                ro.append(int(matchRo[2], 16))
+
+            matchTxt = re.search(r"([\da-fA-F]*) ([\da-fA-F]*).* .text", line)
+            if matchTxt != None:
+                txt.append(int(matchTxt[1], 16))
+                txt.append(int(matchTxt[2], 16))
+    return ro, txt
+
+def delete_line(recovered, line_ref: ref):
+    """delete original line
+    
+    Keyword arguments:
+    recovered - path to the recovered file
+    line_ref - stringRef to the line to remove from file
+    Return: 0 if success
+    """
+    with open(recovered, "r") as f :
+        lines = f.readlines()
+
+    if lines[line_ref.line_num] != line_ref.line:
+        raise ValueError(f"Line {line_ref.line_num} does not correspond to '{line_ref.line}'")
+    
+    del lines[line_ref.line_num]
+    
+    with open(recovered, "w") as f :
+        f.writelines(lines)
+    
+    return 0
+    

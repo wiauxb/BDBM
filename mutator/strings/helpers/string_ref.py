@@ -1,16 +1,15 @@
 import enum
 import re
-
+from ...helpers.ref import ref
 
 TYPES = enum.Enum("TYPES", ["ONE", "TWO"])
 
-class stringRef:
+class stringRef (ref):
 
     def __init__(self, type: TYPES, line_num, line, offset) -> None:
+        super().__init__(line_num, line)
         self.type = type
-        self.line_num = line_num
         self.offset = offset
-        self.line = line
 
     def get_mutated_line(self, *args):
         if self.type == TYPES.ONE:

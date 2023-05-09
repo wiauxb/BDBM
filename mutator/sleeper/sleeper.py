@@ -3,7 +3,7 @@ import shutil
 import subprocess
 import sys
 
-from .utils import *
+from ..helpers.utils import *
 
 
 def add_sleeps(project):

@@ -1,24 +1,37 @@
-from . import sleeper, string_splitter
+from .sleeper import sleeper
+from .strings import split, xor
 import argparse
 
 
 
 if __name__ == "__main__": #FIXME think about ordering the mutations
-    parser = argparse.ArgumentParser()
-    parser.add_argument("project_name")
-    parser.add_argument("--sleep", action='store_true')
-    parser.add_argument("--string", action='store_true')
-    parser.add_argument("--xor", action='store_true')
 
-    args = parser.parse_args()
+    main_parser = argparse.ArgumentParser()
+    main_parser.add_argument("project_name")
+    subparsers = main_parser.add_subparsers(help="Operation", dest='command')
+    string_parser = subparsers.add_parser("strings")
+    string_parser.add_argument("kind", choices=["split", "xor", "base64"])
+    string_parser.add_argument("--rodata", action='store_true')
+    clean_parser = subparsers.add_parser("sleep")
+    clean_parser = subparsers.add_parser("clean")
+
+    args = main_parser.parse_args()
+ 
+    print(args)
 
     project = args.project_name
 
-    if args.sleep:
+    if args.command == "strings":
+        if args.kind == "split":
+            if args.rodata:
+                split.split_strings(project)
+            else:
+                split.split_strings(project)
+        elif args.kind == "xor":
+            xor.xor_strings(project)
+        elif args.kind == "base64":
+            pass
+    elif args.command == "sleep":
         sleeper.add_sleeps(project)
-
-    if args.string:
-       string_splitter.split_strings(project)
-
-    if args.xor:
-       string_splitter.xor_strings(project)
+    elif args.command == "clean":
+        pass
