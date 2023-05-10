@@ -4,7 +4,7 @@ from .helpers.string_ref import TYPES, stringRef
 from ..helpers.ref import ref
 from random import shuffle
 
-def split_string_at(project, str_ref: stringRef, constantsRefs: ref, rodata: bool):
+def split_string_at(project, str_ref: stringRef, constantsRefs: ref, rodata: bool = False):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the string.
@@ -37,7 +37,7 @@ def split_string_at(project, str_ref: stringRef, constantsRefs: ref, rodata: boo
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
 
-def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref, rodata: bool):
+def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref, rodata: bool = False):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -211,7 +211,7 @@ def generate_splitted_string(string):
     cut = len(string) #TODO polish changer la valeur
     return [string[i * len(string)//cut:(i + 1) * len(string)//cut] for i in range(cut)]
 
-def split_strings(project, rodata):
+def split_strings(project, rodata = False, probability = 1, number = 1):
     """Mutation of <project> by removing strings from their data section
        and splitting them in the text section
     
@@ -219,10 +219,13 @@ def split_strings(project, rodata):
     project -- project name
     """
     start_main, end_main = init_mutation(project)
-    refs = find_strings(project, start_main, end_main)
     constants = find_constant_declaration_block(project)
-    for ref in refs:
-            added_lines = split_string_at(project, ref, constants, rodata)
-            for i, ref_add in enumerate(refs) : 
-                if ref_add != ref:
-                    refs[i].line_num += added_lines
+    for i in range(number):
+        reset_recovered(project)
+        refs = find_strings(project, start_main, end_main)
+        for ref in refs:
+                added_lines = split_string_at(project, ref, constants, rodata)
+                for i, ref_add in enumerate(refs) : 
+                    if ref_add != ref:
+                        refs[i].line_num += added_lines
+        save_mutation(project, f"split-{probability}{'-rodata' if rodata else ''}")

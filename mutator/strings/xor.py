@@ -187,7 +187,7 @@ def generate_llvm_xor_string_code_with_constants(string, var, infos, ind):
     return code, constants
 
 
-def xor_strings(project, rodata: bool):
+def xor_strings(project, rodata: bool, probability: float = 1.0, number: int = 1):
     """Mutation of <project> by removing strings from their data section
        and xoring them in the text section
     
@@ -195,10 +195,13 @@ def xor_strings(project, rodata: bool):
     project -- project name
     """
     start_main, end_main = init_mutation(project)
-    refs = find_strings(project, start_main, end_main)
     csts = find_constant_declaration_block(project)
-    for ref in refs:
-            added_lines = xor_string_at(project, ref, csts, rodata)
-            for i, ref_add in enumerate(refs) : 
-                if ref_add != ref:
-                    refs[i].line_num += added_lines
+    for i in range(number):
+        reset_recovered(project)
+        refs = find_strings(project, start_main, end_main)
+        for ref in refs:
+                added_lines = xor_string_at(project, ref, csts, rodata)
+                for i, ref_add in enumerate(refs) : 
+                    if ref_add != ref:
+                        refs[i].line_num += added_lines
+        save_mutation(project, f"xor-{probability}-{'rodata' if rodata else ''}")

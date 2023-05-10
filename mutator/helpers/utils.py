@@ -2,6 +2,7 @@ import os
 import shutil
 import re
 import subprocess
+import time
 from .ref import ref
 
 current_index = -1
@@ -173,4 +174,44 @@ def delete_line(recovered, line_ref: ref):
         f.writelines(lines)
     
     return 0
+
+def reset_recovered(project):
+    """reset recovered.ll to original_recovered.ll
     
+    Keyword arguments:
+    project - Project name
+    Return: 0 if success
+    """
+    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+    original = "s2e/projects/" + project + "/s2e-out/original_recovered.ll"
+    shutil.copyfile(original, recovered)
+    return 0
+
+def save_mutation(project, infos):
+    """save mutation in a folder
+    
+    Keyword arguments:
+    project - Project name
+    Return: 0 if success
+    """
+    recompile(project)
+    mutation_folder = "s2e/projects/" + project + "/s2e-out/mutations"
+    mutation = "s2e/projects/" + project + "/s2e-out/custom_recovered"
+    shutil.copyfile(mutation, mutation_folder + "/mutation_"+ infos + "_" + time.strftime("%Y%m%d-%H%M%S"))
+    return 0
+
+def recompile(project):
+    """recompile the project
+    
+    Keyword arguments:
+    project - Project name
+    Return: 0 if success
+    """
+    
+    #just recompile
+    command = "just recompile " + project 
+    try:
+        subprocess.check_output(command, shell=True)
+    except subprocess.CalledProcessError as e:
+        raise ValueError(f"Failed to recompile {project}: {e}")
+    return 0
