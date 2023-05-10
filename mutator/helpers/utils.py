@@ -107,7 +107,7 @@ def find_main(project):
 
     #trouve les lignes où il faudra insérer le call API
     #Insert an api call and insert it once every single line.
-    with open("s2e/projects/" + project + "/s2e-out/original_recovered.ll", 'r') as fp:
+    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as fp:
         lines = fp.readlines()
         for line in lines : 
             line_num +=1
@@ -174,6 +174,37 @@ def delete_line(recovered, line_ref: ref):
         f.writelines(lines)
     
     return 0
+
+def address_could_be_string(project, address):
+    """ Check whether address can potentially be a string by checking if it is in the rodata or text section.
+
+    Keyword arguments:
+    address - address to check
+    ro - address and length of the rodata section
+    txt - address and length of the text section 
+
+    return True if the address is a potential string, False otherwise
+    """
+    ro, txt = ro_txt_addresses(project)
+    offset = address_to_offset(project, address)
+            
+    if not (address > ro[0] and address < ro[0]+ro[1]) and not (address > txt[0] and address < txt[0]+txt[1]):
+        return False
+    
+    with open("s2e/projects/" + project + "/binary", 'br') as f:
+        byte = f.read()[offset:]
+    supposed_string = byte.split(b'\x00')[0]
+    if len(supposed_string) == 0:
+        return False
+    try:
+        supposed_string.decode()
+    except Exception as e:
+        # print(e)
+        return False
+    # if address > txt[0] and address < txt[0]+txt[1]:
+    #     return True
+    
+    return True
 
 def reset_recovered(project):
     """reset recovered.ll to original_recovered.ll
