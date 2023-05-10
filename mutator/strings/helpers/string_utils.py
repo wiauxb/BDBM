@@ -59,36 +59,6 @@ def all_addresses_could_be_string(project, addresses: list):
             return False
     return True
 
-def address_could_be_string(project, address):
-    """ Check whether address can potentially be a string by checking if it is in the rodata or text section.
-
-    Keyword arguments:
-    address - address to check
-    ro - address and length of the rodata section
-    txt - address and length of the text section 
-
-    return True if the address is a potential string, False otherwise
-    """
-    ro, txt = ro_txt_addresses(project)
-    offset = address_to_offset(project, address)
-            
-    if not (address > ro[0] and address < ro[0]+ro[1]) and not (address > txt[0] and address < txt[0]+txt[1]):
-        return False
-    
-    with open("s2e/projects/" + project + "/binary", 'br') as f:
-        byte = f.read()[offset:]
-    supposed_string = byte.split(b'\x00')[0]
-    if len(supposed_string) == 0:
-        return False
-    try:
-        supposed_string.decode()
-    except Exception as e:
-        # print(e)
-        return False
-    # if address > txt[0] and address < txt[0]+txt[1]:
-    #     return True
-    
-    return True
 
 def get_string_from_binary(project, offset):
     """get string at <offset> in binary of <project> 

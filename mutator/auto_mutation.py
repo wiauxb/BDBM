@@ -1,6 +1,7 @@
 from .sleeper import sleeper
 from .strings import split, xor
 import argparse
+from .adder import code_adder
 
 
 
@@ -14,6 +15,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     string_parser.add_argument("--rodata", action='store_true')
     clean_parser = subparsers.add_parser("sleep")
     clean_parser = subparsers.add_parser("clean")
+    clean_parser.add_argument("number_add")
 
     args = main_parser.parse_args()
  
@@ -31,4 +33,6 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     elif args.command == "sleep":
         sleeper.add_sleeps(project)
     elif args.command == "clean":
+        code_adder.clone_recovered(project)
+        lines_added = code_adder.insert_sys_calls(int(args.number_add), project)
         pass
