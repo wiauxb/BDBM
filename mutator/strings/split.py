@@ -4,7 +4,7 @@ from .helpers.string_ref import TYPES, stringRef
 from ..helpers.ref import ref
 from random import shuffle
 
-def split_string_at(project, str_ref: stringRef, constantsRefs: ref):
+def split_string_at(project, str_ref: stringRef, constantsRefs: ref, rodata: bool):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the string.
@@ -20,7 +20,7 @@ def split_string_at(project, str_ref: stringRef, constantsRefs: ref):
         string = get_string_from_binary(project, offset)
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        added_lines = inject_splitted_string(project, string, str_ref, constantsRefs)
+        added_lines = inject_splitted_string(project, string, str_ref, constantsRefs, rodata)
         if(added_lines == -1):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
@@ -32,12 +32,12 @@ def split_string_at(project, str_ref: stringRef, constantsRefs: ref):
             strings.append(get_string_from_binary(project, offset))
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
-        added_lines = inject_splitted_string(project, strings, str_ref, constantsRefs)
+        added_lines = inject_splitted_string(project, strings, str_ref, constantsRefs, rodata)
         if(added_lines == -1):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
 
-def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref):
+def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref, rodata: bool):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -63,16 +63,21 @@ def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref):
     if str_ref.type == TYPES.ONE:
         ind = get_new_index()
 
-        code, constants = generate_llvm_split_string_code(string, "spi", str_ref.line.strip(), ind)
+        constants = ""
+
+        if rodata:
+            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind)
+        else:
+            code = generate_llvm_split_string_code(string, "spi", str_ref.line.strip(), ind)
 
         lines.insert(line_num, f";-------------------------------\n")
         lines.insert(line_num, str_ref.get_mutated_line(f"%spi{ind}"))
         lines.insert(line_num, code)
+        added_lines += 2 + len(code.splitlines())
 
-        lines.insert(cst_ref.line_num, constants)
-        added_lines += 2 + len(code.splitlines()) + len(constants.splitlines())
-        print(len(constants.splitlines()))
-        print(constants.splitlines())
+        if rodata:
+            lines.insert(cst_ref.line_num, constants)
+            added_lines += len(constants.splitlines())
 
 
     elif str_ref.type == TYPES.TWO:
@@ -82,18 +87,28 @@ def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref):
         lines.insert(line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
         added_lines += 2
 
-        code, constants1 = generate_llvm_split_string_code(string[0], "spi", str_ref.line.strip(), ind1)
+        constants1 = constants2 = ""
+
+        if rodata:
+            code, constants1 = generate_llvm_split_string_code_with_constants(string[0], "spi", str_ref.line.strip(), ind1)
+        else:
+            code = generate_llvm_split_string_code(string[0], "spi", str_ref.line.strip(), ind1)
 
         lines.insert(line_num, code)
         added_lines += len(code.splitlines())
 
-        code, constants2 = generate_llvm_split_string_code(string[1], "spi", str_ref.line.strip(), ind2)
+        if rodata:
+            code, constants2 = generate_llvm_split_string_code_with_constants(string[1], "spi", str_ref.line.strip(), ind2)
+        else:
+            code = generate_llvm_split_string_code(string[1], "spi", str_ref.line.strip(), ind2)
+        
         added_lines += len(code.splitlines())
         lines.insert(line_num, code)
 
-        lines.insert(cst_ref.line_num, constants2)
-        lines.insert(cst_ref.line_num, constants1)
-        added_lines += len(constants1.splitlines()) + len(constants2.splitlines())
+        if rodata:
+            lines.insert(cst_ref.line_num, constants2)
+            lines.insert(cst_ref.line_num, constants1)
+            added_lines += len(constants1.splitlines()) + len(constants2.splitlines())
     else:
         raise ValueError(f"Unknown Type: {str_ref.type}")
     
@@ -103,6 +118,46 @@ def inject_splitted_string(project, string, str_ref: stringRef, cst_ref: ref):
     return added_lines - 1
 
 def generate_llvm_split_string_code(string, var, infos, ind):
+    """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
+         <var> is the name of the variable to store the string."""
+    length = len(string.encode()) + 1
+
+    code = f""";-------------------------------
+; Replace: {infos}
+  %sp{ind} = alloca [{length} x i8]
+
+  """
+    
+    splits = generate_splitted_string(string)
+    split_len = len(splits[0].encode())
+    code += f"""
+  %sp0.{ind} = bitcast [{length} x i8]* %sp{ind} to [{split_len} x i8]*
+  store [{split_len} x i8] c"{splits[0]}", [{split_len} x i8]* %sp0.{ind}
+  %next0.{ind} = getelementptr [{length} x i8], [{length} x i8]* %sp{ind}, i32 0, i32 {split_len}
+  """
+    prev_added_len = split_len
+    for i in range(1, len(splits)-1):
+        split_len = len(splits[i].encode())
+        code += f"""
+  %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
+  store [{split_len} x i8] c"{splits[i]}", [{split_len} x i8]* %sp{i}.{ind}
+  %next{i}.{ind} = getelementptr [{length} x i8], [{length} x i8]* %sp{ind}, i32 0, i32 {prev_added_len + split_len}
+  """
+        prev_added_len += split_len
+    i = len(splits)-1
+    split_len = len(splits[-1].encode()) + 1
+    code += f"""
+  %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
+  store [{split_len} x i8] c"{splits[i]}\\00", [{split_len} x i8]* %sp{i}.{ind}
+  
+  %{var}{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32
+"""
+
+    return code
+
+def generate_llvm_split_string_code_with_constants(string, var, infos, ind):
+    """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
+         <var> is the name of the variable to store the string."""
     length = len(string.encode()) + 1
     splits = generate_splitted_string(string)
 
@@ -156,7 +211,7 @@ def generate_splitted_string(string):
     cut = len(string) #TODO polish changer la valeur
     return [string[i * len(string)//cut:(i + 1) * len(string)//cut] for i in range(cut)]
 
-def split_strings(project):
+def split_strings(project, rodata):
     """Mutation of <project> by removing strings from their data section
        and splitting them in the text section
     
@@ -167,7 +222,7 @@ def split_strings(project):
     refs = find_strings(project, start_main, end_main)
     constants = find_constant_declaration_block(project)
     for ref in refs:
-            added_lines = split_string_at(project, ref, constants)
+            added_lines = split_string_at(project, ref, constants, rodata)
             for i, ref_add in enumerate(refs) : 
                 if ref_add != ref:
                     refs[i].line_num += added_lines

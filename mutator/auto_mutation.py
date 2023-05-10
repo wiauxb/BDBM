@@ -23,12 +23,9 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
 
     if args.command == "strings":
         if args.kind == "split":
-            if args.rodata:
-                split.split_strings(project)
-            else:
-                split.split_strings(project)
+            split.split_strings(project, args.rodata)
         elif args.kind == "xor":
-            xor.xor_strings(project)
+            xor.xor_strings(project, args.rodata)
         elif args.kind == "base64":
             pass
     elif args.command == "sleep":

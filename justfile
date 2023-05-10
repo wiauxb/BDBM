@@ -250,7 +250,7 @@ mutate project *flags:
 
 # [Memoire] Mutate a project binary
 full-mutate project *flags:
-  @just recover {{project}}
+  @just lift-trace {{project}}
   @just mutate {{project}} {{flags}}
   @just recompile {{project}}
   @just yara {{project}}
