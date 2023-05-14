@@ -1,47 +1,8 @@
 from ..helpers.utils import *
 import random
 
-def add_llvm_cleanware(begin_main, end_main, num_to_add, project):
-    """ Add the specified number of cleanware in a project
-
-    Keyword arguments:
-    begin_main - Beginning of the main function recovered.ll
-    end_main - End of the main function recovered.ll
-    num_to_add - Amount of cleanware to add in project
-    project - Project name
-
-    return number of lines added in project/recovered.ll
-    """
-
-    num_clean = len(os.listdir("/mutator/cleanware"))
-
-    if(num_to_add > num_clean):
-        print("Can't add more than %d different cleanware", num_clean)
-
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
-
-    with open(recovered, "r") as f:
-        lines = f.readlines()
-    
-    line_num = random.randrange(begin_main+1, end_main)
-    clean_num = random.randrange(num_clean+1) #Nombre de cleanware dans le dossier
-
-    cleanware = f"mutator/cleanware/cleanware{clean_num}.ll"
-    with open(cleanware, "r") as f:
-        clean_lines = f.readlines()
-
-    function_call = clean_lines.pop()
-    lines.insert(line_num, function_call)
-    clean_lines = ''.join(clean_lines)
-    lines.insert(end_main+2, clean_lines)
-    added_lines = len(clean_lines)+1
-
-    with open(recovered, "w") as f:
-        f.writelines(lines)
-    return added_lines
-
 def find_variables(begin_main, end_main, project):
-    """ Add the specified number of cleanware in a project
+    """ Find the variables of a recovered binary
 
     Keyword arguments:
     begin_main - Beginning of the main function recovered.ll
@@ -141,6 +102,6 @@ if __name__ == "__main__":
     begin_main = 38,
     end_main = 38
     clone_recovered("hello")
-    lines_added = insert_sys_calls(3, "hello")
+    lines_added = add_llvm_cleanware(1, "hello")
     print(lines_added)
     pass
