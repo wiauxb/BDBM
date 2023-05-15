@@ -31,6 +31,15 @@ def find_variables(begin_main, end_main, project):
     return strings, potential_integers
 
 def insert_sys_calls(num_calls, project):
+    """ insert num_calls calls into the project, and use previsously used variables.
+
+    Keyword arguments:
+    num_calls -- number of calls to add into the project
+    project - Project name
+
+    return added_lines -- Number of lines added into the project
+    """
+
     list_calls = []
     extra_string_count = 0
     added_lines =0
@@ -102,6 +111,4 @@ if __name__ == "__main__":
     begin_main = 38,
     end_main = 38
     clone_recovered("hello")
-    lines_added = add_llvm_cleanware(1, "hello")
-    print(lines_added)
     pass

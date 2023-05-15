@@ -2,41 +2,58 @@ import os
 import re
 import shutil
 import time
+import subprocess
 from helpers.adder_utils import *
 
 
 def to_replace(project):
-    """
-    Find every '!' declaration
-    return two list of tuple (!XX , replacement), (#XX , replacement) 
+    """Find the declaration of every #
+    
+    Keyword arguments:
+    project -- project name
+    Return: a list (#XX , replacement) 
     """
     with open ("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as fp:
         lines = fp.readlines()
     
-    liste_exc = []
+    #liste_exc = []
     liste_hash = []
     fin_len = len(lines)
 
-    begin_del = 100000000000000000000
+    begin_hash = 100000000000000000000
+    #begin_exc = 1000000000000000000
+    """
     for i in range(fin_len):
-        match  = re.search(r"(!\d{1,}) =(.*)", lines[i])
+        match  = re.search(r"!(\d{1,}) =(.*)", lines[i])
         if match != None:
-            liste_exc.append((match[1], match[2]))     
+            liste_exc.append((match[1], match[2]))  
+            if i < begin_exc:
+                begin_exc = i 
+    """
+   
             
         match = re.search(r"attributes (#\d{1,}) = {(.*)}", lines[i])
         if match != None:
             liste_hash.append((match[1], match[2]))
-            if i < begin_del:
-                begin_del = i 
+            if i < begin_hash:
+                begin_hash = i 
 
     with open ("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as fp:
-        fp.writelines(lines[:begin_del])
+        fp.writelines(lines[:begin_hash])
+        #fp.writelines(lines[begin_exc:])
 
-    return liste_exc, liste_hash
+    return liste_hash
 
 
-def replace(project, liste):
-    """replace liste[X][0] by liste[X][1] in the whole project"""
+def replace_hash(project, liste):
+    """replace liste[X][0] by liste[X][1] in the whole project
+    
+    Keyword arguments:
+    project -- project name
+    liste -- list of tuple (#XX , replacement) 
+    Return:
+    """
+
     with open ("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as fp:
         lines = fp.readlines()
     
@@ -54,7 +71,15 @@ def replace(project, liste):
         fp.writelines(lines)
     return
 
+
 def auto_llvm(project):
+    """Generate the cleanware that will be used for mutation
+    
+    Keyword arguments:
+    project -- project name
+    Return:
+    """
+
     with open("s2e/projects/" + project + "/s2e-out/recovered.ll") as f:
         lines = f.readlines()
 
@@ -78,16 +103,19 @@ def auto_llvm(project):
     shutil.move(file_name, "mutator/adder/cleanware/"+file_name)
     return
 
-
 def gen_all_clean():
-    #projects = os.listdir("s2e/projects")
+    """Loop for every step of the cleanware creation
     
-    #for project in projects :
-    project = "absolute_value"
-    exc, hashed = to_replace(project)
-    replace(project, hashed)
-    replace(project, exc)
-    auto_llvm(project)
+    Keyword arguments:
+    Return:
+    """
+    projects = os.listdir("s2e/projects")
+    
+    for project in projects :
+        hashed = to_replace(project)
+        replace_hash(project, hashed)
+        auto_llvm(project)
+
 
 if __name__ == "__main__":
     gen_all_clean()

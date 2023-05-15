@@ -1,15 +1,16 @@
 import enum
 import re
 
-TYPES = enum.Enum("TYPES", ["FUNCTION", "VARIABLE", "CALL"])
+TYPES = enum.Enum("TYPES", ["FUNCTION", "VARIABLE", "CALL", "META"])
 
 class adderRef ():
 
-    def __init__(self, type: TYPES, lines, begin_line=None, end_line=None) -> None:
+    def __init__(self, type: TYPES, name=None, lines=None, begin_line=None, end_line=None) -> None:
         self.type = type
         self.lines = lines
         self.begin_line = begin_line
         self.end_line = end_line
+        self.name = name
 
     def get_original(self):
         if self.type == TYPES.FUNCTION:
