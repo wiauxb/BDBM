@@ -12,7 +12,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     subparsers = main_parser.add_subparsers(help="Operation", dest='command')
     string_parser = subparsers.add_parser("strings")
     string_parser.add_argument("kind", choices=["split", "xor", "base64"])
-    string_parser.add_argument("--rodata", action='store_true')
+    string_parser.add_argument("--text", action='store_true')
     string_parser.add_argument("-p", "--probability", help="Probability of mutation", default=1.0)
     string_parser.add_argument("-n", "--number", help="Number of mutations to generate", default=1)
     clean_parser = subparsers.add_parser("sleep")
@@ -27,14 +27,13 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
 
     if args.command == "strings":
         if args.kind == "split":
-            split.split_strings(project, args.rodata, int(args.probability), int(args.number))
+            split.split_strings(project, not args.text, int(args.probability), int(args.number))
         elif args.kind == "xor":
-            xor.xor_strings(project, args.rodata, int(args.probability), int(args.number))
+            xor.xor_strings(project, not args.text, int(args.probability), int(args.number))
         elif args.kind == "base64":
-            pass
+            raise NotImplementedError("Base64 not implemented yet")
     elif args.command == "sleep":
         sleeper.add_sleeps(project)
     elif args.command == "clean":
         code_adder.clone_recovered(project)
         lines_added = code_adder.insert_sys_calls(int(args.number_add), project)
-        pass

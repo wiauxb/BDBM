@@ -241,7 +241,8 @@ lift-trace project *flags:
 
 # [Memoire] recompile recovered.ll to custom_recovered.
 recompile project *flags:
-  llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll" -o "s2e/projects/{{project}}/s2e-out/recovered.bc"
+  llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll"
+  # clang-14 -O0 -c -emit-llvm -target i386 s2e/projects/string/s2e-out/recovered.ll -o s2e/projects/string/s2e-out/recovered.bc
   pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
 
 # [Memoire] Mutate a recovered project
@@ -252,7 +253,6 @@ mutate project *flags:
 full-mutate project *flags:
   @just lift-trace {{project}}
   @just mutate {{project}} {{flags}}
-  @just recompile {{project}}
   @just yara {{project}}
 
 # [Memoire] Test yara rules from programs/yara onto original binary and mutated one
