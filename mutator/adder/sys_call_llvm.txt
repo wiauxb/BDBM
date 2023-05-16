@@ -4,7 +4,7 @@ i32,int
 declare i32 @access(i32, i32) local_unnamed_addr #7;Premier arg string (folder to reach, 2è mode)
 = tail call i32 @access
 i32,string,int
-declare i32 @getcwd(i32, i32) local_unnamed_addr #4 ;premier arg string, current directory, 2è arg taille buffer
+declare i32 @getcwd(i32, i32) local_unnamed_addr #4 ;premier arg string, current directory, 2è arg taille buffer %ca degage, ça change des strings existants mdr
 = tail call i32 @getcwd 
 i32,string,int
 declare i32 @fopen(i32, i32) local_unnamed_addr #7 ; filename, accessMode (int)

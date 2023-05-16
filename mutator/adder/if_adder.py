@@ -15,12 +15,11 @@ def generate_if(print_var, len):
   
 next{const}:\n"""
 
-    if_bloc =f"""{if_name}:
+    if_bloc =f"""\n{if_name}:
   %cast{const}= getelementptr [{len} x i8], [{len} x i8]* {print_var}, i64 0, i64 0
-
   call i32 @puts(i8* %cast{const})
   br label %next{const}
-    """
+"""
     return cond_bloc, if_bloc
 
 def insert_if(project):
