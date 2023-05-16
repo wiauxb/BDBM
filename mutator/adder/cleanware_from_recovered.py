@@ -23,7 +23,7 @@ def to_replace(project):
     begin_hash = 100000000000000000000
     #begin_exc = 1000000000000000000
     """
-    for i in range(fin_len):
+    
         match  = re.search(r"!(\d{1,}) =(.*)", lines[i])
         if match != None:
             liste_exc.append((match[1], match[2]))  
@@ -31,7 +31,7 @@ def to_replace(project):
                 begin_exc = i 
     """
    
-            
+    for i in range(fin_len):        
         match = re.search(r"attributes (#\d{1,}) = {(.*)}", lines[i])
         if match != None:
             liste_hash.append((match[1], match[2]))
