@@ -2,15 +2,16 @@ from .helpers.adder_utils import *
 from .helpers.adder_ref import TYPES, adderRef
 import random
 
-def generate_basic_if_print(print_var, len_m):
+def generate_basic_if_print(print_var, len_m, mess_num):
     """
+    TODO : la length est pas correcte en LLVM quand il y a des accents
     Generate basic if that is always true
 
     print_var -- name of the variable we want to print
     len_m -- length of the message we want to print
     return -- condition bloc and if bloc
     """
-    const = str(round(time.time()*1000))
+    const = str(round(time.time()*1000)+ mess_num)
     if_name ="BB_" + const 
 
     cond_bloc = f"""  %.not{const}.i.i = icmp eq i32 0 , 0 ;always true
@@ -26,11 +27,15 @@ next{const}:\n"""
 
 def insert_basic_if_print(project, messages):
     """Insert basic if 0=0 in the project that print the messages (1 if per message)"""
-    for message in messages:
-        string_to_print = "@.str"+str(round(time.time()*1000))
-        var_line = f"""{string_to_print} = private unnamed_addr constant [{len(message)} x i8] c\"{message}\"\n"""
 
-        cond, branch = generate_basic_if_print(string_to_print, len(message))
+    for i, message in enumerate(messages):
+        string_to_print = "@.str"+str(round(time.time()*1000)+i)
+        var_line = f"""{string_to_print} = private unnamed_addr constant [{len(message.encode())} x i8] c\"{message}\"\n"""
+
+        begin_main, end_main = find_main(project)
+
+
+        cond, branch = generate_basic_if_print(string_to_print, len(message.encode()), i)
 
         with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as fp:
             lines = fp.readlines()
@@ -42,15 +47,15 @@ def insert_basic_if_print(project, messages):
                 var_line_num = i+1
             match = re.search(r"declare .* @(\w{2,}).*\(.*", line)
             if match != None and match[1] == "puts":
-                    decl_puts = True
-
-        begin_main, end_main = find_main(project)
-        
+                decl_puts = True
+            if re.search(r"  ret void", line) and i > begin_main and i < end_main :
+                ret_main = i
+       
 
         lines.insert(end_main-1, branch)
-        insert_cond = random.randrange(begin_main+1, end_main-2)
+        insert_cond = random.randrange(begin_main+1, ret_main)
         while re.search(r"next\d{7,}:", lines[insert_cond]) != None:
-            insert_cond = random.randrange(begin_main+1, end_main-2)
+            insert_cond = random.randrange(begin_main+1, ret_main)
             
         lines.insert(insert_cond, cond) 
         if(decl_puts ==False):
@@ -59,8 +64,6 @@ def insert_basic_if_print(project, messages):
 
         with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as fp:
            fp.writelines(lines)
-
-
 
 
 def generate_random_func_decl(lines):
@@ -95,7 +98,7 @@ def generate_random_func_decl(lines):
 
 def generate_random_main(lines, max_rand, iteration):
     """
-    Generate lines that store a random number with max mavule max_value
+    Generate lines that store a random number with max value max_value
 
     lines -- lines in the project
     max_rand -- max value for the random number
@@ -164,20 +167,26 @@ def add_random_in_main(project, max_rand, iterations):
 
         begin_main, end_main = find_main(project)
 
+        for i, line in enumerate(lines) :
+            if re.search(r"  ret void", line) and i > begin_main and i < end_main :
+                ret_main = i
+                break
+
         #makes sure that not two next follow each other TODO : confirm it is correct
-        insert_cond = random.randrange(begin_main+1, end_main-2)
-        while re.search(r"next\d{7,}:", lines[insert_cond]) != None:
-            insert_cond = random.randrange(begin_main+1, end_main-2)
-
-
         lines.insert(end_main-1, if_bloc)
-        insert_cond = random.randrange(begin_main+1, end_main-2)
+        insert_cond = random.randrange(begin_main+1, ret_main)
         while re.search(r"next\d{7,}:", lines[insert_cond]) != None:
-            insert_cond = random.randrange(begin_main+1, end_main-2)
+            insert_cond = random.randrange(begin_main+1, ret_main)
             
         lines.insert(insert_cond, cond_bloc)
 
-        lines.insert(begin_main+1, main_decl)
+        #Makes sure that every random use in main is done after the declaration of srand.
+        srand_line = begin_main+1
+        for i, line in enumerate(lines) :
+            if re.search(r"  tail call void @srand", line) and i > begin_main and i < end_main :
+                srand_line = i+1
+
+        lines.insert(srand_line, main_decl)
         
         lines.insert(begin_main-2, fun_decl)
 
@@ -188,6 +197,5 @@ def add_random_in_main(project, max_rand, iterations):
 
 
 if __name__ == "__main__":
-    #insert_basic_if_print("hello", ["Premier\0", "Deuxieme\0"])
-    
+    #insert_basic_if_print("hello", ["Premier\0a", "Deuxieme\0a", "Troisième\0a"])
     add_random_in_main("hello", 3, 2)
