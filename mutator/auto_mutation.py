@@ -1,3 +1,4 @@
+from .escape import debugenv, traced
 from .sleeper import sleeper
 from .strings import split, xor
 import argparse
@@ -27,6 +28,10 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     rand_if_parser = subparsers.add_parser("random_if")
     rand_if_parser.add_argument("--max_random", help ="Maximum value for the if comparison", default = 5)
     rand_if_parser.add_argument("--iterations", help = "Number of if's to add in the project", default = 1)
+    
+    debug_parser = subparsers.add_parser("escape")
+    debug_parser.add_argument("kind", choices=["debugenv", "traced", "vm", "random"])
+    debug_parser.add_argument("--number", help="Number of escape to try", default=1)
 
     args = main_parser.parse_args()
  
@@ -46,10 +51,18 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     elif args.command == "clean_adder":
         code_adder.clone_recovered(project)
         cleanware_adder.clean_loop(int(args.number_add), project)
-        pass
     elif args.command == "sys_adder":
         code_adder.clone_recovered(project)
         lines_added = code_adder.insert_sys_calls(int(args.number_add), project)
     elif args.command == "random_if":
         code_adder.clone_recovered(project)
         if_adder.add_random_in_main(project, int(args.max_random), int(args.iterations))
+    elif args.command == "escape":
+        if args.kind == "debugenv":
+            debugenv.inject_detect_debug(project)
+        elif args.kind == "traced":
+            traced.inject_detect_ptrace(project)
+        elif args.kind == "vm":
+            raise NotImplementedError("VM not implemented yet")
+        elif args.kind == "random":
+            raise NotImplementedError("Random not implemented yet")
