@@ -2,7 +2,7 @@ from .escape import debugenv, traced
 from .sleeper import sleeper
 from .strings import split, xor
 import argparse
-from .adder import code_adder,cleanware_adder,if_adder
+from .adder import code_adder,cleanware_adder,if_adder,puts_replace
 
 
 
@@ -32,6 +32,11 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     debug_parser = subparsers.add_parser("escape")
     debug_parser.add_argument("kind", choices=["debugenv", "traced", "vm", "random"])
     debug_parser.add_argument("--number", help="Number of escape to try", default=1)
+
+    replace_puts_parser = subparsers.add_parser("replace_puts")
+
+    basic_if_parser = subparsers.add_parser("basic_if")
+    basic_if_parser.add_argument("--words", nargs = '+', help= "Words to print in the if conditions")
 
     args = main_parser.parse_args()
  
@@ -66,3 +71,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
             raise NotImplementedError("VM not implemented yet")
         elif args.kind == "random":
             raise NotImplementedError("Random not implemented yet")
+    elif args.command == "replace_puts":
+        puts_replace.replace_puts(project)
+    elif args.command == "basic_if":
+        if_adder.insert_basic_if_print(project, args.words)

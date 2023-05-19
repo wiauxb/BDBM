@@ -29,13 +29,14 @@ def insert_basic_if_print(project, messages):
     """Insert basic if 0=0 in the project that print the messages (1 if per message)"""
 
     for i, message in enumerate(messages):
+        message += "\\00"
         string_to_print = "@.str"+str(round(time.time()*1000)+i)
-        var_line = f"""{string_to_print} = private unnamed_addr constant [{len(message.encode())} x i8] c\"{message}\"\n"""
+        var_line = f"""{string_to_print} = private unnamed_addr constant [{len(message.encode())-2} x i8] c\"{message}\"\n"""
 
         begin_main, end_main = find_main(project)
 
 
-        cond, branch = generate_basic_if_print(string_to_print, len(message.encode()), i)
+        cond, branch = generate_basic_if_print(string_to_print, len(message.encode())-2, i)
 
         with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as fp:
             lines = fp.readlines()

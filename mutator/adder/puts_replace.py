@@ -1,4 +1,4 @@
-from helpers.adder_utils import *
+from .helpers.adder_utils import *
 
 
 def find_last_meta(lines):
@@ -20,11 +20,11 @@ declare dso_local i32 @printf(i8* noundef) local_unnamed_addr  naked noinline "f
 """
 
 
-def generate_new_print(arg, num_meta, line_var, num):
+def generate_new_print(var, arg, num_meta, line_var, num):
     cast = "%cast" +str(round(time.time()*1000)+num)
     new_print = f"""  tail call i32 @printf(i8* nonnull dereferenceable(1) {arg})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}
-    {cast}= getelementptr [1 x i8], [1 x i8]* {line_var}, i64 0, i64 0
-  tail call i32 @printf(i8* nonnull dereferenceable(1) {cast})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}\n"""
+  {cast}= getelementptr [1 x i8], [1 x i8]* {line_var}, i64 0, i64 0
+  {var} = tail call i32 @printf(i8* nonnull dereferenceable(1) {cast})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}\n"""
     return new_print
 
 def replace_puts(project):
@@ -61,7 +61,7 @@ def replace_puts(project):
     for i, line in enumerate(lines):
         match = re.search(r"(%\d{1,}).* tail call .* @puts.* (%\d{1,})\)", line)
         if match!= None:
-            print_repl = generate_new_print(match[2], num_meta, string_to_print, i)
+            print_repl = generate_new_print(match[1], match[2], num_meta, string_to_print, i)
             lines[i] = print_repl
  
     with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
@@ -70,7 +70,7 @@ def replace_puts(project):
 
 
 if __name__ == "__main__":
-    with open("s2e/projects/" + "hello" + "/s2e-out/recovered.ll", 'r') as f:
+    with open("s2e/projects/" + "twoprints" + "/s2e-out/recovered.ll", 'r') as f:
         lines = f.readlines()
     
-    replace_puts("hello")
+    replace_puts("twoprints")
