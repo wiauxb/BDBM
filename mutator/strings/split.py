@@ -21,10 +21,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
         string = get_string_from_binary(project, offset)
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        added_lines = inject_splitted_string(recovered, string, str_ref, constantsRefs, rodata)
-        if(added_lines == -1):
-            print("Cannot inject in recovered LLVM, stop mutation")
-        return added_lines
+        inject_splitted_string(recovered, string, str_ref, constantsRefs, rodata)
 
     elif(str_ref.type == TYPES.TWO):
         offsets = str_ref.offset
@@ -33,10 +30,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             strings.append(get_string_from_binary(project, offset))
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
-        added_lines = inject_splitted_string(recovered,  strings, str_ref, constantsRefs, rodata)
-        if(added_lines == -1):
-            print("Cannot inject in recovered LLVM, stop mutation")
-        return added_lines
+        inject_splitted_string(recovered,  strings, str_ref, constantsRefs, rodata)
 
 def inject_splitted_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: ref, rodata: bool = False):
     """Replace the reference at line <line_num> in recovered.ll
