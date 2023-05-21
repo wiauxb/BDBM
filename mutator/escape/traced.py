@@ -7,12 +7,10 @@ def inject_detect_ptrace(project):
     :param project: The name of the project
     :return: None
     """
-    init_mutation(project)
-    start_main, end_main = find_main(project)
+    
+    start_main, end_main = init_mutation(project)
 
     inject_ptrace_detect_at(project, start_main, end_main)
-
-    save_mutation(project, 'ptrace')
 
 def inject_ptrace_detect_at(project, start_main, end_main):
     """

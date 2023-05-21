@@ -7,12 +7,10 @@ def inject_detect_debug(project, var_name: str):
     :param project: The name of the project
     :return: None
     """
-    init_mutation(project)
-    start_main, end_main = find_main(project)
+    
+    start_main, end_main = init_mutation(project)
 
     inject_debug_detect_at(project, var_name, start_main, end_main)
-
-    save_mutation(project, 'debug')
 
 def inject_debug_detect_at(project, var_name, start_main, end_main):
     """
