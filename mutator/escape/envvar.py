@@ -1,4 +1,5 @@
 from ..helpers.utils import *
+from ..helpers.file_representation import fileRepresentation as fileRep
 
 def inject_detect_debug(project, var_name: str):
     """
@@ -8,11 +9,11 @@ def inject_detect_debug(project, var_name: str):
     :return: None
     """
     
-    start_main, end_main = init_mutation(project)
+    (start_main, end_main), recovered = init_mutation(project)
 
-    inject_debug_detect_at(project, var_name, start_main, end_main)
+    inject_debug_detect_at(recovered, var_name, start_main, end_main)
 
-def inject_debug_detect_at(project, var_name, start_main, end_main):
+def inject_debug_detect_at(recovered: fileRep, var_name, start_main : ref, end_main : ref):
     """
     Injects the code to detect and escape the debug environment at the given line
 
@@ -21,37 +22,23 @@ def inject_debug_detect_at(project, var_name, start_main, end_main):
     :return: nbr added lines
     """
 
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
-
-    with open(recovered, 'r') as f:
-        lines = f.readlines()
-
-    added_lines = 0
-
-    ind = get_new_index(lines)
+    ind = get_new_index(recovered)
     
-    lines.insert(start_main - 3 , "declare i32 @getenv(i32) local_unnamed_addr noinline\n") #FIXME : -3 could end up in another function and break everything
-    added_lines += 1
+    recovered.insert(start_main.line_num - 3 , "declare i32 @getenv(i32) local_unnamed_addr noinline\n") #FIXME : -3 could end up in another function and break everything
 
-    for j, var in enumerate(var_name):
-        i = j+1
+    for i, var in enumerate(var_name):
 
         code = get_debug_detect_code(i, ind, var)
 
-        lines.insert(start_main+i, code)
-        added_lines += code.count("\n")
+        recovered.insert(start_main.line_num, code)
+    
+    end_point = end_main.line_num - 1
+    recovered.insert(end_point, "  ret void\n")
+    recovered.insert(end_point, f".escape.{ind}:\n")
 
-    lines.insert(end_main-1+(1 + len(var_name)), "  ret void\n")
-    lines.insert(end_main-1+(1 + len(var_name)), f".escape.{ind}:\n")
-    added_lines += 2
+    update_index(recovered)
+    recovered.write()
 
-    lines, is_added = update_index(lines, ind)
-    added_lines += is_added
-
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
-        f.writelines(lines)
-
-    return added_lines
 
 def get_debug_detect_code(i, ind, var: str):
     """

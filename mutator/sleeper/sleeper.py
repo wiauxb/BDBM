@@ -8,10 +8,10 @@ from ..helpers.utils import *
 
 def add_sleeps(project):
 
-    begin_main, end_main = init_mutation(project)
+    (begin_main, end_main), _ = init_mutation(project)
 
-    begin_main += 1
-    end_main += 1
+    begin_main =  begin_main.line_num + 1
+    end_main = end_main.line_num + 1
     
     copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     original = "s2e/projects/" + project + "/s2e-out/original_recovered.ll"

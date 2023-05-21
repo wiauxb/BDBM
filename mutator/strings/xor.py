@@ -2,10 +2,11 @@ from ..helpers.utils import *
 from .helpers.string_utils import *
 from .helpers.string_ref import TYPES, stringRef
 from ..helpers.ref import ref
+from ..helpers.file_representation import fileRepresentation as fileRep
 import random
 from string import ascii_letters, digits
 
-def xor_string_at(project, str_ref: stringRef, cst_ref: ref, rodata: bool):
+def xor_string_at(project, recovered: fileRep, str_ref: stringRef, cst_ref: ref, rodata: bool):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded XORed version of the string.
@@ -21,10 +22,7 @@ def xor_string_at(project, str_ref: stringRef, cst_ref: ref, rodata: bool):
         string = get_string_from_binary(project, offset)
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        added_lines = inject_xored_string(project, string, str_ref, cst_ref, rodata)
-        if(added_lines == -1):
-            print("Cannot inject in recovered LLVM, stop mutation")
-        return added_lines
+        inject_xored_string(recovered, string, str_ref, cst_ref, rodata)
 
     elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
@@ -33,12 +31,10 @@ def xor_string_at(project, str_ref: stringRef, cst_ref: ref, rodata: bool):
             strings.append(get_string_from_binary(project, offset))
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
-        added_lines = inject_xored_string(project, strings, str_ref, cst_ref, rodata)
-        if(added_lines == -1):
-            print("Cannot inject in recovered LLVM, stop mutation")
-        return added_lines
+        inject_xored_string(project, strings, str_ref, cst_ref, rodata)
+        
 
-def inject_xored_string(project, string, str_ref: stringRef, cst_ref: ref, rodata: bool):
+def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: ref, rodata: bool):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -48,21 +44,13 @@ def inject_xored_string(project, string, str_ref: stringRef, cst_ref: ref, rodat
     line_num -- line number where to inject 
     Return: number of added lines
     """
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
-    with open(recovered, "r") as f:
-        lines = f.readlines()
 
     line_num = str_ref.line_num
 
-    delete_line(recovered, str_ref)
-
-    with open(recovered, "r") as f:
-        lines = f.readlines()
-
-    added_lines = 0
+    recovered.delete(str_ref.line_num)
 
     if str_ref.type == TYPES.ONE_ADDR:
-        ind = get_new_index(lines) #TODO: update index afterwards
+        ind = get_new_index(recovered)
 
         constants = ""
 
@@ -71,21 +59,18 @@ def inject_xored_string(project, string, str_ref: stringRef, cst_ref: ref, rodat
         else:
             code = generate_llvm_xor_string_code(string, "spi", str_ref.line.strip(), ind)
 
-        lines.insert(line_num, f";-------------------------------\n")
-        lines.insert(line_num, str_ref.get_mutated_line(f"%spi{ind}"))
-        lines.insert(line_num, code)
-        added_lines += 2 + len(code.splitlines())
+        recovered.insert(line_num, f";-------------------------------\n")
+        recovered.insert(line_num, str_ref.get_mutated_line(f"%spi{ind}"))
+        recovered.insert(line_num, code)
 
         if rodata:
-            lines.insert(cst_ref.line_num, constants)
-            added_lines += len(constants.splitlines())
+            recovered.insert(cst_ref.line_num, constants)
 
     elif str_ref.type == TYPES.TWO_ADDR:
-        ind1 = get_new_index(lines)
-        ind2 = get_new_index(lines)
-        lines.insert(line_num, f";-------------------------------\n")
-        lines.insert(line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
-        added_lines += 2
+        ind1 = get_new_index(recovered)
+        ind2 = get_new_index(recovered)
+        recovered.insert(line_num, f";-------------------------------\n")
+        recovered.insert(line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
 
         constants1 = constants2 = ""
 
@@ -94,29 +79,22 @@ def inject_xored_string(project, string, str_ref: stringRef, cst_ref: ref, rodat
         else:
             code = generate_llvm_xor_string_code(string[0], "spi", str_ref.line.strip(), ind1)
 
-        added_lines += len(code.splitlines())
-        lines.insert(line_num, code)
+        recovered.insert(line_num, code)
 
         if rodata:
             code, constants2 = generate_llvm_xor_string_code_with_constants(string[1], "spi", str_ref.line.strip(), ind2)
         else:
             code = generate_llvm_xor_string_code(string[1], "spi", str_ref.line.strip(), ind2)
             
-        added_lines += len(code.splitlines())
-        lines.insert(line_num, code)
 
         if rodata:
-            lines.insert(cst_ref.line_num, constants1)
-            lines.insert(cst_ref.line_num, constants2)
-            added_lines += len(constants1.splitlines())
-            added_lines += len(constants2.splitlines())
+            recovered.insert(cst_ref.line_num, constants1)
+            recovered.insert(cst_ref.line_num, constants2)
     else:
         raise ValueError(f"Unknown Type: {str_ref.type}")
     
-    with open(recovered, "w") as f:
-            f.writelines(lines)
-        
-    return added_lines - 1
+    update_index(recovered)
+    recovered.write()
 
 def generate_llvm_xor_string_code(string, var, infos, ind):
     length = len(string.encode()) +1
@@ -194,14 +172,8 @@ def xor_strings(project, rodata: bool, probability: float = 1.0, number: int = 1
     Keyword arguments:
     project -- project name
     """
-    start_main, end_main = init_mutation(project)
-    csts = find_constant_declaration_block(project)
-    for i in range(number):
-        reset_recovered(project)
-        refs = find_strings(project, start_main, end_main)
-        for ref in refs:
-                added_lines = xor_string_at(project, ref, csts, rodata)
-                for i, ref_add in enumerate(refs) : 
-                    if ref_add != ref:
-                        refs[i].line_num += added_lines
-        save_mutation(project, f"xor-{probability}-{'rodata' if rodata else ''}")
+    (start_main, end_main), recovered = init_mutation(project)
+    csts = find_constant_declaration_block(recovered)
+    refs = find_strings(project, recovered, start_main, end_main)
+    for ref in refs:
+        xor_string_at(project, recovered, ref, csts, rodata)

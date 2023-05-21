@@ -1,6 +1,7 @@
 import enum
 import re
 from ...helpers.ref import ref
+from typing import Union
 
 TYPES = enum.Enum("TYPES", ["ONE_ADDR", "TWO_ADDR", "GLB_CST", "LCL_CST"])
 
@@ -36,6 +37,9 @@ class stringRef (ref):
     def _get_mutated_line_local_string(self, replacing_string):
         return re.sub(r'c\".*\"', replacing_string, self.line)
 
+    def __str__(self) -> str:
+        return f"{self.type}: <{self.offset}> {self.line_num}: {self.line.strip()}"
+    
 if __name__ == "__main__":
     ref = stringRef(TYPES.ONE_ADDR, 3, "store i32 134520840, i32* %8, align 16", 0)
 

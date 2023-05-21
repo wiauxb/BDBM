@@ -4,10 +4,11 @@ import re
 import subprocess
 import time
 from .ref import ref
+from .file_representation import fileRepresentation as fileRep
 
 current_index = None
 
-def get_new_index(lines):
+def get_new_index(recovered : fileRep):
     """Get the index of the next mutation
 
     Keyword arguments:
@@ -16,11 +17,11 @@ def get_new_index(lines):
     """
     global current_index
     if current_index == None:
-        current_index = get_index_from_lines(lines)
+        current_index = get_index_from_lines(recovered)
     current_index += 1
     return current_index
 
-def get_index_from_lines(lines):
+def get_index_from_lines(recovered : fileRep):
     """Get the index of the last mutation of the recovered.ll
     
     Keyword arguments:
@@ -28,12 +29,12 @@ def get_index_from_lines(lines):
     Return: index of the last mutation
     """
     index = 0
-    match = re.match(r'^; Mutation (\d+)', lines[0])
+    match = re.match(r'^; Mutation (\d+)', recovered.lines[0])
     if match != None:
         index = int(match[1])
     return index
 
-def update_index(lines, index):
+def update_index(recovered : fileRep):
     """Update the index of the last mutation of the recovered.ll
 
     Keyword arguments:
@@ -41,14 +42,11 @@ def update_index(lines, index):
     index -- new index
     Return: lines with the new index, number of lines added (0 or 1)
     """
-    added_lines = 0
-    if lines[0][:10] == '; Mutation':
-        lines[0] = f"; Mutation {index}\n"
+    if recovered.lines[0][:10] == '; Mutation':
+        recovered.lines[0] = f"; Mutation {current_index}\n"
     else:
-        lines.insert(0, f"; Mutation {index}\n")
-        added_lines = 1
+        recovered.insert(0, f"; Mutation {current_index}\n")
 
-    return lines, added_lines
 
 def init_mutation(project):
     """ Execute all the initialization functions before mutation
@@ -60,7 +58,9 @@ def init_mutation(project):
 
     clone_recovered(project)
     make_mutation_folder(project)
-    return find_main(project)
+    recovered_path = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+    recovered = fileRep(recovered_path)
+    return find_main(recovered), recovered
 
 def clone_recovered(project):
     """clone recovered.ll into original_recovered.ll
@@ -128,7 +128,7 @@ def make_mutation_folder(project):
         os.mkdir(mutation_folder)
     return 0
 
-def find_main(project):
+def find_main(recovered : fileRep):
     """find the beginning and the end of @Func_main of original_recovered.ll 
     
     Keyword arguments:
@@ -145,27 +145,26 @@ def find_main(project):
 
     #trouve les lignes où il faudra insérer le call API
     #Insert an api call and insert it once every single line.
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as fp:
-        lines = fp.readlines()
-        for line in lines : 
-            line_num +=1
-            #Cherche le début du main
-            if re.search(r"define .* @Func_main", line) != None:
-                print("found main")
-                begin_main = line_num
-                print("line number = ", begin_main)
-                print("line = ", line)
+    
+    for line in recovered.lines : 
+        line_num +=1
+        #Cherche le début du main
+        if re.search(r"define .* @Func_main", line) != None:
+            print("found main")
+            begin_main = line_num
+            print("line number = ", begin_main)
+            print("line = ", line)
 
-            #Cherche la fin du main
-            if(line.find("}")==0 and line_num>begin_main and begin_main>0):
-                print("found end of main")
-                end_main = line_num
-                print("line number = ", end_main)
-                size_main = end_main-begin_main
-                print("length of main = ", size_main)
-                break
+        #Cherche la fin du main
+        if(line.find("}")==0 and line_num>begin_main and begin_main>0):
+            print("found end of main")
+            end_main = line_num
+            print("line number = ", end_main)
+            size_main = end_main-begin_main
+            print("length of main = ", size_main)
+            break
 
-    return begin_main, end_main
+    return recovered.ref(begin_main), recovered.ref(end_main)
 
 
 def ro_txt_addresses(project):
@@ -192,7 +191,7 @@ def ro_txt_addresses(project):
                 txt.append(int(matchTxt[2], 16))
     return ro, txt
 
-def delete_line(recovered, line_ref: ref):
+def delete_line(recovered : fileRep, line_ref: ref):
     """delete original line
     
     Keyword arguments:
@@ -200,16 +199,8 @@ def delete_line(recovered, line_ref: ref):
     line_ref - stringRef to the line to remove from file
     Return: 0 if success
     """
-    with open(recovered, "r") as f :
-        lines = f.readlines()
 
-    if lines[line_ref.line_num] != line_ref.line:
-        raise ValueError(f"Line {line_ref.line_num} does not correspond to '{line_ref.line}'")
-    
-    del lines[line_ref.line_num]
-    
-    with open(recovered, "w") as f :
-        f.writelines(lines)
+    recovered.delete(line_ref.line_num)
     
     return 0
 

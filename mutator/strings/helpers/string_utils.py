@@ -1,10 +1,11 @@
 from ...helpers.utils import *
+from ...helpers.file_representation import fileRepresentation as fileRep
 from .string_ref import stringRef, TYPES
 from ...helpers.ref import *
 import re
 
 
-def find_strings(project, begin_main, end_main):
+def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
     """find string offsets in the binary
     
     Keyword arguments:
@@ -14,62 +15,59 @@ def find_strings(project, begin_main, end_main):
     Return: list of stringRefs
     """
     
-    copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     list = []
-    with open(copy, "r") as fp:
-        for i,line in enumerate(fp):
-            no_comment_line = line.split(";")[0]
-            match = re.findall(r'c"(.*)"', no_comment_line)
-            if match:
-                print("Found string: " + match[0])
-                if len(match[0].replace("\\00", "")) <= 1:
-                    continue
-                if re.match(r"@.*=", no_comment_line):
-                    list.append(stringRef(TYPES.GLB_CST, i, line, -1, match[0]))
+
+    for i,line in enumerate(recovered.lines):
+        no_comment_line = line.split(";")[0]
+        match = re.findall(r'c"(.*)"', no_comment_line)
+        if match:
+            print("Found string: " + match[0])
+            if len(match[0].replace("\\00", "")) <= 1:
+                continue
+            if re.match(r"@.*=", no_comment_line):
+                list.append(recovered.stringRef(i, TYPES.GLB_CST, -1, match[0]))
+            else:
+                list.append(recovered.stringRef(i, TYPES.LCL_CST, -1, match[0]))
+        if i > begin_main.line_num and i < end_main.line_num:
+            match = re.findall(r"i32 (\d{4,})", no_comment_line)
+            if match and all_addresses_could_be_string(project, match):
+                if len(match) == 1:
+                    offset = address_to_offset(project, int(match[0]))
+                    list.append(recovered.stringRef(i, TYPES.ONE_ADDR, offset))
+                elif len(match) == 2:
+                    offset1 = address_to_offset(project, int(match[0]))
+                    offset2 = address_to_offset(project, int(match[1]))
+                    list.append(recovered.stringRef(i, TYPES.TWO_ADDR, [offset1, offset2]))
                 else:
-                    list.append(stringRef(TYPES.LCL_CST, i, line, -1, match[0]))
-            if i > begin_main and i < end_main:
-                match = re.findall(r"i32 (\d{4,})", no_comment_line)
-                if match and all_addresses_could_be_string(project, match):
-                    if len(match) == 1:
-                        offset = address_to_offset(project, int(match[0]))
-                        list.append(stringRef(TYPES.ONE_ADDR, i, line, offset))
-                    elif len(match) == 2:
-                        offset1 = address_to_offset(project, int(match[0]))
-                        offset2 = address_to_offset(project, int(match[1]))
-                        list.append(stringRef(TYPES.TWO_ADDR, i, line, [offset1, offset2]))
-                    else:
-                        raise ValueError(f"Unhandled number of addresses in one instruction:\n{len(match)} addresses in\n{line}")
+                    raise ValueError(f"Unhandled number of addresses in one instruction:\n{len(match)} addresses in\n{line}")
     return list
 
-def find_var_usage(project, var_name, exclude_line = []):
+def find_var_usage(recovered : fileRep, var_name, exclude_line = []):
     """find all usages of <var_name> in the recovered.ll from <project>
     """
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     list = []
-    with open(recovered, "r") as fp:
-        for i,line in enumerate(fp):
-            if var_name in line.split(";")[0] and i not in exclude_line:
-                list.append(ref(i, line))
+    for i,line in enumerate(recovered.lines):
+        no_comment_line = line.split(";")[0]
+        # print(no_comment_line)
+        if var_name in no_comment_line and i not in exclude_line:
+            list.append(recovered.ref(i))
     return list
 
-def find_constant_declaration_block(project):
+def find_constant_declaration_block(recovered : fileRep):
     """ find the constant declaration block in the recovered.ll from <project>
     
     Keyword arguments:
     project - project name
     Return: a ref to the last line of the block
     """
-    with open("s2e/projects/" + project + "/s2e-out/original_recovered.ll", 'r') as f:
-        lines = f.readlines()
     
-    end_block = ref(-1, "")
+    end_block = -1
 
-    for i, line in enumerate(lines):
+    for i, line in enumerate(recovered.lines):
         if re.search(r"^@.* =", line):
-            end_block = ref(i+1, line)
+            end_block = i+1
     
-    return end_block
+    return recovered.get_ref(end_block)
 
 def all_addresses_could_be_string(project, addresses: list):
     for address in addresses:

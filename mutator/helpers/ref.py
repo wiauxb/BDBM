@@ -6,4 +6,4 @@ class ref:
         self.line = line
 
     def __str__(self) -> str:
-        return f"{self.line_num}: {self.line}"
+        return f"{self.line_num}: {self.line.strip()}"
