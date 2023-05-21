@@ -229,6 +229,7 @@ def save_mutation(project, infos):
     mutation_folder = "s2e/projects/" + project + "/s2e-out/mutations"
     mutation = "s2e/projects/" + project + "/s2e-out/custom_recovered"
     shutil.copyfile(mutation, mutation_folder + "/mutation_"+ infos + "_" + time.strftime("%Y%m%d-%H%M%S"))
+    print("mutation saved in " + mutation_folder + "/mutation_"+ infos + "_" + time.strftime("%Y%m%d-%H%M%S"))
     return 0
 
 def recompile(project):

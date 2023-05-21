@@ -1,4 +1,4 @@
-from .escape import debugenv, traced
+from .escape import envvar, traced
 from .sleeper import sleeper
 from .strings import split, xor
 import argparse
@@ -30,8 +30,9 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     rand_if_parser.add_argument("--iterations", help = "Number of if's to add in the project", default = 1)
     
     debug_parser = subparsers.add_parser("escape")
-    debug_parser.add_argument("kind", choices=["debugenv", "traced", "vm", "random"])
+    debug_parser.add_argument("kind", choices=["envvar", "traced", "vm", "random"])
     debug_parser.add_argument("--number", help="Number of escape to try", default=1)
+    debug_parser.add_argument("--var_name", nargs= '+', action='extend', help="Name of the environment variable to escape")
 
     replace_puts_parser = subparsers.add_parser("replace_puts")
 
@@ -63,8 +64,10 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         code_adder.clone_recovered(project)
         if_adder.add_random_in_main(project, int(args.max_random), int(args.iterations))
     elif args.command == "escape":
-        if args.kind == "debugenv":
-            debugenv.inject_detect_debug(project)
+        if args.kind == "envvar":
+            if not args.var_name:
+                raise ValueError("escape envvar need at least one variable name (option --var_name)")
+            envvar.inject_detect_debug(project, args.var_name)
         elif args.kind == "traced":
             traced.inject_detect_ptrace(project)
         elif args.kind == "vm":

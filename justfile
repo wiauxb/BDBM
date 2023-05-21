@@ -253,7 +253,6 @@ mutate project *flags:
 full-mutate project *flags:
   @just lift-trace {{project}}
   @just mutate {{project}} {{flags}}
-  @just yara {{project}}
 
 # [Memoire] Test yara rules from programs/yara onto original binary and mutated one
 yara project:
