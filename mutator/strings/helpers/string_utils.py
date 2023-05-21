@@ -11,28 +11,46 @@ def find_strings(project, begin_main, end_main):
     project - Project Name
     begin_main - Beginning of the main function recovered.ll
     end_main - End of the main function recovered.ll
-    Return: list of lists, [line_numbers, offset1, offset2, ...)
+    Return: list of stringRefs
     """
     
     copy = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     list = []
     with open(copy, "r") as fp:
         for i,line in enumerate(fp):
-            try:
-                if i > begin_main and i < end_main:
-                    match = re.findall(r"i32 (\d{4,})", line)
-                    if match and all_addresses_could_be_string(project, match):
-                        if len(match) == 1:
-                            offset = address_to_offset(project, int(match[0]))
-                            list.append(stringRef(TYPES.ONE, i, line, offset))
-                        elif len(match) == 2:
-                            offset1 = address_to_offset(project, int(match[0]))
-                            offset2 = address_to_offset(project, int(match[1]))
-                            list.append(stringRef(TYPES.TWO, i, line, [offset1, offset2]))
-                        else:
-                            raise ValueError(f"Unhandled number of addresses in one instruction:\n{len(match)} addresses in\n{line}")
-            except Exception as e:
-                print(f"not usable line: {e}")
+            no_comment_line = line.split(";")[0]
+            match = re.findall(r'c"(.*)"', no_comment_line)
+            if match:
+                print("Found string: " + match[0])
+                if len(match[0].replace("\\00", "")) <= 1:
+                    continue
+                if re.match(r"@.*=", no_comment_line):
+                    list.append(stringRef(TYPES.GLB_CST, i, line, -1, match[0]))
+                else:
+                    list.append(stringRef(TYPES.LCL_CST, i, line, -1, match[0]))
+            if i > begin_main and i < end_main:
+                match = re.findall(r"i32 (\d{4,})", no_comment_line)
+                if match and all_addresses_could_be_string(project, match):
+                    if len(match) == 1:
+                        offset = address_to_offset(project, int(match[0]))
+                        list.append(stringRef(TYPES.ONE_ADDR, i, line, offset))
+                    elif len(match) == 2:
+                        offset1 = address_to_offset(project, int(match[0]))
+                        offset2 = address_to_offset(project, int(match[1]))
+                        list.append(stringRef(TYPES.TWO_ADDR, i, line, [offset1, offset2]))
+                    else:
+                        raise ValueError(f"Unhandled number of addresses in one instruction:\n{len(match)} addresses in\n{line}")
+    return list
+
+def find_var_usage(project, var_name, exclude_line = []):
+    """find all usages of <var_name> in the recovered.ll from <project>
+    """
+    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+    list = []
+    with open(recovered, "r") as fp:
+        for i,line in enumerate(fp):
+            if var_name in line.split(";")[0] and i not in exclude_line:
+                list.append(ref(i, line))
     return list
 
 def find_constant_declaration_block(project):

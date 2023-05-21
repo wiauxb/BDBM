@@ -28,7 +28,7 @@ def inject_debug_detect_at(project, var_name, start_main, end_main):
 
     added_lines = 0
 
-    ind = get_new_index()
+    ind = get_new_index(lines)
     
     lines.insert(start_main - 3 , "declare i32 @getenv(i32) local_unnamed_addr noinline\n") #FIXME : -3 could end up in another function and break everything
     added_lines += 1
@@ -44,6 +44,9 @@ def inject_debug_detect_at(project, var_name, start_main, end_main):
     lines.insert(end_main-1+(1 + len(var_name)), "  ret void\n")
     lines.insert(end_main-1+(1 + len(var_name)), f".escape.{ind}:\n")
     added_lines += 2
+
+    lines, is_added = update_index(lines, ind)
+    added_lines += is_added
 
     with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
         f.writelines(lines)

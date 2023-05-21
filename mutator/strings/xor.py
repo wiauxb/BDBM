@@ -16,7 +16,7 @@ def xor_string_at(project, str_ref: stringRef, cst_ref: ref, rodata: bool):
     line_num -- line num of the store instruction of the string
     Return: number of added lines 
     """
-    if(str_ref.type == TYPES.ONE):
+    if(str_ref.type == TYPES.ONE_ADDR):
         offset = str_ref.offset
         string = get_string_from_binary(project, offset)
 
@@ -26,7 +26,7 @@ def xor_string_at(project, str_ref: stringRef, cst_ref: ref, rodata: bool):
             print("Cannot inject in recovered LLVM, stop mutation")
         return added_lines
 
-    elif(str_ref.type == TYPES.TWO):
+    elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
         strings = []
         for i, offset in enumerate(offsets):
@@ -61,8 +61,8 @@ def inject_xored_string(project, string, str_ref: stringRef, cst_ref: ref, rodat
 
     added_lines = 0
 
-    if str_ref.type == TYPES.ONE:
-        ind = get_new_index()
+    if str_ref.type == TYPES.ONE_ADDR:
+        ind = get_new_index(lines) #TODO: update index afterwards
 
         constants = ""
 
@@ -80,9 +80,9 @@ def inject_xored_string(project, string, str_ref: stringRef, cst_ref: ref, rodat
             lines.insert(cst_ref.line_num, constants)
             added_lines += len(constants.splitlines())
 
-    elif str_ref.type == TYPES.TWO:
-        ind1 = get_new_index()
-        ind2 = get_new_index()
+    elif str_ref.type == TYPES.TWO_ADDR:
+        ind1 = get_new_index(lines)
+        ind2 = get_new_index(lines)
         lines.insert(line_num, f";-------------------------------\n")
         lines.insert(line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
         added_lines += 2

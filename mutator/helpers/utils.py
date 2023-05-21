@@ -5,12 +5,50 @@ import subprocess
 import time
 from .ref import ref
 
-current_index = -1
+current_index = None
 
-def get_new_index():
+def get_new_index(lines):
+    """Get the index of the next mutation
+
+    Keyword arguments:
+    lines -- lines of the recovered.ll
+    Return: index of the next mutation
+    """
     global current_index
+    if current_index == None:
+        current_index = get_index_from_lines(lines)
     current_index += 1
     return current_index
+
+def get_index_from_lines(lines):
+    """Get the index of the last mutation of the recovered.ll
+    
+    Keyword arguments:
+    lines -- lines of the recovered.ll
+    Return: index of the last mutation
+    """
+    index = 0
+    match = re.match(r'^; Mutation (\d+)', lines[0])
+    if match != None:
+        index = int(match[1])
+    return index
+
+def update_index(lines, index):
+    """Update the index of the last mutation of the recovered.ll
+
+    Keyword arguments:
+    lines -- lines of the recovered.ll
+    index -- new index
+    Return: lines with the new index, number of lines added (0 or 1)
+    """
+    added_lines = 0
+    if lines[0][:10] == '; Mutation':
+        lines[0] = f"; Mutation {index}\n"
+    else:
+        lines.insert(0, f"; Mutation {index}\n")
+        added_lines = 1
+
+    return lines, added_lines
 
 def init_mutation(project):
     """ Execute all the initialization functions before mutation

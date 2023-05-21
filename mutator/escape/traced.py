@@ -27,7 +27,7 @@ def inject_ptrace_detect_at(project, start_main, end_main):
         lines = f.readlines()
 
     added_lines = 0
-    ind = get_new_index()
+    ind = get_new_index(lines)
 
     function_declaration, code, escaping_name = get_ptrace_detect_code(ind)
 
@@ -40,6 +40,9 @@ def inject_ptrace_detect_at(project, start_main, end_main):
     lines.insert(end_main-1+2, "  ret void\n") #FIXME the function must maybe return something
     lines.insert(end_main-1+2, escaping_name + ":\n")
     added_lines += 2
+    
+    lines, is_added = update_index(lines, ind)
+    added_lines += is_added
 
     with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
         f.writelines(lines)
