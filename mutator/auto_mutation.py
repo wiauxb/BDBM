@@ -2,7 +2,7 @@ from .escape import envvar, traced
 from .sleeper import sleeper
 from .strings import split, xor
 import argparse
-from .adder import code_adder,cleanware_adder,if_adder,puts_replace
+from .adder import code_adder,cleanware_adder,if_adder,puts_replace, assembler
 
 
 
@@ -38,6 +38,11 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
 
     basic_if_parser = subparsers.add_parser("basic_if")
     basic_if_parser.add_argument("--words", nargs = '+', help= "Words to print in the if conditions")
+
+    asm_parser = subparsers.add_parser("inject_asm")
+    asm_parser.add_argument("asm_file", help="assembly code snippet to inject")
+    asm_parser.add_argument("-l", "--location", help="Where to inject the assembly", choices=["begin", "end"], default="begin")
+    asm_parser.add_argument("-d", "--dialect", help="Dialect of the assembly code", choices=["intel", "att"], default="att")
 
     args = main_parser.parse_args()
  
@@ -78,3 +83,5 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         puts_replace.replace_puts(project)
     elif args.command == "basic_if":
         if_adder.insert_basic_if_print(project, args.words)
+    elif args.command == "inject_asm":
+        assembler.inject_asm(project, args.asm_file, args.location, dialect=args.dialect)
