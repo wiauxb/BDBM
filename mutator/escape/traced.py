@@ -1,4 +1,5 @@
 from ..helpers.utils import *
+from ..helpers.file_representation import fileRepresentation as fileRep
 
 def inject_detect_ptrace(project):
     """
@@ -8,11 +9,11 @@ def inject_detect_ptrace(project):
     :return: None
     """
     
-    start_main, end_main = init_mutation(project)
+    (start_main, end_main), recovered = init_mutation(project)
 
-    inject_ptrace_detect_at(project, start_main, end_main)
+    inject_ptrace_detect_at(recovered, start_main, end_main)
 
-def inject_ptrace_detect_at(project, start_main, end_main):
+def inject_ptrace_detect_at(recovered: fileRep, start_main : ref, end_main : ref):
     """
     Injects the code to detect and escape the debug environment at the given line
 
@@ -20,31 +21,21 @@ def inject_ptrace_detect_at(project, start_main, end_main):
     :param line: The line where the code will be injected
     :return: nbr added lines
     """
-
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
-
-    with open(recovered, 'r') as f:
-        lines = f.readlines()
-
-    added_lines = 0
+    
     ind = get_new_index()
 
     function_declaration, code, escaping_name = get_ptrace_detect_code(ind)
 
-    lines.insert(start_main - 3 , function_declaration + "\n") #FIXME : -3 could end up in another function and break everything
-    added_lines += 1
+    recovered.insert(start_main.line_num - 3 , function_declaration + "\n") #FIXME : -3 could end up in another function and break everything
 
-    lines.insert(start_main+1, code)
-    added_lines += code.count("\n")
+    recovered.insert(start_main.line_num, code)
 
-    lines.insert(end_main-1+2, "  ret void\n") #FIXME the function must maybe return something
-    lines.insert(end_main-1+2, escaping_name + ":\n")
-    added_lines += 2
+    end_point = end_main.line_num - 1
+    recovered.insert(end_point, "  ret void\n") #FIXME the function must maybe return something
+    recovered.insert(end_point, escaping_name + ":\n")
 
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
-        f.writelines(lines)
+    recovered.write()
 
-    return added_lines
 
 def get_ptrace_detect_code(ind):
     """
