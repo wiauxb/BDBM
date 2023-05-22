@@ -93,7 +93,6 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
     else:
         raise ValueError(f"Unknown Type: {str_ref.type}")
     
-    update_index(recovered)
     recovered.write()
 
 def generate_llvm_xor_string_code(string, var, infos, ind):

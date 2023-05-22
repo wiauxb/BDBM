@@ -36,7 +36,6 @@ def inject_debug_detect_at(recovered: fileRep, var_name, start_main : ref, end_m
     recovered.insert(end_point, "  ret void\n")
     recovered.insert(end_point, f".escape.{ind}:\n")
 
-    update_index(recovered)
     recovered.write()
 
 

@@ -145,7 +145,6 @@ def inject_splitted_string(recovered: fileRep, string, str_ref: stringRef, cst_r
     else:
         raise ValueError(f"Unknown Type: {str_ref.type}")
     
-    update_index(recovered)
     recovered.write()
 
 

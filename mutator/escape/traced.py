@@ -34,7 +34,6 @@ def inject_ptrace_detect_at(recovered: fileRep, start_main : ref, end_main : ref
     recovered.insert(end_point, "  ret void\n") #FIXME the function must maybe return something
     recovered.insert(end_point, escaping_name + ":\n")
 
-    update_index(recovered)
     recovered.write()
 
 

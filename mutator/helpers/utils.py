@@ -19,6 +19,7 @@ def get_new_index(recovered : fileRep):
     if current_index == None:
         current_index = get_index_from_lines(recovered)
     current_index += 1
+    update_index(recovered)
     return current_index
 
 def get_index_from_lines(recovered : fileRep):
