@@ -20,6 +20,8 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
     if(str_ref.type == TYPES.ONE_ADDR):
         offset = str_ref.offset
         string = get_string_from_binary(project, offset)
+        if len(string) < 2:
+            return
 
         remove_string_from_binary(project, offset, len(string.encode()))
         inject_splitted_string(recovered, string, str_ref, constantsRefs, rodata, ncuts)
@@ -28,12 +30,18 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
         offsets = str_ref.offset
         strings = []
         for i, offset in enumerate(offsets):
-            strings.append(get_string_from_binary(project, offset))
+            string = get_string_from_binary(project, offset)
+            if len(string) < 2:
+                return
+            strings.append(string)
+        for i, offset in enumerate(offsets):
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
         inject_splitted_string(recovered, strings, str_ref, constantsRefs, rodata, ncuts)
 
     elif(str_ref.type == TYPES.GLB_CST):
+        if len(str_ref.string) < 2:
+            return
         recovered.delete(str_ref.line_num)
 
         var_name = re.findall(r'(@.*) =', str_ref.line)[0]
@@ -47,6 +55,8 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             inject_splitted_string(recovered, str_ref.string, var_ref, constantsRefs, rodata, ncuts)
     
     elif(str_ref.type == TYPES.LCL_CST):
+        if len(str_ref.string) < 2:
+            return
         inject_splitted_string(recovered, str_ref.string, str_ref, constantsRefs, rodata, ncuts)
 
 
