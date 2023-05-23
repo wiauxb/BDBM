@@ -1,0 +1,26 @@
+.text
+	.globl _start
+
+_start:
+	movl $0x564D5868, %eax;                 /* magic number     */
+    movl 0, %ebx;
+    movw $0x0A, %cx;
+    movw $0x5658, %dx;                      /* VMware I/O port  */
+    inl  %dx, %eax;
+	cmp 	ebx, 564D5868h                      /* VMware Running ? */
+	jeq     _escape
+	mov     edx, len
+	mov     ecx, msg
+	mov    	ebx, 1
+	mov    	eax, 4
+	int     0x80
+
+_escape:                                    /* Exit */
+	mov     eax, 1
+	mov     ebx, 0
+	int     0x80
+
+section .data
+
+	msg db 'Hello ASM World !', 0xa
+	len equ $ - msg
