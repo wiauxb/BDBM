@@ -45,10 +45,6 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
     Return: number of added lines
     """
 
-    line_num = str_ref.line_num
-
-    recovered.delete(str_ref.line_num)
-
     if str_ref.type == TYPES.ONE_ADDR:
         ind = get_new_index(recovered)
 
@@ -59,9 +55,9 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
         else:
             code = generate_llvm_xor_string_code(string, "spi", str_ref.line.strip(), ind)
 
-        recovered.insert(line_num, f";-------------------------------\n")
-        recovered.insert(line_num, str_ref.get_mutated_line(f"%spi{ind}"))
-        recovered.insert(line_num, code)
+        recovered.insert(str_ref.line_num, code)
+        recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind}"))
+        recovered.insert(str_ref.line_num, f";-------------------------------\n")
 
         if rodata:
             recovered.insert(cst_ref.line_num, constants)
@@ -69,8 +65,6 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
     elif str_ref.type == TYPES.TWO_ADDR:
         ind1 = get_new_index(recovered)
         ind2 = get_new_index(recovered)
-        recovered.insert(line_num, f";-------------------------------\n")
-        recovered.insert(line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
 
         constants1 = constants2 = ""
 
@@ -79,19 +73,24 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
         else:
             code = generate_llvm_xor_string_code(string[0], "spi", str_ref.line.strip(), ind1)
 
-        recovered.insert(line_num, code)
+        recovered.insert(str_ref.line_num, code)
 
         if rodata:
             code, constants2 = generate_llvm_xor_string_code_with_constants(string[1], "spi", str_ref.line.strip(), ind2)
         else:
             code = generate_llvm_xor_string_code(string[1], "spi", str_ref.line.strip(), ind2)
             
+        recovered.insert(str_ref.line_num, code)
 
         if rodata:
             recovered.insert(cst_ref.line_num, constants1)
             recovered.insert(cst_ref.line_num, constants2)
+        recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
+        recovered.insert(str_ref.line_num, f";-------------------------------\n")
     else:
         raise ValueError(f"Unknown Type: {str_ref.type}")
+    
+    recovered.delete(str_ref.line_num)
     
     recovered.write()
 

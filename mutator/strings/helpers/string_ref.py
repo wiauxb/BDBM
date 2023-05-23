@@ -38,7 +38,7 @@ class stringRef (ref):
         return re.sub(r'c\".*\"', replacing_string, self.line)
 
     def __str__(self) -> str:
-        return f"{self.type}: <{self.offset}> {self.line_num}: {self.line.strip()}"
+        return f"{self.type}: <0x{self.offset:X}> {self.line_num}: {self.line.strip()}"
     
 if __name__ == "__main__":
     ref = stringRef(TYPES.ONE_ADDR, 3, "store i32 134520840, i32* %8, align 16", 0)

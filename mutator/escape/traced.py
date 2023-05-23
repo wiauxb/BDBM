@@ -30,9 +30,8 @@ def inject_ptrace_detect_at(recovered: fileRep, start_main : ref, end_main : ref
 
     recovered.insert(start_main.line_num, code)
 
-    end_point = end_main.line_num - 1
-    recovered.insert(end_point, "  ret void\n") #FIXME the function must maybe return something
-    recovered.insert(end_point, escaping_name + ":\n")
+    recovered.insert(end_main.line_num - 1, escaping_name + ":\n")
+    recovered.insert(end_main.line_num - 1, "  ret void\n") #FIXME the function must maybe return something
 
     recovered.write()
 
