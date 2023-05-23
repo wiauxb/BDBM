@@ -1,10 +1,12 @@
 from .helpers.adder_utils import *
 from .helpers.adder_ref import TYPES, adderRef
+from ..helpers.file_representation import fileRepresentation as fileRep
+from ..helpers.utils import *
 import random
 import os
 
 
-def change_exc(cleanware, project):
+def change_exc(cleanware, recovered):
     """Find the number of the last metada on project, 
         and modify the metadata of the cleanware to be following.
    
@@ -14,10 +16,7 @@ def change_exc(cleanware, project):
     project -- project name
     Return: The modified lines
     """
-
-
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as f:
-        lines = f.readlines()
+    lines = recovered.lines.copy()
     
     match = None
     while(match == None):
@@ -49,13 +48,14 @@ def find_ref(cleanware_lines):
     lines = cleanware_lines
 
     call = lines.pop()
+
     clean_code.append(adderRef(type = TYPES.CALL, lines = call))
 
     i=0
     while i < len(lines) : 
         line = lines[i]
-        match1 =  re.search(r"(define .* @\w{2,}).*", line)
-        match2 =  re.search(r"(@.* =) .*", line)
+        match1 = re.search(r"(define .* @\w{2,}).*", line)
+        match2 = re.search(r"(@.* =) .*", line)
         match3 = re.search(r"(%.{4,} =) .*", line)
         match4 = re.search(r"(declare .* @\w{2,}.*)\(.*", line)
         match5 = re.search(r"(!\d{1,} =) .*", line)
@@ -71,7 +71,6 @@ def find_ref(cleanware_lines):
         elif match2 != None : 
             clean_code.append(adderRef(TYPES.VARIABLE, match2[1], line, i, 0))
             
-            
         elif match3 != None : 
             clean_code.append(adderRef(TYPES.VARIABLE, match3[1], line, i, 0))
         
@@ -85,7 +84,7 @@ def find_ref(cleanware_lines):
     return clean_code    
 
 
-def add_cleanware(project, clean_code):
+def add_cleanware(begin_main, end_main, recovered, clean_code):
     """Add all the references in a project.
     
     Keyword arguments:
@@ -93,12 +92,8 @@ def add_cleanware(project, clean_code):
     clean_code -- A list of all the references
     Return: 
     """
-
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as f:
-        lines = f.readlines()
     
-    begin_main, end_main = find_main(project)
-    line_num = random.randrange(begin_main+1, end_main-1) #+1 for begin_main to be sure to be in the code, end_main -1 to be before the return
+    insert_meta = len(recovered.lines)
     clean_code.reverse()
     for obj in clean_code:
         if(obj.type == TYPES.CALL):
@@ -106,26 +101,34 @@ def add_cleanware(project, clean_code):
 
         if(obj.type == TYPES.FUNCTION):
             al_def = False
-            for line in lines:
+            for line in recovered.lines:
                 if obj.name in line:
                     al_def = True
             if al_def == False:
-                lines.insert(end_main+1, ''.join(obj.lines))
+                recovered.insert(end_main.line_num+1, ''.join(obj.lines))
         
-        if(obj.type == TYPES.VARIABLE or obj.type == TYPES.META):
+        if(obj.type == TYPES.VARIABLE):
             al_def = False
-            for line in lines:
+            for line in recovered.lines:
                 if obj.name in line:
                     al_def = True
             if al_def == False:
-                lines.insert(end_main+1, obj.lines)
+                recovered.insert(5, obj.lines)
+
+        if( obj.type == TYPES.META):
+            al_def = False
+            for line in recovered.lines:
+                if obj.name in line:
+                    al_def = True
+            if al_def == False:
+                recovered.insert(insert_meta, obj.lines)
         
+    line_num = random.randrange(begin_main.line_num+1, end_main.line_num-1) #+1 for begin_main to be sure to be in the code, end_main -1 to be before the return
 
-    lines.insert(line_num, call)
-
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
-        f.writelines(lines)
-
+    recovered.insert(line_num, f";-------------------------------\n")
+    recovered.insert(line_num, call)
+    recovered.insert(line_num, f";----Call to Added Cleanware----\n")
+    recovered.insert(line_num, f";-------------------------------\n")
 
 def clean_loop(num_to_add, project):
     """Add num_to_add cleanware into the project
@@ -145,15 +148,24 @@ def clean_loop(num_to_add, project):
 
     clean_used = [-1]
     clean_num = -1
+    (begin_main, end_main), recovered = init_mutation(project)
+
     for i in range(num_to_add):
         while clean_num in clean_used:
             clean_num = random.randrange(num_clean)
+        #clean_num = k
+        #clean_used.append(clean_num)
         cleanware = clean_list[clean_num]
-        lines = change_exc(cleanware, project)
+        #cleanware = k
+
+        lines = change_exc(cleanware, recovered)
         clean_code = find_ref(lines)
-        add_cleanware(project, clean_code)
+        add_cleanware(begin_main, end_main, recovered, clean_code)
+
+    recovered.write()
 
 
 if __name__ == "__main__":
-    clean_loop(300, "hello")
+    res = []
+
 

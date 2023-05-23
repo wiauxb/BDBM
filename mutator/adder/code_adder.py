@@ -1,7 +1,8 @@
 from ..helpers.utils import *
+from ..helpers.file_representation import fileRepresentation as fileRep
 import random
 
-def find_variables(begin_main, end_main, project):
+def find_variables(begin_main, end_main, recovered, project):
     """ Find the variables of a recovered binary
 
     Keyword arguments:
@@ -12,25 +13,22 @@ def find_variables(begin_main, end_main, project):
     return strings and their line, potential integers, their type and their line.
     """
 
-    recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
     strings = []
     potential_integers = []
-    with open(recovered, "r") as fp:
-        for i,line in enumerate(fp):
-            try:
-                if i > begin_main and i < end_main:
-                    match =  re.search(r"store i32 (\d{1,}),.* (%.*), .*\n", line)
-                    if(match != None and address_could_be_string(project, int(match[1]))):
-                        strings.append([i, match[2]])
-                    match = re.search(r"(\S+[^\*]) (%[\w\.\d]+)(?=[ ,\n])", line)
-                    if(match != None):
-                        potential_integers.append([i, match[1], match[2]])
-            except:
-                print("not usable line")
+    for i,line in enumerate(recovered.lines):
+        try:
+            if i > begin_main.line_num and i < end_main.line_num:
+                match =  re.search(r"store i32 (\d{1,}),.* (%.*), .*\n", line)
+                if(match != None and address_could_be_string(project, int(match[1]))):
+                    strings.append([i, match[2]])
+                match = re.search(r"(\S+[^\*]) (%[\w\.\d]+)(?=[ ,\n])", line)
+                if(match != None):
+                    potential_integers.append([i, match[1], match[2]])
+        except:
+            print("not usable line")
 
     return strings, potential_integers
 
-#TODO Arnold : dans sys_call_llvm.txt, changer les # par leur valeur. générer plus de calls. (voir tous les projets)
 def insert_sys_calls(num_calls, project):
     """ insert num_calls calls into the project, and use previsously used variables.
 
@@ -44,16 +42,19 @@ def insert_sys_calls(num_calls, project):
     list_calls = []
     extra_string_count = 0
     added_lines =0
+
+    with open("mutator/adder/sys_call_llvm.txt", "r") as f:
+        sys_lines = f.readlines()
+        num_lines = len(sys_lines)
+
+    if(num_calls > num_lines/3):
+        print("number_add higher than the number of available system calls, return")
+        return
+
     for i in range(num_calls):
-        begin_main, end_main = find_main(project)
-        recovered = "s2e/projects/" + project + "/s2e-out/recovered.ll"
+        (begin_main, end_main), recovered = init_mutation(project)
 
-        with open(recovered, "r") as f:
-            lines = f.readlines()
-
-        with open("mutator/adder/sys_call_llvm.txt", "r") as f:
-            sys_lines = f.readlines()
-            num_lines = len(sys_lines)
+        
         call_to_insert = random.randrange(num_lines/3)
 
         while call_to_insert in list_calls: 
@@ -66,13 +67,14 @@ def insert_sys_calls(num_calls, project):
         if(def_call == None):
             print("API definition not correctly defined in sys_call_llvm.txt")
             return
+
         al_def = False
-        for line in lines:
+        for line in recovered.lines:
             if def_call[1] in line :
                 al_def =True
         
         if(al_def ==False):
-            lines.insert(begin_main-2, sys_lines[call_to_insert*3])
+            recovered.insert(begin_main.line_num-2, sys_lines[call_to_insert*3])
             added_lines +=1
 
         if(arguments[0] != "void"):
@@ -83,9 +85,13 @@ def insert_sys_calls(num_calls, project):
         line_main_add = ""
         line_num = 0
 
-        strings, potential_integers = find_variables(begin_main, end_main, project)
+        strings, potential_integers = find_variables(begin_main, end_main, recovered, project)
+        
+        
         for arg in arguments[1:]:
             line_load = None
+            line_com = line_num
+
             if arg =='int':
                 var = random.randrange(len(potential_integers))
                 var_line = potential_integers[var][0] 
@@ -100,23 +106,25 @@ def insert_sys_calls(num_calls, project):
                 line_load = "  " + extra_string + " = load i32, i32* " + string_add + ", align 16\n"
                 extra_string_count += 1
                 line_main_add += "i32 " + extra_string + ", "
-                print(line_load)
             
             if var_line > line_num:
-                print(line_main + line_main_add[:-2] + ")\n")
-                line_num = random.randrange(var_line+1, end_main-1)+1
+                line_num = random.randrange(var_line+1, end_main.line_num-1)+1
+                recovered.insert(line_num, f";-------------------------------\n")
+
                 if line_load != None:
-                    lines.insert(line_num-1, line_load)
-                    added_lines +=1
-        
+                    recovered.insert(line_num-1, f";--------Added Syst Call--------\n")
+                    recovered.insert(line_num-1, f";-------------------------------\n")
+                    recovered.insert(line_num-1, line_load)
+                else:
+                    line_main = f""";-------------------------------
+;--------Added Syst Call--------\n"""+line_main
+
+
         line_main += line_main_add[:-2] + ")\n"
-        lines.insert(line_num, line_main)
-        added_lines +=1
+        recovered.insert(line_num, line_main)
         
-        with open(recovered, "w") as f:
-            f.writelines(lines)
-    
-    return added_lines 
+        recovered.write()
+     
 
 if __name__ == "__main__":
     begin_main = 38,

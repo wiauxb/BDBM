@@ -1,9 +1,10 @@
 from .escape import envvar, traced
 from .sleeper import sleeper
-from .strings import split, xor
+from .strings import split, xor, cleanware_from_recovered
 import argparse
 from .adder import code_adder,cleanware_adder,if_adder,puts_replace
-
+import os
+import subprocess
 
 
 if __name__ == "__main__": #FIXME think about ordering the mutations
@@ -40,6 +41,8 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     basic_if_parser = subparsers.add_parser("basic_if")
     basic_if_parser.add_argument("--words", nargs = '+', help= "Words to print in the if conditions")
 
+    get_clean_parser = subparsers.add_parser("get_clean")
+
     args = main_parser.parse_args()
  
     print(args)
@@ -56,7 +59,32 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     elif args.command == "sleep":
         sleeper.add_sleeps(project)
     elif args.command == "clean_adder":
-        code_adder.clone_recovered(project)
+        #code_adder.clone_recovered(project)
+        
+        good = []
+        bad = []
+        problems = ['rotate_array_right604.ll']
+        while True:
+            try :
+                cleanware_adder.clean_loop(1, project)
+                command = "just recompile " + project
+                subprocess.check_output(command, shell=True, timeout = 30)
+                command = "./s2e/projects/hello/s2e-out/custom_recovered"
+                subprocess.check_output(command, shell=True, timeout = 30)
+            except : 
+                break
+
+            command = "just lift-trace " + project
+            subprocess.check_output(command, shell=True, timeout = 30)
+
+
+        print("Good compiled")
+        print(good)
+        print(len(good))
+        print("bad compiled")
+        print(bad)
+        print(len(bad))
+
         cleanware_adder.clean_loop(int(args.number_add), project)
     elif args.command == "sys_adder":
         code_adder.clone_recovered(project)
@@ -79,3 +107,5 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         puts_replace.replace_puts(project)
     elif args.command == "basic_if":
         if_adder.insert_basic_if_print(project, args.words)
+    elif args.command == "get_clean":
+        cleanware_from_recovered.gen_all_clean()
