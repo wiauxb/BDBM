@@ -19,8 +19,9 @@ def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
 
     for i,line in enumerate(recovered.lines):
         no_comment_line = line.split(";")[0]
+        match_KO = re.search(r".* load .* inttoptr \(.*\), .*", ref.line)
         match = re.findall(r'c"(.*)"', no_comment_line)
-        if match:
+        if match and match_KO == None:
             print("Found string: " + match[0])
             if len(match[0].replace("\\00", "")) <= 1:
                 continue

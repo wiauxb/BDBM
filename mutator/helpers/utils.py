@@ -84,7 +84,6 @@ def clone_recovered(project):
     return 0
 
 def address_to_offset(project, address):
-
     table = get_section_table(project)
     i = 0
     while table[i][1] < address:
@@ -216,10 +215,11 @@ def address_could_be_string(project, address):
     return True if the address is a potential string, False otherwise
     """
     ro, txt = ro_txt_addresses(project)
-    offset = address_to_offset(project, address)
             
     if not (address > ro[0] and address < ro[0]+ro[1]) and not (address > txt[0] and address < txt[0]+txt[1]):
         return False
+
+    offset = address_to_offset(project, address)
     
     with open("s2e/projects/" + project + "/binary", 'br') as f:
         byte = f.read()[offset:]

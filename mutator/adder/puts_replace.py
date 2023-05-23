@@ -1,8 +1,10 @@
 from .helpers.adder_utils import *
+from ..helpers.file_representation import fileRepresentation as fileRep
+from ..helpers.utils import *
+from ..helpers.ref import ref
 
-
-def find_last_meta(lines):
-    last = lines[-1]
+def find_last_meta(recovered):
+    last = recovered.lines[-1]
 
     match = re.search(r"!(\d{1,}) = .*", last)
     if last == None: 
@@ -20,31 +22,32 @@ declare dso_local i32 @printf(i8* noundef) local_unnamed_addr  naked noinline "f
 """
 
 
-def generate_new_print(var, arg, num_meta, line_var, num):
-    cast = "%cast" +str(round(time.time()*1000)+num)
-    new_print = f"""  tail call i32 @printf(i8* nonnull dereferenceable(1) {arg})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}
+def generate_new_print(var, arg, num_meta, line_var, recovered):
+    ind = str(get_new_index(recovered))
+    cast = "%cast" + ind
+    new_print = f"""  %fp{ind} = tail call i32 @printf(i8* nonnull dereferenceable(1) {arg})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}
   {cast}= getelementptr [1 x i8], [1 x i8]* {line_var}, i64 0, i64 0
   {var} = tail call i32 @printf(i8* nonnull dereferenceable(1) {cast})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}\n"""
     return new_print
 
 def replace_puts(project):
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'r') as f:
-        lines = f.readlines()
 
-    begin_main, end_main = find_main(project)
+    (begin_main, end_main), recovered = init_mutation(project)
 
 
-    string_to_print = "@.str"+str(round(time.time()*1000))
+    string_to_print = "@.str"+str(get_new_index(recovered))
     ligne = "\\0a"
     var_line = f"""{string_to_print} = private unnamed_addr constant [1 x i8] c\"{ligne}\"\n"""
-    for i, line in enumerate(lines):
+    for i, line in enumerate(recovered.lines):
             if re.search(r"^@.* =", line):
                 var_line_num = i+1
-    lines.insert(var_line_num, var_line)
 
+    recovered.insert(var_line_num, var_line)
+    
+        
 
     al_print = False
-    for line in lines :
+    for line in recovered.lines :
         match = re.search(r"@printf", line)
         if match != None: 
             al_print = True
@@ -53,19 +56,20 @@ def replace_puts(project):
             num_meta = match[1]
     
     if(al_print == False): 
-        new_last_meta, num_meta = find_last_meta(lines)
+        new_last_meta, num_meta = find_last_meta(recovered)
         print_decla = print_decl()
-        lines.append(new_last_meta)
-        lines.insert(begin_main-2, print_decla)
+        recovered.lines.append(new_last_meta)
+        recovered.insert(begin_main.line_num-2, print_decla)
 
-    for i, line in enumerate(lines):
+    for i, line in enumerate(recovered.lines):
         match = re.search(r"(%\d{1,}).* tail call .* @puts.* (%\d{1,})\)", line)
         if match!= None:
-            print_repl = generate_new_print(match[1], match[2], num_meta, string_to_print, i)
-            lines[i] = print_repl
- 
-    with open("s2e/projects/" + project + "/s2e-out/recovered.ll", 'w') as f:
-        f.writelines(lines)
+            print_repl = generate_new_print(match[1], match[2], num_meta, string_to_print, recovered)
+            recovered.lines[i] = print_repl
+            recovered.insert(i, f";---Replaced puts with printf---\n")
+            recovered.insert(i, f";-------------------------------\n")
+            recovered.insert(i+3, f";-------------------------------\n")
+    recovered.write()
 
 
 
