@@ -1,6 +1,6 @@
 from .escape import envvar, traced
 from .sleeper import sleeper
-from .strings import split, xor, cleanware_from_recovered
+from .strings import split, strings_base64, xor, cleanware_from_recovered
 import argparse
 from .adder import code_adder,cleanware_adder,if_adder,puts_replace
 import os
@@ -55,7 +55,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         elif args.kind == "xor":
             xor.xor_strings(project, not args.text, int(args.probability), int(args.number))
         elif args.kind == "base64":
-            raise NotImplementedError("Base64 not implemented yet")
+            strings_base64.b64_strings(project, not args.text)
     elif args.command == "sleep":
         sleeper.add_sleeps(project)
     elif args.command == "clean_adder":

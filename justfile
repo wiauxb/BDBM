@@ -242,9 +242,15 @@ lift-trace project *flags:
 # [Memoire] recompile recovered.ll to custom_recovered.
 recompile project *flags:
   llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll"
-  # clang-14 -O0 -c -emit-llvm -target i386 s2e/projects/string/s2e-out/recovered.ll -o s2e/projects/string/s2e-out/recovered.bc
+  # clang-14 -O0 -g -c -emit-llvm -target i386 s2e/projects/string/s2e-out/recovered.ll -o s2e/projects/string/s2e-out/recovered.bc
   pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
-
+  
+# [Memoire] recompile recovered.ll to custom_recovered.
+link_recompile project *files:
+  llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll" -o "s2e/projects/{{project}}/s2e-out/recovered_to_link.bc"
+  llvm-link-14 "s2e/projects/{{project}}/s2e-out/recovered_to_link.bc" "{{files}}" -o "s2e/projects/{{project}}/s2e-out/recovered.bc"
+  # clang-14 -O0 -g -c -emit-llvm -target i386 s2e/projects/string/s2e-out/recovered.ll -o s2e/projects/string/s2e-out/recovered.bc
+  pipenv run python -m binrec.compile_recovered  "{{project}}"
 # [Memoire] Mutate a recovered project
 mutate project *flags:
   pipenv run python -m mutator.auto_mutation "{{project}}" {{flags}}
