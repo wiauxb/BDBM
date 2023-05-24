@@ -1,13 +1,13 @@
-declare i32 @alarm(i32) local_unnamed_addr noinline  ;prend un int (temps avant l'alarme)
+declare i32 @alarm(i32) local_unnamed_addr noinline
 = tail call i32 @alarm 
 i32,int
-declare i32 @access(i32, i32) local_unnamed_addr noinline;Premier arg string (folder to reach, 2è mode)
+declare i32 @access(i32, i32) local_unnamed_addr noinline
 = tail call i32 @access
 i32,string,int
-declare i32 @fopen(i32, i32) local_unnamed_addr noinline ; filename, accessMode (int)
+declare i32 @fopen(i32, i32) local_unnamed_addr noinline
 = tail call i32 @fopen
 i32,string,int
-declare void @perror(i32) local_unnamed_addr noinline ; error message, type void
+declare void @perror(i32) local_unnamed_addr noinline
 tail call void @perror
 void,string
 declare i32 @htons(i32) local_unnamed_addr noinline
@@ -16,3 +16,48 @@ i32,int
 declare i32 @htonl(i32) local_unnamed_addr nofree noinline nosync nounwind readnone
 = tail call i32 @htonl
 i32,int
+declare dso_local i32 @puts(i8*) local_unnamed_addr  "frame-pointer"="none" "no-builtins" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="pentium4" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" 
+= tail call i32 @puts
+i32,string
+declare i32 @strlen(i32) local_unnamed_addr  noinline 
+= tail call i32 @strlen
+i32,string
+declare i32 @tolower(i32) local_unnamed_addr  noinline 
+= tail call i32 @tolower
+i32,string
+declare i32 @atoi(i32) local_unnamed_addr  noinline 
+= tail call i32 @atoi
+i32,string
+declare i32 @atol(i32) local_unnamed_addr  noinline 
+= tail call i32 @atol
+i32,string
+declare double @atof(i32) local_unnamed_addr  noinline 
+= tail call double @atof
+double,string
+declare i32 @toupper(i32) local_unnamed_addr  noinline 
+= tail call i32 @toupper
+i32,string
+declare i32 @strchr(i32, i32) local_unnamed_addr  noinline 
+= tail call i32 @strchr
+i32,string,string
+declare i32 @time(i32) local_unnamed_addr  noinline 
+= tail call i32 @time
+i32,int
+declare i32 @getenv(i32) local_unnamed_addr  noinline 
+= tail call i32 @getenv
+i32,string
+declare i32 @strstr(i32, i32) local_unnamed_addr  noinline 
+= tail call i32 @strstr
+i32,string,string
+declare i32 @usleep(i32) local_unnamed_addr  noinline 
+= tail call i32 @usleep
+i32,int
+declare i32 @socket(i32, i32, i32) local_unnamed_addr  noinline 
+= tail call i32 @socket
+i32,int,int,int
+declare i32 @strcmp(i32, i32) local_unnamed_addr  noinline 
+= tail call i32 @strcmp
+i32,string,string
+declare i32 @strpbrk(i32, i32) local_unnamed_addr  noinline 
+= tail call i32 @strpbrk
+i32,string,string

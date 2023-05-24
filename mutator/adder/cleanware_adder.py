@@ -4,6 +4,7 @@ from ..helpers.file_representation import fileRepresentation as fileRep
 from ..helpers.utils import *
 import random
 import os
+import copy
 
 
 def change_exc(cleanware, recovered):
@@ -44,6 +45,15 @@ def change_exc(cleanware, recovered):
     return lines    
 
 def change_var(cleanware, recovered):
+    """Find variables with the same name and different definition, and rewrite the second one found.
+   
+    
+    Keyword arguments:
+    cleanware -- The file that will be modified
+    recovered -- recovered llvm of the project
+    Return: The modified lines
+    """
+
     index = get_new_index(recovered)
     copy_clean = cleanware.copy()
     list = []
@@ -53,8 +63,6 @@ def change_var(cleanware, recovered):
             for j  in range(i, len(recovered.lines)):
                 if recovered.lines[j] != clean_line and recovered.lines[j].find(match[1]) >= 0:
                     index = get_new_index(recovered)
-                    #for k, copy_clean_line in enumerate(copy_clean):
-                    #    copy_clean[k] = copy_clean_line.replace(match[1], match[1]+str(index))
                     list.append((match[1], match[1].strip()+str(index) + " "))
     
     for tuple in list:
@@ -119,7 +127,9 @@ def add_cleanware(begin_main, end_main, recovered, clean_code):
     """Add all the references in a project.
     
     Keyword arguments:
-    project -- project name
+    begin_main -- begin of the main of the project
+    end_main -- end of the main of the project
+    recovered -- recovered llvm of the project
     clean_code -- A list of all the references
     Return: 
     """
@@ -155,6 +165,8 @@ def add_cleanware(begin_main, end_main, recovered, clean_code):
                 recovered.insert(insert_meta, obj.lines)
         
     line_num = random.randrange(begin_main.line_num+1, end_main.line_num-1) #+1 for begin_main to be sure to be in the code, end_main -1 to be before the return
+    while(recovered.lines[line_num].find("  ") != 0):                   
+        line_num = random.randrange(begin_main.line_num+1, end_main.line_num-1)
 
     recovered.insert(line_num, f";-------------------------------\n")
     recovered.insert(line_num, call)
@@ -180,7 +192,6 @@ def clean_loop(num_to_add, project):
     clean_used = [-1]
     clean_num = -1
     (begin_main, end_main), recovered = init_mutation(project)
-
     for i in range(num_to_add):
         while clean_num in clean_used:
             clean_num = random.randrange(num_clean)

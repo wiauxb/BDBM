@@ -60,39 +60,10 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         sleeper.add_sleeps(project)
     elif args.command == "clean_adder":
         code_adder.clone_recovered(project)
-        
-        good = []
-        bad = []
-        problems = os.listdir("mutator/adder/cleanware")
-        #problems = ['token_pasting_operator3227.157.ll', 'hello1594.13.ll', 'enum3406.172.ll', 'sets2986.136.ll']
-        """for i in problems:
-            try :
-                cleanware_adder.clean_loop(1, project, i)
-                command = "just recompile " + project
-                subprocess.check_output(command, shell=True, timeout = 30)
-                command = "./s2e/projects/hello/s2e-out/custom_recovered"
-                subprocess.check_output(command, shell=True, timeout = 30)
-                good.append(i)
-            except : 
-                bad.append(i)
-            
-            command = "just lift-trace " + project
-            subprocess.check_output(command, shell=True, timeout = 30)
-
-            #if i == 0:
-            #    break
-
-        print("Good compiled")
-        print(good)
-        print(len(good))
-        print("bad compiled")
-        print(bad)
-        print(len(bad))"""
-        
         cleanware_adder.clean_loop(int(args.number_add), project)
     elif args.command == "sys_adder":
         code_adder.clone_recovered(project)
-        lines_added = code_adder.insert_sys_calls(int(args.number_add), project)
+        lines_added = code_adder.sys_calls(int(args.number_add), project)
     elif args.command == "random_if":
         code_adder.clone_recovered(project)
         if_adder.add_random_in_main(project, int(args.max_random), int(args.iterations))
