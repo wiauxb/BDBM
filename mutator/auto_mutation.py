@@ -1,4 +1,4 @@
-from .escape import envvar, traced
+from .escape import envvar, traced, vmdetect
 from .sleeper import sleeper
 from .strings import split, strings_base64, xor, cleanware_from_recovered
 import argparse
@@ -75,7 +75,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         elif args.kind == "traced":
             traced.inject_detect_ptrace(project)
         elif args.kind == "vm":
-            raise NotImplementedError("VM not implemented yet")
+            vmdetect.inject_detect_vm(project)
         elif args.kind == "random":
             raise NotImplementedError("Random not implemented yet")
     elif args.command == "replace_puts":
