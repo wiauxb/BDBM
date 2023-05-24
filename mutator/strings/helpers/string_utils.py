@@ -19,7 +19,7 @@ def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
 
     for i,line in enumerate(recovered.lines):
         no_comment_line = line.split(";")[0]
-        match_KO = re.search(r".* load .* inttoptr \(.*\), .*", ref.line)
+        match_KO = re.search(r".* load .* inttoptr \(.*\), .*", no_comment_line)
         match = re.findall(r'c"(.*)"', no_comment_line)
         if match and match_KO == None:
             print("Found string: " + match[0])
@@ -29,7 +29,7 @@ def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
                 list.append(recovered.stringRef(i, TYPES.GLB_CST, -1, match[0]))
             else:
                 list.append(recovered.stringRef(i, TYPES.LCL_CST, -1, match[0]))
-        if i > begin_main.line_num and i < end_main.line_num:
+        if i > begin_main.line_num and i < end_main.line_num and match_KO == None:
             match = re.findall(r"i32 (\d{4,})", no_comment_line)
             if match and all_addresses_could_be_string(project, match):
                 if len(match) == 1:

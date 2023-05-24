@@ -59,32 +59,36 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     elif args.command == "sleep":
         sleeper.add_sleeps(project)
     elif args.command == "clean_adder":
-        #code_adder.clone_recovered(project)
+        code_adder.clone_recovered(project)
         
         good = []
         bad = []
-        problems = ['rotate_array_right604.ll']
-        while True:
+        problems = os.listdir("mutator/adder/cleanware")
+        #problems = ['token_pasting_operator3227.157.ll', 'hello1594.13.ll', 'enum3406.172.ll', 'sets2986.136.ll']
+        """for i in problems:
             try :
-                cleanware_adder.clean_loop(1, project)
+                cleanware_adder.clean_loop(1, project, i)
                 command = "just recompile " + project
                 subprocess.check_output(command, shell=True, timeout = 30)
                 command = "./s2e/projects/hello/s2e-out/custom_recovered"
                 subprocess.check_output(command, shell=True, timeout = 30)
+                good.append(i)
             except : 
-                break
-
+                bad.append(i)
+            
             command = "just lift-trace " + project
             subprocess.check_output(command, shell=True, timeout = 30)
 
+            #if i == 0:
+            #    break
 
         print("Good compiled")
         print(good)
         print(len(good))
         print("bad compiled")
         print(bad)
-        print(len(bad))
-
+        print(len(bad))"""
+        
         cleanware_adder.clean_loop(int(args.number_add), project)
     elif args.command == "sys_adder":
         code_adder.clone_recovered(project)

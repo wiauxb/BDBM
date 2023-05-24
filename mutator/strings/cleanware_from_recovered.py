@@ -75,8 +75,23 @@ def replace_hash(recovered : fileRep, liste):
 
     return
 
+def change_stack(recovered : fileRep):
+    """Change the name of the stack and its size, also delete useless main function"""
+    index = str(get_new_index(recovered)) 
+    for i, line in enumerate(recovered.lines):
+        if re.search(r"@stack = .*", line) != None:
+            recovered.lines[i] = f"""@stack{index} = internal global [8092 x i32] zeroinitializer, align 16\n"""
+    
+        if re.search(r"define .* @main.*", line) != None:
+            while recovered.lines[i].find("}")!=0 :
+                recovered.delete(i)
+            recovered.delete(i)
+                
 
-def auto_llvm(recovered : fileRep, project):
+    return index
+
+
+def auto_llvm(recovered : fileRep, project, index):
     """Generate the cleanware that will be used for mutation
     
     Keyword arguments:
@@ -95,7 +110,7 @@ def auto_llvm(recovered : fileRep, project):
         cleanware.append(line)
 
     cleanware.append("\n")
-    cleanware.append("  tail call fastcc void @" + project_rdm +"(i32 ptrtoint (i32* getelementptr inbounds ([4194304 x i32], [4194304 x i32]* @stack, i32 0, i32 4194300) to i32)) nounwind\n")
+    cleanware.append(f"""  tail call fastcc void @{project_rdm} (i32 ptrtoint (i32* getelementptr inbounds ([8092 x i32], [8092 x i32]* @stack{index}, i32 0, i32 8092) to i32)) nounwind\n""")
     
 
     file_name = project_rdm + ".ll" 
@@ -124,8 +139,6 @@ def replace_strings(project, begin_main, end_main, recovered):
                 if int(c_hex,16) != 0x0A and int(c_hex,16) <0x20:
                     good_string = False
                 
-        
-            
             if good_string:
 
                 length = len(string.encode())+1
@@ -170,7 +183,19 @@ def replace_strings(project, begin_main, end_main, recovered):
 
     for const in consts :
         recovered.insert(decl_block.line_num, const)
-    
+
+
+def change_glob_var(recovered : fileRep):
+    """Changes the name of global variables, adds an index to them"""
+
+    for i, line in enumerate(recovered.lines):
+        match = re.search(r"^(@.*) = \w{1,} .*", recovered.lines[i])
+        if (match != None) and (match[1].find("@stack")!=0):
+            new_global_var = match[1] + str(get_new_index(recovered))
+            for j in range(i, len(recovered.lines)):
+                if recovered.lines[j].find(match[1]) >= 0:
+                    recovered.lines[j] = recovered.lines[j].replace(match[1], new_global_var)
+        
 
 def gen_all_clean():
     """Loop for every step of the cleanware creation
@@ -178,9 +203,10 @@ def gen_all_clean():
     Keyword arguments:
     Return:
     """
+
     projects = os.listdir("s2e/projects")
-    
-    for i, project in enumerate(projects) :
+
+    for project in projects:
 
         (begin_main, end_main), recovered = init_mutation(project)
 
@@ -188,8 +214,11 @@ def gen_all_clean():
 
         hashed = to_replace(recovered)
         replace_hash(recovered, hashed)
+        
+        indexStack = change_stack(recovered)
         remove_after_segs(recovered)
-        auto_llvm(recovered, project)
+
+        auto_llvm(recovered, project, indexStack)
         recovered.write()
         
         lift = False
@@ -200,7 +229,6 @@ def gen_all_clean():
                 lift = True
             except:
                 liste = 1
-
 
 
 if __name__ == "__main__":

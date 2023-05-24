@@ -26,15 +26,46 @@ def change_exc(cleanware, recovered):
 
     with open("mutator/adder/cleanware/"+cleanware) as f:
         lines = f.readlines()
-
+    
     for i in range(len(lines)):
-        match  = re.findall(r"!(\d{1,})", lines[i])
-        if match != None:
-            for elem in match:
-                num_exc = int(elem)
-                new_num_exc = num_exc+last_exc
-                lines[i] = lines[i].replace("!"+elem, "!"+str(new_num_exc))
+        splits = re.split(r'(!\d{1,})',lines[i])
+        reconstructed = ""
+        for split in splits:
+            match = re.search(r"!(\d{1,})", split)
+            if match != None:
+                num_exc = int(match[1])
+                new_num_exc = str(num_exc+last_exc)
+                changed = re.sub(r"^!%s" %match[1], "!%s" %new_num_exc, split)
+                reconstructed += changed
+            else:
+                reconstructed += split
+        lines[i] = reconstructed
+
     return lines    
+
+def change_var(cleanware, recovered):
+    index = get_new_index(recovered)
+    copy_clean = cleanware.copy()
+    list = []
+    for i, clean_line in enumerate(cleanware):
+        match = re.search(r"^(@.* )= .*", clean_line)
+        if match != None:
+            for j  in range(i, len(recovered.lines)):
+                if recovered.lines[j] != clean_line and recovered.lines[j].find(match[1]) >= 0:
+                    index = get_new_index(recovered)
+                    #for k, copy_clean_line in enumerate(copy_clean):
+                    #    copy_clean[k] = copy_clean_line.replace(match[1], match[1]+str(index))
+                    list.append((match[1], match[1].strip()+str(index) + " "))
+    
+    for tuple in list:
+        for i, copy_clean_line in enumerate(copy_clean):
+            if copy_clean_line.find(tuple[0]) >=0:
+                copy_clean[i] = copy_clean_line.replace(tuple[0], tuple[1])
+            elif copy_clean_line.find(tuple[0].strip()) >=0:
+                copy_clean[i] = copy_clean_line.replace(tuple[0].strip(), tuple[1].strip())
+    
+    return copy_clean
+    
 
 def find_ref(cleanware_lines):
     """return a list of the references declared in cleanware
@@ -54,7 +85,7 @@ def find_ref(cleanware_lines):
     i=0
     while i < len(lines) : 
         line = lines[i]
-        match1 = re.search(r"(define .* @\w{2,}).*", line)
+        match1 = re.search(r"(define .* @\w{2,}\().*", line)
         match2 = re.search(r"(@.* =) .*", line)
         match3 = re.search(r"(%.{4,} =) .*", line)
         match4 = re.search(r"(declare .* @\w{2,}.*)\(.*", line)
@@ -153,13 +184,13 @@ def clean_loop(num_to_add, project):
     for i in range(num_to_add):
         while clean_num in clean_used:
             clean_num = random.randrange(num_clean)
-        #clean_num = k
-        #clean_used.append(clean_num)
+        clean_used.append(clean_num)
         cleanware = clean_list[clean_num]
-        #cleanware = k
 
         lines = change_exc(cleanware, recovered)
-        clean_code = find_ref(lines)
+        lines_b= change_var(lines, recovered)
+
+        clean_code = find_ref(lines_b)
         add_cleanware(begin_main, end_main, recovered, clean_code)
 
     recovered.write()
