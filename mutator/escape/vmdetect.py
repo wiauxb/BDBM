@@ -43,7 +43,7 @@ def get_vm_detect_code(ind):
     :return: the string of the code
     """
     code = f""";----------------------------
-  ; Detect tracing running
+  ; Detect if we are running in a VMWare vm
   %result.{ind} = tail call i32 @detect_vm()
   %must.escape.{ind} = icmp ne i32 %result.{ind}, 0
   br i1 %must.escape.{ind}, label %.escape.{ind}, label %.proceed.{ind}
