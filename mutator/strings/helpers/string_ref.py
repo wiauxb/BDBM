@@ -32,7 +32,7 @@ class stringRef (ref):
         return re.sub(r'\d{4,}', repl2, tmp, count=1)
     
     def _get_mutated_line_global_string(self, replacing_string):
-        return re.sub(r'@[^ \n]*', replacing_string, self.line)
+        return re.sub(r'@[^, \n]*', replacing_string, self.line)
     
     def _get_mutated_line_local_string(self, replacing_string):
         return re.sub(r'c\".*\"', replacing_string, self.line)

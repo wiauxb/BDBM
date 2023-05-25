@@ -278,7 +278,7 @@ def generate_splitted_string(string, ncuts = -1):
     """
     string = string.replace("\\00", "\00")
 
-    if ncuts == -1:
+    if ncuts < 1 or ncuts > len(string):
         cut = len(string)
     elif ncuts >= 2:
         cut = ncuts
