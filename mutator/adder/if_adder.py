@@ -49,11 +49,10 @@ def insert_basic_if_print(project, messages):
                 decl_puts = True
             if re.search(r"  ret void", line) and i > begin_main.line_num and i < end_main.line_num :
                 ret_main = i
-       
-
+                
         recovered.insert(end_main.line_num-1, branch)
         insert_cond = random.randrange(begin_main.line_num+1, ret_main)
-        while re.search(r"next\d{7,}:", recovered.lines[insert_cond]) != None:
+        while recovered.lines[insert_cond].find("  ") != 0:
             insert_cond = random.randrange(begin_main.line_num+1, ret_main)
             
         recovered.insert(insert_cond, f";-------------------------------\n")
@@ -68,7 +67,7 @@ def insert_basic_if_print(project, messages):
     recovered.write()
 
 
-def generate_random_func_decl(recovered = fileRep):
+def generate_random_func_decl(recovered : fileRep):
     """
     Generate the declaration of functions that will be needed
     
@@ -126,7 +125,7 @@ def generate_random_main(recovered : fileRep, max_rand):
 
     return main_decl, rand_fin
 
-def generate_random_if(max_rand, rand_var, recovered):
+def generate_random_if(max_rand, rand_var, recovered, if_name):
     """
     Generate the random if condition and the return bloc.
 
@@ -137,7 +136,8 @@ def generate_random_if(max_rand, rand_var, recovered):
     """
     cond = str(random.randrange(max_rand))
     const = str(get_new_index(recovered))
-    if_name ="BB_" + const 
+    if if_name == "":
+        if_name ="BB_" + const 
 
     cond_bloc = f"""  %.not{const}.i.i = icmp eq i32 {cond} , {rand_var} 
   br i1 %.not{const}.i.i, label %next{const}, label %{if_name}
@@ -146,7 +146,7 @@ next{const}:\n"""
     if_bloc =f"""{if_name}:
   ret void
 """
-    return cond_bloc, if_bloc
+    return cond_bloc, if_bloc, if_name
 
 def add_random_in_main(project, max_rand, iterations):
     """
@@ -158,11 +158,12 @@ def add_random_in_main(project, max_rand, iterations):
 
     """
     (begin_main, end_main), recovered = init_mutation(project)
-
+    if_name = ""
+    if_inserted = False
     for iteration in range(iterations) :        
         fun_decl = generate_random_func_decl(recovered)
         main_decl, rand_fin = generate_random_main(recovered, max_rand)
-        cond_bloc, if_bloc = generate_random_if(max_rand, rand_fin, recovered)
+        cond_bloc, if_bloc, if_name = generate_random_if(max_rand, rand_fin, recovered, if_name)
 
 
         for i, line in enumerate(recovered.lines) :
@@ -171,10 +172,12 @@ def add_random_in_main(project, max_rand, iterations):
                 break
 
         #makes sure that not two next follow each other TODO : confirm it is correct
-        recovered.insert(end_main.line_num-1, if_bloc)
+        if if_inserted == False:
+            recovered.insert(end_main.line_num-1, if_bloc)
+            if_inserted = True
         insert_cond = random.randrange(begin_main.line_num+1, ret_main)
-        while re.search(r"next\d{7,}:", recovered.lines[insert_cond]) != None:
-            insert_cond = random.randrange(begin_main.line_num+1, ret_main)
+        while recovered.lines[insert_cond].find("  ") != 0:
+            insert_cond = random.randrange(begin_main.line_num+iteration+1, ret_main)
         
         recovered.insert(insert_cond, f";-------------------------------\n")
         recovered.insert(insert_cond, cond_bloc)
@@ -189,10 +192,11 @@ def add_random_in_main(project, max_rand, iterations):
 
         recovered.insert(srand_line, main_decl)
         
-        recovered.insert(begin_main.line_num-2, f";-------------------------------\n")
-        recovered.insert(begin_main.line_num-2, f";--------Extra functions--------\n")
-        recovered.insert(begin_main.line_num-2, fun_decl)
-        recovered.insert(begin_main.line_num-2, f";-------------------------------\n")
+        if(fun_decl != "") : 
+            recovered.insert(begin_main.line_num-2, f";-------------------------------\n")
+            recovered.insert(begin_main.line_num-2, f";--------Extra functions--------\n")
+            recovered.insert(begin_main.line_num-2, fun_decl)
+            recovered.insert(begin_main.line_num-2, f";-------------------------------\n")
         
         recovered.write()
 
