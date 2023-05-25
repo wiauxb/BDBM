@@ -20,7 +20,7 @@ def mutation_selection(project, num_of_mutations):
         os.makedirs("s2e/projects/"+project+"/mutations")
     a_remettre = ["strings_split" , "string_base64"]
     mutations = ["escape_envvar", "string_xor" ,"clean_adder", "random_if", "replace_puts", "sys_adder", "basic_if", "escape_traced", "escape_vm"]
-    nombre_mutations = random.randrange(0, len(mutations)+1)
+    nombre_mutations = random.randrange(1, len(mutations)+1)
     mutations_to_do = []
     for i in range(nombre_mutations):
         mutation_to_append = mutations[random.randrange(0, len(mutations))]
@@ -76,7 +76,6 @@ def mutation_selection(project, num_of_mutations):
             with open("s2e/projects/"+project+"/mutations/mutations_record.txt", "r") as f:
                 lines = f.readlines()
             lines.append(just_com)
-            print("passeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         except Exception as error:
             print(error)
             lines = just_com
