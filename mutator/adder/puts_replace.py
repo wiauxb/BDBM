@@ -18,16 +18,16 @@ def find_last_meta(recovered):
 
 def print_decl():
     return """; Function Attrs: naked noinline
-declare dso_local i32 @printf(i8* noundef) local_unnamed_addr  naked noinline "frame-pointer"="none" "no-builtins" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="pentium4" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" 
+declare dso_local i32 @printf(i8* noundef, ...) local_unnamed_addr  naked noinline "frame-pointer"="none" "no-builtins" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="pentium4" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" 
 """
 
 
 def generate_new_print(var, arg, num_meta, line_var, recovered):
     ind = str(get_new_index(recovered))
     cast = "%cast" + ind
-    new_print = f"""  %fp{ind} = tail call i32 @printf(i8* nonnull dereferenceable(1) {arg})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}
+    new_print = f"""  %fp{ind} = tail call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) {arg})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}
   {cast}= getelementptr [1 x i8], [1 x i8]* {line_var}, i64 0, i64 0
-  {var} = tail call i32 @printf(i8* nonnull dereferenceable(1) {cast})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}\n"""
+  {var} = tail call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) {cast})  nobuiltin nounwind "no-builtins" , !funcname !{num_meta}\n"""
     return new_print
 
 def replace_puts(project):

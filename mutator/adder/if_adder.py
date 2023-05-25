@@ -49,7 +49,7 @@ def insert_basic_if_print(project, messages):
                 decl_puts = True
             if re.search(r"  ret void", line) and i > begin_main.line_num and i < end_main.line_num :
                 ret_main = i
-                
+
         recovered.insert(end_main.line_num-1, branch)
         insert_cond = random.randrange(begin_main.line_num+1, ret_main)
         while recovered.lines[insert_cond].find("  ") != 0:
@@ -93,7 +93,7 @@ def generate_random_func_decl(recovered : fileRep):
     if(decl_srand == False):
         func_decl += "declare void @srand(i32) local_unnamed_addr  noinline \n\n"
     if(decl_time == False):
-        func_decl += "declare i32 @time(i32*) local_unnamed_addr noinline \n\n"
+        func_decl += "declare i32 @time(i32) local_unnamed_addr noinline \n\n"
     return func_decl
 
 
@@ -116,7 +116,7 @@ def generate_random_main(recovered : fileRep, max_rand):
 
     main_decl = f""""""
     if srand_main == False:
-        main_decl += f"""  {time_var} = tail call i32 @time(i32* null)
+        main_decl += f"""  {time_var} = tail call i32 @time(i32 ptrtoint (i8* null to i32))
   tail call void @srand(i32 {time_var})\n"""
     rand_init = "%rand_init" + str(get_new_index(recovered))
     main_decl += f"""  {rand_init} = tail call i32 @rand()\n"""
@@ -175,9 +175,9 @@ def add_random_in_main(project, max_rand, iterations):
         if if_inserted == False:
             recovered.insert(end_main.line_num-1, if_bloc)
             if_inserted = True
-        insert_cond = random.randrange(begin_main.line_num+1, ret_main)
+        insert_cond = random.randrange(begin_main.line_num+3, ret_main)
         while recovered.lines[insert_cond].find("  ") != 0:
-            insert_cond = random.randrange(begin_main.line_num+iteration+1, ret_main)
+            insert_cond = random.randrange(begin_main.line_num+iteration+3, ret_main)
         
         recovered.insert(insert_cond, f";-------------------------------\n")
         recovered.insert(insert_cond, cond_bloc)

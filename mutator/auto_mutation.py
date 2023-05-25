@@ -29,7 +29,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
 
     rand_if_parser = subparsers.add_parser("random_if")
     rand_if_parser.add_argument("--max_random", help ="Maximum value for the if comparison", default = 5)
-    rand_if_parser.add_argument("--iterations", help = "Number of if's to add in the project", default = 1)
+    rand_if_parser.add_argument("--number", help = "Number of if's to add in the project", default = 1)
     
     debug_parser = subparsers.add_parser("escape")
     debug_parser.add_argument("kind", choices=["envvar", "traced", "vm", "random"])
@@ -66,7 +66,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
         lines_added = code_adder.sys_calls(int(args.number_add), project)
     elif args.command == "random_if":
         code_adder.clone_recovered(project)
-        if_adder.add_random_in_main(project, int(args.max_random), int(args.iterations))
+        if_adder.add_random_in_main(project, int(args.max_random), int(args.number))
     elif args.command == "escape":
         if args.kind == "envvar":
             if not args.var_name:

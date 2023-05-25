@@ -152,7 +152,7 @@ def sys_calls(num_calls, project):
 
                 insert_sys_calls(call_to_insert, sys_lines, begin_main, end_main, recovered, project)
             
-                command = "just recompile " + project
+                command = "just link_recompile " + project + " \"mutator/escape/detect.bc\" \"mutator/strings/bytecodes/base64.bc\""
                 subprocess.check_output(command, shell=True, timeout = 30)                      
                 compiled_check = True
             except:
