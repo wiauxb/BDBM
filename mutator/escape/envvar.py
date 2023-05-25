@@ -24,7 +24,13 @@ def inject_debug_detect_at(recovered: fileRep, var_name, start_main : ref, end_m
 
     ind = get_new_index(recovered)
     
-    recovered.insert(start_main.line_num - 3 , "declare i32 @getenv(i32) local_unnamed_addr noinline\n") #FIXME : -3 could end up in another function and break everything
+    al_def = False
+    for line in recovered.lines:
+        if line.find("getenv") >=0:
+            al_def = True
+
+    if al_def == False :
+        recovered.insert(start_main.line_num - 3 , "declare i32 @getenv(i32) local_unnamed_addr noinline\n") #FIXME : -3 could end up in another function and break everything
 
     for i, var in enumerate(var_name):
 
