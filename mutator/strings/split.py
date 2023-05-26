@@ -158,7 +158,7 @@ def inject_splitted_string(recovered: fileRep, string, str_ref: stringRef, cst_r
     recovered.write()
 
 
-def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str = "ptr", add_null_byte : bool = True):
+def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str = "i32", add_null_byte : bool = True):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string."""
     null = "\\00"
@@ -166,16 +166,16 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
 
     code = f""";-------------------------------
 ; Replace: {infos}
-  %sp{ind} = alloca [{length} x i8]
+  %{var if format == "ptr" else f"sp{ind}"} = alloca [{length} x i8]
 
   """
     
     splits = generate_splitted_string(string, ncuts)
     split_len = len(splits[0].replace("\\00", "\00").encode())
     code += f"""
-  %sp0.{ind} = bitcast [{length} x i8]* %sp{ind} to [{split_len} x i8]*
+  %sp0.{ind} = bitcast [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"} to [{split_len} x i8]*
   store [{split_len} x i8] c"{splits[0]}", [{split_len} x i8]* %sp0.{ind}
-  %next0.{ind} = getelementptr [{length} x i8], [{length} x i8]* %sp{ind}, i32 0, i32 {split_len}
+  %next0.{ind} = getelementptr [{length} x i8], [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"}, i32 0, i32 {split_len}
   """
     prev_added_len = split_len
     for i in range(1, len(splits)-1):
@@ -183,7 +183,7 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
         code += f"""
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
   store [{split_len} x i8] c"{splits[i]}", [{split_len} x i8]* %sp{i}.{ind}
-  %next{i}.{ind} = getelementptr [{length} x i8], [{length} x i8]* %sp{ind}, i32 0, i32 {prev_added_len + split_len}
+  %next{i}.{ind} = getelementptr [{length} x i8], [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"}, i32 0, i32 {prev_added_len + split_len}
   """
         prev_added_len += split_len
     i = len(splits)-1
@@ -192,7 +192,7 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
   store [{split_len} x i8] c"{splits[i]}{null if add_null_byte else ''}", [{split_len} x i8]* %sp{i}.{ind}
 """
-    if format == "ptr":
+    if format == "i32":
         code += f"""
   %{var}{ind} = ptrtoint [{length} x i8]* %sp{ind} to i32
 """
@@ -200,6 +200,8 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
         code += f"""
   %{var}{ind} = load [{length} x i8], [{length} x i8]* %sp{ind}
 """
+    elif format == "ptr":
+        pass
     else:
         raise ValueError("format must be ptr or string")
 
