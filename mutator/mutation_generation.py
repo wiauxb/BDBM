@@ -2,7 +2,7 @@ import subprocess
 import os
 import random
 import sys
-
+import argparse
 import requests
 from .helpers.file_representation import fileRepresentation as fileRep
 import urllib
@@ -11,7 +11,7 @@ import shutil
 
 
 def mutation_selection(project, num_of_mutations: int):
-    #Generate a mutation of project. 
+    #Generate a mutation of project.
     #Stores the resulting file and the instructions in s2e/projects/{project}/mutations
 
     command = f"""just lift-trace {project}"""
@@ -31,7 +31,7 @@ def mutation_selection(project, num_of_mutations: int):
     #mutations_to_do = ["clean_adder", "strings_split"]
     #mutations_to_do = [mutations[num_of_mutations-1]]
     just_com = "mutations : " + str(num_of_mutations) + "\n"
-    for mutation in mutations_to_do : 
+    for mutation in mutations_to_do :
         if mutation == "strings_split":
             just_com += mutate_strings(project, "split")
         if mutation == "string_base64":
@@ -71,7 +71,7 @@ def mutation_selection(project, num_of_mutations: int):
         else:
             command = "just recompile " + project
         subprocess.check_output(command, shell=True, timeout = 30)
-    
+
     except Exception as error:
         print("couldn't recompile mutation, starting again")
         exit()
@@ -87,14 +87,14 @@ def mutation_selection(project, num_of_mutations: int):
     except Exception as error:
         print(error)
         lines = just_com
-    
+
     with open("s2e/projects/"+project+"/mutations/mutations_record.txt", "w") as f:
         f.writelines(lines)
     if(num_of_mutations <=1):
         return
     else:
         mutation_selection(project, num_of_mutations-1)
-   
+
 
 def mutate_basic_if(project):
     words_liste = ["Premier ", "Deuxième ", "troisieme ", "okiojvi,er ", "dergbjzeka ", "zefiĵht "]
@@ -151,7 +151,15 @@ def mutate_strings(project, choice):
     print(output.decode())
     return command
 
-    
+
 
 if __name__ == "__main__":
-    mutation_selection("toy3", 10)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('project', help="Project name")
+    parser.add_argument('number', help='Number of mutants to generate')
+
+    args = parser.parse_args()
+
+    mutation_selection(args.project, int(args.number))
+
+

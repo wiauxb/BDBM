@@ -244,7 +244,7 @@ recompile project *flags:
   llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll"
   # clang-14 -O0 -g -c -emit-llvm -target i386 s2e/projects/string/s2e-out/recovered.ll -o s2e/projects/string/s2e-out/recovered.bc
   pipenv run python -m binrec.compile_recovered  "{{project}}" {{flags}}
-  
+
 # [Memoire] recompile recovered.ll to custom_recovered.
 link_recompile project *files:
   llvm-as-14 "s2e/projects/{{project}}/s2e-out/recovered.ll" -o "s2e/projects/{{project}}/s2e-out/recovered_to_link.bc"
@@ -267,7 +267,11 @@ yara project:
 # [Memoire] Execute mutated binary of project
 exec-mutated project *args:
   "s2e/projects/{{project}}/s2e-out/custom_recovered" {{args}}
- 
+
+# [Memoire] Generate number mutants of project
+get-mutants project number:
+    pipenv run python -m mutator.mutation_generation {{project}} {{number}}
+
 recover project-name:
   @just run "{{project-name}}"
   @just merge-traces "{{project-name}}"
