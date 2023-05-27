@@ -18,7 +18,7 @@ def mutation_selection(project, num_of_mutations):
     subprocess.check_output(command, shell=True, timeout = 30)
     if not os.path.exists("s2e/projects/"+project+"/mutations"):
         os.makedirs("s2e/projects/"+project+"/mutations")
-    a_remettre = ["strings_split" , "string_base64"]
+    a_raj = ["strings_split" ]
     mutations = ["escape_envvar", "string_xor" ,"clean_adder", "random_if", "replace_puts", "sys_adder", "basic_if", "escape_traced", "escape_vm"]
     nombre_mutations = random.randrange(1, len(mutations)+1)
     mutations_to_do = []
@@ -28,7 +28,7 @@ def mutation_selection(project, num_of_mutations):
             mutation_to_append = mutations[random.randrange(0, len(mutations))]
         mutations_to_do.append(mutation_to_append)
 
-    just_com = str(num_of_mutations) + "mutations : \n"
+    just_com = "mutations : " + str(num_of_mutations) + "\n"
     for mutation in mutations_to_do : 
         if mutation == "strings_split":
             just_com += mutate_strings(project, "split")
@@ -58,10 +58,10 @@ def mutation_selection(project, num_of_mutations):
         which_rec = 1
         link = ""
         if "escape_vm" in mutations_to_do:
-            link += "\"mutator/escape/detect.bc\" "
+            link += "mutator/escape/detect.bc "
             which_rec = 0
         if "string_base64" in mutations_to_do:
-            link += "\"mutator/strings/bytecodes/base64.bc\" "
+            link += "mutator/strings/bytecodes/base64.bc "
             which_rec = 0
 
         if which_rec == 0:
@@ -71,6 +71,7 @@ def mutation_selection(project, num_of_mutations):
         subprocess.check_output(command, shell=True, timeout = 30)
 
         shutil.copy("s2e/projects/" +project +"/s2e-out/recovered.ll", "s2e/projects/"+project+"/mutations/mutations"+str(num_of_mutations)+".ll")
+        shutil.copy("s2e/projects/" +project +"/s2e-out/custom_recovered", "s2e/projects/"+project+"/mutations/mutations"+str(num_of_mutations)+"_exec")
 
         try:
             with open("s2e/projects/"+project+"/mutations/mutations_record.txt", "r") as f:
@@ -149,4 +150,4 @@ def mutate_strings(project, choice):
     
 
 if __name__ == "__main__":
-    mutation_selection("hello", 3)
+    mutation_selection("toy3", 10)

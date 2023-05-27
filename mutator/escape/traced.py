@@ -28,10 +28,12 @@ def inject_ptrace_detect_at(recovered: fileRep, start_main : ref, end_main : ref
 
     recovered.insert(start_main.line_num - 3 , function_declaration + "\n") #FIXME : -3 could end up in another function and break everything
 
-    recovered.insert(start_main.line_num, code)
+    recovered.insert(start_main.line_num+1, code)
 
     recovered.insert(end_main.line_num - 1, escaping_name + ":\n")
-    recovered.insert(end_main.line_num - 1, "  ret void\n") #FIXME the function must maybe return something
+    
+    ret_type, ret_line = get_default_return_line(recovered, start_main)
+    recovered.insert(end_main.line_num - 1, ret_line) #FIXME the function must maybe return something
 
     recovered.write()
 

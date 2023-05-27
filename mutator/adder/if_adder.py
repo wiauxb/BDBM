@@ -32,6 +32,7 @@ next{const}:\n"""
 def insert_basic_if_print(project, messages):
     """Insert basic if 0=0 in the project that print the messages (1 if per message)"""
     (begin_main, end_main), recovered = init_mutation(project)
+    ret_type, ret_line = get_default_return_line(recovered, begin_main)
 
     for i, message in enumerate(messages):
         message += "\\00"
@@ -47,7 +48,7 @@ def insert_basic_if_print(project, messages):
             match = re.search(r"declare .* @(\w{2,}).*\(.*", line)
             if match != None and match[1] == "puts":
                 decl_puts = True
-            if re.search(r"  ret void", line) and i > begin_main.line_num and i < end_main.line_num :
+            if re.search(r"  ret " + ret_type, line) and i > begin_main.line_num and i < end_main.line_num :
                 ret_main = i
 
         recovered.insert(end_main.line_num-1, branch)
@@ -125,7 +126,7 @@ def generate_random_main(recovered : fileRep, max_rand):
 
     return main_decl, rand_fin
 
-def generate_random_if(max_rand, rand_var, recovered, if_name):
+def generate_random_if(max_rand, rand_var, recovered, if_name, ret_line):
     """
     Generate the random if condition and the return bloc.
 
@@ -143,9 +144,9 @@ def generate_random_if(max_rand, rand_var, recovered, if_name):
   br i1 %.not{const}.i.i, label %next{const}, label %{if_name}
 next{const}:\n"""
 
-    if_bloc =f"""{if_name}:
-  ret void
-"""
+    if_bloc =f"""{if_name}:\n"""
+    if_bloc += ret_line
+
     return cond_bloc, if_bloc, if_name
 
 def add_random_in_main(project, max_rand, iterations):
@@ -160,14 +161,16 @@ def add_random_in_main(project, max_rand, iterations):
     (begin_main, end_main), recovered = init_mutation(project)
     if_name = ""
     if_inserted = False
-    for iteration in range(iterations) :        
+    for iteration in range(iterations) : 
+        ret_type, ret_line = get_default_return_line(recovered, begin_main)
+
         fun_decl = generate_random_func_decl(recovered)
         main_decl, rand_fin = generate_random_main(recovered, max_rand)
-        cond_bloc, if_bloc, if_name = generate_random_if(max_rand, rand_fin, recovered, if_name)
+        cond_bloc, if_bloc, if_name = generate_random_if(max_rand, rand_fin, recovered, if_name, ret_line)
 
 
         for i, line in enumerate(recovered.lines) :
-            if re.search(r"  ret void", line) and i > begin_main.line_num and i < end_main.line_num :
+            if re.search(r"  ret "+ ret_type, line) and i > begin_main.line_num and i < end_main.line_num :
                 ret_main = i
                 break
 
@@ -204,5 +207,5 @@ def add_random_in_main(project, max_rand, iterations):
 
 
 if __name__ == "__main__":
-    insert_basic_if_print("hello", ["Premier\0a", "Deuxieme\0a", "Troisième\0a"])
-    #add_random_in_main("hello", 3, 2)
+    #insert_basic_if_print("hello", ["Premier\0a", "Deuxieme\0a", "Troisième\0a"])
+    add_random_in_main("toy3", 3, 2)

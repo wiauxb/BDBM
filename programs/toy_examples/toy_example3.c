@@ -6,7 +6,7 @@
 #include <sys/socket.h>
 
 void print_func(){
-    char *hello = "Hello World\n";
+    char *hello = "I am evil!!!\n";
 	char *bye = "Bye Bye\n";
     printf("%s", hello);
     return;
@@ -18,7 +18,7 @@ void print_file(){
     if( fp == NULL ) {
     fprintf(stderr, "Couldn't open:\n");
     exit(1);
-}
+    }
     fseek(fp, 0L, SEEK_END);
     long sz = ftell(fp);
 
@@ -58,6 +58,7 @@ int main(int argc, char **argv){
     else if (!strcmp(argv[1],"3"))
     {
         socket_func();
+        
     }
     
 	return 0;

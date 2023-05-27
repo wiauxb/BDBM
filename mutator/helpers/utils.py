@@ -83,6 +83,23 @@ def clone_recovered(project):
         shutil.copyfile(copy, original)
     return 0
 
+def get_default_return_line(recovered : fileRep, begin_main):
+
+    for line in recovered.lines:
+        ret_type = re.search(r"define internal fastcc (.*) @Func_main", line)
+        if ret_type != None:
+            break
+    
+    if(ret_type == None):
+        print("Error, no func_main found")
+        return
+    
+    if ret_type[1] == "void":
+        return "void", """  ret void\n"""
+    elif ret_type[1] == "i32":
+        return "i32", """   ret i32 0\n"""
+
+
 def address_to_offset(project, address):
     table = get_section_table(project)
     i = 0
