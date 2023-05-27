@@ -55,9 +55,9 @@ def find_var_usage(recovered : fileRep, var_name, exclude_line = []):
         match = re.search(r'%s[ \n,]' % var_name, no_comment_line)
         if match and i not in exclude_line:
             list.append(recovered.ref(i))
-    print(f"Found {len(list)} usages of {var_name}")
-    print("Excluded lines: " + str(exclude_line))
-    print("Usages: " + str(list))
+    #print(f"Found {len(list)} usages of {var_name}")
+    #print("Excluded lines: " + str(exclude_line))
+    #print("Usages: " + str(list))
     return list
 
 def find_constant_declaration_block(recovered : fileRep):
@@ -127,7 +127,8 @@ def get_string_in_python_format(string: str):
     string -- string to convert
     Return: string in python format
     """
-    
+    string = string.replace("\n", "\\0a")
+    string = string.replace("\"", "\\22")
     return re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
 
 def get_string_in_llvm_format( string: str):
@@ -138,4 +139,4 @@ def get_string_in_llvm_format( string: str):
     Return: string in llvm format
     """
     
-    return "".join([c if c.isprintable() else f"\\{ord(c):02x}" for c in string])
+    return "".join([c if c.isprintable() or c == "\"" else f"\\{ord(c):02x}" for c in string])
