@@ -24,7 +24,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             return
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        inject_splitted_string(recovered, string, str_ref, constantsRefs, rodata, ncuts)
+        inject_splitted_string(recovered, string+"\00", str_ref, constantsRefs, rodata, ncuts)
 
     elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
@@ -33,7 +33,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             string = get_string_from_binary(project, offset)
             if len(string) < 2:
                 return
-            strings.append(string)
+            strings.append(string+"\00")
         for i, offset in enumerate(offsets):
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
@@ -122,9 +122,9 @@ def inject_splitted_string(recovered: fileRep, string, str_ref: stringRef, cst_r
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_split_string_code_with_constants(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, format="ptr", add_null_byte=False)
+            code, constants = generate_llvm_split_string_code_with_constants(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, format="ptr")
         else:
-            code = generate_llvm_split_string_code(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, format="ptr", add_null_byte=False)
+            code = generate_llvm_split_string_code(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, format="ptr")
 
         recovered.insert(str_ref.line_num, code)
         recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind}"))
@@ -139,9 +139,9 @@ def inject_splitted_string(recovered: fileRep, string, str_ref: stringRef, cst_r
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, ncuts, format="string", add_null_byte=False)
+            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, ncuts, format="string")
         else:
-            code = generate_llvm_split_string_code(string, "spi", str_ref.line.strip(), ind, ncuts, format="string", add_null_byte=False)
+            code = generate_llvm_split_string_code(string, "spi", str_ref.line.strip(), ind, ncuts, format="string")
 
         recovered.insert(str_ref.line_num, code)
         recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind}"))
@@ -158,11 +158,13 @@ def inject_splitted_string(recovered: fileRep, string, str_ref: stringRef, cst_r
     recovered.write()
 
 
-def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str = "i32", add_null_byte : bool = True):
+def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string."""
-    null = "\\00"
-    length = len(string.replace("\\00", "\00").encode()) + (1 if add_null_byte else 0)
+    
+    s = get_string_in_python_format(string)
+
+    length = len(s.encode())
 
     code = f""";-------------------------------
 ; Replace: {infos}
@@ -170,27 +172,28 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
 
   """
     
-    splits = generate_splitted_string(string, ncuts)
-    split_len = len(splits[0].replace("\\00", "\00").encode())
+    splits = generate_splitted_string(s, ncuts)
+    split_len = len(splits[0].encode())
     code += f"""
   %sp0.{ind} = bitcast [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"} to [{split_len} x i8]*
-  store [{split_len} x i8] c"{splits[0]}", [{split_len} x i8]* %sp0.{ind}
+  store [{split_len} x i8] c"{get_string_in_llvm_format(splits[0])}", [{split_len} x i8]* %sp0.{ind}
   %next0.{ind} = getelementptr [{length} x i8], [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"}, i32 0, i32 {split_len}
   """
     prev_added_len = split_len
     for i in range(1, len(splits)-1):
-        split_len = len(splits[i].replace("\\00", "\00").encode())
+        split_len = len(splits[i].encode())
+        sp = get_string_in_llvm_format(splits[i])
         code += f"""
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
-  store [{split_len} x i8] c"{splits[i]}", [{split_len} x i8]* %sp{i}.{ind}
+  store [{split_len} x i8] c"{sp}", [{split_len} x i8]* %sp{i}.{ind}
   %next{i}.{ind} = getelementptr [{length} x i8], [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"}, i32 0, i32 {prev_added_len + split_len}
   """
         prev_added_len += split_len
     i = len(splits)-1
-    split_len = len(splits[-1].replace("\\00", "\00").encode()) + (1 if add_null_byte else 0)
+    split_len = len(splits[-1].encode())
     code += f"""
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
-  store [{split_len} x i8] c"{splits[i]}{null if add_null_byte else ''}", [{split_len} x i8]* %sp{i}.{ind}
+  store [{split_len} x i8] c"{get_string_in_llvm_format(splits[i])}", [{split_len} x i8]* %sp{i}.{ind}
 """
     if format == "i32":
         code += f"""
@@ -207,24 +210,25 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
 
     return code
 
-def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind, ncuts, format : str = "i32", add_null_byte : bool = True):
+def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind, ncuts, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string.
          <format> is the format of the ending <var>. Can be "ptr" or "string".
     """
-    null = "\\00"
-    real_null = "\00"
+    
+    s = get_string_in_python_format(string)
 
-    length = len(string.replace("\\00", "\00").encode()) + (1 if add_null_byte else 0)
-    splits = generate_splitted_string(string, ncuts)
+    length = len(s.encode())
+    splits = generate_splitted_string(s, ncuts)
 
     constants = []
     for i, split in enumerate(splits[:-1]):
-        split_len = len(split.replace("\\00", "\00").encode())
+        split_len = len(split.encode())
+        sp = get_string_in_llvm_format(split)
         constants.append(f"""
-@str.{i}.{ind} = constant [{split_len} x i8] c\"{split}\"""")
+@str.{i}.{ind} = constant [{split_len} x i8] c\"{sp}\"""")
     constants.append(f"""
-@str.{len(splits)-1}.{ind} = constant [{len(splits[-1].replace(null, real_null).encode())+(1 if add_null_byte else 0)} x i8] c\"{splits[-1]}{null if add_null_byte else ''}\"""")
+@str.{len(splits)-1}.{ind} = constant [{len(splits[-1].encode())} x i8] c\"{get_string_in_llvm_format(splits[-1])}\"""")
     shuffle(constants)
     cst_str = f""";-------------------------------
 ; Replace: {infos}{"".join(constants)}
@@ -235,7 +239,7 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
   %{var if format == "ptr" else f"sp{ind}"} = alloca [{length} x i8]
   """
     
-    split_len = len(splits[0].replace("\\00", "\00").encode())
+    split_len = len(splits[0].encode())
     code += f"""
   %s0.{ind} = load [{split_len} x i8], [{split_len} x i8]* @str.0.{ind}
   %sp0.{ind} = bitcast [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"} to [{split_len} x i8]*
@@ -244,7 +248,7 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
   """
     prev_added_len = split_len
     for i in range(1, len(splits)-1):
-        split_len = len(splits[i].replace("\\00", "\00").encode())
+        split_len = len(splits[i].encode())
         code += f"""
   %s{i}.{ind} = load [{split_len} x i8], [{split_len} x i8]* @str.{i}.{ind}
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
@@ -253,7 +257,7 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
   """
         prev_added_len += split_len
     i = len(splits)-1
-    split_len = len(splits[-1].replace("\\00", "\00").encode()) + (1 if add_null_byte else 0)
+    split_len = len(splits[-1].encode())
     code += f"""
   %s{i}.{ind} = load [{split_len} x i8], [{split_len} x i8]* @str.{i}.{ind}
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
@@ -278,7 +282,6 @@ def generate_splitted_string(string, ncuts = -1):
     """Split <string> in <ncuts> parts.
          If <ncuts> is -1, the string is splitted in chars.
     """
-    string = string.replace("\\00", "\00")
 
     if ncuts < 1 or ncuts > len(string):
         cut = len(string)
@@ -290,7 +293,7 @@ def generate_splitted_string(string, ncuts = -1):
     splitted = []
     for i in range(cut):
         split = string[i * len(string)//cut:(i + 1) * len(string)//cut]
-        splitted.append(split.replace("\00", "\\00"))
+        splitted.append(split)
     return splitted
 
 def split_strings(project, rodata = False, probability = 1, number = 1, ncuts = -1):

@@ -46,28 +46,23 @@ def b64_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs
     if(str_ref.type == TYPES.ONE_ADDR):
         offset = str_ref.offset
         string = get_string_from_binary(project, offset)
-        if len(string) < 2:
-            return
 
         remove_string_from_binary(project, offset, len(string.encode()))
-        inject_b64_string(recovered, string, str_ref, constantsRefs, rodata)
+        inject_b64_string(recovered, string+"\00", str_ref, constantsRefs, rodata)
 
     elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
         strings = []
         for i, offset in enumerate(offsets):
             string = get_string_from_binary(project, offset)
-            if len(string) < 2:
-                return
-            strings.append(string)
+            
+            strings.append(string+"\00")
         for i, offset in enumerate(offsets):
             remove_string_from_binary(project, offset, len(strings[i].encode()))
 
         inject_b64_string(recovered, strings, str_ref, constantsRefs, rodata)
 
     elif(str_ref.type == TYPES.GLB_CST):
-        if len(str_ref.string) < 2:
-            return
         recovered.delete(str_ref.line_num)
 
         var_name = re.findall(r'(@.*) =', str_ref.line)[0]
@@ -81,8 +76,6 @@ def b64_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs
             inject_b64_string(recovered, str_ref.string, var_ref, constantsRefs, rodata)
     
     elif(str_ref.type == TYPES.LCL_CST):
-        if len(str_ref.string) < 2:
-            return
         inject_b64_string(recovered, str_ref.string, str_ref, constantsRefs, rodata)
 
 
@@ -189,14 +182,15 @@ def generate_llvm_base64_string_code_with_constants(string : str, var, infos, in
          <var> is the name of the variable to store the string.
          <format> is the format of the ending <var>. Can be "ptr" or "string".
     """
-    s = string.replace("\\00", "\00")
+    s = get_string_in_python_format(string)
     cipher = generate_b64_cipher(s)
+    llvm_cipher = get_string_in_llvm_format(cipher)
     cipher_length = len(cipher.encode())
     plain_length = len(s.encode())
 
     cst_str = f""";-------------------------------
 ; Replace: {infos}
-@cipher.{ind} = constant [{cipher_length} x i8] c\"{cipher}\"
+@cipher.{ind} = constant [{cipher_length} x i8] c\"{llvm_cipher}\"
 """
 
     code = f""";-------------------------------
@@ -225,15 +219,16 @@ def generate_llvm_base64_string_code(string : str, var, infos, ind, format : str
          <var> is the name of the variable to store the string.
          <format> is the format of the ending <var>. Can be "ptr" or "string".
     """
-    s = string.replace("\\00", "\00")
+    s = get_string_in_python_format(string)
     cipher = generate_b64_cipher(s)
+    llvm_cipher = get_string_in_llvm_format(cipher)
     cipher_length = len(cipher.encode())
     plain_length = len(s.encode())
 
     code = f""";-------------------------------
 ; Replace: {infos}
   %cipher.ptr.{ind} = alloca [{cipher_length} x i8]
-  store [{cipher_length} x i8] c\"{cipher}\", [{cipher_length} x i8]* %cipher.ptr.{ind}
+  store [{cipher_length} x i8] c\"{llvm_cipher}\", [{cipher_length} x i8]* %cipher.ptr.{ind}
   %cipher.{ind} = getelementptr inbounds [{cipher_length} x i8], [{cipher_length} x i8]* %cipher.ptr.{ind}, i32 0, i32 0
   %plain.ptr.{ind} = tail call i8* @base64_decode(i8* %cipher.{ind})
 """
@@ -255,4 +250,4 @@ def generate_llvm_base64_string_code(string : str, var, infos, ind, format : str
 
 def generate_b64_cipher(string : str):
     """Generate the base64 cipher of <string>"""
-    return base64.b64encode(string.encode()).decode()
+    return base64.b64encode(string.encode()).decode()+"\0"

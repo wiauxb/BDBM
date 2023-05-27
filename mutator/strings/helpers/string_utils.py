@@ -26,9 +26,11 @@ def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
             if len(match[0].replace("\\00", "")) <= 1:
                 continue
             if re.match(r"@.*=", no_comment_line):
-                list.append(recovered.stringRef(i, TYPES.GLB_CST, -1, match[0]))
+                string = get_string_in_python_format(match[0])
+                list.append(recovered.stringRef(i, TYPES.GLB_CST, -1, string))
             else:
-                list.append(recovered.stringRef(i, TYPES.LCL_CST, -1, match[0]))
+                string = get_string_in_python_format(match[0])
+                list.append(recovered.stringRef(i, TYPES.LCL_CST, -1, string))
         if i > begin_main.line_num and i < end_main.line_num and match_KO == None:
             match = re.findall(r"i32 (\d{4,})", no_comment_line)
             if match and all_addresses_could_be_string(project, match):
@@ -117,3 +119,23 @@ def remove_string_from_binary(project, offset, length):
     content[offset: offset+length] = b'\x00'*length
     with open(copy, 'bw') as f:
         f.write(content)
+
+def get_string_in_python_format(string: str):
+    """Return a string in python format (with escape sequences)
+    
+    Keyword arguments:
+    string -- string to convert
+    Return: string in python format
+    """
+    
+    return re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
+
+def get_string_in_llvm_format( string: str):
+    """Return a string in llvm format (with escape sequences)
+    
+    Keyword arguments:
+    string -- string to convert
+    Return: string in llvm format
+    """
+    
+    return "".join([c if c.isprintable() else f"\\{ord(c):02x}" for c in string])
