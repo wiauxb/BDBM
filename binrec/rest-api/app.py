@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from tempfile import mkstemp
 from typing import Dict, Optional, Tuple, Union
-from .mutate_interface import mutate
+from .mutate_interface import mutate, gen_mutate
 
 from flask import (
     Flask,
@@ -213,4 +213,15 @@ def start_mutate_project(project: str):
     else:
         return {"status": "error"}, 415
 
+    return {"status": "success"}, 200
+
+
+@app.get("/projects/<project>/mutations/<num_mutations>")
+def get_mutations_for_project(project: str, num_mutations: int):
+    
+    _ = load_campaign(project)  # make sure the project/campaign exists and is valid
+    try:
+        gen_mutate(project, num_mutations)
+    except Exception as error:
+        return {"error": error}, 415
     return {"status": "success"}, 200
