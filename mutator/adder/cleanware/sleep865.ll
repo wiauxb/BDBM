@@ -28,31 +28,31 @@ declare i32 @usleep(i32) local_unnamed_addr  noinline
 
 ; Function Attrs: norecurse
 define internal fastcc void @sleep865(i32 %arg_esp) unnamed_addr  norecurse  !retregs !10 {
-  %tmp2_v.i5.i = add i32 %arg_esp, 4
-  %tmp0_v.i6.i = and i32 %arg_esp, -16
+  %tmp2_v.i.i = add i32 %arg_esp, 4
+  %tmp0_v.i.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i7.i = add i32 %tmp0_v.i6.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i7.i to i32*
+  %tmp2_v3.i.i = add i32 %tmp0_v.i.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i6.i, -8
+  %tmp2_v4.i.i = add i32 %tmp0_v.i.i, -8
   %4 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i6.i, -12
+  %tmp2_v5.i.i = add i32 %tmp0_v.i.i, -12
   %5 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i6.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i.i, -16
   %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i5.i, i32* %6, align 16
-  %tmp2_v7.i.i = add i32 %tmp0_v.i6.i, -20
+  store i32 %tmp2_v.i.i, i32* %6, align 16
+  %tmp2_v7.i.i = add i32 %tmp0_v.i.i, -20
   %7 = inttoptr i32 %tmp2_v7.i.i to i32*
   store i32 134517198, i32* %7, align 4
-  %tmp2_v2.i21.i = add i32 %tmp0_v.i6.i, -32
-  %8 = inttoptr i32 %tmp2_v2.i21.i to i32*
-  %spi863 = ptrtoint[7 x i8]* @str.863 to i32
-  store i32 %spi863, i32* %8, align 16
-  %tmp2_v3.i22.i = add i32 %tmp0_v.i6.i, -36
-  %9 = inttoptr i32 %tmp2_v3.i22.i to i32*
+  %tmp2_v2.i.i = add i32 %tmp0_v.i.i, -32
+  %8 = inttoptr i32 %tmp2_v2.i.i to i32*
+  %spi.bis.863 = ptrtoint[7 x i8]* @str.863 to i32
+  store i32 %spi.bis.863, i32* %8, align 16
+  %tmp2_v3.i5.i = add i32 %tmp0_v.i.i, -36
+  %9 = inttoptr i32 %tmp2_v3.i5.i to i32*
   store i32 134517219, i32* %9, align 4
   %arg.i.i = load i32, i32* %8, align 16
   %10 = inttoptr i32 %arg.i.i to i8*
@@ -61,8 +61,8 @@ define internal fastcc void @sleep865(i32 %arg_esp) unnamed_addr  norecurse  !re
   store i32 134517235, i32* %9, align 4
   %arg.i.i1 = load i32, i32* %8, align 16
   %12 = tail call i32 @usleep(i32 %arg.i.i1)
-  %spi862 = ptrtoint[6 x i8]* @str.862 to i32
-  store i32 %spi862, i32* %8, align 16
+  %spi.bis.862 = ptrtoint[6 x i8]* @str.862 to i32
+  store i32 %spi.bis.862, i32* %8, align 16
   store i32 134517253, i32* %9, align 4
   %arg.i.i2 = load i32, i32* %8, align 16
   %13 = inttoptr i32 %arg.i.i2 to i8*

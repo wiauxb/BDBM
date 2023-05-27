@@ -45,8 +45,8 @@ define internal fastcc void @hello45(i32 %arg_esp) unnamed_addr  norecurse  !ret
   store i32 134517166, i32* %7, align 4
   %tmp2_v2.i.i = add i32 %tmp0_v.i.i, -32
   %8 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %spi42 = ptrtoint[12 x i8]* @str.42 to i32
-  store i32 %spi42, i32* %8, align 16
+  %spi.bis.42 = ptrtoint[12 x i8]* @str.42 to i32
+  store i32 %spi.bis.42, i32* %8, align 16
   %tmp2_v3.i4.i = add i32 %tmp0_v.i.i, -36
   %9 = inttoptr i32 %tmp2_v3.i4.i to i32*
   store i32 134517188, i32* %9, align 4

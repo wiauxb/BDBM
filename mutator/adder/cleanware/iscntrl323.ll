@@ -28,34 +28,34 @@ declare i32 @__ctype_b_loc() local_unnamed_addr  noinline
 ; Function Attrs: norecurse
 define internal fastcc void @iscntrl323(i32 %arg_esp) unnamed_addr  norecurse  !retregs !10 {
 .exit:
-  %tmp2_v.i9.i = add i32 %arg_esp, 4
-  %tmp0_v.i10.i = and i32 %arg_esp, -16
+  %tmp2_v.i7.i = add i32 %arg_esp, 4
+  %tmp0_v.i8.i = and i32 %arg_esp, -16
   %0 = inttoptr i32 %arg_esp to i32*
   %1 = load i32, i32* %0, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i10.i, -4
+  %tmp2_v3.i.i = add i32 %tmp0_v.i8.i, -4
   %2 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 %1, i32* %2, align 4
-  %tmp2_v4.i12.i = add i32 %tmp0_v.i10.i, -8
-  %3 = inttoptr i32 %tmp2_v4.i12.i to i32*
+  %tmp2_v4.i10.i = add i32 %tmp0_v.i8.i, -8
+  %3 = inttoptr i32 %tmp2_v4.i10.i to i32*
   store i32 0, i32* %3, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i10.i, -12
+  %tmp2_v5.i.i = add i32 %tmp0_v.i8.i, -12
   %4 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %4, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i10.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i8.i, -16
   %5 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i9.i, i32* %5, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i10.i, -36
+  store i32 %tmp2_v.i7.i, i32* %5, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i8.i, -36
   %6 = inttoptr i32 %tmp2_v8.i.i to i32*
-  %tmp2_v.i17.i = add i32 %tmp0_v.i10.i, -17
-  %7 = inttoptr i32 %tmp2_v.i17.i to i8*
+  %tmp2_v.i21.i = add i32 %tmp0_v.i8.i, -17
+  %7 = inttoptr i32 %tmp2_v.i21.i to i8*
   store i8 10, i8* %7, align 1
   store i32 134517216, i32* %6, align 4
   %8 = tail call i32 @__ctype_b_loc()
-  %tmp2_v1.i23.i = add i32 %tmp0_v.i10.i, -48
-  %9 = inttoptr i32 %tmp2_v1.i23.i to i32*
-  %spi321 = ptrtoint[34 x i8]* @str.321 to i32
-  store i32 %spi321, i32* %9, align 16
-  %tmp2_v2.i.i = add i32 %tmp0_v.i10.i, -52
+  %tmp2_v1.i.i = add i32 %tmp0_v.i8.i, -48
+  %9 = inttoptr i32 %tmp2_v1.i.i to i32*
+  %spi.bis.321 = ptrtoint[34 x i8]* @str.321 to i32
+  store i32 %spi.bis.321, i32* %9, align 16
+  %tmp2_v2.i.i = add i32 %tmp0_v.i8.i, -52
   %10 = inttoptr i32 %tmp2_v2.i.i to i32*
   store i32 134517254, i32* %10, align 4
   %arg.i.i = load i32, i32* %9, align 16

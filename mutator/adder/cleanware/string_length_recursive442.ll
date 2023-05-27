@@ -84,68 +84,8 @@ declare void @llvm.lifetime.end.p0i8(i64 immarg, i8* nocapture)  argmemonly nofr
 ; Function Attrs: nofree nosync nounwind readnone willreturn
 declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone willreturn 
 
-; Function Attrs: norecurse nounwind
-define internal fastcc void @string_length_recursive442(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
-.exit:
-  %tmp2_v.i.i = add i32 %arg_esp, 4
-  %tmp0_v.i.i = and i32 %arg_esp, -16
-  %0 = inttoptr i32 %arg_esp to i32*
-  %1 = load i32, i32* %0, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i.i, -4
-  %2 = inttoptr i32 %tmp2_v3.i.i to i32*
-  store i32 %1, i32* %2, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i.i, -8
-  %3 = inttoptr i32 %tmp2_v4.i.i to i32*
-  store i32 0, i32* %3, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i.i, -12
-  %4 = inttoptr i32 %tmp2_v5.i.i to i32*
-  store i32 0, i32* %4, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i.i, -16
-  %5 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i.i, i32* %5, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i.i, -36
-  %6 = inttoptr i32 %tmp2_v8.i.i to i32*
-  store i32 134517201, i32* %6, align 4
-  %tmp4_v.i24.i.b = load i1, i1* @segs.0, align 1
-  %7 = inttoptr i32 %arg_esp to i32*
-  %8 = load i32, i32* %7, align 4
-  %tmp2_v2.i28.i = add i32 %tmp0_v.i.i, -20
-  %9 = inttoptr i32 %tmp2_v2.i28.i to i32*
-  store i32 %8, i32* %9, align 4
-  %tmp2_v3.i29.i = add i32 %tmp0_v.i.i, -26
-  %10 = inttoptr i32 %tmp2_v3.i29.i to i32*
-  store i32 1684234849, i32* %10, align 4
-  %tmp2_v4.i30.i = add i32 %tmp0_v.i.i, -22
-  %11 = inttoptr i32 %tmp2_v4.i30.i to i16*
-  store i16 101, i16* %11, align 2
-  %tmp2_v7.i34.i = add i32 %tmp0_v.i.i, -48
-  %12 = inttoptr i32 %tmp2_v7.i34.i to i32*
-  store i32 %tmp2_v3.i29.i, i32* %12, align 16
-  %tmp2_v8.i35.i = add i32 %tmp0_v.i.i, -52
-  %13 = inttoptr i32 %tmp2_v8.i35.i to i32*
-  store i32 134517243, i32* %13, align 4
-  %14 = tail call fastcc { i32, i32, i32 } @Func_string_length(i32 %tmp2_v8.i35.i, i32 %tmp2_v4.i.i)
-  %15 = extractvalue { i32, i32, i32 } %14, 0
-  %16 = extractvalue { i32, i32, i32 } %14, 1
-  %17 = extractvalue { i32, i32, i32 } %14, 2
-  %tmp2_v.i8.i = add i32 %17, -24
-  %18 = inttoptr i32 %tmp2_v.i8.i to i32*
-  store i32 %16, i32* %18, align 4
-  %tmp2_v4.i11.i = add i32 %15, 4
-  %19 = inttoptr i32 %tmp2_v4.i11.i to i32*
-  store i32 %16, i32* %19, align 4
-  %20 = inttoptr i32 %15 to i32*
-  %spi440 = ptrtoint[12 x i8]* @str.440 to i32
-  store i32 %spi440, i32* %20, align 4
-  %tmp2_v7.i.i = add i32 %15, -4
-  %21 = inttoptr i32 %tmp2_v7.i.i to i32*
-  store i32 134517267, i32* %21, align 4
-  %22 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i.i, i32 inreg noundef 0, i32 noundef %15, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  ret void
-}
-
 ; Function Attrs: nofree nosync nounwind
-define internal fastcc { i32, i32, i32 } @Func_string_length(i32 %arg_esp, i32 %arg_ebp) unnamed_addr  nofree nosync nounwind  !retregs !14 {
+define internal fastcc { i32, i32, i32 } @Func_string_length(i32 %arg_esp, i32 %arg_ebp) unnamed_addr  nofree nosync nounwind  !retregs !12 {
 Func_8049245.exit.i:
   %tmp2_v.i2.i = add i32 %arg_esp, -4
   %0 = inttoptr i32 %tmp2_v.i2.i to i32*
@@ -188,6 +128,66 @@ BB_804925B.i:                                     ; preds = %Func_8049245.exit.i
   ret { i32, i32, i32 } %mrv2
 }
 
+; Function Attrs: norecurse nounwind
+define internal fastcc void @string_length_recursive442(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !13 {
+.exit:
+  %tmp2_v.i1.i = add i32 %arg_esp, 4
+  %tmp0_v.i2.i = and i32 %arg_esp, -16
+  %0 = inttoptr i32 %arg_esp to i32*
+  %1 = load i32, i32* %0, align 4
+  %tmp2_v3.i.i = add i32 %tmp0_v.i2.i, -4
+  %2 = inttoptr i32 %tmp2_v3.i.i to i32*
+  store i32 %1, i32* %2, align 4
+  %tmp2_v4.i3.i = add i32 %tmp0_v.i2.i, -8
+  %3 = inttoptr i32 %tmp2_v4.i3.i to i32*
+  store i32 0, i32* %3, align 8
+  %tmp2_v5.i.i = add i32 %tmp0_v.i2.i, -12
+  %4 = inttoptr i32 %tmp2_v5.i.i to i32*
+  store i32 0, i32* %4, align 4
+  %tmp2_v6.i.i = add i32 %tmp0_v.i2.i, -16
+  %5 = inttoptr i32 %tmp2_v6.i.i to i32*
+  store i32 %tmp2_v.i1.i, i32* %5, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i2.i, -36
+  %6 = inttoptr i32 %tmp2_v8.i.i to i32*
+  store i32 134517201, i32* %6, align 4
+  %tmp4_v.i14.i.b = load i1, i1* @segs.0, align 1
+  %7 = inttoptr i32 %arg_esp to i32*
+  %8 = load i32, i32* %7, align 4
+  %tmp2_v2.i18.i = add i32 %tmp0_v.i2.i, -20
+  %9 = inttoptr i32 %tmp2_v2.i18.i to i32*
+  store i32 %8, i32* %9, align 4
+  %tmp2_v3.i19.i = add i32 %tmp0_v.i2.i, -26
+  %10 = inttoptr i32 %tmp2_v3.i19.i to i32*
+  store i32 1684234849, i32* %10, align 4
+  %tmp2_v4.i20.i = add i32 %tmp0_v.i2.i, -22
+  %11 = inttoptr i32 %tmp2_v4.i20.i to i16*
+  store i16 101, i16* %11, align 2
+  %tmp2_v7.i.i = add i32 %tmp0_v.i2.i, -48
+  %12 = inttoptr i32 %tmp2_v7.i.i to i32*
+  store i32 %tmp2_v3.i19.i, i32* %12, align 16
+  %tmp2_v8.i24.i = add i32 %tmp0_v.i2.i, -52
+  %13 = inttoptr i32 %tmp2_v8.i24.i to i32*
+  store i32 134517243, i32* %13, align 4
+  %14 = tail call fastcc { i32, i32, i32 } @Func_string_length(i32 %tmp2_v8.i24.i, i32 %tmp2_v4.i3.i)
+  %15 = extractvalue { i32, i32, i32 } %14, 0
+  %16 = extractvalue { i32, i32, i32 } %14, 1
+  %17 = extractvalue { i32, i32, i32 } %14, 2
+  %tmp2_v.i28.i = add i32 %17, -24
+  %18 = inttoptr i32 %tmp2_v.i28.i to i32*
+  store i32 %16, i32* %18, align 4
+  %tmp2_v4.i32.i = add i32 %15, 4
+  %19 = inttoptr i32 %tmp2_v4.i32.i to i32*
+  store i32 %16, i32* %19, align 4
+  %20 = inttoptr i32 %15 to i32*
+  %spi.bis.440 = ptrtoint[12 x i8]* @str.440 to i32
+  store i32 %spi.bis.440, i32* %20, align 4
+  %tmp2_v7.i35.i = add i32 %15, -4
+  %21 = inttoptr i32 %tmp2_v7.i35.i to i32*
+  store i32 134517267, i32* %21, align 4
+  %22 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i1.i, i32 inreg noundef 0, i32 noundef %15, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !14
+  ret void
+}
+
 
 !llvm.ident = !{!0, !0, !0}
 !llvm.module.flags = !{!1, !2, !3, !4, !5}
@@ -204,8 +204,8 @@ BB_804925B.i:                                     ; preds = %Func_8049245.exit.i
 !9 = !{!"Simple C++ TBAA"}
 !10 = !{!11, !11, i64 0}
 !11 = !{!"int", !8, i64 0}
-!12 = !{i32 0, i32 0, i32 0, i32 0}
-!13 = !{!"printf"}
-!14 = !{i32 0, i32 2}
+!12 = !{i32 0, i32 2}
+!13 = !{i32 0, i32 0, i32 0, i32 0}
+!14 = !{!"printf"}
 
   tail call fastcc void @string_length_recursive442 (i32 ptrtoint (i32* getelementptr inbounds ([8092 x i32], [8092 x i32]* @stack441, i32 0, i32 8092) to i32)) nounwind

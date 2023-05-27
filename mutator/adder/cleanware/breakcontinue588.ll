@@ -88,33 +88,33 @@ declare dso_local i32 @puts(i8* noundef) local_unnamed_addr  "frame-pointer"="no
 
 ; Function Attrs: norecurse
 define internal fastcc void @breakcontinue588(i32 %arg_esp) unnamed_addr  norecurse  !retregs !12 {
-  %tmp2_v.i29.i = add i32 %arg_esp, 4
-  %tmp0_v.i30.i = and i32 %arg_esp, -16
+  %tmp2_v.i5.i = add i32 %arg_esp, 4
+  %tmp0_v.i6.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i32.i = add i32 %tmp0_v.i30.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i32.i to i32*
+  %tmp2_v3.i7.i = add i32 %tmp0_v.i6.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i7.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i33.i = add i32 %tmp0_v.i30.i, -8
-  %4 = inttoptr i32 %tmp2_v4.i33.i to i32*
+  %tmp2_v4.i8.i = add i32 %tmp0_v.i6.i, -8
+  %4 = inttoptr i32 %tmp2_v4.i8.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i35.i = add i32 %tmp0_v.i30.i, -12
-  %5 = inttoptr i32 %tmp2_v5.i35.i to i32*
+  %tmp2_v5.i.i = add i32 %tmp0_v.i6.i, -12
+  %5 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i37.i = add i32 %tmp0_v.i30.i, -16
-  %6 = inttoptr i32 %tmp2_v6.i37.i to i32*
-  store i32 %tmp2_v.i29.i, i32* %6, align 16
-  %tmp2_v8.i38.i = add i32 %tmp0_v.i30.i, -36
-  %7 = inttoptr i32 %tmp2_v8.i38.i to i32*
+  %tmp2_v6.i.i = add i32 %tmp0_v.i6.i, -16
+  %6 = inttoptr i32 %tmp2_v6.i.i to i32*
+  store i32 %tmp2_v.i5.i, i32* %6, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i6.i, -36
+  %7 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517201, i32* %7, align 4
-  %tmp2_v.i7.i = add i32 %tmp0_v.i30.i, -20
-  %8 = inttoptr i32 %tmp2_v.i7.i to i32*
+  %tmp2_v.i3.i = add i32 %tmp0_v.i6.i, -20
+  %8 = inttoptr i32 %tmp2_v.i3.i to i32*
   store i32 0, i32* %8, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i30.i, -48
+  %tmp2_v3.i.i = add i32 %tmp0_v.i6.i, -48
   %9 = inttoptr i32 %tmp2_v3.i.i to i32*
-  %spi586 = ptrtoint[11 x i8]* @str.586 to i32
-  store i32 %spi586, i32* %9, align 16
-  %tmp2_v4.i.i = add i32 %tmp0_v.i30.i, -52
+  %spi.bis.586 = ptrtoint[11 x i8]* @str.586 to i32
+  store i32 %spi.bis.586, i32* %9, align 16
+  %tmp2_v4.i.i = add i32 %tmp0_v.i6.i, -52
   %10 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 134517229, i32* %10, align 4
   %arg.i.i = load i32, i32* %9, align 16
@@ -125,20 +125,20 @@ define internal fastcc void @breakcontinue588(i32 %arg_esp) unnamed_addr  norecu
   br i1 %14, label %BB_80491F2.i.lr.ph, label %.exit
 
 BB_80491F2.i.lr.ph:                               ; preds = %0
-  %tmp2_v5.i21.i = add i32 %tmp0_v.i30.i, -44
-  %15 = inttoptr i32 %tmp2_v5.i21.i to i32*
+  %tmp2_v5.i23.i = add i32 %tmp0_v.i6.i, -44
+  %15 = inttoptr i32 %tmp2_v5.i23.i to i32*
   br label %BB_80491F2.i
 
 BB_80491F2.i:                                     ; preds = %BB_80491F2.i, %BB_80491F2.i.lr.ph
   %16 = phi i32 [ %13, %BB_80491F2.i.lr.ph ], [ %20, %BB_80491F2.i ]
   %r_edx.04 = phi i32 [ 0, %BB_80491F2.i.lr.ph ], [ %19, %BB_80491F2.i ]
-  %tmp0_v1.i16.i = add nsw i32 %16, 1
-  store i32 %tmp0_v1.i16.i, i32* %8, align 4
-  store i32 %tmp0_v1.i16.i, i32* %15, align 4
-  %spi585 = ptrtoint[7 x i8]* @str.585 to i32
-  store i32 %spi585, i32* %9, align 16
+  %tmp0_v1.i19.i = add nsw i32 %16, 1
+  store i32 %tmp0_v1.i19.i, i32* %8, align 4
+  store i32 %tmp0_v1.i19.i, i32* %15, align 4
+  %spi.bis.585 = ptrtoint[7 x i8]* @str.585 to i32
+  store i32 %spi.bis.585, i32* %9, align 16
   store i32 134517256, i32* %10, align 4
-  %17 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i29.i, i32 inreg noundef %r_edx.04, i32 noundef %tmp2_v3.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %17 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i5.i, i32 inreg noundef %r_edx.04, i32 noundef %tmp2_v3.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %18 = lshr i64 %17, 32
   %19 = trunc i64 %18 to i32
   %20 = load i32, i32* %8, align 4
@@ -146,8 +146,8 @@ BB_80491F2.i:                                     ; preds = %BB_80491F2.i, %BB_8
   br i1 %21, label %BB_80491F2.i, label %.exit
 
 .exit:                                            ; preds = %BB_80491F2.i, %0
-  %spi584 = ptrtoint[9 x i8]* @str.584 to i32
-  store i32 %spi584, i32* %9, align 16
+  %spi.bis.584 = ptrtoint[9 x i8]* @str.584 to i32
+  store i32 %spi.bis.584, i32* %9, align 16
   store i32 134517280, i32* %10, align 4
   %arg.i.i3 = load i32, i32* %9, align 16
   %22 = inttoptr i32 %arg.i.i3 to i8*

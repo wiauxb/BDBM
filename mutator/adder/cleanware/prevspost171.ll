@@ -85,29 +85,29 @@ declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone wil
 
 ; Function Attrs: norecurse nounwind
 define internal fastcc void @prevspost171(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
-  %tmp2_v.i2.i = add i32 %arg_esp, 4
-  %tmp0_v.i3.i = and i32 %arg_esp, -16
+  %tmp2_v.i8.i = add i32 %arg_esp, 4
+  %tmp0_v.i9.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i3.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i.i to i32*
+  %tmp2_v3.i11.i = add i32 %tmp0_v.i9.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i11.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
-  %4 = inttoptr i32 %tmp2_v4.i.i to i32*
+  %tmp2_v4.i12.i = add i32 %tmp0_v.i9.i, -8
+  %4 = inttoptr i32 %tmp2_v4.i12.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i6.i = add i32 %tmp0_v.i3.i, -12
-  %5 = inttoptr i32 %tmp2_v5.i6.i to i32*
+  %tmp2_v5.i14.i = add i32 %tmp0_v.i9.i, -12
+  %5 = inttoptr i32 %tmp2_v5.i14.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
-  %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i2.i, i32* %6, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i3.i, -36
+  %tmp2_v6.i16.i = add i32 %tmp0_v.i9.i, -16
+  %6 = inttoptr i32 %tmp2_v6.i16.i to i32*
+  store i32 %tmp2_v.i8.i, i32* %6, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i9.i, -36
   %7 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517169, i32* %7, align 4
-  %tmp2_v.i20.i = add i32 %tmp0_v.i3.i, -24
+  %tmp2_v.i20.i = add i32 %tmp0_v.i9.i, -24
   %8 = inttoptr i32 %tmp2_v.i20.i to i32*
   store i32 0, i32* %8, align 8
-  %tmp2_v1.i.i = add i32 %tmp0_v.i3.i, -20
+  %tmp2_v1.i.i = add i32 %tmp0_v.i9.i, -20
   %9 = inttoptr i32 %tmp2_v1.i.i to i32*
   store i32 0, i32* %9, align 4
   %10 = load i32, i32* %8, align 8
@@ -115,25 +115,25 @@ define internal fastcc void @prevspost171(i32 %arg_esp) unnamed_addr  norecurse 
   store i32 %tmp2_v4.i21.i, i32* %8, align 8
   %tmp0_v8.i.i = mul i32 %10, 10
   store i32 %tmp0_v8.i.i, i32* %9, align 4
-  %tmp2_v13.i.i = add i32 %tmp0_v.i3.i, -44
+  %tmp2_v13.i.i = add i32 %tmp0_v.i9.i, -44
   %11 = inttoptr i32 %tmp2_v13.i.i to i32*
   store i32 %tmp0_v8.i.i, i32* %11, align 4
-  %tmp2_v15.i.i = add i32 %tmp0_v.i3.i, -48
+  %tmp2_v15.i.i = add i32 %tmp0_v.i9.i, -48
   %12 = inttoptr i32 %tmp2_v15.i.i to i32*
-  %spi169 = ptrtoint[12 x i8]* @str.169 to i32
-  store i32 %spi169, i32* %12, align 16
-  %tmp2_v16.i.i = add i32 %tmp0_v.i3.i, -52
+  %spi.bis.169 = ptrtoint[12 x i8]* @str.169 to i32
+  store i32 %spi.bis.169, i32* %12, align 16
+  %tmp2_v16.i.i = add i32 %tmp0_v.i9.i, -52
   %13 = inttoptr i32 %tmp2_v16.i.i to i32*
   store i32 134517228, i32* %13, align 4
-  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i2.i, i32 inreg noundef %10, i32 noundef %tmp2_v15.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i8.i, i32 inreg noundef %10, i32 noundef %tmp2_v15.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %15 = lshr i64 %14, 32
   %16 = trunc i64 %15 to i32
   %17 = load i32, i32* %8, align 8
   store i32 %17, i32* %11, align 4
-  %spi168 = ptrtoint[7 x i8]* @str.168 to i32
-  store i32 %spi168, i32* %12, align 16
+  %spi.bis.168 = ptrtoint[7 x i8]* @str.168 to i32
+  store i32 %spi.bis.168, i32* %12, align 16
   store i32 134517249, i32* %13, align 4
-  %18 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i2.i, i32 inreg noundef %16, i32 noundef %tmp2_v15.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %18 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i8.i, i32 inreg noundef %16, i32 noundef %tmp2_v15.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   ret void
 }
 

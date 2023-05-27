@@ -24,31 +24,31 @@ declare dso_local i32 @puts(i8* noundef) local_unnamed_addr  "frame-pointer"="no
 
 ; Function Attrs: norecurse
 define internal fastcc void @hello_world978(i32 %arg_esp) unnamed_addr  norecurse  !retregs !10 {
-  %tmp2_v.i.i = add i32 %arg_esp, 4
-  %tmp0_v.i.i = and i32 %arg_esp, -16
+  %tmp2_v.i2.i = add i32 %arg_esp, 4
+  %tmp0_v.i3.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i.i to i32*
+  %tmp2_v3.i4.i = add i32 %tmp0_v.i3.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i4.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i.i, -8
+  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
   %4 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i.i, -12
+  %tmp2_v5.i.i = add i32 %tmp0_v.i3.i, -12
   %5 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
   %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i.i, i32* %6, align 16
-  %tmp2_v7.i.i = add i32 %tmp0_v.i.i, -20
+  store i32 %tmp2_v.i2.i, i32* %6, align 16
+  %tmp2_v7.i.i = add i32 %tmp0_v.i3.i, -20
   %7 = inttoptr i32 %tmp2_v7.i.i to i32*
   store i32 134517166, i32* %7, align 4
-  %tmp2_v2.i.i = add i32 %tmp0_v.i.i, -32
+  %tmp2_v2.i.i = add i32 %tmp0_v.i3.i, -32
   %8 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %spi975 = ptrtoint[14 x i8]* @str.975 to i32
-  store i32 %spi975, i32* %8, align 16
-  %tmp2_v3.i4.i = add i32 %tmp0_v.i.i, -36
-  %9 = inttoptr i32 %tmp2_v3.i4.i to i32*
+  %spi.bis.975 = ptrtoint[14 x i8]* @str.975 to i32
+  store i32 %spi.bis.975, i32* %8, align 16
+  %tmp2_v3.i.i = add i32 %tmp0_v.i3.i, -36
+  %9 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 134517188, i32* %9, align 4
   %arg.i.i = load i32, i32* %8, align 16
   %10 = inttoptr i32 %arg.i.i to i8*

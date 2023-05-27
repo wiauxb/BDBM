@@ -84,53 +84,53 @@ declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone wil
 
 ; Function Attrs: norecurse nounwind
 define internal fastcc void @direct_vs_indirect_recursion984(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
-  %tmp2_v.i2.i = add i32 %arg_esp, 4
-  %tmp0_v.i3.i = and i32 %arg_esp, -16
+  %tmp2_v.i5.i = add i32 %arg_esp, 4
+  %tmp0_v.i6.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i3.i, -4
+  %tmp2_v3.i.i = add i32 %tmp0_v.i6.i, -4
   %3 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
+  %tmp2_v4.i.i = add i32 %tmp0_v.i6.i, -8
   %4 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i6.i = add i32 %tmp0_v.i3.i, -12
-  %5 = inttoptr i32 %tmp2_v5.i6.i to i32*
+  %tmp2_v5.i9.i = add i32 %tmp0_v.i6.i, -12
+  %5 = inttoptr i32 %tmp2_v5.i9.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i6.i, -16
   %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i2.i, i32* %6, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i3.i, -36
+  store i32 %tmp2_v.i5.i, i32* %6, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i6.i, -36
   %7 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517169, i32* %7, align 4
-  %tmp2_v.i23.i = add i32 %tmp0_v.i3.i, -48
-  %8 = inttoptr i32 %tmp2_v.i23.i to i32*
+  %tmp2_v.i14.i = add i32 %tmp0_v.i6.i, -48
+  %8 = inttoptr i32 %tmp2_v.i14.i to i32*
   store i32 4, i32* %8, align 16
-  %tmp2_v2.i24.i = add i32 %tmp0_v.i3.i, -52
-  %9 = inttoptr i32 %tmp2_v2.i24.i to i32*
+  %tmp2_v2.i15.i = add i32 %tmp0_v.i6.i, -52
+  %9 = inttoptr i32 %tmp2_v2.i15.i to i32*
   store i32 134517185, i32* %9, align 4
-  %10 = tail call fastcc { i32, i32, i32, i32 } @Func_sum_integers(i32 %tmp2_v2.i24.i, i32 %tmp2_v4.i.i)
+  %10 = tail call fastcc { i32, i32, i32, i32 } @Func_sum_integers(i32 %tmp2_v2.i15.i, i32 %tmp2_v4.i.i)
   %11 = extractvalue { i32, i32, i32, i32 } %10, 0
   %12 = extractvalue { i32, i32, i32, i32 } %10, 1
   %13 = extractvalue { i32, i32, i32, i32 } %10, 2
   %14 = extractvalue { i32, i32, i32, i32 } %10, 3
-  %tmp2_v.i13.i = add i32 %14, -12
-  %15 = inttoptr i32 %tmp2_v.i13.i to i32*
+  %tmp2_v.i19.i = add i32 %14, -12
+  %15 = inttoptr i32 %tmp2_v.i19.i to i32*
   store i32 %12, i32* %15, align 4
-  %tmp2_v4.i16.i = add i32 %11, 4
-  %16 = inttoptr i32 %tmp2_v4.i16.i to i32*
+  %tmp2_v4.i22.i = add i32 %11, 4
+  %16 = inttoptr i32 %tmp2_v4.i22.i to i32*
   store i32 %12, i32* %16, align 4
   %17 = inttoptr i32 %11 to i32*
-  %spi982 = ptrtoint[9 x i8]* @str.982 to i32
-  store i32 %spi982, i32* %17, align 4
+  %spi.bis.982 = ptrtoint[9 x i8]* @str.982 to i32
+  store i32 %spi.bis.982, i32* %17, align 4
   %tmp2_v7.i.i = add i32 %11, -4
   %18 = inttoptr i32 %tmp2_v7.i.i to i32*
   store i32 134517209, i32* %18, align 4
-  %19 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i2.i, i32 inreg noundef %13, i32 noundef %11, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %19 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i5.i, i32 inreg noundef %13, i32 noundef %11, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   store i32 10, i32* %17, align 4
   store i32 134517222, i32* %18, align 4
-  %tmp2_v.i11.i.i = add i32 %11, -8
-  %20 = inttoptr i32 %tmp2_v.i11.i.i to i32*
+  %tmp2_v.i5.i.i = add i32 %11, -8
+  %20 = inttoptr i32 %tmp2_v.i5.i.i to i32*
   store i32 %14, i32* %20, align 4
   %tmp2_v1.i.i.i = add i32 %11, -20
   %21 = inttoptr i32 %tmp2_v1.i.i.i to i32*
@@ -142,15 +142,65 @@ define internal fastcc void @direct_vs_indirect_recursion984(i32 %arg_esp) unnam
   %tmp2_v3.i.i.i = add i32 %11, -36
   %24 = inttoptr i32 %tmp2_v3.i.i.i to i32*
   store i32 134517339, i32* %24, align 4
-  %25 = tail call fastcc i32 @Func_print_even(i32 %tmp2_v3.i.i.i, i32 %tmp2_v.i11.i.i, i32 134529024, i32 %tmp2_v.i2.i)  nounwind 
+  %25 = tail call fastcc i32 @Func_print_even(i32 %tmp2_v3.i.i.i, i32 %tmp2_v.i5.i.i, i32 134529024, i32 %tmp2_v.i5.i)  nounwind 
   ret void
 }
 
+; Function Attrs: nofree nosync nounwind
+define internal fastcc { i32, i32, i32, i32 } @Func_sum_integers(i32 %arg_esp, i32 %arg_ebp) unnamed_addr  nofree nosync nounwind  !retregs !14 {
+Func_8049207.exit.i:
+  %tmp2_v.i.i = add i32 %arg_esp, -4
+  %0 = inttoptr i32 %tmp2_v.i.i to i32*
+  store i32 %arg_ebp, i32* %0, align 4
+  %tmp2_v1.i.i = add i32 %arg_esp, -16
+  %1 = inttoptr i32 %tmp2_v1.i.i to i32*
+  store i32 134517255, i32* %1, align 4
+  %tmp2_v.i3.i = add i32 %arg_esp, 4
+  %2 = inttoptr i32 %tmp2_v.i3.i to i32*
+  %3 = load i32, i32* %2, align 4
+  %.not.i.i = icmp eq i32 %3, 1
+  br i1 %.not.i.i, label %Func_8049207.exit.i..exit_crit_edge, label %BB_8049219.i
+
+Func_8049207.exit.i..exit_crit_edge:              ; preds = %Func_8049207.exit.i
+  %.pre1 = add i32 %arg_esp, 4
+  br label %.exit
+
+BB_8049219.i:                                     ; preds = %Func_8049207.exit.i
+  %tmp0_v1.i10.i = add i32 %3, -1
+  %tmp2_v3.i.i = add i32 %arg_esp, -28
+  %4 = inttoptr i32 %tmp2_v3.i.i to i32*
+  store i32 %tmp0_v1.i10.i, i32* %4, align 4
+  %tmp2_v4.i.i = add i32 %arg_esp, -32
+  %5 = inttoptr i32 %tmp2_v4.i.i to i32*
+  store i32 134517288, i32* %5, align 4
+  %6 = tail call fastcc { i32, i32, i32, i32 } @Func_sum_integers(i32 %tmp2_v4.i.i, i32 %tmp2_v.i.i)
+  %7 = extractvalue { i32, i32, i32, i32 } %6, 1
+  %8 = extractvalue { i32, i32, i32, i32 } %6, 3
+  %tmp2_v.i15.i = add i32 %8, 8
+  %9 = inttoptr i32 %tmp2_v.i15.i to i32*
+  %10 = load i32, i32* %9, align 4
+  %tmp0_v2.i18.i = add i32 %7, %10
+  %.pre = inttoptr i32 %8 to i32*
+  br label %.exit
+
+.exit:                                            ; preds = %BB_8049219.i, %Func_8049207.exit.i..exit_crit_edge
+  %tmp4_v2.i.i.pre-phi = phi i32 [ %.pre1, %Func_8049207.exit.i..exit_crit_edge ], [ %tmp2_v.i15.i, %BB_8049219.i ]
+  %.pre-phi = phi i32* [ %0, %Func_8049207.exit.i..exit_crit_edge ], [ %.pre, %BB_8049219.i ]
+  %r_edx.0 = phi i32 [ 0, %Func_8049207.exit.i..exit_crit_edge ], [ %10, %BB_8049219.i ]
+  %r_eax.0 = phi i32 [ 1, %Func_8049207.exit.i..exit_crit_edge ], [ %tmp0_v2.i18.i, %BB_8049219.i ]
+  %11 = load i32, i32* %.pre-phi, align 4
+  %mrv = insertvalue { i32, i32, i32, i32 } undef, i32 %tmp4_v2.i.i.pre-phi, 0
+  %mrv1 = insertvalue { i32, i32, i32, i32 } %mrv, i32 %r_eax.0, 1
+  %mrv2 = insertvalue { i32, i32, i32, i32 } %mrv1, i32 %r_edx.0, 2
+  %mrv3 = insertvalue { i32, i32, i32, i32 } %mrv2, i32 %11, 3
+  ret { i32, i32, i32, i32 } %mrv3
+}
+
 ; Function Attrs: nounwind
-define internal fastcc i32 @Func_print_even(i32 %arg_esp, i32 %arg_ebp, i32 %arg_ebx, i32 %arg_ecx) unnamed_addr  nounwind  !retregs !14 {
+define internal fastcc i32 @Func_print_even(i32 %arg_esp, i32 %arg_ebp, i32 %arg_ebx, i32 %arg_ecx) unnamed_addr  nounwind  !retregs !15 {
 Func_8049281.exit.i:
-  %tmp2_v.i19.i = add i32 %arg_esp, -4
-  %0 = inttoptr i32 %tmp2_v.i19.i to i32*
+  %tmp2_v.i.i = add i32 %arg_esp, -4
+  %0 = inttoptr i32 %tmp2_v.i.i to i32*
   store i32 %arg_ebp, i32* %0, align 4
   %tmp2_v1.i.i = add i32 %arg_esp, -8
   %1 = inttoptr i32 %tmp2_v1.i.i to i32*
@@ -158,30 +208,30 @@ Func_8049281.exit.i:
   %tmp2_v2.i.i = add i32 %arg_esp, -16
   %2 = inttoptr i32 %tmp2_v2.i.i to i32*
   store i32 134517377, i32* %2, align 4
-  %tmp2_v.i16.i = add i32 %arg_esp, 4
-  %3 = inttoptr i32 %tmp2_v.i16.i to i32*
+  %tmp2_v.i3.i = add i32 %arg_esp, 4
+  %3 = inttoptr i32 %tmp2_v.i3.i to i32*
   %4 = load i32, i32* %3, align 4
   %5 = icmp slt i32 %4, 1
   br i1 %5, label %.exit, label %BB_804928C.i
 
 BB_804928C.i:                                     ; preds = %Func_8049281.exit.i
-  %tmp2_v2.i27.i = add i32 %arg_esp, -24
-  %6 = inttoptr i32 %tmp2_v2.i27.i to i32*
+  %tmp2_v2.i14.i = add i32 %arg_esp, -24
+  %6 = inttoptr i32 %tmp2_v2.i14.i to i32*
   store i32 %4, i32* %6, align 4
   %tmp2_v4.i.i = add i32 %arg_esp, -28
   %7 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 134520849, i32* %7, align 4
-  %tmp2_v5.i29.i = add i32 %arg_esp, -32
-  %8 = inttoptr i32 %tmp2_v5.i29.i to i32*
+  %tmp2_v5.i16.i = add i32 %arg_esp, -32
+  %8 = inttoptr i32 %tmp2_v5.i16.i to i32*
   store i32 134517408, i32* %8, align 4
   %9 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %arg_ecx, i32 inreg noundef 134520849, i32 noundef %tmp2_v4.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %10 = load i32, i32* %3, align 4
-  %tmp0_v2.i5.i = add i32 %10, -1
-  store i32 %tmp0_v2.i5.i, i32* %7, align 4
+  %tmp0_v2.i.i = add i32 %10, -1
+  store i32 %tmp0_v2.i.i, i32* %7, align 4
   store i32 134517426, i32* %8, align 4
-  %tmp2_v.i2.i.i = add i32 %arg_esp, -36
-  %11 = inttoptr i32 %tmp2_v.i2.i.i to i32*
-  store i32 %tmp2_v.i19.i, i32* %11, align 4
+  %tmp2_v.i6.i.i = add i32 %arg_esp, -36
+  %11 = inttoptr i32 %tmp2_v.i6.i.i to i32*
+  store i32 %tmp2_v.i.i, i32* %11, align 4
   %tmp2_v1.i.i.i = add i32 %arg_esp, -40
   %12 = inttoptr i32 %tmp2_v1.i.i.i to i32*
   store i32 134529024, i32* %12, align 4
@@ -200,10 +250,10 @@ BB_804928C.i:                                     ; preds = %Func_8049281.exit.i
   store i32 134517482, i32* %17, align 4
   %18 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %arg_ecx, i32 inreg noundef 134520860, i32 noundef %tmp2_v4.i.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %19 = load i32, i32* %7, align 4
-  %tmp0_v2.i.i.i = add i32 %19, -1
-  store i32 %tmp0_v2.i.i.i, i32* %16, align 4
+  %tmp0_v2.i14.i.i = add i32 %19, -1
+  store i32 %tmp0_v2.i14.i.i, i32* %16, align 4
   store i32 134517500, i32* %17, align 4
-  %20 = tail call fastcc i32 @Func_print_even(i32 %tmp2_v5.i23.i.i, i32 %tmp2_v.i2.i.i, i32 134529024, i32 %arg_ecx)
+  %20 = tail call fastcc i32 @Func_print_even(i32 %tmp2_v5.i23.i.i, i32 %tmp2_v.i6.i.i, i32 134529024, i32 %arg_ecx)
   %21 = inttoptr i32 %20 to i32*
   %22 = load i32, i32* %21, align 4
   %.pre = inttoptr i32 %22 to i32*
@@ -213,56 +263,6 @@ BB_804928C.i:                                     ; preds = %Func_8049281.exit.i
   %.pre-phi = phi i32* [ %0, %Func_8049281.exit.i ], [ %.pre, %BB_804928C.i ]
   %23 = load i32, i32* %.pre-phi, align 4
   ret i32 %23
-}
-
-; Function Attrs: nofree nosync nounwind
-define internal fastcc { i32, i32, i32, i32 } @Func_sum_integers(i32 %arg_esp, i32 %arg_ebp) unnamed_addr  nofree nosync nounwind  !retregs !15 {
-Func_8049207.exit.i:
-  %tmp2_v.i11.i = add i32 %arg_esp, -4
-  %0 = inttoptr i32 %tmp2_v.i11.i to i32*
-  store i32 %arg_ebp, i32* %0, align 4
-  %tmp2_v1.i.i = add i32 %arg_esp, -16
-  %1 = inttoptr i32 %tmp2_v1.i.i to i32*
-  store i32 134517255, i32* %1, align 4
-  %tmp2_v.i.i = add i32 %arg_esp, 4
-  %2 = inttoptr i32 %tmp2_v.i.i to i32*
-  %3 = load i32, i32* %2, align 4
-  %.not.i.i = icmp eq i32 %3, 1
-  br i1 %.not.i.i, label %Func_8049207.exit.i..exit_crit_edge, label %BB_8049219.i
-
-Func_8049207.exit.i..exit_crit_edge:              ; preds = %Func_8049207.exit.i
-  %.pre1 = add i32 %arg_esp, 4
-  br label %.exit
-
-BB_8049219.i:                                     ; preds = %Func_8049207.exit.i
-  %tmp0_v1.i17.i = add i32 %3, -1
-  %tmp2_v3.i.i = add i32 %arg_esp, -28
-  %4 = inttoptr i32 %tmp2_v3.i.i to i32*
-  store i32 %tmp0_v1.i17.i, i32* %4, align 4
-  %tmp2_v4.i.i = add i32 %arg_esp, -32
-  %5 = inttoptr i32 %tmp2_v4.i.i to i32*
-  store i32 134517288, i32* %5, align 4
-  %6 = tail call fastcc { i32, i32, i32, i32 } @Func_sum_integers(i32 %tmp2_v4.i.i, i32 %tmp2_v.i11.i)
-  %7 = extractvalue { i32, i32, i32, i32 } %6, 1
-  %8 = extractvalue { i32, i32, i32, i32 } %6, 3
-  %tmp2_v.i6.i = add i32 %8, 8
-  %9 = inttoptr i32 %tmp2_v.i6.i to i32*
-  %10 = load i32, i32* %9, align 4
-  %tmp0_v2.i.i = add i32 %7, %10
-  %.pre = inttoptr i32 %8 to i32*
-  br label %.exit
-
-.exit:                                            ; preds = %BB_8049219.i, %Func_8049207.exit.i..exit_crit_edge
-  %tmp4_v2.i.i.pre-phi = phi i32 [ %.pre1, %Func_8049207.exit.i..exit_crit_edge ], [ %tmp2_v.i6.i, %BB_8049219.i ]
-  %.pre-phi = phi i32* [ %0, %Func_8049207.exit.i..exit_crit_edge ], [ %.pre, %BB_8049219.i ]
-  %r_eax.0 = phi i32 [ 1, %Func_8049207.exit.i..exit_crit_edge ], [ %tmp0_v2.i.i, %BB_8049219.i ]
-  %r_edx.0 = phi i32 [ 0, %Func_8049207.exit.i..exit_crit_edge ], [ %10, %BB_8049219.i ]
-  %11 = load i32, i32* %.pre-phi, align 4
-  %mrv = insertvalue { i32, i32, i32, i32 } undef, i32 %tmp4_v2.i.i.pre-phi, 0
-  %mrv1 = insertvalue { i32, i32, i32, i32 } %mrv, i32 %r_eax.0, 1
-  %mrv2 = insertvalue { i32, i32, i32, i32 } %mrv1, i32 %r_edx.0, 2
-  %mrv3 = insertvalue { i32, i32, i32, i32 } %mrv2, i32 %11, 3
-  ret { i32, i32, i32, i32 } %mrv3
 }
 
 
@@ -283,7 +283,7 @@ BB_8049219.i:                                     ; preds = %Func_8049207.exit.i
 !11 = !{!"int", !8, i64 0}
 !12 = !{i32 0, i32 0, i32 0, i32 0}
 !13 = !{!"printf"}
-!14 = !{i32 0, i32 1, i32 0, i32 0}
-!15 = !{i32 0, i32 2, i32 3}
+!14 = !{i32 0, i32 2, i32 3}
+!15 = !{i32 0, i32 1, i32 0, i32 0}
 
   tail call fastcc void @direct_vs_indirect_recursion984 (i32 ptrtoint (i32* getelementptr inbounds ([8092 x i32], [8092 x i32]* @stack983, i32 0, i32 8092) to i32)) nounwind

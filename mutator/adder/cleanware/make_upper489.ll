@@ -93,14 +93,14 @@ define internal fastcc void @make_upper489(i32 %arg_esp) unnamed_addr  norecurse
   %tmp2_v16.i.i = add i32 %tmp0_v.i.i, -84
   %21 = inttoptr i32 %tmp2_v16.i.i to i32*
   store i32 134517364, i32* %21, align 4
-  %tmp2_v.i34.i.i = add i32 %tmp0_v.i.i, -88
-  %22 = inttoptr i32 %tmp2_v.i34.i.i to i32*
+  %tmp2_v.i6.i.i = add i32 %tmp0_v.i.i, -88
+  %22 = inttoptr i32 %tmp2_v.i6.i.i to i32*
   store i32 %tmp2_v4.i.i, i32* %22, align 8
-  %tmp2_v1.i36.i.i = add i32 %tmp0_v.i.i, -92
-  %23 = inttoptr i32 %tmp2_v1.i36.i.i to i32*
+  %tmp2_v1.i8.i.i = add i32 %tmp0_v.i.i, -92
+  %23 = inttoptr i32 %tmp2_v1.i8.i.i to i32*
   store i32 134529024, i32* %23, align 4
-  %tmp2_v2.i39.i.i = add i32 %tmp0_v.i.i, -116
-  %24 = inttoptr i32 %tmp2_v2.i39.i.i to i32*
+  %tmp2_v2.i.i.i = add i32 %tmp0_v.i.i, -116
+  %24 = inttoptr i32 %tmp2_v2.i.i.i to i32*
   store i32 134517430, i32* %24, align 4
   %25 = load i32, i32* %20, align 16
   %tmp2_v3.i.i.i = add i32 %tmp0_v.i.i, -128
@@ -111,11 +111,11 @@ define internal fastcc void @make_upper489(i32 %arg_esp) unnamed_addr  norecurse
   store i32 134517447, i32* %27, align 4
   %arg.i.i.i = load i32, i32* %26, align 16
   %28 = tail call i32 @strlen(i32 %arg.i.i.i)
-  %tmp2_v.i7.i.i = add i32 %tmp0_v.i.i, -100
-  %29 = inttoptr i32 %tmp2_v.i7.i.i to i32*
+  %tmp2_v.i.i.i = add i32 %tmp0_v.i.i, -100
+  %29 = inttoptr i32 %tmp2_v.i.i.i to i32*
   store i32 %28, i32* %29, align 4
-  %tmp2_v1.i8.i.i = add i32 %tmp0_v.i.i, -104
-  %30 = inttoptr i32 %tmp2_v1.i8.i.i to i32*
+  %tmp2_v1.i.i.i = add i32 %tmp0_v.i.i, -104
+  %30 = inttoptr i32 %tmp2_v1.i.i.i to i32*
   store i32 0, i32* %30, align 8
   %31 = load i32, i32* %29, align 4
   %32 = icmp sgt i32 %31, 0
@@ -145,9 +145,9 @@ BB_80492D6.i.i:                                   ; preds = %BB_80492D6.i.i, %BB
   %38 = tail call i32 @toupper(i32 %arg.i.i20.i)
   %39 = load i32, i32* %30, align 8
   %40 = load i32, i32* %20, align 16
-  %tmp0_v4.i27.i.i = add i32 %40, %39
+  %tmp0_v4.i25.i.i = add i32 %40, %39
   %41 = trunc i32 %38 to i8
-  %42 = inttoptr i32 %tmp0_v4.i27.i.i to i8*
+  %42 = inttoptr i32 %tmp0_v4.i25.i.i to i8*
   store i8 %41, i8* %42, align 1
   %43 = load i32, i32* %30, align 8
   %tmp0_v7.i.i.i = add i32 %43, 1

@@ -34,14 +34,14 @@ define internal fastcc void @display_file_contents215(i32 %arg_esp) unnamed_addr
   %tmp0_v.i3.i = and i32 %arg_esp, -16
   %0 = inttoptr i32 %arg_esp to i32*
   %1 = load i32, i32* %0, align 4
-  %tmp2_v3.i4.i = add i32 %tmp0_v.i3.i, -4
-  %2 = inttoptr i32 %tmp2_v3.i4.i to i32*
+  %tmp2_v3.i.i = add i32 %tmp0_v.i3.i, -4
+  %2 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 %1, i32* %2, align 4
-  %tmp2_v4.i5.i = add i32 %tmp0_v.i3.i, -8
-  %3 = inttoptr i32 %tmp2_v4.i5.i to i32*
+  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
+  %3 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %3, align 8
-  %tmp2_v5.i6.i = add i32 %tmp0_v.i3.i, -12
-  %4 = inttoptr i32 %tmp2_v5.i6.i to i32*
+  %tmp2_v5.i.i = add i32 %tmp0_v.i3.i, -12
+  %4 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %4, align 4
   %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
   %5 = inttoptr i32 %tmp2_v6.i.i to i32*
@@ -49,25 +49,25 @@ define internal fastcc void @display_file_contents215(i32 %arg_esp) unnamed_addr
   %tmp2_v8.i.i = add i32 %tmp0_v.i3.i, -36
   %6 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517297, i32* %6, align 4
-  %tmp2_v2.i.i = add i32 %tmp0_v.i3.i, -44
-  %7 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %spi213 = ptrtoint[2 x i8]* @str.213 to i32
-  store i32 %spi213, i32* %7, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -48
-  %8 = inttoptr i32 %tmp2_v4.i.i to i32*
-  %spi212 = ptrtoint[9 x i8]* @str.212 to i32
-  store i32 %spi212, i32* %8, align 16
-  %tmp2_v5.i.i = add i32 %tmp0_v.i3.i, -52
-  %9 = inttoptr i32 %tmp2_v5.i.i to i32*
+  %tmp2_v2.i22.i = add i32 %tmp0_v.i3.i, -44
+  %7 = inttoptr i32 %tmp2_v2.i22.i to i32*
+  %spi.bis.213 = ptrtoint[2 x i8]* @str.213 to i32
+  store i32 %spi.bis.213, i32* %7, align 4
+  %tmp2_v4.i24.i = add i32 %tmp0_v.i3.i, -48
+  %8 = inttoptr i32 %tmp2_v4.i24.i to i32*
+  %spi.bis.212 = ptrtoint[9 x i8]* @str.212 to i32
+  store i32 %spi.bis.212, i32* %8, align 16
+  %tmp2_v5.i25.i = add i32 %tmp0_v.i3.i, -52
+  %9 = inttoptr i32 %tmp2_v5.i25.i to i32*
   store i32 134517325, i32* %9, align 4
   %arg.i.i = load i32, i32* %8, align 16
   %arg2.i.i = load i32, i32* %7, align 4
   %10 = tail call i32 @fopen(i32 %arg.i.i, i32 %arg2.i.i)
-  %tmp2_v.i23.i = add i32 %tmp0_v.i3.i, -20
-  %11 = inttoptr i32 %tmp2_v.i23.i to i32*
+  %tmp2_v.i8.i = add i32 %tmp0_v.i3.i, -20
+  %11 = inttoptr i32 %tmp2_v.i8.i to i32*
   store i32 %10, i32* %11, align 4
-  %spi211 = ptrtoint[20 x i8]* @str.211 to i32
-  store i32 %spi211, i32* %8, align 16
+  %spi.bis.211 = ptrtoint[20 x i8]* @str.211 to i32
+  store i32 %spi.bis.211, i32* %8, align 16
   store i32 134517409, i32* %9, align 4
   %arg.i.i3 = load i32, i32* %8, align 16
   %12 = inttoptr i32 %arg.i.i3 to i8*

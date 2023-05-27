@@ -115,15 +115,15 @@ define internal fastcc void @truncate300(i32 %arg_esp) unnamed_addr  norecurse  
   %tmp2_v7.i.i = add i32 %tmp0_v.i26.i, -20
   %6 = inttoptr i32 %tmp2_v7.i.i to i32*
   store i32 134517262, i32* %6, align 4
-  %tmp2_v.i11.i = add i32 %tmp0_v.i26.i, -28
-  %7 = inttoptr i32 %tmp2_v.i11.i to i32*
+  %tmp2_v.i7.i = add i32 %tmp0_v.i26.i, -28
+  %7 = inttoptr i32 %tmp2_v.i7.i to i32*
   store i32 10, i32* %7, align 4
-  %tmp2_v3.i13.i = add i32 %tmp0_v.i26.i, -32
-  %8 = inttoptr i32 %tmp2_v3.i13.i to i32*
-  %spi298 = ptrtoint[9 x i8]* @str.298 to i32
-  store i32 %spi298, i32* %8, align 16
-  %tmp2_v4.i14.i = add i32 %tmp0_v.i26.i, -36
-  %9 = inttoptr i32 %tmp2_v4.i14.i to i32*
+  %tmp2_v3.i8.i = add i32 %tmp0_v.i26.i, -32
+  %8 = inttoptr i32 %tmp2_v3.i8.i to i32*
+  %spi.bis.298 = ptrtoint[9 x i8]* @str.298 to i32
+  store i32 %spi.bis.298, i32* %8, align 16
+  %tmp2_v4.i.i = add i32 %tmp0_v.i26.i, -36
+  %9 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 134517285, i32* %9, align 4
   %arg.i.i = load i32, i32* %8, align 16
   %arg2.i.i = load i32, i32* %7, align 4
@@ -133,12 +133,12 @@ define internal fastcc void @truncate300(i32 %arg_esp) unnamed_addr  norecurse  
   %12 = inttoptr i32 %11 to i32*
   %13 = load i32, i32* %12, align 4
   store i32 %13, i32* %7, align 4
-  %spi297 = ptrtoint[16 x i8]* @str.297 to i32
-  store i32 %spi297, i32* %8, align 16
+  %spi.bis.297 = ptrtoint[16 x i8]* @str.297 to i32
+  store i32 %spi.bis.297, i32* %8, align 16
   store i32 134517316, i32* %9, align 4
-  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i25.i, i32 inreg noundef 0, i32 noundef %tmp2_v3.i13.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  %spi296 = ptrtoint[6 x i8]* @str.296 to i32
-  store i32 %spi296, i32* %8, align 16
+  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i25.i, i32 inreg noundef 0, i32 noundef %tmp2_v3.i8.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %spi.bis.296 = ptrtoint[6 x i8]* @str.296 to i32
+  store i32 %spi.bis.296, i32* %8, align 16
   store i32 134517334, i32* %9, align 4
   %arg.i.i5 = load i32, i32* %8, align 16
   tail call void @perror(i32 %arg.i.i5)

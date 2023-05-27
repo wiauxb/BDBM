@@ -21,21 +21,21 @@ declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone wil
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn
 define internal fastcc void @parameters_vs_arguments960(i32 %arg_esp) unnamed_addr  mustprogress nofree norecurse nosync nounwind willreturn  !retregs !10 {
-  %tmp2_v.i2.i = add i32 %arg_esp, -4
-  %1 = inttoptr i32 %tmp2_v.i2.i to i32*
+  %tmp2_v.i5.i = add i32 %arg_esp, -4
+  %1 = inttoptr i32 %tmp2_v.i5.i to i32*
   store i32 0, i32* %1, align 4
-  %tmp2_v1.i5.i = add i32 %arg_esp, -24
-  %2 = inttoptr i32 %tmp2_v1.i5.i to i32*
+  %tmp2_v1.i8.i = add i32 %arg_esp, -24
+  %2 = inttoptr i32 %tmp2_v1.i8.i to i32*
   store i32 5, i32* %2, align 4
-  %tmp2_v1.i9.i = add i32 %arg_esp, -28
-  %3 = inttoptr i32 %tmp2_v1.i9.i to i32*
+  %tmp2_v1.i12.i = add i32 %arg_esp, -28
+  %3 = inttoptr i32 %tmp2_v1.i12.i to i32*
   store i32 10, i32* %3, align 4
-  %tmp2_v2.i10.i = add i32 %arg_esp, -32
-  %4 = inttoptr i32 %tmp2_v2.i10.i to i32*
+  %tmp2_v2.i13.i = add i32 %arg_esp, -32
+  %4 = inttoptr i32 %tmp2_v2.i13.i to i32*
   store i32 134517166, i32* %4, align 4
-  %tmp2_v.i2.i.i = add i32 %arg_esp, -36
-  %5 = inttoptr i32 %tmp2_v.i2.i.i to i32*
-  store i32 %tmp2_v.i2.i, i32* %5, align 4
+  %tmp2_v.i.i.i = add i32 %arg_esp, -36
+  %5 = inttoptr i32 %tmp2_v.i.i.i to i32*
+  store i32 %tmp2_v.i5.i, i32* %5, align 4
   %tmp2_v1.i.i.i = add i32 %arg_esp, -40
   %6 = inttoptr i32 %tmp2_v1.i.i.i to i32*
   store i32 134517122, i32* %6, align 4

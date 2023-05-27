@@ -82,89 +82,17 @@ declare void @llvm.lifetime.end.p0i8(i64 immarg, i8* nocapture)  argmemonly nofr
 ; Function Attrs: nofree nosync nounwind readnone willreturn
 declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone willreturn 
 
-; Function Attrs: norecurse nounwind
-define internal fastcc void @factorial_recursion27(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
-BB_80491C0.i.preheader:
-  %tmp2_v.i.i = add i32 %arg_esp, 4
-  %tmp0_v.i.i = and i32 %arg_esp, -16
-  %0 = inttoptr i32 %arg_esp to i32*
-  %1 = load i32, i32* %0, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i.i, -4
-  %2 = inttoptr i32 %tmp2_v3.i.i to i32*
-  store i32 %1, i32* %2, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i.i, -8
-  %3 = inttoptr i32 %tmp2_v4.i.i to i32*
-  store i32 0, i32* %3, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i.i, -12
-  %4 = inttoptr i32 %tmp2_v5.i.i to i32*
-  store i32 0, i32* %4, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i.i, -16
-  %5 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i.i, i32* %5, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i.i, -36
-  %6 = inttoptr i32 %tmp2_v8.i.i to i32*
-  store i32 134517169, i32* %6, align 4
-  %tmp2_v.i15.i = add i32 %tmp0_v.i.i, -20
-  %7 = inttoptr i32 %tmp2_v.i15.i to i32*
-  store i32 1, i32* %7, align 4
-  %tmp4_v.i.i.i = add i32 %tmp0_v.i.i, -32
-  br label %BB_80491C0.i
-
-BB_80491C0.i:                                     ; preds = %BB_80491C0.i, %BB_80491C0.i.preheader
-  %8 = phi i32 [ %tmp0_v2.i5.i, %BB_80491C0.i ], [ 1, %BB_80491C0.i.preheader ]
-  %r_edx.06 = phi i32 [ %23, %BB_80491C0.i ], [ 0, %BB_80491C0.i.preheader ]
-  %r_esp.05 = phi i32 [ %tmp0_v.i2.i, %BB_80491C0.i ], [ %tmp4_v.i.i.i, %BB_80491C0.i.preheader ]
-  %r_ebp.04 = phi i32 [ %14, %BB_80491C0.i ], [ %tmp2_v4.i.i, %BB_80491C0.i.preheader ]
-  %tmp2_v2.i35.i = add i32 %r_esp.05, -16
-  %9 = inttoptr i32 %tmp2_v2.i35.i to i32*
-  store i32 %8, i32* %9, align 4
-  %tmp2_v3.i36.i = add i32 %r_esp.05, -20
-  %10 = inttoptr i32 %tmp2_v3.i36.i to i32*
-  store i32 134517195, i32* %10, align 4
-  %11 = tail call fastcc { i32, i32, i32 } @Func_factorial(i32 %tmp2_v3.i36.i, i32 %r_ebp.04)
-  %12 = extractvalue { i32, i32, i32 } %11, 0
-  %13 = extractvalue { i32, i32, i32 } %11, 1
-  %14 = extractvalue { i32, i32, i32 } %11, 2
-  %tmp2_v.i19.i = add i32 %12, 8
-  %15 = inttoptr i32 %tmp2_v.i19.i to i32*
-  store i32 %13, i32* %15, align 4
-  %tmp2_v2.i.i = add i32 %14, -12
-  %16 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %17 = load i32, i32* %16, align 4
-  %tmp2_v4.i22.i = add i32 %12, 4
-  %18 = inttoptr i32 %tmp2_v4.i22.i to i32*
-  store i32 %17, i32* %18, align 4
-  %19 = inttoptr i32 %12 to i32*
-  %spi25 = ptrtoint[20 x i8]* @str.25 to i32
-  store i32 %spi25, i32* %19, align 4
-  %tmp2_v7.i.i = add i32 %12, -4
-  %20 = inttoptr i32 %tmp2_v7.i.i to i32*
-  store i32 134517217, i32* %20, align 4
-  %21 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i.i, i32 inreg noundef %r_edx.06, i32 noundef %12, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  %22 = lshr i64 %21, 32
-  %23 = trunc i64 %22 to i32
-  %tmp0_v.i2.i = add i32 %12, 16
-  %24 = load i32, i32* %16, align 4
-  %tmp0_v2.i5.i = add i32 %24, 1
-  store i32 %tmp0_v2.i5.i, i32* %16, align 4
-  %25 = icmp slt i32 %tmp0_v2.i5.i, 31
-  br i1 %25, label %BB_80491C0.i, label %.exit
-
-.exit:                                            ; preds = %BB_80491C0.i
-  ret void
-}
-
 ; Function Attrs: nofree nosync nounwind
-define internal fastcc { i32, i32, i32 } @Func_factorial(i32 %arg_esp, i32 %arg_ebp) unnamed_addr  nofree nosync nounwind  !retregs !14 {
+define internal fastcc { i32, i32, i32 } @Func_factorial(i32 %arg_esp, i32 %arg_ebp) unnamed_addr  nofree nosync nounwind  !retregs !12 {
 Func_804920C.exit.i:
-  %tmp2_v.i5.i = add i32 %arg_esp, -4
-  %0 = inttoptr i32 %tmp2_v.i5.i to i32*
+  %tmp2_v.i1.i = add i32 %arg_esp, -4
+  %0 = inttoptr i32 %tmp2_v.i1.i to i32*
   store i32 %arg_ebp, i32* %0, align 4
   %tmp2_v1.i.i = add i32 %arg_esp, -16
   %1 = inttoptr i32 %tmp2_v1.i.i to i32*
   store i32 134517260, i32* %1, align 4
-  %tmp2_v.i10.i = add i32 %arg_esp, 4
-  %2 = inttoptr i32 %tmp2_v.i10.i to i32*
+  %tmp2_v.i.i = add i32 %arg_esp, 4
+  %2 = inttoptr i32 %tmp2_v.i.i to i32*
   %3 = load i32, i32* %2, align 4
   %.not.i.i = icmp eq i32 %3, 1
   br i1 %.not.i.i, label %Func_804920C.exit.i..exit_crit_edge, label %BB_804921E.i
@@ -174,25 +102,25 @@ Func_804920C.exit.i..exit_crit_edge:              ; preds = %Func_804920C.exit.i
   br label %.exit
 
 BB_804921E.i:                                     ; preds = %Func_804920C.exit.i
-  %tmp0_v1.i.i = add i32 %3, -1
+  %tmp0_v1.i7.i = add i32 %3, -1
   %tmp2_v3.i.i = add i32 %arg_esp, -28
   %4 = inttoptr i32 %tmp2_v3.i.i to i32*
-  store i32 %tmp0_v1.i.i, i32* %4, align 4
+  store i32 %tmp0_v1.i7.i, i32* %4, align 4
   %tmp2_v4.i.i = add i32 %arg_esp, -32
   %5 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 134517293, i32* %5, align 4
-  %6 = tail call fastcc { i32, i32, i32 } @Func_factorial(i32 %tmp2_v4.i.i, i32 %tmp2_v.i5.i)
+  %6 = tail call fastcc { i32, i32, i32 } @Func_factorial(i32 %tmp2_v4.i.i, i32 %tmp2_v.i1.i)
   %7 = extractvalue { i32, i32, i32 } %6, 1
   %8 = extractvalue { i32, i32, i32 } %6, 2
-  %tmp2_v.i15.i = add i32 %8, 8
-  %9 = inttoptr i32 %tmp2_v.i15.i to i32*
+  %tmp2_v.i12.i = add i32 %8, 8
+  %9 = inttoptr i32 %tmp2_v.i12.i to i32*
   %10 = load i32, i32* %9, align 4
   %tmp15_v2.i.i = mul i32 %10, %7
   %.pre = inttoptr i32 %8 to i32*
   br label %.exit
 
 .exit:                                            ; preds = %BB_804921E.i, %Func_804920C.exit.i..exit_crit_edge
-  %tmp4_v2.i.i.pre-phi = phi i32 [ %.pre14, %Func_804920C.exit.i..exit_crit_edge ], [ %tmp2_v.i15.i, %BB_804921E.i ]
+  %tmp4_v2.i.i.pre-phi = phi i32 [ %.pre14, %Func_804920C.exit.i..exit_crit_edge ], [ %tmp2_v.i12.i, %BB_804921E.i ]
   %.pre-phi = phi i32* [ %0, %Func_804920C.exit.i..exit_crit_edge ], [ %.pre, %BB_804921E.i ]
   %r_eax.0 = phi i32 [ 1, %Func_804920C.exit.i..exit_crit_edge ], [ %tmp15_v2.i.i, %BB_804921E.i ]
   %11 = load i32, i32* %.pre-phi, align 4
@@ -200,6 +128,78 @@ BB_804921E.i:                                     ; preds = %Func_804920C.exit.i
   %mrv1 = insertvalue { i32, i32, i32 } %mrv, i32 %r_eax.0, 1
   %mrv2 = insertvalue { i32, i32, i32 } %mrv1, i32 %11, 2
   ret { i32, i32, i32 } %mrv2
+}
+
+; Function Attrs: norecurse nounwind
+define internal fastcc void @factorial_recursion27(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !13 {
+BB_80491C0.i.preheader:
+  %tmp2_v.i12.i = add i32 %arg_esp, 4
+  %tmp0_v.i13.i = and i32 %arg_esp, -16
+  %0 = inttoptr i32 %arg_esp to i32*
+  %1 = load i32, i32* %0, align 4
+  %tmp2_v3.i14.i = add i32 %tmp0_v.i13.i, -4
+  %2 = inttoptr i32 %tmp2_v3.i14.i to i32*
+  store i32 %1, i32* %2, align 4
+  %tmp2_v4.i15.i = add i32 %tmp0_v.i13.i, -8
+  %3 = inttoptr i32 %tmp2_v4.i15.i to i32*
+  store i32 0, i32* %3, align 8
+  %tmp2_v5.i.i = add i32 %tmp0_v.i13.i, -12
+  %4 = inttoptr i32 %tmp2_v5.i.i to i32*
+  store i32 0, i32* %4, align 4
+  %tmp2_v6.i.i = add i32 %tmp0_v.i13.i, -16
+  %5 = inttoptr i32 %tmp2_v6.i.i to i32*
+  store i32 %tmp2_v.i12.i, i32* %5, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i13.i, -36
+  %6 = inttoptr i32 %tmp2_v8.i.i to i32*
+  store i32 134517169, i32* %6, align 4
+  %tmp2_v.i10.i = add i32 %tmp0_v.i13.i, -20
+  %7 = inttoptr i32 %tmp2_v.i10.i to i32*
+  store i32 1, i32* %7, align 4
+  %tmp4_v.i.i.i = add i32 %tmp0_v.i13.i, -32
+  br label %BB_80491C0.i
+
+BB_80491C0.i:                                     ; preds = %BB_80491C0.i, %BB_80491C0.i.preheader
+  %8 = phi i32 [ %tmp0_v2.i33.i, %BB_80491C0.i ], [ 1, %BB_80491C0.i.preheader ]
+  %r_edx.06 = phi i32 [ %23, %BB_80491C0.i ], [ 0, %BB_80491C0.i.preheader ]
+  %r_ebp.05 = phi i32 [ %14, %BB_80491C0.i ], [ %tmp2_v4.i15.i, %BB_80491C0.i.preheader ]
+  %r_esp.04 = phi i32 [ %tmp0_v.i29.i, %BB_80491C0.i ], [ %tmp4_v.i.i.i, %BB_80491C0.i.preheader ]
+  %tmp2_v2.i.i = add i32 %r_esp.04, -16
+  %9 = inttoptr i32 %tmp2_v2.i.i to i32*
+  store i32 %8, i32* %9, align 4
+  %tmp2_v3.i.i = add i32 %r_esp.04, -20
+  %10 = inttoptr i32 %tmp2_v3.i.i to i32*
+  store i32 134517195, i32* %10, align 4
+  %11 = tail call fastcc { i32, i32, i32 } @Func_factorial(i32 %tmp2_v3.i.i, i32 %r_ebp.05)
+  %12 = extractvalue { i32, i32, i32 } %11, 0
+  %13 = extractvalue { i32, i32, i32 } %11, 1
+  %14 = extractvalue { i32, i32, i32 } %11, 2
+  %tmp2_v.i21.i = add i32 %12, 8
+  %15 = inttoptr i32 %tmp2_v.i21.i to i32*
+  store i32 %13, i32* %15, align 4
+  %tmp2_v2.i23.i = add i32 %14, -12
+  %16 = inttoptr i32 %tmp2_v2.i23.i to i32*
+  %17 = load i32, i32* %16, align 4
+  %tmp2_v4.i25.i = add i32 %12, 4
+  %18 = inttoptr i32 %tmp2_v4.i25.i to i32*
+  store i32 %17, i32* %18, align 4
+  %19 = inttoptr i32 %12 to i32*
+  %spi.bis.25 = ptrtoint[20 x i8]* @str.25 to i32
+  store i32 %spi.bis.25, i32* %19, align 4
+  %tmp2_v7.i.i = add i32 %12, -4
+  %20 = inttoptr i32 %tmp2_v7.i.i to i32*
+  store i32 134517217, i32* %20, align 4
+  %21 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i12.i, i32 inreg noundef %r_edx.06, i32 noundef %12, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !14
+  %22 = lshr i64 %21, 32
+  %23 = trunc i64 %22 to i32
+  %tmp0_v.i29.i = add i32 %12, 16
+  %24 = load i32, i32* %16, align 4
+  %tmp0_v2.i33.i = add i32 %24, 1
+  store i32 %tmp0_v2.i33.i, i32* %16, align 4
+  %25 = icmp slt i32 %tmp0_v2.i33.i, 31
+  br i1 %25, label %BB_80491C0.i, label %.exit
+
+.exit:                                            ; preds = %BB_80491C0.i
+  ret void
 }
 
 
@@ -218,8 +218,8 @@ BB_804921E.i:                                     ; preds = %Func_804920C.exit.i
 !9 = !{!"Simple C++ TBAA"}
 !10 = !{!11, !11, i64 0}
 !11 = !{!"int", !8, i64 0}
-!12 = !{i32 0, i32 0, i32 0, i32 0}
-!13 = !{!"printf"}
-!14 = !{i32 0, i32 2}
+!12 = !{i32 0, i32 2}
+!13 = !{i32 0, i32 0, i32 0, i32 0}
+!14 = !{!"printf"}
 
   tail call fastcc void @factorial_recursion27 (i32 ptrtoint (i32* getelementptr inbounds ([8092 x i32], [8092 x i32]* @stack26, i32 0, i32 8092) to i32)) nounwind

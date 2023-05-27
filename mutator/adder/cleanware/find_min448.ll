@@ -270,16 +270,16 @@ Func_find_min.exit21:                             ; preds = %BB_8049313.i.i16, %
   %63 = inttoptr i32 %tmp2_v2.i.i to i32*
   %64 = load i32, i32* %63, align 4
   store i32 %64, i32* %26, align 4
-  %spi444 = ptrtoint[10 x i8]* @str.444 to i32
-  store i32 %spi444, i32* %27, align 16
+  %spi.bis.444 = ptrtoint[10 x i8]* @str.444 to i32
+  store i32 %spi.bis.444, i32* %27, align 16
   store i32 134517388, i32* %28, align 4
   %65 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i19.i, i32 inreg noundef %r_edx.0.lcssa.i17, i32 noundef %tmp2_v22.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %66 = lshr i64 %65, 32
   %67 = trunc i64 %66 to i32
   %68 = load i32, i32* %62, align 4
   store i32 %68, i32* %26, align 4
-  %spi443 = ptrtoint[10 x i8]* @str.443 to i32
-  store i32 %spi443, i32* %27, align 16
+  %spi.bis.443 = ptrtoint[10 x i8]* @str.443 to i32
+  store i32 %spi.bis.443, i32* %27, align 16
   store i32 134517409, i32* %28, align 4
   %69 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i19.i, i32 inreg noundef %67, i32 noundef %tmp2_v22.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   ret void

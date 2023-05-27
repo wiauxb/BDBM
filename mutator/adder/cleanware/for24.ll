@@ -89,113 +89,113 @@ declare noundef i32 @putchar(i32 noundef) local_unnamed_addr  nofree noinline no
 
 ; Function Attrs: norecurse nounwind
 define internal fastcc void @for24(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
-  %tmp2_v.i4.i = add i32 %arg_esp, 4
-  %tmp0_v.i5.i = and i32 %arg_esp, -16
+  %tmp2_v.i15.i = add i32 %arg_esp, 4
+  %tmp0_v.i16.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i5.i, -4
+  %tmp2_v3.i.i = add i32 %tmp0_v.i16.i, -4
   %3 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i5.i, -8
+  %tmp2_v4.i.i = add i32 %tmp0_v.i16.i, -8
   %4 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i5.i, -12
+  %tmp2_v5.i.i = add i32 %tmp0_v.i16.i, -12
   %5 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i5.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i16.i, -16
   %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i4.i, i32* %6, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i5.i, -36
+  store i32 %tmp2_v.i15.i, i32* %6, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i16.i, -36
   %7 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517201, i32* %7, align 4
-  %tmp2_v.i46.i = add i32 %tmp0_v.i5.i, -28
-  %8 = inttoptr i32 %tmp2_v.i46.i to i32*
-  %tmp2_v2.i86.i = add i32 %tmp0_v.i5.i, -44
-  %9 = inttoptr i32 %tmp2_v2.i86.i to i32*
-  %tmp2_v4.i89.i = add i32 %tmp0_v.i5.i, -48
-  %10 = inttoptr i32 %tmp2_v4.i89.i to i32*
-  %tmp2_v5.i90.i = add i32 %tmp0_v.i5.i, -52
-  %11 = inttoptr i32 %tmp2_v5.i90.i to i32*
+  %tmp2_v.i99.i = add i32 %tmp0_v.i16.i, -28
+  %8 = inttoptr i32 %tmp2_v.i99.i to i32*
+  %tmp2_v2.i52.i = add i32 %tmp0_v.i16.i, -44
+  %9 = inttoptr i32 %tmp2_v2.i52.i to i32*
+  %tmp2_v4.i55.i = add i32 %tmp0_v.i16.i, -48
+  %10 = inttoptr i32 %tmp2_v4.i55.i to i32*
+  %tmp2_v5.i56.i = add i32 %tmp0_v.i16.i, -52
+  %11 = inttoptr i32 %tmp2_v5.i56.i to i32*
   store i32 0, i32* %8, align 4
   br label %BB_80491E0.i
 
 BB_80491FF.i:                                     ; preds = %BB_80491E0.i
-  %12 = trunc i64 %22 to i32
+  %12 = trunc i64 %23 to i32
   store i32 10, i32* %10, align 16
   store i32 134517257, i32* %11, align 4
   %arg.i.i = load i32, i32* %10, align 16
   %13 = tail call i32 @putchar(i32 %arg.i.i)  nounwind 
-  %tmp2_v.i72.i = add i32 %tmp0_v.i5.i, -24
-  %14 = inttoptr i32 %tmp2_v.i72.i to i32*
+  %tmp2_v.i3.i = add i32 %tmp0_v.i16.i, -24
+  %14 = inttoptr i32 %tmp2_v.i3.i to i32*
   br label %BB_8049234.i
 
+BB_8049253.i:                                     ; preds = %BB_8049271.i, %BB_804923C.i
+  %r_edx.320 = phi i32 [ %19, %BB_804923C.i ], [ %r_edx.2, %BB_8049271.i ]
+  %storemerge219 = phi i32 [ 0, %BB_804923C.i ], [ %tmp0_v1.i103.i, %BB_8049271.i ]
+  %15 = icmp eq i32 %storemerge219, 2
+  br i1 %15, label %BB_8049271.i, label %BB_8049259.i
+
 BB_8049259.i:                                     ; preds = %BB_8049253.i
-  store i32 %storemerge118, i32* %9, align 4
-  %spi22 = ptrtoint[7 x i8]* @str.22 to i32
-  store i32 %spi22, i32* %10, align 16
+  store i32 %storemerge219, i32* %9, align 4
+  %spi.bis.22 = ptrtoint[7 x i8]* @str.22 to i32
+  store i32 %spi.bis.22, i32* %10, align 16
   store i32 134517355, i32* %11, align 4
-  %15 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i4.i, i32 inreg noundef %r_edx.119, i32 noundef %tmp2_v4.i89.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  %16 = lshr i64 %15, 32
-  %17 = trunc i64 %16 to i32
-  %.pre = load i32, i32* %33, align 4
+  %16 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i15.i, i32 inreg noundef %r_edx.320, i32 noundef %tmp2_v4.i55.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %17 = lshr i64 %16, 32
+  %18 = trunc i64 %17 to i32
+  %.pre = load i32, i32* %21, align 4
   br label %BB_8049271.i
 
-BB_8049253.i:                                     ; preds = %BB_804923C.i, %BB_8049271.i
-  %r_edx.119 = phi i32 [ %31, %BB_804923C.i ], [ %r_edx.2, %BB_8049271.i ]
-  %storemerge118 = phi i32 [ 0, %BB_804923C.i ], [ %tmp0_v1.i64.i, %BB_8049271.i ]
-  %18 = icmp eq i32 %storemerge118, 2
-  br i1 %18, label %BB_8049271.i, label %BB_8049259.i
-
-BB_8049271.i:                                     ; preds = %BB_8049253.i, %BB_8049259.i
-  %19 = phi i32 [ %.pre, %BB_8049259.i ], [ 2, %BB_8049253.i ]
-  %r_edx.2 = phi i32 [ %17, %BB_8049259.i ], [ %r_edx.119, %BB_8049253.i ]
-  %tmp0_v1.i64.i = add i32 %19, 1
-  store i32 %tmp0_v1.i64.i, i32* %33, align 4
-  %20 = icmp slt i32 %tmp0_v1.i64.i, 5
-  br i1 %20, label %BB_8049253.i, label %.exit
-
-BB_80491E0.i:                                     ; preds = %BB_80491E0.i, %0
-  %r_edx.015 = phi i32 [ 0, %0 ], [ %23, %BB_80491E0.i ]
-  %storemerge14 = phi i32 [ 0, %0 ], [ %tmp0_v2.i101.i, %BB_80491E0.i ]
-  store i32 %storemerge14, i32* %9, align 4
-  %spi21 = ptrtoint[7 x i8]* @str.21 to i32
-  store i32 %spi21, i32* %10, align 16
-  store i32 134517234, i32* %11, align 4
-  %21 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i4.i, i32 inreg noundef %r_edx.015, i32 noundef %tmp2_v4.i89.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  %22 = lshr i64 %21, 32
-  %23 = trunc i64 %22 to i32
-  %24 = load i32, i32* %8, align 4
-  %tmp0_v2.i101.i = add i32 %24, 1
-  store i32 %tmp0_v2.i101.i, i32* %8, align 4
-  %25 = icmp slt i32 %tmp0_v2.i101.i, 5
-  br i1 %25, label %BB_80491E0.i, label %BB_80491FF.i
-
-BB_8049234.i:                                     ; preds = %BB_8049234.i, %BB_80491FF.i
-  %storemerge2 = phi i32 [ %tmp0_v1.i76.i, %BB_8049234.i ], [ 0, %BB_80491FF.i ]
-  %r_edx.3 = phi i32 [ %28, %BB_8049234.i ], [ %12, %BB_80491FF.i ]
-  store i32 %storemerge2, i32* %14, align 8
-  store i32 %storemerge2, i32* %9, align 4
-  %spi20 = ptrtoint[7 x i8]* @str.20 to i32
-  store i32 %spi20, i32* %10, align 16
-  store i32 134517287, i32* %11, align 4
-  %26 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i4.i, i32 inreg noundef %r_edx.3, i32 noundef %tmp2_v4.i89.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  %27 = lshr i64 %26, 32
-  %28 = trunc i64 %27 to i32
-  %29 = load i32, i32* %14, align 8
-  %30 = icmp eq i32 %29, 2
-  %tmp0_v1.i76.i = add i32 %29, 1
-  br i1 %30, label %BB_804923C.i, label %BB_8049234.i
-
 BB_804923C.i:                                     ; preds = %BB_8049234.i
-  %31 = trunc i64 %27 to i32
+  %19 = trunc i64 %28 to i32
   store i32 10, i32* %10, align 16
   store i32 134517319, i32* %11, align 4
-  %arg.i.i11 = load i32, i32* %10, align 16
-  %32 = tail call i32 @putchar(i32 %arg.i.i11)  nounwind 
-  %tmp2_v.i112.i = add i32 %tmp0_v.i5.i, -20
-  %33 = inttoptr i32 %tmp2_v.i112.i to i32*
-  store i32 0, i32* %33, align 4
+  %arg.i.i8 = load i32, i32* %10, align 16
+  %20 = tail call i32 @putchar(i32 %arg.i.i8)  nounwind 
+  %tmp2_v.i75.i = add i32 %tmp0_v.i16.i, -20
+  %21 = inttoptr i32 %tmp2_v.i75.i to i32*
+  store i32 0, i32* %21, align 4
   br label %BB_8049253.i
+
+BB_80491E0.i:                                     ; preds = %BB_80491E0.i, %0
+  %r_edx.016 = phi i32 [ 0, %0 ], [ %24, %BB_80491E0.i ]
+  %storemerge15 = phi i32 [ 0, %0 ], [ %tmp0_v2.i23.i, %BB_80491E0.i ]
+  store i32 %storemerge15, i32* %9, align 4
+  %spi.bis.21 = ptrtoint[7 x i8]* @str.21 to i32
+  store i32 %spi.bis.21, i32* %10, align 16
+  store i32 134517234, i32* %11, align 4
+  %22 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i15.i, i32 inreg noundef %r_edx.016, i32 noundef %tmp2_v4.i55.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %23 = lshr i64 %22, 32
+  %24 = trunc i64 %23 to i32
+  %25 = load i32, i32* %8, align 4
+  %tmp0_v2.i23.i = add i32 %25, 1
+  store i32 %tmp0_v2.i23.i, i32* %8, align 4
+  %26 = icmp slt i32 %tmp0_v2.i23.i, 5
+  br i1 %26, label %BB_80491E0.i, label %BB_80491FF.i
+
+BB_8049234.i:                                     ; preds = %BB_8049234.i, %BB_80491FF.i
+  %storemerge3 = phi i32 [ %tmp0_v1.i.i, %BB_8049234.i ], [ 0, %BB_80491FF.i ]
+  %r_edx.1 = phi i32 [ %29, %BB_8049234.i ], [ %12, %BB_80491FF.i ]
+  store i32 %storemerge3, i32* %14, align 8
+  store i32 %storemerge3, i32* %9, align 4
+  %spi.bis.20 = ptrtoint[7 x i8]* @str.20 to i32
+  store i32 %spi.bis.20, i32* %10, align 16
+  store i32 134517287, i32* %11, align 4
+  %27 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i15.i, i32 inreg noundef %r_edx.1, i32 noundef %tmp2_v4.i55.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %28 = lshr i64 %27, 32
+  %29 = trunc i64 %28 to i32
+  %30 = load i32, i32* %14, align 8
+  %31 = icmp eq i32 %30, 2
+  %tmp0_v1.i.i = add i32 %30, 1
+  br i1 %31, label %BB_804923C.i, label %BB_8049234.i
+
+BB_8049271.i:                                     ; preds = %BB_8049259.i, %BB_8049253.i
+  %32 = phi i32 [ %.pre, %BB_8049259.i ], [ 2, %BB_8049253.i ]
+  %r_edx.2 = phi i32 [ %18, %BB_8049259.i ], [ %r_edx.320, %BB_8049253.i ]
+  %tmp0_v1.i103.i = add i32 %32, 1
+  store i32 %tmp0_v1.i103.i, i32* %21, align 4
+  %33 = icmp slt i32 %tmp0_v1.i103.i, 5
+  br i1 %33, label %BB_8049253.i, label %.exit
 
 .exit:                                            ; preds = %BB_8049271.i
   ret void
