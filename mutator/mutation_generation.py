@@ -29,7 +29,7 @@ def mutation_selection(project, num_of_mutations: int):
             mutation_to_append = mutations[random.randrange(0, len(mutations))]
         mutations_to_do.append(mutation_to_append)
     #mutations_to_do = ["clean_adder", "strings_split"]
-    #mutations_to_do = [mutations[num_of_mutations-1]]
+    mutations_to_do = [mutations[num_of_mutations-1]]
     just_com = "mutations : " + str(num_of_mutations) + "\n"
     for mutation in mutations_to_do :
         if mutation == "strings_split":
@@ -161,5 +161,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     mutation_selection(args.project, int(args.number))
+
 
 

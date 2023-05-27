@@ -147,8 +147,8 @@ def replace_strings(project, begin_main, end_main, recovered):
                 string = string + "\\00"
                 consts.append(f"""@str.{rdm} = constant [{length} x i8] c\"{string}\"\n""")
 
-                repl = f"""  %spi{rdm} = ptrtoint[{length} x i8]* @str.{rdm} to i32\n"""
-                repl += ref.get_mutated_line(f"""%spi{rdm}""")
+                repl = f"""  %spi.bis.{rdm} = ptrtoint[{length} x i8]* @str.{rdm} to i32\n"""
+                repl += ref.get_mutated_line(f"""%spi.bis.{rdm}""")
                 
                 recovered.lines[ref.line_num] = repl
 
@@ -174,10 +174,10 @@ def replace_strings(project, begin_main, end_main, recovered):
                 string = string.replace("\n", "\\0a")
                 string = string + "\\00"
                 consts.append(f"""@str.{rdm} = constant [{length} x i8] c\"{string}\"\n""")
-                repl += f"""  %spi{rdm} = ptrtoint[{length} x i8]* @str.{rdm} to i32\n"""
+                repl += f"""  %spi.bis.{rdm} = ptrtoint[{length} x i8]* @str.{rdm} to i32\n"""
 
             if good_string:
-                repl += ref.get_mutated_line(f"""%spi{ind_list[0]}""", f"""%spi{ind_list[1]}""")
+                repl += ref.get_mutated_line(f"""%spi.bis.{ind_list[0]}""", f"""%spi.bis.{ind_list[1]}""")
                 
                 recovered.lines[ref.line_num] = repl
 
