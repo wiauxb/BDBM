@@ -6,4 +6,4 @@ def mutate(project, *args):
     return output.decode("utf-8")
 
 def gen_mutate(project, num_mutations):
-    mutation_selection(project, num_mutations)
+    mutation_selection(project, int(num_mutations))

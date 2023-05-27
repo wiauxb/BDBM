@@ -223,5 +223,5 @@ def get_mutations_for_project(project: str, num_mutations: int):
     try:
         gen_mutate(project, num_mutations)
     except Exception as error:
-        return {"error": error}, 415
+        return {"error": str(error)}, 415
     return {"status": "success"}, 200

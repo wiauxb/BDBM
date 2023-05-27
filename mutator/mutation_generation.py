@@ -10,7 +10,7 @@ from urllib.request import urlopen
 import shutil
 
 
-def mutation_selection(project, num_of_mutations):
+def mutation_selection(project, num_of_mutations: int):
     #Generate a mutation of project. 
     #Stores the resulting file and the instructions in s2e/projects/{project}/mutations
 
