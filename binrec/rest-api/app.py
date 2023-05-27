@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from tempfile import mkstemp
 from typing import Dict, Optional, Tuple, Union
-from mutator.src.auto_mutation import main as mutator
+from .mutate_interface import mutate
 
 from flask import (
     Flask,
@@ -207,6 +207,10 @@ def start_recover_project(project: str):
 def start_mutate_project(project: str):
     
     _ = load_campaign(project)  # make sure the project/campaign exists and is valid
-    mutator(project)
+    if request.is_json:
+        req = request.get_json()
+        print(mutate(project, req["args"]))
+    else:
+        return {"status": "error"}, 415
 
     return {"status": "success"}, 200
