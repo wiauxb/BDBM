@@ -44,7 +44,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             return
         recovered.delete(str_ref.line_num)
 
-        var_name = re.findall(r'(@.*) =', str_ref.line)[0]
+        var_name = re.findall(r'(@.*?) =', str_ref.line)[0]
         var_refs = find_var_usage(recovered, var_name, exclude_line=[str_ref.line_num])
         
         for var_ref in var_refs:
