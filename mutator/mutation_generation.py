@@ -15,6 +15,7 @@ def mutation_selection(project, num_of_mutations):
     #Stores the resulting file and the instructions in s2e/projects/{project}/mutations
 
     command = f"""just lift-trace {project}"""
+    shutil.copy("s2e/projects/" +project +"/binary", "s2e/projects/" +project +"/s2e-out/binary")
     subprocess.check_output(command, shell=True, timeout = 30)
     if not os.path.exists("s2e/projects/"+project+"/mutations"):
         os.makedirs("s2e/projects/"+project+"/mutations")
@@ -130,7 +131,6 @@ def mutate_random_if(project):
     command = f"""just mutate {project} random_if --max_random {max_random} --number {number}"""
     subprocess.check_output(command, shell=True)
     return command
-
 
 def mutate_clean_adder(project):
     number = random.randrange(1,11)
