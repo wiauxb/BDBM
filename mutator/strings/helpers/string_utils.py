@@ -137,6 +137,6 @@ def get_string_in_llvm_format( string: str):
     string -- string to convert
     Return: string in llvm format
     """
-    problematic_chars = ["\\", "\"", "\n"]
+    problematic_chars = ["\\", "\"", "\n", "\r", "\t"]
     
     return "".join([c if c.isprintable() or c in problematic_chars else f"\\{ord(c):02x}" for c in string])
