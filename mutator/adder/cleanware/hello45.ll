@@ -7,7 +7,8 @@ target triple = "i386-pc-linux-gnu"
 @fpstt = internal unnamed_addr global i32 0
 @stack44 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.42 = constant [12 x i8] c"Hello World\00"
+@str.bis.42 = constant [12 x i8] c"\48\65\6c\6c\6f\20\57\6f\72\6c\64\00"
+@str.bis.43 = constant [4 x i8] c"\05\52\2e\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly
 define internal fastcc void @helper_fninit() unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -42,10 +43,11 @@ define internal fastcc void @hello45(i32 %arg_esp) unnamed_addr  norecurse  !ret
   store i32 %tmp2_v.i.i, i32* %6, align 16
   %tmp2_v7.i.i = add i32 %tmp0_v.i.i, -20
   %7 = inttoptr i32 %tmp2_v7.i.i to i32*
-  store i32 134517166, i32* %7, align 4
+  %spi.bis.43 = ptrtoint[4 x i8]* @str.bis.43 to i32
+  store i32 %spi.bis.43, i32* %7, align 4
   %tmp2_v2.i.i = add i32 %tmp0_v.i.i, -32
   %8 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %spi.bis.42 = ptrtoint[12 x i8]* @str.42 to i32
+  %spi.bis.42 = ptrtoint[12 x i8]* @str.bis.42 to i32
   store i32 %spi.bis.42, i32* %8, align 16
   %tmp2_v3.i4.i = add i32 %tmp0_v.i.i, -36
   %9 = inttoptr i32 %tmp2_v3.i4.i to i32*
@@ -57,7 +59,7 @@ define internal fastcc void @hello45(i32 %arg_esp) unnamed_addr  norecurse  !ret
 }
 
 
-!llvm.ident = !{!0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0}
+!llvm.ident = !{!0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0, !0}
 !llvm.module.flags = !{!1, !2, !3, !4, !5}
 
 !0 = !{!"clang version 14.0.0"}

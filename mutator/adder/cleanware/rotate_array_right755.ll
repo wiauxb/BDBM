@@ -10,8 +10,9 @@ target triple = "i386-pc-linux-gnu"
 @segs.0 = internal unnamed_addr global i1 false
 @_ZL6segmem = internal global [1024 x i8] zeroinitializer, align 1
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.752 = constant [4 x i8] c"%d \00"
-@str.753 = constant [4 x i8] c"%d \00"
+@str.bis.751 = constant [4 x i8] c"\05\1e\2d\00"
+@str.bis.752 = constant [4 x i8] c"\25\64\20\00"
+@str.bis.753 = constant [4 x i8] c"\25\64\20\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -159,7 +160,7 @@ BB_8049235.i:                                     ; preds = %BB_8049235.i, %0
   %22 = inttoptr i32 %tmp2_v2.i.i to i32*
   %23 = load i32, i32* %22, align 4
   store i32 %23, i32* %18, align 4
-  %spi.bis.753 = ptrtoint[4 x i8]* @str.753 to i32
+  %spi.bis.753 = ptrtoint[4 x i8]* @str.bis.753 to i32
   store i32 %spi.bis.753, i32* %19, align 16
   store i32 134517324, i32* %20, align 4
   %24 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i67.i, i32 inreg noundef %r_edx.013, i32 noundef %tmp2_v7.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
@@ -179,7 +180,7 @@ BB_8049282.i:                                     ; preds = %Func_rotate_right.e
   %29 = inttoptr i32 %tmp2_v2.i42.i to i32*
   %30 = load i32, i32* %29, align 4
   store i32 %30, i32* %78, align 4
-  %spi.bis.752 = ptrtoint[4 x i8]* @str.752 to i32
+  %spi.bis.752 = ptrtoint[4 x i8]* @str.bis.752 to i32
   store i32 %spi.bis.752, i32* %79, align 4
   store i32 134517401, i32* %80, align 4
   %31 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %r_ecx.0.lcssa.i, i32 inreg noundef %r_edx.116, i32 noundef %tmp4_v2.i.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
@@ -208,7 +209,8 @@ BB_8049259.i:                                     ; preds = %BB_8049235.i
   store i32 %tmp2_v4.i71.i, i32* %39, align 8
   %tmp2_v1.i.i.i = add i32 %tmp0_v.i68.i, -116
   %40 = inttoptr i32 %tmp2_v1.i.i.i to i32*
-  store i32 134517474, i32* %40, align 4
+  %spi.bis.751 = ptrtoint[4 x i8]* @str.bis.751 to i32
+  store i32 %spi.bis.751, i32* %40, align 4
   %tmp2_v.i3.i.i = add i32 %tmp0_v.i68.i, -100
   %41 = inttoptr i32 %tmp2_v.i3.i.i to i32*
   store i32 0, i32* %41, align 4

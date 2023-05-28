@@ -8,7 +8,7 @@ target triple = "i386-pc-linux-gnu"
 @fp_status.0 = internal unnamed_addr global i8 0
 @stack271 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.270 = constant [20 x i8] c"%c is alphanumeric\0a\00"
+@str.bis.270 = constant [20 x i8] c"\25\63\20\69\73\20\61\6c\70\68\61\6e\75\6d\65\72\69\63\0a\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -106,20 +106,20 @@ define internal fastcc void @isalnum272(i32 %arg_esp) unnamed_addr  norecurse  !
   store i32 %tmp2_v.i20.i, i32* %5, align 16
   %tmp2_v8.i.i = add i32 %tmp0_v.i21.i, -36
   %6 = inttoptr i32 %tmp2_v8.i.i to i32*
-  %tmp2_v.i9.i = add i32 %tmp0_v.i21.i, -17
-  %7 = inttoptr i32 %tmp2_v.i9.i to i8*
+  %tmp2_v.i3.i = add i32 %tmp0_v.i21.i, -17
+  %7 = inttoptr i32 %tmp2_v.i3.i to i8*
   store i8 100, i8* %7, align 1
   store i32 134517216, i32* %6, align 4
   %8 = tail call i32 @__ctype_b_loc()
   %9 = load i8, i8* %7, align 1
-  %tmp0_v1.i4.i = sext i8 %9 to i32
-  %tmp0_v2.i.i = shl nsw i32 %tmp0_v1.i4.i, 1
+  %tmp0_v1.i7.i = sext i8 %9 to i32
+  %tmp0_v2.i.i = shl nsw i32 %tmp0_v1.i7.i, 1
   %tmp2_v2.i.i = add i32 %tmp0_v.i21.i, -44
   %10 = inttoptr i32 %tmp2_v2.i.i to i32*
-  store i32 %tmp0_v1.i4.i, i32* %10, align 4
+  store i32 %tmp0_v1.i7.i, i32* %10, align 4
   %tmp2_v4.i16.i = add i32 %tmp0_v.i21.i, -48
   %11 = inttoptr i32 %tmp2_v4.i16.i to i32*
-  %spi.bis.270 = ptrtoint[20 x i8]* @str.270 to i32
+  %spi.bis.270 = ptrtoint[20 x i8]* @str.bis.270 to i32
   store i32 %spi.bis.270, i32* %11, align 16
   %tmp2_v5.i.i = add i32 %tmp0_v.i21.i, -52
   %12 = inttoptr i32 %tmp2_v5.i.i to i32*

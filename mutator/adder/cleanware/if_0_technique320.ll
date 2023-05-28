@@ -7,7 +7,8 @@ target triple = "i386-pc-linux-gnu"
 @fpstt = internal unnamed_addr global i32 0
 @stack319 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.317 = constant [7 x i8] c"work 1\00"
+@str.bis.317 = constant [7 x i8] c"\77\6f\72\6b\20\31\00"
+@str.bis.318 = constant [4 x i8] c"\05\52\2e\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly
 define internal fastcc void @helper_fninit() unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -24,30 +25,31 @@ declare dso_local i32 @puts(i8* noundef) local_unnamed_addr  "frame-pointer"="no
 
 ; Function Attrs: norecurse
 define internal fastcc void @if_0_technique320(i32 %arg_esp) unnamed_addr  norecurse  !retregs !10 {
-  %tmp2_v.i6.i = add i32 %arg_esp, 4
-  %tmp0_v.i7.i = and i32 %arg_esp, -16
+  %tmp2_v.i2.i = add i32 %arg_esp, 4
+  %tmp0_v.i3.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i9.i = add i32 %tmp0_v.i7.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i9.i to i32*
+  %tmp2_v3.i4.i = add i32 %tmp0_v.i3.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i4.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i7.i, -8
+  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
   %4 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i11.i = add i32 %tmp0_v.i7.i, -12
-  %5 = inttoptr i32 %tmp2_v5.i11.i to i32*
+  %tmp2_v5.i.i = add i32 %tmp0_v.i3.i, -12
+  %5 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i7.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
   %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i6.i, i32* %6, align 16
-  %tmp2_v7.i.i = add i32 %tmp0_v.i7.i, -20
+  store i32 %tmp2_v.i2.i, i32* %6, align 16
+  %tmp2_v7.i.i = add i32 %tmp0_v.i3.i, -20
   %7 = inttoptr i32 %tmp2_v7.i.i to i32*
-  store i32 134517166, i32* %7, align 4
-  %tmp2_v2.i.i = add i32 %tmp0_v.i7.i, -32
+  %spi.bis.318 = ptrtoint[4 x i8]* @str.bis.318 to i32
+  store i32 %spi.bis.318, i32* %7, align 4
+  %tmp2_v2.i.i = add i32 %tmp0_v.i3.i, -32
   %8 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %spi.bis.317 = ptrtoint[7 x i8]* @str.317 to i32
+  %spi.bis.317 = ptrtoint[7 x i8]* @str.bis.317 to i32
   store i32 %spi.bis.317, i32* %8, align 16
-  %tmp2_v3.i.i = add i32 %tmp0_v.i7.i, -36
+  %tmp2_v3.i.i = add i32 %tmp0_v.i3.i, -36
   %9 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 134517188, i32* %9, align 4
   %arg.i.i = load i32, i32* %8, align 16

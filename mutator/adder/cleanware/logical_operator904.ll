@@ -7,9 +7,9 @@ target triple = "i386-pc-linux-gnu"
 @fpstt = internal unnamed_addr global i32 0
 @stack903 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.900 = constant [4 x i8] c"OK!\00"
-@str.901 = constant [4 x i8] c"OK!\00"
-@str.902 = constant [4 x i8] c"OK!\00"
+@str.bis.900 = constant [4 x i8] c"\4f\4b\21\00"
+@str.bis.901 = constant [4 x i8] c"\4f\4b\21\00"
+@str.bis.902 = constant [4 x i8] c"\4f\4b\21\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly
 define internal fastcc void @helper_fninit() unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -54,7 +54,7 @@ Func_80491B1.exit.i:
   store i32 19000, i32* %8, align 4
   %tmp2_v1.i47.i = add i32 %tmp0_v.i9.i, -48
   %9 = inttoptr i32 %tmp2_v1.i47.i to i32*
-  %spi.bis.902 = ptrtoint[4 x i8]* @str.902 to i32
+  %spi.bis.902 = ptrtoint[4 x i8]* @str.bis.902 to i32
   store i32 %spi.bis.902, i32* %9, align 16
   %tmp2_v2.i48.i = add i32 %tmp0_v.i9.i, -52
   %10 = inttoptr i32 %tmp2_v2.i48.i to i32*
@@ -62,13 +62,13 @@ Func_80491B1.exit.i:
   %arg.i.i = load i32, i32* %9, align 16
   %11 = inttoptr i32 %arg.i.i to i8*
   %12 = tail call i32 @puts(i8* nonnull dereferenceable(1) %11)
-  %spi.bis.901 = ptrtoint[4 x i8]* @str.901 to i32
+  %spi.bis.901 = ptrtoint[4 x i8]* @str.bis.901 to i32
   store i32 %spi.bis.901, i32* %9, align 16
   store i32 134517278, i32* %10, align 4
   %arg.i.i3 = load i32, i32* %9, align 16
   %13 = inttoptr i32 %arg.i.i3 to i8*
   %14 = tail call i32 @puts(i8* nonnull dereferenceable(1) %13)
-  %spi.bis.900 = ptrtoint[4 x i8]* @str.900 to i32
+  %spi.bis.900 = ptrtoint[4 x i8]* @str.bis.900 to i32
   store i32 %spi.bis.900, i32* %9, align 16
   store i32 134517325, i32* %10, align 4
   %arg.i.i4 = load i32, i32* %9, align 16

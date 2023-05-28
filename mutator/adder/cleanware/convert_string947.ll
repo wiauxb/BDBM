@@ -12,12 +12,12 @@ target triple = "i386-pc-linux-gnu"
 @fp_status.2 = internal unnamed_addr global i8 0
 @stack946 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.940 = constant [15 x i8] c"long int: %ld\0a\00"
-@str.941 = constant [9 x i8] c"int: %d\0a\00"
-@str.942 = constant [12 x i8] c"double: %f\0a\00"
-@str.943 = constant [17 x i8] c"1231231213213234\00"
-@str.944 = constant [3 x i8] c"94\00"
-@str.945 = constant [6 x i8] c"98.45\00"
+@str.bis.940 = constant [15 x i8] c"\6c\6f\6e\67\20\69\6e\74\3a\20\25\6c\64\0a\00"
+@str.bis.941 = constant [9 x i8] c"\69\6e\74\3a\20\25\64\0a\00"
+@str.bis.942 = constant [12 x i8] c"\64\6f\75\62\6c\65\3a\20\25\66\0a\00"
+@str.bis.943 = constant [17 x i8] c"\31\32\33\31\32\33\31\32\31\33\32\31\33\32\33\34\00"
+@str.bis.944 = constant [3 x i8] c"\39\34\00"
+@str.bis.945 = constant [6 x i8] c"\39\38\2e\34\35\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -371,61 +371,61 @@ declare void @llvm.lifetime.end.p0i8(i64 immarg, i8* nocapture)  argmemonly nofr
 declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone willreturn 
 
 ; Function Attrs: noinline
-declare i32 @atoi(i32) local_unnamed_addr  noinline 
+declare double @atof(i32) local_unnamed_addr  noinline 
 
 ; Function Attrs: noinline
-declare double @atof(i32) local_unnamed_addr  noinline 
+declare i32 @atoi(i32) local_unnamed_addr  noinline 
 
 ; Function Attrs: noinline
 declare i32 @atol(i32) local_unnamed_addr  noinline 
 
 ; Function Attrs: norecurse
 define internal fastcc void @convert_string947(i32 %arg_esp) unnamed_addr  norecurse  !retregs !18 {
-  %tmp2_v.i17.i = add i32 %arg_esp, 4
-  %tmp0_v.i18.i = and i32 %arg_esp, -16
+  %tmp2_v.i39.i = add i32 %arg_esp, 4
+  %tmp0_v.i40.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i20.i = add i32 %tmp0_v.i18.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i20.i to i32*
+  %tmp2_v3.i42.i = add i32 %tmp0_v.i40.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i42.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i21.i = add i32 %tmp0_v.i18.i, -8
-  %4 = inttoptr i32 %tmp2_v4.i21.i to i32*
+  %tmp2_v4.i43.i = add i32 %tmp0_v.i40.i, -8
+  %4 = inttoptr i32 %tmp2_v4.i43.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i23.i = add i32 %tmp0_v.i18.i, -12
-  %5 = inttoptr i32 %tmp2_v5.i23.i to i32*
+  %tmp2_v5.i45.i = add i32 %tmp0_v.i40.i, -12
+  %5 = inttoptr i32 %tmp2_v5.i45.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i25.i = add i32 %tmp0_v.i18.i, -16
-  %6 = inttoptr i32 %tmp2_v6.i25.i to i32*
-  store i32 %tmp2_v.i17.i, i32* %6, align 16
-  %tmp2_v8.i26.i = add i32 %tmp0_v.i18.i, -52
-  %7 = inttoptr i32 %tmp2_v8.i26.i to i32*
+  %tmp2_v6.i47.i = add i32 %tmp0_v.i40.i, -16
+  %6 = inttoptr i32 %tmp2_v6.i47.i to i32*
+  store i32 %tmp2_v.i39.i, i32* %6, align 16
+  %tmp2_v8.i48.i = add i32 %tmp0_v.i40.i, -52
+  %7 = inttoptr i32 %tmp2_v8.i48.i to i32*
   store i32 134517265, i32* %7, align 4
-  %tmp2_v1.i.i = add i32 %tmp0_v.i18.i, -44
+  %tmp2_v1.i.i = add i32 %tmp0_v.i40.i, -44
   %8 = inttoptr i32 %tmp2_v1.i.i to i32*
-  %spi.bis.945 = ptrtoint[6 x i8]* @str.945 to i32
+  %spi.bis.945 = ptrtoint[6 x i8]* @str.bis.945 to i32
   store i32 %spi.bis.945, i32* %8, align 4
-  %tmp2_v3.i59.i = add i32 %tmp0_v.i18.i, -40
-  %9 = inttoptr i32 %tmp2_v3.i59.i to i32*
-  %spi.bis.944 = ptrtoint[3 x i8]* @str.944 to i32
+  %tmp2_v3.i21.i = add i32 %tmp0_v.i40.i, -40
+  %9 = inttoptr i32 %tmp2_v3.i21.i to i32*
+  %spi.bis.944 = ptrtoint[3 x i8]* @str.bis.944 to i32
   store i32 %spi.bis.944, i32* %9, align 8
-  %tmp2_v5.i61.i = add i32 %tmp0_v.i18.i, -36
-  %10 = inttoptr i32 %tmp2_v5.i61.i to i32*
-  %spi.bis.943 = ptrtoint[17 x i8]* @str.943 to i32
+  %tmp2_v5.i23.i = add i32 %tmp0_v.i40.i, -36
+  %10 = inttoptr i32 %tmp2_v5.i23.i to i32*
+  %spi.bis.943 = ptrtoint[17 x i8]* @str.bis.943 to i32
   store i32 %spi.bis.943, i32* %10, align 4
   %11 = load i32, i32* %8, align 4
-  %tmp2_v9.i.i = add i32 %tmp0_v.i18.i, -64
+  %tmp2_v9.i.i = add i32 %tmp0_v.i40.i, -64
   %12 = inttoptr i32 %tmp2_v9.i.i to i32*
   store i32 %11, i32* %12, align 16
-  %tmp2_v10.i65.i = add i32 %tmp0_v.i18.i, -68
-  %13 = inttoptr i32 %tmp2_v10.i65.i to i32*
+  %tmp2_v10.i27.i = add i32 %tmp0_v.i40.i, -68
+  %13 = inttoptr i32 %tmp2_v10.i27.i to i32*
   store i32 134517309, i32* %13, align 4
   %arg.i.i = load i32, i32* %12, align 16
   %14 = tail call double @atof(i32 %arg.i.i)
   %15 = bitcast double %14 to i64
   tail call fastcc void @helper_fldl_ST0(i64 noundef %15)  nobuiltin nounwind "no-builtins" 
-  %tmp2_v.i49.i = add i32 %tmp0_v.i18.i, -24
+  %tmp2_v.i52.i = add i32 %tmp0_v.i40.i, -24
   %tmp5_v.i.i = tail call fastcc i64 @helper_fstl_ST0()
-  %16 = inttoptr i32 %tmp2_v.i49.i to i64*
+  %16 = inttoptr i32 %tmp2_v.i52.i to i64*
   store i64 %tmp5_v.i.i, i64* %16, align 8
   tail call fastcc void @helper_fpop()
   %17 = load i32, i32* %9, align 8
@@ -433,48 +433,48 @@ define internal fastcc void @convert_string947(i32 %arg_esp) unnamed_addr  norec
   store i32 134517326, i32* %13, align 4
   %arg.i.i1 = load i32, i32* %12, align 16
   %18 = tail call i32 @atoi(i32 %arg.i.i1)
-  %tmp2_v.i30.i = add i32 %tmp0_v.i18.i, -32
-  %19 = inttoptr i32 %tmp2_v.i30.i to i32*
+  %tmp2_v.i60.i = add i32 %tmp0_v.i40.i, -32
+  %19 = inttoptr i32 %tmp2_v.i60.i to i32*
   store i32 %18, i32* %19, align 16
   %20 = load i32, i32* %10, align 4
   store i32 %20, i32* %12, align 16
   store i32 134517343, i32* %13, align 4
   %arg.i.i4 = load i32, i32* %12, align 16
   %21 = tail call i32 @atol(i32 %arg.i.i4)
-  %tmp2_v.i.i = add i32 %tmp0_v.i18.i, -28
+  %tmp2_v.i.i = add i32 %tmp0_v.i40.i, -28
   %22 = inttoptr i32 %tmp2_v.i.i to i32*
   store i32 %21, i32* %22, align 4
-  %tmp2_v2.i.i = add i32 %tmp0_v.i18.i, -20
+  %tmp2_v2.i.i = add i32 %tmp0_v.i40.i, -20
   %23 = inttoptr i32 %tmp2_v2.i.i to i32*
   %24 = load i32, i32* %23, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i18.i, -56
+  %tmp2_v4.i.i = add i32 %tmp0_v.i40.i, -56
   %25 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 %24, i32* %25, align 8
-  %26 = inttoptr i32 %tmp2_v.i49.i to i32*
+  %26 = inttoptr i32 %tmp2_v.i52.i to i32*
   %27 = load i32, i32* %26, align 8
-  %tmp2_v7.i.i = add i32 %tmp0_v.i18.i, -60
+  %tmp2_v7.i.i = add i32 %tmp0_v.i40.i, -60
   %28 = inttoptr i32 %tmp2_v7.i.i to i32*
   store i32 %27, i32* %28, align 4
-  %spi.bis.942 = ptrtoint[12 x i8]* @str.942 to i32
+  %spi.bis.942 = ptrtoint[12 x i8]* @str.bis.942 to i32
   store i32 %spi.bis.942, i32* %12, align 16
   store i32 134517370, i32* %13, align 4
-  %29 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i17.i, i32 inreg noundef 0, i32 noundef %tmp2_v9.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
+  %29 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i39.i, i32 inreg noundef 0, i32 noundef %tmp2_v9.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
   %30 = lshr i64 %29, 32
   %31 = trunc i64 %30 to i32
   %32 = load i32, i32* %19, align 16
   store i32 %32, i32* %28, align 4
-  %spi.bis.941 = ptrtoint[9 x i8]* @str.941 to i32
+  %spi.bis.941 = ptrtoint[9 x i8]* @str.bis.941 to i32
   store i32 %spi.bis.941, i32* %12, align 16
   store i32 134517391, i32* %13, align 4
-  %33 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i17.i, i32 inreg noundef %31, i32 noundef %tmp2_v9.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
+  %33 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i39.i, i32 inreg noundef %31, i32 noundef %tmp2_v9.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
   %34 = lshr i64 %33, 32
   %35 = trunc i64 %34 to i32
   %36 = load i32, i32* %22, align 4
   store i32 %36, i32* %28, align 4
-  %spi.bis.940 = ptrtoint[15 x i8]* @str.940 to i32
+  %spi.bis.940 = ptrtoint[15 x i8]* @str.bis.940 to i32
   store i32 %spi.bis.940, i32* %12, align 16
   store i32 134517412, i32* %13, align 4
-  %37 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i17.i, i32 inreg noundef %35, i32 noundef %tmp2_v9.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
+  %37 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i39.i, i32 inreg noundef %35, i32 noundef %tmp2_v9.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
   ret void
 }
 

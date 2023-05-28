@@ -7,6 +7,8 @@ target triple = "i386-pc-linux-gnu"
 @fpstt = internal unnamed_addr global i32 0
 @stack959 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
+@str.bis.957 = constant [4 x i8] c"\05\7e\2e\00"
+@str.bis.958 = constant [4 x i8] c"\05\7e\2e\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly
 define internal fastcc void @helper_fninit() unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -21,24 +23,25 @@ declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone wil
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn
 define internal fastcc void @parameters_vs_arguments960(i32 %arg_esp) unnamed_addr  mustprogress nofree norecurse nosync nounwind willreturn  !retregs !10 {
-  %tmp2_v.i5.i = add i32 %arg_esp, -4
-  %1 = inttoptr i32 %tmp2_v.i5.i to i32*
+  %tmp2_v.i10.i = add i32 %arg_esp, -4
+  %1 = inttoptr i32 %tmp2_v.i10.i to i32*
   store i32 0, i32* %1, align 4
-  %tmp2_v1.i8.i = add i32 %arg_esp, -24
-  %2 = inttoptr i32 %tmp2_v1.i8.i to i32*
+  %tmp2_v1.i13.i = add i32 %arg_esp, -24
+  %2 = inttoptr i32 %tmp2_v1.i13.i to i32*
   store i32 5, i32* %2, align 4
-  %tmp2_v1.i12.i = add i32 %arg_esp, -28
-  %3 = inttoptr i32 %tmp2_v1.i12.i to i32*
+  %tmp2_v1.i4.i = add i32 %arg_esp, -28
+  %3 = inttoptr i32 %tmp2_v1.i4.i to i32*
   store i32 10, i32* %3, align 4
-  %tmp2_v2.i13.i = add i32 %arg_esp, -32
-  %4 = inttoptr i32 %tmp2_v2.i13.i to i32*
+  %tmp2_v2.i5.i = add i32 %arg_esp, -32
+  %4 = inttoptr i32 %tmp2_v2.i5.i to i32*
   store i32 134517166, i32* %4, align 4
-  %tmp2_v.i.i.i = add i32 %arg_esp, -36
-  %5 = inttoptr i32 %tmp2_v.i.i.i to i32*
-  store i32 %tmp2_v.i5.i, i32* %5, align 4
+  %tmp2_v.i2.i.i = add i32 %arg_esp, -36
+  %5 = inttoptr i32 %tmp2_v.i2.i.i to i32*
+  store i32 %tmp2_v.i10.i, i32* %5, align 4
   %tmp2_v1.i.i.i = add i32 %arg_esp, -40
   %6 = inttoptr i32 %tmp2_v1.i.i.i to i32*
-  store i32 134517122, i32* %6, align 4
+  %spi.bis.958 = ptrtoint[4 x i8]* @str.bis.958 to i32
+  store i32 %spi.bis.958, i32* %6, align 4
   %7 = load i32, i32* %5, align 4
   %tmp2_v.i.i = add i32 %7, -8
   %8 = inttoptr i32 %tmp2_v.i.i to i32*
@@ -52,7 +55,8 @@ define internal fastcc void @parameters_vs_arguments960(i32 %arg_esp) unnamed_ad
   store i32 %tmp0_v4.i.i, i32* %3, align 4
   store i32 134517198, i32* %4, align 4
   store i32 %7, i32* %5, align 4
-  store i32 134517122, i32* %6, align 4
+  %spi.bis.957 = ptrtoint[4 x i8]* @str.bis.957 to i32
+  store i32 %spi.bis.957, i32* %6, align 4
   ret void
 }
 

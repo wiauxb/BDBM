@@ -120,7 +120,7 @@ def mutate_basic_if(project):
     return command
 
 def mutate_sys_adder(project):
-    number_add = random.randrange(1,22)
+    number_add = random.randrange(1,21)
     command = f"""just mutate {project} sys_adder --number_add {number_add}"""
     log.info(command)
     subprocess.check_output(command, shell=True)
@@ -181,6 +181,5 @@ if __name__ == "__main__":
 
     log.info("New command : " + args.number + " mutations for " + args.project)
     mutation_selection(args.project, int(args.number))
-
 
 

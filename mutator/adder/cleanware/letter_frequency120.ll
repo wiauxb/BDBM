@@ -17,12 +17,12 @@ target triple = "i386-pc-linux-gnu"
 @df = internal unnamed_addr global i32 0
 @_ZL6segmem = internal global [1024 x i8] zeroinitializer, align 1
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.113 = constant [19 x i8] c"%-10c%-10d%-10.2f\0a\00"
-@str.114 = constant [17 x i8] c"%-10s%-10s%-10s\0a\00"
-@str.115 = constant [7 x i8] c"Letter\00"
-@str.116 = constant [6 x i8] c"Count\00"
-@str.117 = constant [8 x i8] c"Percent\00"
-@str.118 = constant [45 x i8] c"The quick brown fox jumps over the lazy dog!\00"
+@str.bis.113 = constant [17 x i8] c"\25\2d\31\30\73\25\2d\31\30\73\25\2d\31\30\73\0a\00"
+@str.bis.114 = constant [7 x i8] c"\4c\65\74\74\65\72\00"
+@str.bis.115 = constant [6 x i8] c"\43\6f\75\6e\74\00"
+@str.bis.116 = constant [8 x i8] c"\50\65\72\63\65\6e\74\00"
+@str.bis.117 = constant [19 x i8] c"\25\2d\31\30\63\25\2d\31\30\64\25\2d\31\30\2e\32\66\0a\00"
+@str.bis.118 = constant [45 x i8] c"\54\68\65\20\71\75\69\63\6b\20\62\72\6f\77\6e\20\66\6f\78\20\6a\75\6d\70\73\20\6f\76\65\72\20\74\68\65\20\6c\61\7a\79\20\64\6f\67\21\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -1547,351 +1547,351 @@ declare void @llvm.lifetime.end.p0i8(i64 immarg, i8* nocapture)  argmemonly nofr
 ; Function Attrs: nofree nosync nounwind readnone willreturn
 declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone willreturn 
 
-; Function Attrs: noinline
-declare i32 @tolower(i32) local_unnamed_addr  noinline 
-
 ; Function Attrs: nofree noinline nounwind
 declare noundef i32 @putchar(i32 noundef) local_unnamed_addr  nofree noinline nounwind 
 
 ; Function Attrs: noinline
 declare i32 @strlen(i32) local_unnamed_addr  noinline 
 
+; Function Attrs: noinline
+declare i32 @tolower(i32) local_unnamed_addr  noinline 
+
 ; Function Attrs: norecurse
 define internal fastcc void @letter_frequency120(i32 %arg_esp) unnamed_addr  norecurse  !retregs !22 {
 Func_8049264.exit.i:
-  %tmp2_v.i94.i = add i32 %arg_esp, 4
-  %tmp0_v.i95.i = and i32 %arg_esp, -16
+  %tmp2_v.i2.i = add i32 %arg_esp, 4
+  %tmp0_v.i3.i = and i32 %arg_esp, -16
   %0 = inttoptr i32 %arg_esp to i32*
   %1 = load i32, i32* %0, align 4
-  %tmp2_v3.i97.i = add i32 %tmp0_v.i95.i, -4
-  %2 = inttoptr i32 %tmp2_v3.i97.i to i32*
+  %tmp2_v3.i5.i = add i32 %tmp0_v.i3.i, -4
+  %2 = inttoptr i32 %tmp2_v3.i5.i to i32*
   store i32 %1, i32* %2, align 4
-  %tmp2_v4.i98.i = add i32 %tmp0_v.i95.i, -8
-  %3 = inttoptr i32 %tmp2_v4.i98.i to i32*
+  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
+  %3 = inttoptr i32 %tmp2_v4.i.i to i32*
   store i32 0, i32* %3, align 8
-  %tmp2_v5.i100.i = add i32 %tmp0_v.i95.i, -12
-  %4 = inttoptr i32 %tmp2_v5.i100.i to i32*
+  %tmp2_v5.i.i = add i32 %tmp0_v.i3.i, -12
+  %4 = inttoptr i32 %tmp2_v5.i.i to i32*
   store i32 0, i32* %4, align 4
-  %tmp2_v6.i102.i = add i32 %tmp0_v.i95.i, -16
-  %5 = inttoptr i32 %tmp2_v6.i102.i to i32*
+  %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
+  %5 = inttoptr i32 %tmp2_v6.i.i to i32*
   store i32 0, i32* %5, align 16
-  %tmp2_v7.i104.i = add i32 %tmp0_v.i95.i, -20
-  %6 = inttoptr i32 %tmp2_v7.i104.i to i32*
-  store i32 %tmp2_v.i94.i, i32* %6, align 4
-  %tmp2_v9.i105.i = add i32 %tmp0_v.i95.i, -196
-  %7 = inttoptr i32 %tmp2_v9.i105.i to i32*
+  %tmp2_v7.i.i = add i32 %tmp0_v.i3.i, -20
+  %6 = inttoptr i32 %tmp2_v7.i.i to i32*
+  store i32 %tmp2_v.i2.i, i32* %6, align 4
+  %tmp2_v9.i.i = add i32 %tmp0_v.i3.i, -196
+  %7 = inttoptr i32 %tmp2_v9.i.i to i32*
   store i32 134517301, i32* %7, align 4
-  %tmp4_v.i.i.b = load i1, i1* @segs.0, align 1
+  %tmp4_v.i137.i.b = load i1, i1* @segs.0, align 1
   %8 = inttoptr i32 %arg_esp to i32*
   %9 = load i32, i32* %8, align 4
-  %tmp2_v2.i14.i = add i32 %tmp0_v.i95.i, -36
-  %10 = inttoptr i32 %tmp2_v2.i14.i to i32*
+  %tmp2_v2.i141.i = add i32 %tmp0_v.i3.i, -36
+  %10 = inttoptr i32 %tmp2_v2.i141.i to i32*
   store i32 %9, i32* %10, align 4
-  %tmp2_v4.i16.i = add i32 %tmp0_v.i95.i, -160
-  %11 = inttoptr i32 %tmp2_v4.i16.i to i32*
-  %spi.bis.118 = ptrtoint[45 x i8]* @str.118 to i32
+  %tmp2_v4.i143.i = add i32 %tmp0_v.i3.i, -160
+  %11 = inttoptr i32 %tmp2_v4.i143.i to i32*
+  %spi.bis.118 = ptrtoint[45 x i8]* @str.bis.118 to i32
   store i32 %spi.bis.118, i32* %11, align 16
-  %tmp2_v5.i17.i = add i32 %tmp0_v.i95.i, -140
-  %12 = inttoptr i32 %tmp2_v5.i17.i to i32*
+  %tmp2_v5.i144.i = add i32 %tmp0_v.i3.i, -140
+  %12 = inttoptr i32 %tmp2_v5.i144.i to i32*
   store i32 0, i32* %12, align 4
-  %tmp0_v.i43.i = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i = shl i32 %tmp0_v.i43.i, 2
-  %tmp4_v.i45.i = add i32 %tmp0_v1.i44.i, %tmp2_v5.i17.i
-  %13 = inttoptr i32 %tmp4_v.i45.i to i32*
+  %tmp0_v.i109.i = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i = shl i32 %tmp0_v.i109.i, 2
+  %tmp4_v.i111.i = add i32 %tmp0_v1.i110.i, %tmp2_v5.i144.i
+  %13 = inttoptr i32 %tmp4_v.i111.i to i32*
   store i32 0, i32* %13, align 4
-  %tmp0_v.i43.i.1 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.1 = shl i32 %tmp0_v.i43.i.1, 2
-  %tmp4_v.i45.i.1 = add i32 %tmp0_v1.i44.i.1, %tmp4_v.i45.i
-  %14 = inttoptr i32 %tmp4_v.i45.i.1 to i32*
+  %tmp0_v.i109.i.1 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.1 = shl i32 %tmp0_v.i109.i.1, 2
+  %tmp4_v.i111.i.1 = add i32 %tmp0_v1.i110.i.1, %tmp4_v.i111.i
+  %14 = inttoptr i32 %tmp4_v.i111.i.1 to i32*
   store i32 0, i32* %14, align 4
-  %tmp0_v.i43.i.2 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.2 = shl i32 %tmp0_v.i43.i.2, 2
-  %tmp4_v.i45.i.2 = add i32 %tmp0_v1.i44.i.2, %tmp4_v.i45.i.1
-  %15 = inttoptr i32 %tmp4_v.i45.i.2 to i32*
+  %tmp0_v.i109.i.2 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.2 = shl i32 %tmp0_v.i109.i.2, 2
+  %tmp4_v.i111.i.2 = add i32 %tmp0_v1.i110.i.2, %tmp4_v.i111.i.1
+  %15 = inttoptr i32 %tmp4_v.i111.i.2 to i32*
   store i32 0, i32* %15, align 4
-  %tmp0_v.i43.i.3 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.3 = shl i32 %tmp0_v.i43.i.3, 2
-  %tmp4_v.i45.i.3 = add i32 %tmp0_v1.i44.i.3, %tmp4_v.i45.i.2
-  %16 = inttoptr i32 %tmp4_v.i45.i.3 to i32*
+  %tmp0_v.i109.i.3 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.3 = shl i32 %tmp0_v.i109.i.3, 2
+  %tmp4_v.i111.i.3 = add i32 %tmp0_v1.i110.i.3, %tmp4_v.i111.i.2
+  %16 = inttoptr i32 %tmp4_v.i111.i.3 to i32*
   store i32 0, i32* %16, align 4
-  %tmp0_v.i43.i.4 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.4 = shl i32 %tmp0_v.i43.i.4, 2
-  %tmp4_v.i45.i.4 = add i32 %tmp0_v1.i44.i.4, %tmp4_v.i45.i.3
-  %17 = inttoptr i32 %tmp4_v.i45.i.4 to i32*
+  %tmp0_v.i109.i.4 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.4 = shl i32 %tmp0_v.i109.i.4, 2
+  %tmp4_v.i111.i.4 = add i32 %tmp0_v1.i110.i.4, %tmp4_v.i111.i.3
+  %17 = inttoptr i32 %tmp4_v.i111.i.4 to i32*
   store i32 0, i32* %17, align 4
-  %tmp0_v.i43.i.5 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.5 = shl i32 %tmp0_v.i43.i.5, 2
-  %tmp4_v.i45.i.5 = add i32 %tmp0_v1.i44.i.5, %tmp4_v.i45.i.4
-  %18 = inttoptr i32 %tmp4_v.i45.i.5 to i32*
+  %tmp0_v.i109.i.5 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.5 = shl i32 %tmp0_v.i109.i.5, 2
+  %tmp4_v.i111.i.5 = add i32 %tmp0_v1.i110.i.5, %tmp4_v.i111.i.4
+  %18 = inttoptr i32 %tmp4_v.i111.i.5 to i32*
   store i32 0, i32* %18, align 4
-  %tmp0_v.i43.i.6 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.6 = shl i32 %tmp0_v.i43.i.6, 2
-  %tmp4_v.i45.i.6 = add i32 %tmp0_v1.i44.i.6, %tmp4_v.i45.i.5
-  %19 = inttoptr i32 %tmp4_v.i45.i.6 to i32*
+  %tmp0_v.i109.i.6 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.6 = shl i32 %tmp0_v.i109.i.6, 2
+  %tmp4_v.i111.i.6 = add i32 %tmp0_v1.i110.i.6, %tmp4_v.i111.i.5
+  %19 = inttoptr i32 %tmp4_v.i111.i.6 to i32*
   store i32 0, i32* %19, align 4
-  %tmp0_v.i43.i.7 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.7 = shl i32 %tmp0_v.i43.i.7, 2
-  %tmp4_v.i45.i.7 = add i32 %tmp0_v1.i44.i.7, %tmp4_v.i45.i.6
-  %20 = inttoptr i32 %tmp4_v.i45.i.7 to i32*
+  %tmp0_v.i109.i.7 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.7 = shl i32 %tmp0_v.i109.i.7, 2
+  %tmp4_v.i111.i.7 = add i32 %tmp0_v1.i110.i.7, %tmp4_v.i111.i.6
+  %20 = inttoptr i32 %tmp4_v.i111.i.7 to i32*
   store i32 0, i32* %20, align 4
-  %tmp0_v.i43.i.8 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.8 = shl i32 %tmp0_v.i43.i.8, 2
-  %tmp4_v.i45.i.8 = add i32 %tmp0_v1.i44.i.8, %tmp4_v.i45.i.7
-  %21 = inttoptr i32 %tmp4_v.i45.i.8 to i32*
+  %tmp0_v.i109.i.8 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.8 = shl i32 %tmp0_v.i109.i.8, 2
+  %tmp4_v.i111.i.8 = add i32 %tmp0_v1.i110.i.8, %tmp4_v.i111.i.7
+  %21 = inttoptr i32 %tmp4_v.i111.i.8 to i32*
   store i32 0, i32* %21, align 4
-  %tmp0_v.i43.i.9 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.9 = shl i32 %tmp0_v.i43.i.9, 2
-  %tmp4_v.i45.i.9 = add i32 %tmp0_v1.i44.i.9, %tmp4_v.i45.i.8
-  %22 = inttoptr i32 %tmp4_v.i45.i.9 to i32*
+  %tmp0_v.i109.i.9 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.9 = shl i32 %tmp0_v.i109.i.9, 2
+  %tmp4_v.i111.i.9 = add i32 %tmp0_v1.i110.i.9, %tmp4_v.i111.i.8
+  %22 = inttoptr i32 %tmp4_v.i111.i.9 to i32*
   store i32 0, i32* %22, align 4
-  %tmp0_v.i43.i.10 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.10 = shl i32 %tmp0_v.i43.i.10, 2
-  %tmp4_v.i45.i.10 = add i32 %tmp0_v1.i44.i.10, %tmp4_v.i45.i.9
-  %23 = inttoptr i32 %tmp4_v.i45.i.10 to i32*
+  %tmp0_v.i109.i.10 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.10 = shl i32 %tmp0_v.i109.i.10, 2
+  %tmp4_v.i111.i.10 = add i32 %tmp0_v1.i110.i.10, %tmp4_v.i111.i.9
+  %23 = inttoptr i32 %tmp4_v.i111.i.10 to i32*
   store i32 0, i32* %23, align 4
-  %tmp0_v.i43.i.11 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.11 = shl i32 %tmp0_v.i43.i.11, 2
-  %tmp4_v.i45.i.11 = add i32 %tmp0_v1.i44.i.11, %tmp4_v.i45.i.10
-  %24 = inttoptr i32 %tmp4_v.i45.i.11 to i32*
+  %tmp0_v.i109.i.11 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.11 = shl i32 %tmp0_v.i109.i.11, 2
+  %tmp4_v.i111.i.11 = add i32 %tmp0_v1.i110.i.11, %tmp4_v.i111.i.10
+  %24 = inttoptr i32 %tmp4_v.i111.i.11 to i32*
   store i32 0, i32* %24, align 4
-  %tmp0_v.i43.i.12 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.12 = shl i32 %tmp0_v.i43.i.12, 2
-  %tmp4_v.i45.i.12 = add i32 %tmp0_v1.i44.i.12, %tmp4_v.i45.i.11
-  %25 = inttoptr i32 %tmp4_v.i45.i.12 to i32*
+  %tmp0_v.i109.i.12 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.12 = shl i32 %tmp0_v.i109.i.12, 2
+  %tmp4_v.i111.i.12 = add i32 %tmp0_v1.i110.i.12, %tmp4_v.i111.i.11
+  %25 = inttoptr i32 %tmp4_v.i111.i.12 to i32*
   store i32 0, i32* %25, align 4
-  %tmp0_v.i43.i.13 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.13 = shl i32 %tmp0_v.i43.i.13, 2
-  %tmp4_v.i45.i.13 = add i32 %tmp0_v1.i44.i.13, %tmp4_v.i45.i.12
-  %26 = inttoptr i32 %tmp4_v.i45.i.13 to i32*
+  %tmp0_v.i109.i.13 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.13 = shl i32 %tmp0_v.i109.i.13, 2
+  %tmp4_v.i111.i.13 = add i32 %tmp0_v1.i110.i.13, %tmp4_v.i111.i.12
+  %26 = inttoptr i32 %tmp4_v.i111.i.13 to i32*
   store i32 0, i32* %26, align 4
-  %tmp0_v.i43.i.14 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.14 = shl i32 %tmp0_v.i43.i.14, 2
-  %tmp4_v.i45.i.14 = add i32 %tmp0_v1.i44.i.14, %tmp4_v.i45.i.13
-  %27 = inttoptr i32 %tmp4_v.i45.i.14 to i32*
+  %tmp0_v.i109.i.14 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.14 = shl i32 %tmp0_v.i109.i.14, 2
+  %tmp4_v.i111.i.14 = add i32 %tmp0_v1.i110.i.14, %tmp4_v.i111.i.13
+  %27 = inttoptr i32 %tmp4_v.i111.i.14 to i32*
   store i32 0, i32* %27, align 4
-  %tmp0_v.i43.i.15 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.15 = shl i32 %tmp0_v.i43.i.15, 2
-  %tmp4_v.i45.i.15 = add i32 %tmp0_v1.i44.i.15, %tmp4_v.i45.i.14
-  %28 = inttoptr i32 %tmp4_v.i45.i.15 to i32*
+  %tmp0_v.i109.i.15 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.15 = shl i32 %tmp0_v.i109.i.15, 2
+  %tmp4_v.i111.i.15 = add i32 %tmp0_v1.i110.i.15, %tmp4_v.i111.i.14
+  %28 = inttoptr i32 %tmp4_v.i111.i.15 to i32*
   store i32 0, i32* %28, align 4
-  %tmp0_v.i43.i.16 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.16 = shl i32 %tmp0_v.i43.i.16, 2
-  %tmp4_v.i45.i.16 = add i32 %tmp0_v1.i44.i.16, %tmp4_v.i45.i.15
-  %29 = inttoptr i32 %tmp4_v.i45.i.16 to i32*
+  %tmp0_v.i109.i.16 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.16 = shl i32 %tmp0_v.i109.i.16, 2
+  %tmp4_v.i111.i.16 = add i32 %tmp0_v1.i110.i.16, %tmp4_v.i111.i.15
+  %29 = inttoptr i32 %tmp4_v.i111.i.16 to i32*
   store i32 0, i32* %29, align 4
-  %tmp0_v.i43.i.17 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.17 = shl i32 %tmp0_v.i43.i.17, 2
-  %tmp4_v.i45.i.17 = add i32 %tmp0_v1.i44.i.17, %tmp4_v.i45.i.16
-  %30 = inttoptr i32 %tmp4_v.i45.i.17 to i32*
+  %tmp0_v.i109.i.17 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.17 = shl i32 %tmp0_v.i109.i.17, 2
+  %tmp4_v.i111.i.17 = add i32 %tmp0_v1.i110.i.17, %tmp4_v.i111.i.16
+  %30 = inttoptr i32 %tmp4_v.i111.i.17 to i32*
   store i32 0, i32* %30, align 4
-  %tmp0_v.i43.i.18 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.18 = shl i32 %tmp0_v.i43.i.18, 2
-  %tmp4_v.i45.i.18 = add i32 %tmp0_v1.i44.i.18, %tmp4_v.i45.i.17
-  %31 = inttoptr i32 %tmp4_v.i45.i.18 to i32*
+  %tmp0_v.i109.i.18 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.18 = shl i32 %tmp0_v.i109.i.18, 2
+  %tmp4_v.i111.i.18 = add i32 %tmp0_v1.i110.i.18, %tmp4_v.i111.i.17
+  %31 = inttoptr i32 %tmp4_v.i111.i.18 to i32*
   store i32 0, i32* %31, align 4
-  %tmp0_v.i43.i.19 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.19 = shl i32 %tmp0_v.i43.i.19, 2
-  %tmp4_v.i45.i.19 = add i32 %tmp0_v1.i44.i.19, %tmp4_v.i45.i.18
-  %32 = inttoptr i32 %tmp4_v.i45.i.19 to i32*
+  %tmp0_v.i109.i.19 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.19 = shl i32 %tmp0_v.i109.i.19, 2
+  %tmp4_v.i111.i.19 = add i32 %tmp0_v1.i110.i.19, %tmp4_v.i111.i.18
+  %32 = inttoptr i32 %tmp4_v.i111.i.19 to i32*
   store i32 0, i32* %32, align 4
-  %tmp0_v.i43.i.20 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.20 = shl i32 %tmp0_v.i43.i.20, 2
-  %tmp4_v.i45.i.20 = add i32 %tmp0_v1.i44.i.20, %tmp4_v.i45.i.19
-  %33 = inttoptr i32 %tmp4_v.i45.i.20 to i32*
+  %tmp0_v.i109.i.20 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.20 = shl i32 %tmp0_v.i109.i.20, 2
+  %tmp4_v.i111.i.20 = add i32 %tmp0_v1.i110.i.20, %tmp4_v.i111.i.19
+  %33 = inttoptr i32 %tmp4_v.i111.i.20 to i32*
   store i32 0, i32* %33, align 4
-  %tmp0_v.i43.i.21 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.21 = shl i32 %tmp0_v.i43.i.21, 2
-  %tmp4_v.i45.i.21 = add i32 %tmp0_v1.i44.i.21, %tmp4_v.i45.i.20
-  %34 = inttoptr i32 %tmp4_v.i45.i.21 to i32*
+  %tmp0_v.i109.i.21 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.21 = shl i32 %tmp0_v.i109.i.21, 2
+  %tmp4_v.i111.i.21 = add i32 %tmp0_v1.i110.i.21, %tmp4_v.i111.i.20
+  %34 = inttoptr i32 %tmp4_v.i111.i.21 to i32*
   store i32 0, i32* %34, align 4
-  %tmp0_v.i43.i.22 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.22 = shl i32 %tmp0_v.i43.i.22, 2
-  %tmp4_v.i45.i.22 = add i32 %tmp0_v1.i44.i.22, %tmp4_v.i45.i.21
-  %35 = inttoptr i32 %tmp4_v.i45.i.22 to i32*
+  %tmp0_v.i109.i.22 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.22 = shl i32 %tmp0_v.i109.i.22, 2
+  %tmp4_v.i111.i.22 = add i32 %tmp0_v1.i110.i.22, %tmp4_v.i111.i.21
+  %35 = inttoptr i32 %tmp4_v.i111.i.22 to i32*
   store i32 0, i32* %35, align 4
-  %tmp0_v.i43.i.23 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.23 = shl i32 %tmp0_v.i43.i.23, 2
-  %tmp4_v.i45.i.23 = add i32 %tmp0_v1.i44.i.23, %tmp4_v.i45.i.22
-  %36 = inttoptr i32 %tmp4_v.i45.i.23 to i32*
+  %tmp0_v.i109.i.23 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.23 = shl i32 %tmp0_v.i109.i.23, 2
+  %tmp4_v.i111.i.23 = add i32 %tmp0_v1.i110.i.23, %tmp4_v.i111.i.22
+  %36 = inttoptr i32 %tmp4_v.i111.i.23 to i32*
   store i32 0, i32* %36, align 4
-  %tmp0_v.i43.i.24 = load i32, i32* @df, align 4
-  %tmp0_v1.i44.i.24 = shl i32 %tmp0_v.i43.i.24, 2
-  %tmp4_v.i45.i.24 = add i32 %tmp0_v1.i44.i.24, %tmp4_v.i45.i.23
-  %37 = inttoptr i32 %tmp4_v.i45.i.24 to i32*
+  %tmp0_v.i109.i.24 = load i32, i32* @df, align 4
+  %tmp0_v1.i110.i.24 = shl i32 %tmp0_v.i109.i.24, 2
+  %tmp4_v.i111.i.24 = add i32 %tmp0_v1.i110.i.24, %tmp4_v.i111.i.23
+  %37 = inttoptr i32 %tmp4_v.i111.i.24 to i32*
   store i32 0, i32* %37, align 4
   %38 = load i32, i32* %11, align 16
-  %tmp2_v2.i7.i = add i32 %tmp0_v.i95.i, -208
-  %39 = inttoptr i32 %tmp2_v2.i7.i to i32*
+  %tmp2_v2.i122.i = add i32 %tmp0_v.i3.i, -208
+  %39 = inttoptr i32 %tmp2_v2.i122.i to i32*
   store i32 %38, i32* %39, align 16
-  %tmp2_v3.i8.i = add i32 %tmp0_v.i95.i, -212
-  %40 = inttoptr i32 %tmp2_v3.i8.i to i32*
+  %tmp2_v3.i123.i = add i32 %tmp0_v.i3.i, -212
+  %40 = inttoptr i32 %tmp2_v3.i123.i to i32*
   store i32 134517364, i32* %40, align 4
-  %arg.i.i6 = load i32, i32* %39, align 16
-  %41 = tail call i32 @strlen(i32 %arg.i.i6)
-  %mrv.i7 = insertvalue { i32, i32 } undef, i32 %tmp2_v2.i7.i, 0
-  %tmp2_v.i156.i = add i32 %tmp0_v.i95.i, -156
-  %42 = inttoptr i32 %tmp2_v.i156.i to i32*
+  %arg.i.i8 = load i32, i32* %39, align 16
+  %41 = tail call i32 @strlen(i32 %arg.i.i8)
+  %mrv.i9 = insertvalue { i32, i32 } undef, i32 %tmp2_v2.i122.i, 0
+  %tmp2_v.i84.i = add i32 %tmp0_v.i3.i, -156
+  %42 = inttoptr i32 %tmp2_v.i84.i to i32*
   store i32 %41, i32* %42, align 4
-  %tmp2_v1.i158.i = add i32 %tmp0_v.i95.i, -172
-  %43 = inttoptr i32 %tmp2_v1.i158.i to i32*
+  %tmp2_v1.i85.i = add i32 %tmp0_v.i3.i, -172
+  %43 = inttoptr i32 %tmp2_v1.i85.i to i32*
   store i32 0, i32* %43, align 4
   %44 = load i32, i32* %42, align 4
   %45 = icmp sgt i32 %44, 0
   br i1 %45, label %BB_8049289.i.lr.ph, label %BB_80492F1.i
 
-BB_80492F1.i:                                     ; preds = %BB_80492DC.i, %Func_8049264.exit.i
-  %mrv.i7.pn.lcssa = phi { i32, i32 } [ %mrv.i7, %Func_8049264.exit.i ], [ %.pn24, %BB_80492DC.i ]
-  %r_edx.1.lcssa = phi i32 [ %tmp2_v5.i17.i, %Func_8049264.exit.i ], [ %r_edx.0, %BB_80492DC.i ]
-  %r_esp.1.in.le = extractvalue { i32, i32 } %mrv.i7.pn.lcssa, 0
-  %tmp2_v1.i.i = add i32 %r_esp.1.in.le, 12
-  %46 = inttoptr i32 %tmp2_v1.i.i to i32*
-  %spi.bis.117 = ptrtoint[8 x i8]* @str.117 to i32
-  store i32 %spi.bis.117, i32* %46, align 4
-  %tmp2_v3.i.i = add i32 %r_esp.1.in.le, 8
-  %47 = inttoptr i32 %tmp2_v3.i.i to i32*
-  %spi.bis.116 = ptrtoint[6 x i8]* @str.116 to i32
-  store i32 %spi.bis.116, i32* %47, align 4
-  %tmp2_v5.i.i = add i32 %r_esp.1.in.le, 4
-  %48 = inttoptr i32 %tmp2_v5.i.i to i32*
-  %spi.bis.115 = ptrtoint[7 x i8]* @str.115 to i32
-  store i32 %spi.bis.115, i32* %48, align 4
-  %49 = inttoptr i32 %r_esp.1.in.le to i32*
-  %spi.bis.114 = ptrtoint[17 x i8]* @str.114 to i32
-  store i32 %spi.bis.114, i32* %49, align 4
-  %tmp2_v8.i.i = add i32 %r_esp.1.in.le, -4
-  %50 = inttoptr i32 %tmp2_v8.i.i to i32*
-  store i32 134517522, i32* %50, align 4
-  %51 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef 0, i32 inreg noundef %r_edx.1.lcssa, i32 noundef %r_esp.1.in.le, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !23
-  %tmp2_v.i143.i = add i32 %tmp0_v.i95.i, -168
-  %52 = inttoptr i32 %tmp2_v.i143.i to i32*
-  store i32 0, i32* %52, align 8
-  br label %BB_8049321.i
-
-BB_8049321.i:                                     ; preds = %BB_8049321.i, %BB_80492F1.i
-  store i32 42, i32* %49, align 4
-  store i32 134517547, i32* %50, align 4
-  %arg.i.i = load i32, i32* %49, align 4
-  %53 = tail call i32 @putchar(i32 %arg.i.i)  nounwind 
-  %54 = load i32, i32* %52, align 8
-  %tmp0_v2.i.i = add i32 %54, 1
-  store i32 %tmp0_v2.i.i, i32* %52, align 8
-  %55 = icmp slt i32 %tmp0_v2.i.i, 30
-  br i1 %55, label %BB_8049321.i, label %BB_804933E.i
-
-BB_8049289.i.lr.ph:                               ; preds = %Func_8049264.exit.i
-  %tmp2_v.i50.i = add i32 %tmp0_v.i95.i, -173
-  %56 = inttoptr i32 %tmp2_v.i50.i to i8*
-  %tmp4_v.i74.i = add i32 %tmp0_v.i95.i, -528
-  br label %BB_8049289.i
+BB_80492DC.i:                                     ; preds = %BB_8049289.i, %Func_80492B8.exit.i
+  %r_edx.0 = phi i32 [ %storemerge23, %BB_8049289.i ], [ %tmp0_v5.i.i, %Func_80492B8.exit.i ]
+  %46 = load i32, i32* %43, align 4
+  %tmp0_v1.i10.i = add i32 %46, 1
+  %r_esp.0.in = extractvalue { i32, i32 } %mrv.i9.pn, 0
+  store i32 %tmp0_v1.i10.i, i32* %43, align 4
+  %47 = load i32, i32* %42, align 4
+  %48 = icmp slt i32 %tmp0_v1.i10.i, %47
+  br i1 %48, label %BB_8049289.i, label %BB_80492F1.i
 
 Func_80492B8.exit.i:                              ; preds = %BB_8049289.i
-  %tmp0_v.i71.i18 = shl i32 %74, 2
-  %tmp0_v1.i72.i = and i32 %tmp0_v.i71.i18, 1020
-  %tmp2_v3.i75.i = add i32 %tmp4_v.i74.i, %tmp0_v1.i72.i
-  %57 = inttoptr i32 %tmp2_v3.i75.i to i32*
-  %58 = load i32, i32* %57, align 4
-  %tmp0_v5.i77.i = add i32 %58, 1
-  store i32 %tmp0_v5.i77.i, i32* %57, align 4
+  %tmp0_v.i36.i18 = shl i32 %78, 2
+  %tmp0_v1.i37.i = and i32 %tmp0_v.i36.i18, 1020
+  %tmp2_v3.i39.i = add i32 %tmp4_v.i.i, %tmp0_v1.i37.i
+  %49 = inttoptr i32 %tmp2_v3.i39.i to i32*
+  %50 = load i32, i32* %49, align 4
+  %tmp0_v5.i.i = add i32 %50, 1
+  store i32 %tmp0_v5.i.i, i32* %49, align 4
   br label %BB_80492DC.i
 
 BB_804933E.i:                                     ; preds = %BB_8049321.i
-  store i32 10, i32* %49, align 4
-  store i32 134517576, i32* %50, align 4
-  %arg.i.i9 = load i32, i32* %49, align 4
-  %59 = tail call i32 @putchar(i32 %arg.i.i9)  nounwind 
-  %tmp2_v.i139.i = add i32 %tmp0_v.i95.i, -164
-  %60 = inttoptr i32 %tmp2_v.i139.i to i32*
-  %tmp2_v4.i63.i = add i32 %tmp0_v.i95.i, -180
-  %61 = inttoptr i32 %tmp2_v4.i63.i to i32*
-  store i32 0, i32* %60, align 4
-  %tmp2_v12.i.i = add i32 %tmp0_v.i95.i, -152
-  %62 = inttoptr i32 %tmp2_v12.i.i to i64*
-  %tmp2_v25.i.i = add i32 %tmp0_v.i95.i, -148
-  %63 = inttoptr i32 %tmp2_v25.i.i to i32*
-  %64 = inttoptr i32 %tmp2_v12.i.i to i32*
-  %tmp2_v31.i.i = add i32 %r_esp.1.in.le, -8
-  %65 = inttoptr i32 %tmp2_v31.i.i to i32*
-  %tmp2_v32.i.i = add i32 %r_esp.1.in.le, -12
-  %66 = inttoptr i32 %tmp2_v32.i.i to i32*
-  %tmp2_v35.i.i = add i32 %r_esp.1.in.le, -16
-  %67 = inttoptr i32 %tmp2_v35.i.i to i32*
-  %tmp2_v36.i.i = add i32 %r_esp.1.in.le, -20
-  %68 = inttoptr i32 %tmp2_v36.i.i to i32*
+  store i32 10, i32* %85, align 4
+  store i32 134517576, i32* %86, align 4
+  %arg.i.i = load i32, i32* %85, align 4
+  %51 = tail call i32 @putchar(i32 %arg.i.i)  nounwind 
+  %tmp2_v.i116.i = add i32 %tmp0_v.i3.i, -164
+  %52 = inttoptr i32 %tmp2_v.i116.i to i32*
+  %tmp2_v4.i53.i = add i32 %tmp0_v.i3.i, -180
+  %53 = inttoptr i32 %tmp2_v4.i53.i to i32*
+  store i32 0, i32* %52, align 4
+  %tmp2_v12.i57.i = add i32 %tmp0_v.i3.i, -152
+  %54 = inttoptr i32 %tmp2_v12.i57.i to i64*
+  %tmp2_v25.i.i = add i32 %tmp0_v.i3.i, -148
+  %55 = inttoptr i32 %tmp2_v25.i.i to i32*
+  %56 = inttoptr i32 %tmp2_v12.i57.i to i32*
+  %tmp2_v31.i.i = add i32 %r_esp.0.in.le, -8
+  %57 = inttoptr i32 %tmp2_v31.i.i to i32*
+  %tmp2_v32.i.i = add i32 %r_esp.0.in.le, -12
+  %58 = inttoptr i32 %tmp2_v32.i.i to i32*
+  %tmp2_v35.i.i = add i32 %r_esp.0.in.le, -16
+  %59 = inttoptr i32 %tmp2_v35.i.i to i32*
+  %tmp2_v36.i.i = add i32 %r_esp.0.in.le, -20
+  %60 = inttoptr i32 %tmp2_v36.i.i to i32*
   br label %BB_8049357.i
 
-BB_8049289.i:                                     ; preds = %BB_80492DC.i, %BB_8049289.i.lr.ph
-  %r_esp.1.in25 = phi i32 [ %tmp2_v2.i7.i, %BB_8049289.i.lr.ph ], [ %r_esp.1.in, %BB_80492DC.i ]
-  %mrv.i7.pn = phi { i32, i32 } [ %mrv.i7, %BB_8049289.i.lr.ph ], [ %.pn24, %BB_80492DC.i ]
-  %.pn28 = phi i32 [ %41, %BB_8049289.i.lr.ph ], [ %74, %BB_80492DC.i ]
-  %storemerge23 = phi i32 [ 0, %BB_8049289.i.lr.ph ], [ %tmp0_v1.i86.i, %BB_80492DC.i ]
-  %.pn24 = insertvalue { i32, i32 } %mrv.i7.pn, i32 %.pn28, 1
-  %69 = load i32, i32* %11, align 16
-  %tmp0_v3.i.i = add i32 %69, %storemerge23
-  %70 = inttoptr i32 %tmp0_v3.i.i to i8*
-  %71 = load i8, i8* %70, align 1
-  %tmp0_v5.i.i = sext i8 %71 to i32
-  %72 = inttoptr i32 %r_esp.1.in25 to i32*
-  store i32 %tmp0_v5.i.i, i32* %72, align 4
-  %tmp2_v8.i42.i = add i32 %r_esp.1.in25, -4
-  %73 = inttoptr i32 %tmp2_v8.i42.i to i32*
-  store i32 134517414, i32* %73, align 4
-  %arg.i.i10 = load i32, i32* %72, align 4
-  %74 = tail call i32 @tolower(i32 %arg.i.i10)
-  %75 = trunc i32 %74 to i8
-  store i8 %75, i8* %56, align 1
-  %76 = icmp slt i8 %75, 97
-  br i1 %76, label %BB_80492DC.i, label %Func_80492B8.exit.i
-
 BB_8049357.i:                                     ; preds = %BB_8049357.i, %BB_804933E.i
-  %storemerge127 = phi i32 [ 0, %BB_804933E.i ], [ %tmp0_v2.i131.i, %BB_8049357.i ]
-  %tmp4_v.i60.i = shl i32 %storemerge127, 2
-  %tmp2_v2.i61.i = add i32 %tmp4_v.i60.i, %tmp2_v5.i17.i
-  %77 = inttoptr i32 %tmp2_v2.i61.i to i32*
-  %78 = load i32, i32* %77, align 4
-  store i32 %78, i32* %61, align 4
-  tail call fastcc void @helper_fildl_ST0(i32 %78)
-  %79 = load i32, i32* %42, align 4
-  tail call fastcc void @helper_fildl_ST0(i32 %79)
+  %storemerge127 = phi i32 [ 0, %BB_804933E.i ], [ %tmp0_v2.i76.i, %BB_8049357.i ]
+  %tmp4_v.i50.i = shl i32 %storemerge127, 2
+  %tmp2_v2.i51.i = add i32 %tmp4_v.i50.i, %tmp2_v5.i144.i
+  %61 = inttoptr i32 %tmp2_v2.i51.i to i32*
+  %62 = load i32, i32* %61, align 4
+  store i32 %62, i32* %53, align 4
+  tail call fastcc void @helper_fildl_ST0(i32 %62)
+  %63 = load i32, i32* %42, align 4
+  tail call fastcc void @helper_fildl_ST0(i32 %63)
   tail call fastcc void @helper_fdiv_STN_ST0()
   tail call fastcc void @helper_fpop()
-  %80 = load i64, i64* inttoptr (i32 134520944 to i64*), align 16
-  tail call fastcc void @helper_fldl_ST0(i64 %80)
+  %64 = load i64, i64* inttoptr (i32 134520944 to i64*), align 16
+  tail call fastcc void @helper_fldl_ST0(i64 %64)
   tail call fastcc void @helper_fmul_STN_ST0()
   tail call fastcc void @helper_fpop()
   %tmp5_v13.i.i = tail call fastcc i64 @helper_fstl_ST0()
-  store i64 %tmp5_v13.i.i, i64* %62, align 8
+  store i64 %tmp5_v13.i.i, i64* %54, align 8
   tail call fastcc void @helper_fpop()
-  %81 = load i32, i32* %60, align 4
-  %tmp4_v18.i.i = shl i32 %81, 2
-  %tmp2_v19.i.i = add i32 %tmp4_v18.i.i, %tmp2_v5.i17.i
-  %82 = inttoptr i32 %tmp2_v19.i.i to i32*
-  %83 = load i32, i32* %82, align 4
-  %tmp0_v23.i.i = add i32 %81, 97
-  %84 = load i32, i32* %63, align 4
-  store i32 %84, i32* %49, align 4
-  %85 = load i32, i32* %64, align 8
-  store i32 %85, i32* %50, align 4
-  store i32 %83, i32* %65, align 4
-  store i32 %tmp0_v23.i.i, i32* %66, align 4
-  %spi.bis.113 = ptrtoint[19 x i8]* @str.113 to i32
-  store i32 %spi.bis.113, i32* %67, align 4
-  store i32 134517689, i32* %68, align 4
-  %86 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef 0, i32 inreg noundef %tmp0_v23.i.i, i32 noundef %tmp2_v35.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !23
-  %87 = load i32, i32* %60, align 4
-  %tmp0_v2.i131.i = add i32 %87, 1
-  store i32 %tmp0_v2.i131.i, i32* %60, align 4
-  %88 = icmp slt i32 %tmp0_v2.i131.i, 26
-  br i1 %88, label %BB_8049357.i, label %.exit
+  %65 = load i32, i32* %52, align 4
+  %tmp4_v18.i.i = shl i32 %65, 2
+  %tmp2_v19.i.i = add i32 %tmp4_v18.i.i, %tmp2_v5.i144.i
+  %66 = inttoptr i32 %tmp2_v19.i.i to i32*
+  %67 = load i32, i32* %66, align 4
+  %tmp0_v23.i.i = add i32 %65, 97
+  %68 = load i32, i32* %55, align 4
+  store i32 %68, i32* %85, align 4
+  %69 = load i32, i32* %56, align 8
+  store i32 %69, i32* %86, align 4
+  store i32 %67, i32* %57, align 4
+  store i32 %tmp0_v23.i.i, i32* %58, align 4
+  %spi.bis.117 = ptrtoint[19 x i8]* @str.bis.117 to i32
+  store i32 %spi.bis.117, i32* %59, align 4
+  store i32 134517689, i32* %60, align 4
+  %70 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef 0, i32 inreg noundef %tmp0_v23.i.i, i32 noundef %tmp2_v35.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !23
+  %71 = load i32, i32* %52, align 4
+  %tmp0_v2.i76.i = add i32 %71, 1
+  store i32 %tmp0_v2.i76.i, i32* %52, align 4
+  %72 = icmp slt i32 %tmp0_v2.i76.i, 26
+  br i1 %72, label %BB_8049357.i, label %.exit
 
-BB_80492DC.i:                                     ; preds = %BB_8049289.i, %Func_80492B8.exit.i
-  %r_edx.0 = phi i32 [ %storemerge23, %BB_8049289.i ], [ %tmp0_v5.i77.i, %Func_80492B8.exit.i ]
-  %89 = load i32, i32* %43, align 4
-  %tmp0_v1.i86.i = add i32 %89, 1
-  %r_esp.1.in = extractvalue { i32, i32 } %mrv.i7.pn, 0
-  store i32 %tmp0_v1.i86.i, i32* %43, align 4
-  %90 = load i32, i32* %42, align 4
-  %91 = icmp slt i32 %tmp0_v1.i86.i, %90
-  br i1 %91, label %BB_8049289.i, label %BB_80492F1.i
+BB_8049289.i:                                     ; preds = %BB_8049289.i.lr.ph, %BB_80492DC.i
+  %r_esp.0.in25 = phi i32 [ %tmp2_v2.i122.i, %BB_8049289.i.lr.ph ], [ %r_esp.0.in, %BB_80492DC.i ]
+  %mrv.i9.pn = phi { i32, i32 } [ %mrv.i9, %BB_8049289.i.lr.ph ], [ %.pn24, %BB_80492DC.i ]
+  %.pn28 = phi i32 [ %41, %BB_8049289.i.lr.ph ], [ %78, %BB_80492DC.i ]
+  %storemerge23 = phi i32 [ 0, %BB_8049289.i.lr.ph ], [ %tmp0_v1.i10.i, %BB_80492DC.i ]
+  %.pn24 = insertvalue { i32, i32 } %mrv.i9.pn, i32 %.pn28, 1
+  %73 = load i32, i32* %11, align 16
+  %tmp0_v3.i64.i = add i32 %73, %storemerge23
+  %74 = inttoptr i32 %tmp0_v3.i64.i to i8*
+  %75 = load i8, i8* %74, align 1
+  %tmp0_v5.i66.i = sext i8 %75 to i32
+  %76 = inttoptr i32 %r_esp.0.in25 to i32*
+  store i32 %tmp0_v5.i66.i, i32* %76, align 4
+  %tmp2_v8.i70.i = add i32 %r_esp.0.in25, -4
+  %77 = inttoptr i32 %tmp2_v8.i70.i to i32*
+  store i32 134517414, i32* %77, align 4
+  %arg.i.i6 = load i32, i32* %76, align 4
+  %78 = tail call i32 @tolower(i32 %arg.i.i6)
+  %79 = trunc i32 %78 to i8
+  store i8 %79, i8* %81, align 1
+  %80 = icmp slt i8 %79, 97
+  br i1 %80, label %BB_80492DC.i, label %Func_80492B8.exit.i
+
+BB_8049289.i.lr.ph:                               ; preds = %Func_8049264.exit.i
+  %tmp2_v.i89.i = add i32 %tmp0_v.i3.i, -173
+  %81 = inttoptr i32 %tmp2_v.i89.i to i8*
+  %tmp4_v.i.i = add i32 %tmp0_v.i3.i, -528
+  br label %BB_8049289.i
+
+BB_80492F1.i:                                     ; preds = %BB_80492DC.i, %Func_8049264.exit.i
+  %mrv.i9.pn.lcssa = phi { i32, i32 } [ %mrv.i9, %Func_8049264.exit.i ], [ %.pn24, %BB_80492DC.i ]
+  %r_edx.1.lcssa = phi i32 [ %tmp2_v5.i144.i, %Func_8049264.exit.i ], [ %r_edx.0, %BB_80492DC.i ]
+  %r_esp.0.in.le = extractvalue { i32, i32 } %mrv.i9.pn.lcssa, 0
+  %tmp2_v1.i127.i = add i32 %r_esp.0.in.le, 12
+  %82 = inttoptr i32 %tmp2_v1.i127.i to i32*
+  %spi.bis.116 = ptrtoint[8 x i8]* @str.bis.116 to i32
+  store i32 %spi.bis.116, i32* %82, align 4
+  %tmp2_v3.i129.i = add i32 %r_esp.0.in.le, 8
+  %83 = inttoptr i32 %tmp2_v3.i129.i to i32*
+  %spi.bis.115 = ptrtoint[6 x i8]* @str.bis.115 to i32
+  store i32 %spi.bis.115, i32* %83, align 4
+  %tmp2_v5.i131.i = add i32 %r_esp.0.in.le, 4
+  %84 = inttoptr i32 %tmp2_v5.i131.i to i32*
+  %spi.bis.114 = ptrtoint[7 x i8]* @str.bis.114 to i32
+  store i32 %spi.bis.114, i32* %84, align 4
+  %85 = inttoptr i32 %r_esp.0.in.le to i32*
+  %spi.bis.113 = ptrtoint[17 x i8]* @str.bis.113 to i32
+  store i32 %spi.bis.113, i32* %85, align 4
+  %tmp2_v8.i134.i = add i32 %r_esp.0.in.le, -4
+  %86 = inttoptr i32 %tmp2_v8.i134.i to i32*
+  store i32 134517522, i32* %86, align 4
+  %87 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef 0, i32 inreg noundef %r_edx.1.lcssa, i32 noundef %r_esp.0.in.le, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !23
+  %tmp2_v.i98.i = add i32 %tmp0_v.i3.i, -168
+  %88 = inttoptr i32 %tmp2_v.i98.i to i32*
+  store i32 0, i32* %88, align 8
+  br label %BB_8049321.i
+
+BB_8049321.i:                                     ; preds = %BB_8049321.i, %BB_80492F1.i
+  store i32 42, i32* %85, align 4
+  store i32 134517547, i32* %86, align 4
+  %arg.i.i11 = load i32, i32* %85, align 4
+  %89 = tail call i32 @putchar(i32 %arg.i.i11)  nounwind 
+  %90 = load i32, i32* %88, align 8
+  %tmp0_v2.i.i = add i32 %90, 1
+  store i32 %tmp0_v2.i.i, i32* %88, align 8
+  %91 = icmp slt i32 %tmp0_v2.i.i, 30
+  br i1 %91, label %BB_8049321.i, label %BB_804933E.i
 
 .exit:                                            ; preds = %BB_8049357.i
   ret void

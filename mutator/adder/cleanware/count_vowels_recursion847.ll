@@ -153,11 +153,11 @@ define internal fastcc void @count_vowels_recursion847(i32 %arg_esp) unnamed_add
   %24 = extractvalue { i32, i32, i32, i32, i32 } %21, 2
   %25 = extractvalue { i32, i32, i32, i32, i32 } %21, 3
   %26 = extractvalue { i32, i32, i32, i32, i32 } %21, 4
-  %tmp2_v.i3.i = add i32 %25, -52
-  %27 = inttoptr i32 %tmp2_v.i3.i to i32*
+  %tmp2_v.i10.i = add i32 %25, -52
+  %27 = inttoptr i32 %tmp2_v.i10.i to i32*
   store i32 %23, i32* %27, align 4
-  %tmp2_v4.i6.i = add i32 %22, 4
-  %28 = inttoptr i32 %tmp2_v4.i6.i to i32*
+  %tmp2_v4.i14.i = add i32 %22, 4
+  %28 = inttoptr i32 %tmp2_v4.i14.i to i32*
   store i32 %23, i32* %28, align 4
   %tmp2_v5.i.i = add i32 %26, -8184
   %29 = inttoptr i32 %22 to i32*
@@ -171,81 +171,81 @@ define internal fastcc void @count_vowels_recursion847(i32 %arg_esp) unnamed_add
 
 define internal fastcc { i32, i32, i32, i32, i32 } @Func_count_vowels(i32 %arg_esp, i32 %arg_ebp, i32 %arg_ebx) unnamed_addr !retregs !14 {
 Func_8049295.exit.i:
-  %tmp2_v.i33.i = add i32 %arg_esp, -4
-  %0 = inttoptr i32 %tmp2_v.i33.i to i32*
+  %tmp2_v.i31.i = add i32 %arg_esp, -4
+  %0 = inttoptr i32 %tmp2_v.i31.i to i32*
   store i32 %arg_ebp, i32* %0, align 4
-  %tmp2_v1.i35.i = add i32 %arg_esp, -8
-  %1 = inttoptr i32 %tmp2_v1.i35.i to i32*
+  %tmp2_v1.i.i = add i32 %arg_esp, -8
+  %1 = inttoptr i32 %tmp2_v1.i.i to i32*
   store i32 %arg_ebx, i32* %1, align 4
   %tmp2_v2.i.i = add i32 %arg_esp, -32
   %2 = inttoptr i32 %tmp2_v2.i.i to i32*
   store i32 134517397, i32* %2, align 4
-  %tmp2_v.i28.i = add i32 %arg_esp, 4
-  %3 = inttoptr i32 %tmp2_v.i28.i to i32*
+  %tmp2_v.i12.i = add i32 %arg_esp, 4
+  %3 = inttoptr i32 %tmp2_v.i12.i to i32*
   %4 = load i32, i32* %3, align 4
   %5 = inttoptr i32 %4 to i8*
   %6 = load i8, i8* %5, align 1
   %.not.i.i = icmp eq i8 %6, 0
   br i1 %.not.i.i, label %.exit, label %BB_80492AB.i
 
-BB_80492FA.i:                                     ; preds = %BB_80492CB.i
+BB_80492E3.i:                                     ; preds = %BB_80492D7.i, %BB_80492D7.i, %BB_80492AB.i
   %7 = load i32, i32* %3, align 4
-  %tmp0_v1.i15.i = add i32 %7, 1
-  store i32 %tmp0_v1.i15.i, i32* %12, align 4
-  store i32 134517513, i32* %13, align 4
-  %8 = tail call fastcc { i32, i32, i32, i32, i32 } @Func_count_vowels(i32 %tmp2_v5.i.i, i32 %tmp2_v.i33.i, i32 134529024)
+  %tmp0_v1.i.i = add i32 %7, 1
+  store i32 %tmp0_v1.i.i, i32* %17, align 4
+  store i32 134517490, i32* %18, align 4
+  %8 = tail call fastcc { i32, i32, i32, i32, i32 } @Func_count_vowels(i32 %tmp2_v5.i.i, i32 %tmp2_v.i31.i, i32 134529024)
   %9 = extractvalue { i32, i32, i32, i32, i32 } %8, 1
   %10 = extractvalue { i32, i32, i32, i32, i32 } %8, 2
   %11 = extractvalue { i32, i32, i32, i32, i32 } %8, 3
+  %tmp0_v1.i37.i = add i32 %9, 1
+  br label %.exit
+
+BB_80492FA.i:                                     ; preds = %BB_80492D7.i
+  %12 = load i32, i32* %3, align 4
+  %tmp0_v1.i25.i = add i32 %12, 1
+  store i32 %tmp0_v1.i25.i, i32* %17, align 4
+  store i32 134517513, i32* %18, align 4
+  %13 = tail call fastcc { i32, i32, i32, i32, i32 } @Func_count_vowels(i32 %tmp2_v5.i.i, i32 %tmp2_v.i31.i, i32 134529024)
+  %14 = extractvalue { i32, i32, i32, i32, i32 } %13, 1
+  %15 = extractvalue { i32, i32, i32, i32, i32 } %13, 2
+  %16 = extractvalue { i32, i32, i32, i32, i32 } %13, 3
   br label %.exit
 
 BB_80492AB.i:                                     ; preds = %Func_8049295.exit.i
-  %tmp0_v2.i58.i = sext i8 %6 to i32
+  %tmp0_v2.i59.i = sext i8 %6 to i32
   %tmp2_v4.i61.i = add i32 %arg_esp, -44
-  %12 = inttoptr i32 %tmp2_v4.i61.i to i32*
-  store i32 %tmp0_v2.i58.i, i32* %12, align 4
+  %17 = inttoptr i32 %tmp2_v4.i61.i to i32*
+  store i32 %tmp0_v2.i59.i, i32* %17, align 4
   %tmp2_v5.i.i = add i32 %arg_esp, -48
-  %13 = inttoptr i32 %tmp2_v5.i.i to i32*
-  store i32 134517439, i32* %13, align 4
-  %arg.i.i = load i32, i32* %12, align 4
-  %14 = tail call i32 @tolower(i32 %arg.i.i)
-  %tmp2_v.i.i = add i32 %arg_esp, -13
-  %15 = trunc i32 %14 to i8
-  %16 = inttoptr i32 %tmp2_v.i.i to i8*
-  store i8 %15, i8* %16, align 1
-  %cc_dst_v.i.i = add i32 %14, 159
-  %tmp4_v.i.i = and i32 %cc_dst_v.i.i, 255
-  %17 = icmp eq i32 %tmp4_v.i.i, 0
-  br i1 %17, label %BB_80492E3.i, label %BB_80492CB.i
+  %18 = inttoptr i32 %tmp2_v5.i.i to i32*
+  store i32 134517439, i32* %18, align 4
+  %arg.i.i = load i32, i32* %17, align 4
+  %19 = tail call i32 @tolower(i32 %arg.i.i)
+  %tmp2_v.i48.i = add i32 %arg_esp, -13
+  %20 = trunc i32 %19 to i8
+  %21 = inttoptr i32 %tmp2_v.i48.i to i8*
+  store i8 %20, i8* %21, align 1
+  %cc_dst_v.i52.i = add i32 %19, 159
+  %tmp4_v.i53.i = and i32 %cc_dst_v.i52.i, 255
+  %22 = icmp eq i32 %tmp4_v.i53.i, 0
+  %23 = icmp eq i8 %20, 101
+  %or.cond = select i1 %22, i1 true, i1 %23
+  %24 = icmp eq i8 %20, 105
+  %or.cond43 = select i1 %or.cond, i1 true, i1 %24
+  br i1 %or.cond43, label %BB_80492E3.i, label %BB_80492D7.i
 
-BB_80492CB.i:                                     ; preds = %BB_80492AB.i
-  %18 = add i8 %15, -101
-  %19 = tail call i8 @llvm.fshl.i8(i8 %18, i8 %18, i8 7)
-  switch i8 %19, label %BB_80492FA.i [
-    i8 0, label %BB_80492E3.i
-    i8 2, label %BB_80492E3.i
-    i8 5, label %BB_80492E3.i
-    i8 8, label %BB_80492E3.i
+BB_80492D7.i:                                     ; preds = %BB_80492AB.i
+  switch i8 %20, label %BB_80492FA.i [
+    i8 111, label %BB_80492E3.i
+    i8 117, label %BB_80492E3.i
   ]
 
-BB_80492E3.i:                                     ; preds = %BB_80492CB.i, %BB_80492CB.i, %BB_80492CB.i, %BB_80492CB.i, %BB_80492AB.i
-  %20 = load i32, i32* %3, align 4
-  %tmp0_v1.i72.i = add i32 %20, 1
-  store i32 %tmp0_v1.i72.i, i32* %12, align 4
-  store i32 134517490, i32* %13, align 4
-  %21 = tail call fastcc { i32, i32, i32, i32, i32 } @Func_count_vowels(i32 %tmp2_v5.i.i, i32 %tmp2_v.i33.i, i32 134529024)
-  %22 = extractvalue { i32, i32, i32, i32, i32 } %21, 1
-  %23 = extractvalue { i32, i32, i32, i32, i32 } %21, 2
-  %24 = extractvalue { i32, i32, i32, i32, i32 } %21, 3
-  %tmp0_v1.i46.i = add i32 %22, 1
-  br label %.exit
-
-.exit:                                            ; preds = %BB_80492E3.i, %BB_80492FA.i, %Func_8049295.exit.i
-  %r_edx.0 = phi i32 [ %23, %BB_80492E3.i ], [ %10, %BB_80492FA.i ], [ 0, %Func_8049295.exit.i ]
-  %r_ebp.0 = phi i32 [ %24, %BB_80492E3.i ], [ %11, %BB_80492FA.i ], [ %tmp2_v.i33.i, %Func_8049295.exit.i ]
-  %r_eax.0 = phi i32 [ %tmp0_v1.i46.i, %BB_80492E3.i ], [ %9, %BB_80492FA.i ], [ 0, %Func_8049295.exit.i ]
-  %tmp2_v.i2.i = add i32 %r_ebp.0, -4
-  %25 = inttoptr i32 %tmp2_v.i2.i to i32*
+.exit:                                            ; preds = %BB_80492FA.i, %BB_80492E3.i, %Func_8049295.exit.i
+  %r_ebp.0 = phi i32 [ %11, %BB_80492E3.i ], [ %16, %BB_80492FA.i ], [ %tmp2_v.i31.i, %Func_8049295.exit.i ]
+  %r_eax.0 = phi i32 [ %tmp0_v1.i37.i, %BB_80492E3.i ], [ %14, %BB_80492FA.i ], [ 0, %Func_8049295.exit.i ]
+  %r_edx.0 = phi i32 [ %10, %BB_80492E3.i ], [ %15, %BB_80492FA.i ], [ 0, %Func_8049295.exit.i ]
+  %tmp2_v.i5.i = add i32 %r_ebp.0, -4
+  %25 = inttoptr i32 %tmp2_v.i5.i to i32*
   %26 = load i32, i32* %25, align 4
   %27 = inttoptr i32 %r_ebp.0 to i32*
   %28 = load i32, i32* %27, align 4
@@ -257,9 +257,6 @@ BB_80492E3.i:                                     ; preds = %BB_80492CB.i, %BB_8
   %mrv4 = insertvalue { i32, i32, i32, i32, i32 } %mrv3, i32 %26, 4
   ret { i32, i32, i32, i32, i32 } %mrv4
 }
-
-; Function Attrs: nofree nosync nounwind readnone speculatable willreturn
-declare i8 @llvm.fshl.i8(i8, i8, i8)  nofree nosync nounwind readnone speculatable willreturn 
 
 
 !llvm.ident = !{!0, !0, !0}

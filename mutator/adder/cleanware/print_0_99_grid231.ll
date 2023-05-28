@@ -8,7 +8,7 @@ target triple = "i386-pc-linux-gnu"
 @fp_status.0 = internal unnamed_addr global i8 0
 @stack230 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.229 = constant [6 x i8] c"%02d \00"
+@str.bis.229 = constant [6 x i8] c"\25\30\32\64\20\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -87,72 +87,72 @@ declare noundef i32 @putchar(i32 noundef) local_unnamed_addr  nofree noinline no
 
 ; Function Attrs: norecurse nounwind
 define internal fastcc void @print_0_99_grid231(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
-  %tmp2_v.i2.i = add i32 %arg_esp, 4
-  %tmp0_v.i3.i = and i32 %arg_esp, -16
+  %tmp2_v.i26.i = add i32 %arg_esp, 4
+  %tmp0_v.i27.i = and i32 %arg_esp, -16
   %1 = inttoptr i32 %arg_esp to i32*
   %2 = load i32, i32* %1, align 4
-  %tmp2_v3.i.i = add i32 %tmp0_v.i3.i, -4
-  %3 = inttoptr i32 %tmp2_v3.i.i to i32*
+  %tmp2_v3.i29.i = add i32 %tmp0_v.i27.i, -4
+  %3 = inttoptr i32 %tmp2_v3.i29.i to i32*
   store i32 %2, i32* %3, align 4
-  %tmp2_v4.i.i = add i32 %tmp0_v.i3.i, -8
-  %4 = inttoptr i32 %tmp2_v4.i.i to i32*
+  %tmp2_v4.i30.i = add i32 %tmp0_v.i27.i, -8
+  %4 = inttoptr i32 %tmp2_v4.i30.i to i32*
   store i32 0, i32* %4, align 8
-  %tmp2_v5.i.i = add i32 %tmp0_v.i3.i, -12
-  %5 = inttoptr i32 %tmp2_v5.i.i to i32*
+  %tmp2_v5.i32.i = add i32 %tmp0_v.i27.i, -12
+  %5 = inttoptr i32 %tmp2_v5.i32.i to i32*
   store i32 0, i32* %5, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i3.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i27.i, -16
   %6 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i2.i, i32* %6, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i3.i, -36
+  store i32 %tmp2_v.i26.i, i32* %6, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i27.i, -36
   %7 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517201, i32* %7, align 4
-  %tmp2_v.i39.i = add i32 %tmp0_v.i3.i, -20
-  %8 = inttoptr i32 %tmp2_v.i39.i to i32*
+  %tmp2_v.i3.i = add i32 %tmp0_v.i27.i, -20
+  %8 = inttoptr i32 %tmp2_v.i3.i to i32*
   store i32 0, i32* %8, align 4
-  %tmp2_v2.i.i = add i32 %tmp0_v.i3.i, -44
+  %tmp2_v2.i.i = add i32 %tmp0_v.i27.i, -44
   %9 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %tmp2_v4.i22.i = add i32 %tmp0_v.i3.i, -48
-  %10 = inttoptr i32 %tmp2_v4.i22.i to i32*
-  %tmp2_v5.i23.i = add i32 %tmp0_v.i3.i, -52
-  %11 = inttoptr i32 %tmp2_v5.i23.i to i32*
+  %tmp2_v4.i18.i = add i32 %tmp0_v.i27.i, -48
+  %10 = inttoptr i32 %tmp2_v4.i18.i to i32*
+  %tmp2_v5.i.i = add i32 %tmp0_v.i27.i, -52
+  %11 = inttoptr i32 %tmp2_v5.i.i to i32*
   br label %BB_80491E0.i
-
-BB_804922D.ithread-pre-split:                     ; preds = %BB_8049220.i, %BB_80491E0.i
-  %.pr = phi i32 [ %.pr.pre, %BB_8049220.i ], [ %tmp0_v2.i29.i, %BB_80491E0.i ]
-  %12 = icmp slt i32 %.pr, 100
-  br i1 %12, label %BB_80491E0.i, label %.exit
-
-BB_80491E0.i:                                     ; preds = %BB_804922D.ithread-pre-split, %0
-  %r_ecx.03 = phi i32 [ %tmp2_v.i2.i, %0 ], [ %tmp0_v13.i.i, %BB_804922D.ithread-pre-split ]
-  %r_edx.02 = phi i32 [ 0, %0 ], [ %tmp0_v13.i.i, %BB_804922D.ithread-pre-split ]
-  %13 = phi i32 [ 0, %0 ], [ %.pr, %BB_804922D.ithread-pre-split ]
-  store i32 %13, i32* %9, align 4
-  %spi.bis.229 = ptrtoint[6 x i8]* @str.229 to i32
-  store i32 %spi.bis.229, i32* %10, align 16
-  store i32 134517234, i32* %11, align 4
-  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %r_ecx.03, i32 inreg noundef %r_edx.02, i32 noundef %tmp2_v4.i22.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
-  %15 = load i32, i32* %8, align 4
-  %tmp0_v2.i29.i = add i32 %15, 1
-  store i32 %tmp0_v2.i29.i, i32* %8, align 4
-  %tmp16_v.i.i = sext i32 %tmp0_v2.i29.i to i64
-  %tmp15_v.i.i = mul nsw i64 %tmp16_v.i.i, 1717986919
-  %tmp15_v5.i.i = lshr i64 %tmp15_v.i.i, 32
-  %16 = trunc i64 %tmp15_v5.i.i to i32
-  %tmp0_v7.i31.i = ashr i32 %16, 2
-  %tmp0_v8.i.i.neg = lshr i32 %tmp0_v2.i29.i, 31
-  %tmp0_v9.i.i = add nsw i32 %tmp0_v7.i31.i, %tmp0_v8.i.i.neg
-  %tmp0_v12.i.i.neg = mul i32 %tmp0_v9.i.i, -10
-  %tmp0_v13.i.i = add i32 %tmp0_v12.i.i.neg, %tmp0_v2.i29.i
-  %.not.i.i = icmp eq i32 %tmp0_v13.i.i, 0
-  br i1 %.not.i.i, label %BB_8049220.i, label %BB_804922D.ithread-pre-split
 
 BB_8049220.i:                                     ; preds = %BB_80491E0.i
   store i32 10, i32* %10, align 16
   store i32 134517290, i32* %11, align 4
   %arg.i.i = load i32, i32* %10, align 16
-  %17 = tail call i32 @putchar(i32 %arg.i.i)  nounwind 
+  %12 = tail call i32 @putchar(i32 %arg.i.i)  nounwind 
   %.pr.pre = load i32, i32* %8, align 4
   br label %BB_804922D.ithread-pre-split
+
+BB_80491E0.i:                                     ; preds = %BB_804922D.ithread-pre-split, %0
+  %r_edx.02 = phi i32 [ 0, %0 ], [ %tmp0_v13.i.i, %BB_804922D.ithread-pre-split ]
+  %r_ecx.01 = phi i32 [ %tmp2_v.i26.i, %0 ], [ %tmp0_v13.i.i, %BB_804922D.ithread-pre-split ]
+  %13 = phi i32 [ 0, %0 ], [ %.pr, %BB_804922D.ithread-pre-split ]
+  store i32 %13, i32* %9, align 4
+  %spi.bis.229 = ptrtoint[6 x i8]* @str.bis.229 to i32
+  store i32 %spi.bis.229, i32* %10, align 16
+  store i32 134517234, i32* %11, align 4
+  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %r_ecx.01, i32 inreg noundef %r_edx.02, i32 noundef %tmp2_v4.i18.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %15 = load i32, i32* %8, align 4
+  %tmp0_v2.i.i = add i32 %15, 1
+  store i32 %tmp0_v2.i.i, i32* %8, align 4
+  %tmp16_v.i.i = sext i32 %tmp0_v2.i.i to i64
+  %tmp15_v.i.i = mul nsw i64 %tmp16_v.i.i, 1717986919
+  %tmp15_v5.i.i = lshr i64 %tmp15_v.i.i, 32
+  %16 = trunc i64 %tmp15_v5.i.i to i32
+  %tmp0_v7.i.i = ashr i32 %16, 2
+  %tmp0_v8.i.i.neg = lshr i32 %tmp0_v2.i.i, 31
+  %tmp0_v9.i.i = add nsw i32 %tmp0_v7.i.i, %tmp0_v8.i.i.neg
+  %tmp0_v12.i.i.neg = mul i32 %tmp0_v9.i.i, -10
+  %tmp0_v13.i.i = add i32 %tmp0_v12.i.i.neg, %tmp0_v2.i.i
+  %.not.i.i = icmp eq i32 %tmp0_v13.i.i, 0
+  br i1 %.not.i.i, label %BB_8049220.i, label %BB_804922D.ithread-pre-split
+
+BB_804922D.ithread-pre-split:                     ; preds = %BB_80491E0.i, %BB_8049220.i
+  %.pr = phi i32 [ %.pr.pre, %BB_8049220.i ], [ %tmp0_v2.i.i, %BB_80491E0.i ]
+  %17 = icmp slt i32 %.pr, 100
+  br i1 %17, label %BB_80491E0.i, label %.exit
 
 .exit:                                            ; preds = %BB_804922D.ithread-pre-split
   ret void

@@ -7,7 +7,7 @@ target triple = "i386-pc-linux-gnu"
 @fpstt = internal unnamed_addr global i32 0
 @stack322 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.321 = constant [34 x i8] c"character is a control character.\00"
+@str.bis.321 = constant [34 x i8] c"\63\68\61\72\61\63\74\65\72\20\69\73\20\61\20\63\6f\6e\74\72\6f\6c\20\63\68\61\72\61\63\74\65\72\2e\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly
 define internal fastcc void @helper_fninit() unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn writeonly "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -53,7 +53,7 @@ define internal fastcc void @iscntrl323(i32 %arg_esp) unnamed_addr  norecurse  !
   %8 = tail call i32 @__ctype_b_loc()
   %tmp2_v1.i.i = add i32 %tmp0_v.i8.i, -48
   %9 = inttoptr i32 %tmp2_v1.i.i to i32*
-  %spi.bis.321 = ptrtoint[34 x i8]* @str.321 to i32
+  %spi.bis.321 = ptrtoint[34 x i8]* @str.bis.321 to i32
   store i32 %spi.bis.321, i32* %9, align 16
   %tmp2_v2.i.i = add i32 %tmp0_v.i8.i, -52
   %10 = inttoptr i32 %tmp2_v2.i.i to i32*

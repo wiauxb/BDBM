@@ -8,8 +8,8 @@ target triple = "i386-pc-linux-gnu"
 @fp_status.0 = internal unnamed_addr global i8 0
 @stack885 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.883 = constant [15 x i8] c"average: 90%%\0a\00"
-@str.884 = constant [14 x i8] c"average: 90%\0a\00"
+@str.bis.883 = constant [15 x i8] c"\61\76\65\72\61\67\65\3a\20\39\30\25\25\0a\00"
+@str.bis.884 = constant [14 x i8] c"\61\76\65\72\61\67\65\3a\20\39\30\25\0a\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -106,15 +106,15 @@ define internal fastcc void @output_percent_char886(i32 %arg_esp) unnamed_addr  
   store i32 134517166, i32* %7, align 4
   %tmp2_v2.i.i = add i32 %tmp0_v.i13.i, -32
   %8 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %spi.bis.884 = ptrtoint[14 x i8]* @str.884 to i32
+  %spi.bis.884 = ptrtoint[14 x i8]* @str.bis.884 to i32
   store i32 %spi.bis.884, i32* %8, align 16
-  %tmp2_v3.i6.i = add i32 %tmp0_v.i13.i, -36
-  %9 = inttoptr i32 %tmp2_v3.i6.i to i32*
+  %tmp2_v3.i.i = add i32 %tmp0_v.i13.i, -36
+  %9 = inttoptr i32 %tmp2_v3.i.i to i32*
   store i32 134517187, i32* %9, align 4
   %10 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i12.i, i32 inreg noundef 0, i32 noundef %tmp2_v2.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %11 = lshr i64 %10, 32
   %12 = trunc i64 %11 to i32
-  %spi.bis.883 = ptrtoint[15 x i8]* @str.883 to i32
+  %spi.bis.883 = ptrtoint[15 x i8]* @str.bis.883 to i32
   store i32 %spi.bis.883, i32* %8, align 16
   store i32 134517205, i32* %9, align 4
   %13 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i12.i, i32 inreg noundef %12, i32 noundef %tmp2_v2.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13

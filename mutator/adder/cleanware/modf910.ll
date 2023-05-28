@@ -14,8 +14,8 @@ target triple = "i386-pc-linux-gnu"
 @segs.0 = internal unnamed_addr global i1 false
 @_ZL6segmem = internal global [1024 x i8] zeroinitializer, align 1
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.907 = constant [14 x i8] c"integral: %f\0a\00"
-@str.908 = constant [10 x i8] c"frac: %f\0a\00"
+@str.bis.907 = constant [14 x i8] c"\69\6e\74\65\67\72\61\6c\3a\20\25\66\0a\00"
+@str.bis.908 = constant [10 x i8] c"\66\72\61\63\3a\20\25\66\0a\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -472,7 +472,7 @@ define internal fastcc void @modf910(i32 %arg_esp) unnamed_addr  norecurse  !ret
   %27 = inttoptr i32 %tmp2_v4.i38.i to i32*
   %28 = load i32, i32* %27, align 16
   store i32 %28, i32* %17, align 4
-  %spi.bis.908 = ptrtoint[10 x i8]* @str.908 to i32
+  %spi.bis.908 = ptrtoint[10 x i8]* @str.bis.908 to i32
   store i32 %spi.bis.908, i32* %20, align 16
   store i32 134517314, i32* %21, align 4
   %29 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i15.i, i32 inreg noundef 0, i32 noundef %tmp2_v17.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19
@@ -484,7 +484,7 @@ define internal fastcc void @modf910(i32 %arg_esp) unnamed_addr  norecurse  !ret
   %33 = inttoptr i32 %tmp2_v14.i.i to i64*
   store i64 %tmp5_v4.i.i, i64* %33, align 4
   tail call fastcc void @helper_fpop()
-  %spi.bis.907 = ptrtoint[14 x i8]* @str.907 to i32
+  %spi.bis.907 = ptrtoint[14 x i8]* @str.bis.907 to i32
   store i32 %spi.bis.907, i32* %20, align 16
   store i32 134517342, i32* %21, align 4
   %34 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i15.i, i32 inreg noundef %31, i32 noundef %tmp2_v17.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !19

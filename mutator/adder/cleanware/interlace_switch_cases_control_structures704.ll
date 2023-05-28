@@ -8,7 +8,7 @@ target triple = "i386-pc-linux-gnu"
 @fp_status.0 = internal unnamed_addr global i8 0
 @stack703 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.702 = constant [12 x i8] c"option: %d\0a\00"
+@str.bis.702 = constant [12 x i8] c"\6f\70\74\69\6f\6e\3a\20\25\64\0a\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -85,50 +85,50 @@ declare i8* @llvm.returnaddress(i32 immarg)  nofree nosync nounwind readnone wil
 ; Function Attrs: norecurse nounwind
 define internal fastcc void @interlace_switch_cases_control_structures704(i32 %arg_esp) unnamed_addr  norecurse nounwind  !retregs !12 {
 label_1.i.i:
-  %tmp2_v.i20.i = add i32 %arg_esp, 4
-  %tmp0_v.i21.i = and i32 %arg_esp, -16
+  %tmp2_v.i11.i = add i32 %arg_esp, 4
+  %tmp0_v.i12.i = and i32 %arg_esp, -16
   %0 = inttoptr i32 %arg_esp to i32*
   %1 = load i32, i32* %0, align 4
-  %tmp2_v3.i23.i = add i32 %tmp0_v.i21.i, -4
-  %2 = inttoptr i32 %tmp2_v3.i23.i to i32*
+  %tmp2_v3.i14.i = add i32 %tmp0_v.i12.i, -4
+  %2 = inttoptr i32 %tmp2_v3.i14.i to i32*
   store i32 %1, i32* %2, align 4
-  %tmp2_v4.i24.i = add i32 %tmp0_v.i21.i, -8
-  %3 = inttoptr i32 %tmp2_v4.i24.i to i32*
+  %tmp2_v4.i15.i = add i32 %tmp0_v.i12.i, -8
+  %3 = inttoptr i32 %tmp2_v4.i15.i to i32*
   store i32 0, i32* %3, align 8
-  %tmp2_v5.i26.i = add i32 %tmp0_v.i21.i, -12
-  %4 = inttoptr i32 %tmp2_v5.i26.i to i32*
+  %tmp2_v5.i17.i = add i32 %tmp0_v.i12.i, -12
+  %4 = inttoptr i32 %tmp2_v5.i17.i to i32*
   store i32 0, i32* %4, align 4
-  %tmp2_v6.i.i = add i32 %tmp0_v.i21.i, -16
+  %tmp2_v6.i.i = add i32 %tmp0_v.i12.i, -16
   %5 = inttoptr i32 %tmp2_v6.i.i to i32*
-  store i32 %tmp2_v.i20.i, i32* %5, align 16
-  %tmp2_v8.i.i = add i32 %tmp0_v.i21.i, -36
+  store i32 %tmp2_v.i11.i, i32* %5, align 16
+  %tmp2_v8.i.i = add i32 %tmp0_v.i12.i, -36
   %6 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517201, i32* %6, align 4
-  %tmp2_v.i.i = add i32 %tmp0_v.i21.i, -20
-  %7 = inttoptr i32 %tmp2_v.i.i to i32*
+  %tmp2_v.i9.i = add i32 %tmp0_v.i12.i, -20
+  %7 = inttoptr i32 %tmp2_v.i9.i to i32*
   store i32 3, i32* %7, align 4
-  %tmp2_v2.i.i = add i32 %tmp0_v.i21.i, -44
+  %tmp2_v2.i.i = add i32 %tmp0_v.i12.i, -44
   %8 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %tmp2_v4.i.i = add i32 %tmp0_v.i21.i, -48
+  %tmp2_v4.i.i = add i32 %tmp0_v.i12.i, -48
   %9 = inttoptr i32 %tmp2_v4.i.i to i32*
-  %tmp2_v5.i.i = add i32 %tmp0_v.i21.i, -52
+  %tmp2_v5.i.i = add i32 %tmp0_v.i12.i, -52
   %10 = inttoptr i32 %tmp2_v5.i.i to i32*
   br label %BB_8049224.i
 
 BB_8049224.i:                                     ; preds = %BB_8049224.i, %label_1.i.i
-  %11 = phi i32 [ 3, %label_1.i.i ], [ %tmp0_v2.i10.i, %BB_8049224.i ]
+  %11 = phi i32 [ 3, %label_1.i.i ], [ %tmp0_v2.i24.i, %BB_8049224.i ]
   %r_edx.0 = phi i32 [ 0, %label_1.i.i ], [ %14, %BB_8049224.i ]
   store i32 %11, i32* %8, align 4
-  %spi.bis.702 = ptrtoint[12 x i8]* @str.702 to i32
+  %spi.bis.702 = ptrtoint[12 x i8]* @str.bis.702 to i32
   store i32 %spi.bis.702, i32* %9, align 16
   store i32 134517302, i32* %10, align 4
-  %12 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i20.i, i32 inreg noundef %r_edx.0, i32 noundef %tmp2_v4.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %12 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i11.i, i32 inreg noundef %r_edx.0, i32 noundef %tmp2_v4.i.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %13 = lshr i64 %12, 32
   %14 = trunc i64 %13 to i32
   %15 = load i32, i32* %7, align 4
-  %tmp0_v2.i10.i = add i32 %15, 1
-  store i32 %tmp0_v2.i10.i, i32* %7, align 4
-  %16 = icmp slt i32 %tmp0_v2.i10.i, 11
+  %tmp0_v2.i24.i = add i32 %15, 1
+  store i32 %tmp0_v2.i24.i, i32* %7, align 4
+  %16 = icmp slt i32 %tmp0_v2.i24.i, 11
   br i1 %16, label %BB_8049224.i, label %.exit
 
 .exit:                                            ; preds = %BB_8049224.i

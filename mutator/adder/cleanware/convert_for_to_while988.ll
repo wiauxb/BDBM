@@ -8,8 +8,8 @@ target triple = "i386-pc-linux-gnu"
 @fp_status.0 = internal unnamed_addr global i8 0
 @stack987 = internal global [8092 x i32] zeroinitializer, align 16
 @onUnfallback = common local_unnamed_addr global i1 false
-@str.985 = constant [4 x i8] c"%d\0a\00"
-@str.986 = constant [4 x i8] c"%d\0a\00"
+@str.bis.985 = constant [4 x i8] c"\25\64\0a\00"
+@str.bis.986 = constant [4 x i8] c"\25\64\0a\00"
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind uwtable willreturn
 define internal fastcc void @helper_fldl_ST0(i64 noundef %0) unnamed_addr  mustprogress nofree norecurse nosync nounwind uwtable willreturn "frame-pointer"="all" "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87"  {
@@ -104,14 +104,14 @@ define internal fastcc void @convert_for_to_while988(i32 %arg_esp) unnamed_addr 
   %tmp2_v8.i.i = add i32 %tmp0_v.i.i, -36
   %7 = inttoptr i32 %tmp2_v8.i.i to i32*
   store i32 134517169, i32* %7, align 4
-  %tmp2_v.i46.i = add i32 %tmp0_v.i.i, -24
-  %8 = inttoptr i32 %tmp2_v.i46.i to i32*
+  %tmp2_v.i21.i = add i32 %tmp0_v.i.i, -24
+  %8 = inttoptr i32 %tmp2_v.i21.i to i32*
   %tmp2_v2.i.i = add i32 %tmp0_v.i.i, -44
   %9 = inttoptr i32 %tmp2_v2.i.i to i32*
-  %tmp2_v4.i16.i = add i32 %tmp0_v.i.i, -48
-  %10 = inttoptr i32 %tmp2_v4.i16.i to i32*
-  %tmp2_v5.i17.i = add i32 %tmp0_v.i.i, -52
-  %11 = inttoptr i32 %tmp2_v5.i17.i to i32*
+  %tmp2_v4.i9.i = add i32 %tmp0_v.i.i, -48
+  %10 = inttoptr i32 %tmp2_v4.i9.i to i32*
+  %tmp2_v5.i10.i = add i32 %tmp0_v.i.i, -52
+  %11 = inttoptr i32 %tmp2_v5.i10.i to i32*
   store i32 1, i32* %8, align 8
   br label %BB_80491C0.i
 
@@ -124,34 +124,34 @@ BB_80491DF.i:                                     ; preds = %BB_80491C0.i
 
 BB_80491C0.i:                                     ; preds = %BB_80491C0.i, %0
   %r_edx.08 = phi i32 [ 0, %0 ], [ %16, %BB_80491C0.i ]
-  %storemerge17 = phi i32 [ 1, %0 ], [ %tmp0_v2.i38.i, %BB_80491C0.i ]
+  %storemerge17 = phi i32 [ 1, %0 ], [ %tmp0_v2.i16.i, %BB_80491C0.i ]
   store i32 %storemerge17, i32* %9, align 4
-  %spi.bis.986 = ptrtoint[4 x i8]* @str.986 to i32
+  %spi.bis.986 = ptrtoint[4 x i8]* @str.bis.986 to i32
   store i32 %spi.bis.986, i32* %10, align 16
   store i32 134517202, i32* %11, align 4
-  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i1.i, i32 inreg noundef %r_edx.08, i32 noundef %tmp2_v4.i16.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %14 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i1.i, i32 inreg noundef %r_edx.08, i32 noundef %tmp2_v4.i9.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %15 = lshr i64 %14, 32
   %16 = trunc i64 %15 to i32
   %17 = load i32, i32* %8, align 8
-  %tmp0_v2.i38.i = add i32 %17, 1
-  store i32 %tmp0_v2.i38.i, i32* %8, align 8
-  %18 = icmp slt i32 %tmp0_v2.i38.i, 11
+  %tmp0_v2.i16.i = add i32 %17, 1
+  store i32 %tmp0_v2.i16.i, i32* %8, align 8
+  %18 = icmp slt i32 %tmp0_v2.i16.i, 11
   br i1 %18, label %BB_80491C0.i, label %BB_80491DF.i
 
 BB_80491E8.i:                                     ; preds = %BB_80491E8.i, %BB_80491DF.i
   %r_edx.110 = phi i32 [ %12, %BB_80491DF.i ], [ %21, %BB_80491E8.i ]
-  %storemerge9 = phi i32 [ 1, %BB_80491DF.i ], [ %tmp0_v2.i7.i, %BB_80491E8.i ]
+  %storemerge9 = phi i32 [ 1, %BB_80491DF.i ], [ %tmp0_v2.i32.i, %BB_80491E8.i ]
   store i32 %storemerge9, i32* %9, align 4
-  %spi.bis.985 = ptrtoint[4 x i8]* @str.985 to i32
+  %spi.bis.985 = ptrtoint[4 x i8]* @str.bis.985 to i32
   store i32 %spi.bis.985, i32* %10, align 16
   store i32 134517242, i32* %11, align 4
-  %19 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i1.i, i32 inreg noundef %r_edx.110, i32 noundef %tmp2_v4.i16.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
+  %19 = tail call x86_fastcallcc i64 @helper_stub_trampoline(i32 inreg noundef %tmp2_v.i1.i, i32 inreg noundef %r_edx.110, i32 noundef %tmp2_v4.i9.i, i32 noundef ptrtoint (i32 (i8*, ...)* @printf to i32))  nobuiltin nounwind "no-builtins" , !funcname !13
   %20 = lshr i64 %19, 32
   %21 = trunc i64 %20 to i32
   %22 = load i32, i32* %13, align 4
-  %tmp0_v2.i7.i = add i32 %22, 1
-  store i32 %tmp0_v2.i7.i, i32* %13, align 4
-  %23 = icmp slt i32 %tmp0_v2.i7.i, 11
+  %tmp0_v2.i32.i = add i32 %22, 1
+  store i32 %tmp0_v2.i32.i, i32* %13, align 4
+  %23 = icmp slt i32 %tmp0_v2.i32.i, 11
   br i1 %23, label %BB_80491E8.i, label %.exit
 
 .exit:                                            ; preds = %BB_80491E8.i
