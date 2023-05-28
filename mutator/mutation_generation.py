@@ -31,7 +31,7 @@ def mutation_selection(project, num_of_mutations: int):
     if not os.path.exists("s2e/projects/"+project+"/mutations"):
         os.makedirs("s2e/projects/"+project+"/mutations")
     a_raj = []
-    mutations = ["clean_adder", "escape_envvar", "string_xor" , "random_if", "replace_puts", "sys_adder", "basic_if", "escape_traced", "escape_vm", "strings_split"]
+    mutations = ["clean_adder", "escape_envvar", "string_xor" , "random_if", "replace_puts", "sys_adder", "basic_if", "escape_traced", "escape_vm", "strings_split", "strings_base64"]
     nombre_mutations = random.randrange(1, len(mutations)+1)
     mutations_to_do = []
     for i in range(nombre_mutations):
@@ -40,13 +40,13 @@ def mutation_selection(project, num_of_mutations: int):
             mutation_to_append = mutations[random.randrange(0, len(mutations))]
         mutations_to_do.append(mutation_to_append)
     #mutations_to_do = ["clean_adder", "strings_split"]
-    # mutations_to_do = [mutations[num_of_mutations-1]]
+    mutations_to_do = [mutations[num_of_mutations-1]]
     just_com = "mutations : " + str(num_of_mutations) + "\n"
     log.info("mutations : " + str(num_of_mutations))
     for mutation in mutations_to_do :
         if mutation == "strings_split":
             just_com += mutate_strings(project, "split")
-        if mutation == "string_base64":
+        if mutation == "strings_base64":
             just_com += mutate_strings(project, "base64")
         if mutation == "strings_xor":
             just_com += mutate_strings(project, "xor")
@@ -74,7 +74,7 @@ def mutation_selection(project, num_of_mutations: int):
         if "escape_vm" in mutations_to_do:
             link += "mutator/escape/detect.bc "
             which_rec = 0
-        if "string_base64" in mutations_to_do:
+        if "strings_base64" in mutations_to_do:
             link += "mutator/strings/bytecodes/base64.bc "
             which_rec = 0
 
