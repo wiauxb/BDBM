@@ -155,14 +155,16 @@ def generate_llvm_xor_string_code(string, var, infos, ind, format : str = "i32",
     
     xor_string = ""
     xor_key = ""
-    while len(xor_string) != length or "\"" in xor_string or "\\" in xor_string :
-        xor_key = ''.join(random.choices(ascii_letters + digits, k=length))
+    while len(xor_string) != length or "\"" in xor_string or "\\" in xor_string:
+        xor_key = ''.join(random.choices(ascii_letters + digits, k=length)).encode()
         try :
-            xor_string_list = [chr(a ^ ord(b)) for a,b in zip(string, xor_key)]
-            xor_string = "".join(xor_string_list)
+            xor_string= bytes(a ^ b for a, b in zip(string, xor_key)).decode("unicode_escape")
+            #xor_string = "".join(xor_string_list)
         except Exception as e:
-            raise Exception("xor ko:"+ str(e))
+            continue
+            #raise Exception("xor ko:"+ str(e))
     
+    xor_key = xor_key.decode()
     xor_string = get_string_in_llvm_format(xor_string)
     
     code = f""";-------------------------------
