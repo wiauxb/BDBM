@@ -294,3 +294,27 @@ def recompile(project):
     except subprocess.CalledProcessError as e:
         raise ValueError(f"Failed to recompile {project}: {e}")
     return 0
+
+
+def get_bytes_in_llvm_format(bytes: bytes):
+    """Return a string in llvm format (with escape sequences)
+    
+    Keyword arguments:
+    string -- string to convert
+    Return: string in llvm format
+    """
+    
+    return "".join([f"\\{c:02x}" for c in bytes])
+
+def get_bytes_from_string(string: str):
+    """Return a string in bytes
+    
+    Keyword arguments:
+    string -- string to convert
+    Return: string in bytes
+    """
+    real_bytes = re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
+    try:
+        return bytes(real_bytes, "latin-1")
+    except Exception as e:
+        raise ValueError(f"Could not convert {string} to bytes: {e}")

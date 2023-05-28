@@ -160,23 +160,3 @@ def get_string_in_llvm_format( string: str):
     print(WARNING + "The get_string_in_llvm_format should not be used anymore" + ENDC)
     
     return "".join([f"\\{ord(c):02x}" for c in string])
-
-def get_bytes_in_llvm_format(bytes: bytes):
-    """Return a string in llvm format (with escape sequences)
-    
-    Keyword arguments:
-    string -- string to convert
-    Return: string in llvm format
-    """
-    
-    return "".join([f"\\{c:02x}" for c in bytes])
-
-def get_bytes_from_string(string: str):
-    """Return a string in bytes
-    
-    Keyword arguments:
-    string -- string to convert
-    Return: string in bytes
-    """
-    real_bytes = re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
-    return bytes(real_bytes, "utf-8")

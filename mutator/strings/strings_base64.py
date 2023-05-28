@@ -80,7 +80,7 @@ def b64_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs
         inject_b64_string(recovered, str_ref.string, str_ref, constantsRefs, rodata)
 
 
-def inject_b64_string(recovered: fileRep, string : Union[bytes, list[bytes]], str_ref: stringRef, cst_ref: ref, rodata: bool = False):
+def inject_b64_string(recovered: fileRep, string : Union[bytes, list], str_ref: stringRef, cst_ref: ref, rodata: bool = False):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     

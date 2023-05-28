@@ -35,11 +35,12 @@ def insert_basic_if_print(project, messages):
     ret_type, ret_line = get_default_return_line(recovered, begin_main)
 
     for i, message in enumerate(messages):
-        message += "\\00"
+        message = message.encode("utf-8") + b'\x00'
+        message_llvm = get_bytes_in_llvm_format(message)
         string_to_print = "@.str"+ str(get_new_index(recovered))
-        var_line = f"""{string_to_print} = private unnamed_addr constant [{len(message.encode())-2} x i8] c\"{message}\"\n"""
+        var_line = f"""{string_to_print} = private unnamed_addr constant [{len(message)} x i8] c\"{message_llvm}\"\n"""
 
-        cond, branch = generate_basic_if_print(string_to_print, len(message.encode())-2, recovered)
+        cond, branch = generate_basic_if_print(string_to_print, len(message), recovered)
         #Check if puts is already declared
         decl_puts = False
         for i, line in enumerate(recovered.lines):
