@@ -1,0 +1,33 @@
+mutations : 11
+just mutate to_mutate strings base64 --ncuts -1 --text
+
+mutations : 10
+just mutate to_mutate strings split --ncuts 13 --text
+
+mutations : 9
+just mutate to_mutate escape vm  
+
+mutations : 8
+just mutate to_mutate escape traced  
+
+mutations : 7
+just mutate to_mutate basic_if --words Deuxième Premier zefiĵht Deuxième 
+
+mutations : 6
+just mutate to_mutate sys_adder --number_add 12
+
+mutations : 5
+just mutate to_mutate replace_puts
+
+mutations : 4
+just mutate to_mutate random_if --max_random 9 --number 10
+
+mutations : 3
+
+
+mutations : 2
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+
+mutations : 1
+just mutate to_mutate clean_adder --number_add 3
+

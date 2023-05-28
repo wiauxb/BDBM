@@ -130,27 +130,20 @@ def replace_strings(project, begin_main, end_main, recovered):
     for i, ref in enumerate(reversed(refs)):
         if(ref.type == TYPES.ONE_ADDR):
             rdm = str(get_new_index(recovered))
-            string = get_string_from_binary(project, ref.offset)
+            string = get_bytes_from_binary(project, ref.offset)
 
-            #Check if the string only has "normal" characters
-            good_string = True
-            for c in string : 
-                c_hex = hex(ord(c))
-                if int(c_hex,16) != 0x0A and int(c_hex,16) <0x20:
-                    good_string = False
-                
-            if good_string:
+            length = len(string)+1
+            string = string + b'\00'
 
-                length = len(string.encode())+1
-                string = string.replace("\n", "\\0a")
-                string = string.replace("\"", "\\22")
-                string = string + "\\00"
-                consts.append(f"""@str.{rdm} = constant [{length} x i8] c\"{string}\"\n""")
+            string = get_bytes_in_llvm_format(string)
 
-                repl = f"""  %spi.bis.{rdm} = ptrtoint[{length} x i8]* @str.{rdm} to i32\n"""
-                repl += ref.get_mutated_line(f"""%spi.bis.{rdm}""")
-                
-                recovered.lines[ref.line_num] = repl
+
+            consts.append(f"""@str.bis.{rdm} = constant [{length} x i8] c\"{string}\"\n""")
+
+            repl = f"""  %spi.bis.{rdm} = ptrtoint[{length} x i8]* @str.bis.{rdm} to i32\n"""
+            repl += ref.get_mutated_line(f"""%spi.bis.{rdm}""")
+            
+            recovered.lines[ref.line_num] = repl
 
         elif(ref.type == TYPES.TWO_ADDR):
             repl = """"""
@@ -161,25 +154,18 @@ def replace_strings(project, begin_main, end_main, recovered):
 
                 rdm = str(get_new_index(recovered))
                 ind_list.append(rdm)
-                string = get_string_from_binary(project, ref.offset[i])
+                string = get_bytes_from_binary(project, ref.offset[i])
+                length = len(string)+1
+                string = string + b'\00'
 
-                #Check if the string only has "normal" characters
-                for c in string : 
-                    c_hex = hex(ord(c))
-                    if int(c_hex,16) != 0x0A and int(c_hex,16) <0x20:
-                        good_string = False
+                string = get_bytes_in_llvm_format(string)
                 
+                consts.append(f"""@str.bis.{rdm} = constant [{length} x i8] c\"{string}\"\n""")
+                repl += f"""  %spi.bis.{rdm} = ptrtoint[{length} x i8]* @str.bis.{rdm} to i32\n"""
 
-                length = len(string.encode())+1
-                string = string.replace("\n", "\\0a")
-                string = string + "\\00"
-                consts.append(f"""@str.{rdm} = constant [{length} x i8] c\"{string}\"\n""")
-                repl += f"""  %spi.bis.{rdm} = ptrtoint[{length} x i8]* @str.{rdm} to i32\n"""
-
-            if good_string:
-                repl += ref.get_mutated_line(f"""%spi.bis.{ind_list[0]}""", f"""%spi.bis.{ind_list[1]}""")
+            repl += ref.get_mutated_line(f"""%spi.bis.{ind_list[0]}""", f"""%spi.bis.{ind_list[1]}""")
                 
-                recovered.lines[ref.line_num] = repl
+            recovered.lines[ref.line_num] = repl
 
     for const in consts :
         recovered.insert(decl_block.line_num, const)
@@ -205,7 +191,6 @@ def gen_all_clean():
     """
 
     projects = os.listdir("s2e/projects")
-
     for project in projects:
 
         (begin_main, end_main), recovered = init_mutation(project)
