@@ -165,7 +165,7 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
     
     s = get_string_in_python_format(string)
 
-    length = len(s.encode())
+    length = len(s)
 
     code = f""";-------------------------------
 ; Replace: {infos}
@@ -174,12 +174,8 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
   """
     
     splits = generate_splitted_string(s, ncuts)
-    splits_copy = copy.deepcopy(splits)
-    for i in range(len(splits)):
-        splits[i] = splits[i].replace("\n", "\\0a")
-        splits[i] = splits[i].replace("\"", "\\22")
 
-    split_len = len(splits_copy[0].encode())
+    split_len = len(splits[0])
 
     code += f"""
   %sp0.{ind} = bitcast [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"} to [{split_len} x i8]*
@@ -188,7 +184,7 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
   """
     prev_added_len = split_len
     for i in range(1, len(splits)-1):
-        split_len = len(splits_copy[i].encode())
+        split_len = len(splits[i])
         sp = get_string_in_llvm_format(splits[i])
         code += f"""
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
@@ -197,7 +193,7 @@ def generate_llvm_split_string_code(string, var, infos, ind, ncuts, format : str
   """
         prev_added_len += split_len
     i = len(splits)-1
-    split_len = len(splits_copy[-1].encode())
+    split_len = len(splits[-1])
     code += f"""
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
   store [{split_len} x i8] c"{get_string_in_llvm_format(splits[i])}", [{split_len} x i8]* %sp{i}.{ind}
@@ -225,17 +221,17 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
     
     s = get_string_in_python_format(string)
 
-    length = len(s.encode())
+    length = len(s)
     splits = generate_splitted_string(s, ncuts)
 
     constants = []
     for i, split in enumerate(splits[:-1]):
-        split_len = len(split.encode())
+        split_len = len(split)
         sp = get_string_in_llvm_format(split)
         constants.append(f"""
 @str.{i}.{ind} = constant [{split_len} x i8] c\"{sp}\"""")
     constants.append(f"""
-@str.{len(splits)-1}.{ind} = constant [{len(splits[-1].encode())} x i8] c\"{get_string_in_llvm_format(splits[-1])}\"""")
+@str.{len(splits)-1}.{ind} = constant [{len(splits[-1])} x i8] c\"{get_string_in_llvm_format(splits[-1])}\"""")
     shuffle(constants)
     cst_str = f""";-------------------------------
 ; Replace: {infos}{"".join(constants)}
@@ -246,7 +242,7 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
   %{var if format == "ptr" else f"sp{ind}"} = alloca [{length} x i8]
   """
     
-    split_len = len(splits[0].encode())
+    split_len = len(splits[0])
     code += f"""
   %s0.{ind} = load [{split_len} x i8], [{split_len} x i8]* @str.0.{ind}
   %sp0.{ind} = bitcast [{length} x i8]* %{var if format == "ptr" else f"sp{ind}"} to [{split_len} x i8]*
@@ -255,7 +251,7 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
   """
     prev_added_len = split_len
     for i in range(1, len(splits)-1):
-        split_len = len(splits[i].encode())
+        split_len = len(splits[i])
         code += f"""
   %s{i}.{ind} = load [{split_len} x i8], [{split_len} x i8]* @str.{i}.{ind}
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
@@ -264,7 +260,7 @@ def generate_llvm_split_string_code_with_constants(string : str, var, infos, ind
   """
         prev_added_len += split_len
     i = len(splits)-1
-    split_len = len(splits[-1].encode())
+    split_len = len(splits[-1])
     code += f"""
   %s{i}.{ind} = load [{split_len} x i8], [{split_len} x i8]* @str.{i}.{ind}
   %sp{i}.{ind} = bitcast i8* %next{i-1}.{ind} to [{split_len} x i8]*
