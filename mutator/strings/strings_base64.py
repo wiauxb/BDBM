@@ -65,7 +65,7 @@ def b64_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs
     elif(str_ref.type == TYPES.GLB_CST):
         recovered.delete(str_ref.line_num)
 
-        var_name = re.findall(r'(@.*) =', str_ref.line)[0]
+        var_name = re.findall(r'(@.*?) =', str_ref.line)[0]
         var_refs = find_var_usage(recovered, var_name, exclude_line=[str_ref.line_num])
         
         for var_ref in var_refs:
