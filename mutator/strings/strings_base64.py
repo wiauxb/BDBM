@@ -1,4 +1,5 @@
 import base64
+from typing import Union
 from ..helpers.utils import *
 from .helpers.string_utils import *
 from .helpers.string_ref import TYPES, stringRef
@@ -45,20 +46,20 @@ def b64_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs
     
     if(str_ref.type == TYPES.ONE_ADDR):
         offset = str_ref.offset
-        string = get_string_from_binary(project, offset)
+        string = get_bytes_from_binary(project, offset)
 
-        remove_string_from_binary(project, offset, len(string.encode()))
-        inject_b64_string(recovered, string+"\00", str_ref, constantsRefs, rodata)
+        remove_bytes_from_binary(project, offset, len(string))
+        inject_b64_string(recovered, string+b"\00", str_ref, constantsRefs, rodata)
 
     elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
         strings = []
         for i, offset in enumerate(offsets):
-            string = get_string_from_binary(project, offset)
+            string = get_bytes_from_binary(project, offset)
             
-            strings.append(string+"\00")
+            strings.append(string+b"\00")
         for i, offset in enumerate(offsets):
-            remove_string_from_binary(project, offset, len(strings[i].encode()))
+            remove_bytes_from_binary(project, offset, len(strings[i].encode()))
 
         inject_b64_string(recovered, strings, str_ref, constantsRefs, rodata)
 
@@ -79,7 +80,7 @@ def b64_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs
         inject_b64_string(recovered, str_ref.string, str_ref, constantsRefs, rodata)
 
 
-def inject_b64_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: ref, rodata: bool = False):
+def inject_b64_string(recovered: fileRep, string : Union[bytes, list[bytes]], str_ref: stringRef, cst_ref: ref, rodata: bool = False):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -91,7 +92,7 @@ def inject_b64_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: r
     """
 
 
-    if str_ref.type == TYPES.ONE_ADDR:
+    if str_ref.type == TYPES.ONE_ADDR and type(string) == bytes:
         ind = get_new_index(recovered)
 
         constants = ""
@@ -108,7 +109,7 @@ def inject_b64_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: r
         if rodata:
             recovered.insert(cst_ref.line_num, constants)
 
-    elif str_ref.type == TYPES.TWO_ADDR:
+    elif str_ref.type == TYPES.TWO_ADDR and type(string) == list:
         ind1 = get_new_index(recovered)
         ind2 = get_new_index(recovered)
 
@@ -135,7 +136,7 @@ def inject_b64_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: r
         recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
         recovered.insert(str_ref.line_num, f";-------------------------------\n")
             
-    elif str_ref.type == TYPES.GLB_CST:
+    elif str_ref.type == TYPES.GLB_CST and type(string) == bytes:
         ind = get_new_index(recovered)
 
         constants = ""
@@ -152,7 +153,7 @@ def inject_b64_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: r
         if rodata:
             recovered.insert(cst_ref.line_num, constants)
 
-    elif str_ref.type == TYPES.LCL_CST:
+    elif str_ref.type == TYPES.LCL_CST and type(string) == bytes:
         ind = get_new_index(recovered)
 
         constants = ""
@@ -170,23 +171,23 @@ def inject_b64_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: r
             recovered.insert(cst_ref.line_num, constants)
 
     else:
-        raise ValueError(f"Unknown Type: {str_ref.type}")
+        raise ValueError(f"Unknown ref type: {str_ref.type} or string type: {type(string)}")
     
     recovered.delete(str_ref.line_num)
     
     recovered.write()
 
 
-def generate_llvm_base64_string_code_with_constants(string : str, var, infos, ind, format : str = "i32"):
+def generate_llvm_base64_string_code_with_constants(string : bytes, var, infos, ind, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string.
          <format> is the format of the ending <var>. Can be "ptr" or "string".
     """
-    s = get_string_in_python_format(string)
-    cipher = generate_b64_cipher(s)
-    llvm_cipher = get_string_in_llvm_format(cipher)
-    cipher_length = len(cipher.encode())
-    plain_length = len(s.encode())
+    
+    cipher = generate_b64_cipher(string)
+    llvm_cipher = get_bytes_in_llvm_format(cipher)
+    cipher_length = len(cipher)
+    plain_length = len(string)
 
     cst_str = f""";-------------------------------
 ; Replace: {infos}
@@ -214,16 +215,16 @@ def generate_llvm_base64_string_code_with_constants(string : str, var, infos, in
 
     return code, cst_str
 
-def generate_llvm_base64_string_code(string : str, var, infos, ind, format : str = "i32"):
+def generate_llvm_base64_string_code(string : bytes, var, infos, ind, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string.
          <format> is the format of the ending <var>. Can be "ptr" or "string".
     """
-    s = get_string_in_python_format(string)
-    cipher = generate_b64_cipher(s)
-    llvm_cipher = get_string_in_llvm_format(cipher)
-    cipher_length = len(cipher.encode())
-    plain_length = len(s.encode())
+    
+    cipher = generate_b64_cipher(string)
+    llvm_cipher = get_bytes_in_llvm_format(cipher)
+    cipher_length = len(cipher)
+    plain_length = len(string)
 
     code = f""";-------------------------------
 ; Replace: {infos}
@@ -248,6 +249,6 @@ def generate_llvm_base64_string_code(string : str, var, infos, ind, format : str
 
     return code
 
-def generate_b64_cipher(string : str):
+def generate_b64_cipher(string : bytes):
     """Generate the base64 cipher of <string>"""
-    return base64.b64encode(string.encode()).decode()+"\0"
+    return base64.b64encode(string)+b"\0"

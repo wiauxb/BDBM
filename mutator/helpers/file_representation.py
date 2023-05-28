@@ -40,7 +40,7 @@ class fileRepresentation:
     def ref(self, line_num : int):
         return self.get_ref(line_num)
     
-    def stringRef(self, line_num: int, type: TYPES, offset : Union[int, list], string : str = ""):
+    def stringRef(self, line_num: int, type: TYPES, offset : Union[int, list], string :  bytes = b''):
         rep = stringRef(type, line_num, self.lines[line_num], offset, string)
         self._refs.append(rep)
         return rep

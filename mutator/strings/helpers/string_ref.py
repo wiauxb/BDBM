@@ -7,7 +7,7 @@ TYPES = enum.Enum("TYPES", ["ONE_ADDR", "TWO_ADDR", "GLB_CST", "LCL_CST"])
 
 class stringRef (ref):
 
-    def __init__(self, type: TYPES, line_num, line, offset, string: str = "") -> None:
+    def __init__(self, type: TYPES, line_num, line, offset, string: bytes = b'') -> None:
         super().__init__(line_num, line)
         self.type = type
         self.offset = offset

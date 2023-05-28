@@ -1,3 +1,4 @@
+from typing import Union
 from ..helpers.utils import *
 from .helpers.string_utils import *
 from .helpers.string_ref import TYPES, stringRef
@@ -19,17 +20,17 @@ def xor_string_at(project, recovered: fileRep, str_ref: stringRef, cst_ref: ref,
     """
     if(str_ref.type == TYPES.ONE_ADDR):
         offset = str_ref.offset
-        string = get_string_from_binary(project, offset)
+        string = get_bytes_from_binary(project, offset)
 
-        remove_string_from_binary(project, offset, len(string.encode()))
-        inject_xored_string(recovered, string, str_ref, cst_ref, rodata)
+        remove_bytes_from_binary(project, offset, len(string))
+        inject_xored_string(recovered, string+b"\00", str_ref, cst_ref, rodata)
 
     elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
         strings = []
         for i, offset in enumerate(offsets):
-            strings.append(get_string_from_binary(project, offset))
-            remove_string_from_binary(project, offset, len(strings[i].encode()))
+            strings.append(get_bytes_from_binary(project, offset)+b"\00")
+            remove_bytes_from_binary(project, offset, len(strings[i]))
 
         inject_xored_string(recovered, strings, str_ref, cst_ref, rodata)
 
@@ -52,7 +53,7 @@ def xor_string_at(project, recovered: fileRep, str_ref: stringRef, cst_ref: ref,
 
 
 
-def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref: ref, rodata: bool):
+def inject_xored_string(recovered: fileRep, string : Union[bytes, list[bytes]], str_ref: stringRef, cst_ref: ref, rodata: bool):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
 
@@ -63,7 +64,7 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
     Return: number of added lines
     """
 
-    if str_ref.type == TYPES.ONE_ADDR:
+    if str_ref.type == TYPES.ONE_ADDR and type(string) == bytes:
         ind = get_new_index(recovered)
 
         constants = ""
@@ -80,7 +81,7 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
         if rodata:
             recovered.insert(cst_ref.line_num, constants)
 
-    elif str_ref.type == TYPES.TWO_ADDR:
+    elif str_ref.type == TYPES.TWO_ADDR and type(string) == list:
         ind1 = get_new_index(recovered)
         ind2 = get_new_index(recovered)
 
@@ -106,15 +107,15 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
         recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind1}", f"%spi{ind2}"))
         recovered.insert(str_ref.line_num, f";-------------------------------\n")
 
-    elif str_ref.type == TYPES.GLB_CST:
+    elif str_ref.type == TYPES.GLB_CST and type(string) == bytes:
         ind = get_new_index(recovered)
 
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_xor_string_code_with_constants(string, f"spi{ind}", str_ref.line.strip(), ind, format="ptr", add_null_byte=False)
+            code, constants = generate_llvm_xor_string_code_with_constants(string, f"spi{ind}", str_ref.line.strip(), ind, format="ptr")
         else:
-            code = generate_llvm_xor_string_code(string, f"spi{ind}", str_ref.line.strip(), ind, format="ptr", add_null_byte=False)
+            code = generate_llvm_xor_string_code(string, f"spi{ind}", str_ref.line.strip(), ind, format="ptr")
 
         recovered.insert(str_ref.line_num, code)
         recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind}"))
@@ -123,15 +124,15 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
         if rodata:
             recovered.insert(cst_ref.line_num, constants)
 
-    elif str_ref.type == TYPES.LCL_CST:
+    elif str_ref.type == TYPES.LCL_CST and type(string) == bytes:
         ind = get_new_index(recovered)
 
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_xor_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, format="string", add_null_byte=False)
+            code, constants = generate_llvm_xor_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, format="string")
         else:
-            code = generate_llvm_xor_string_code(string, "spi", str_ref.line.strip(), ind, format="string", add_null_byte=False)
+            code = generate_llvm_xor_string_code(string, "spi", str_ref.line.strip(), ind, format="string")
 
         recovered.insert(str_ref.line_num, code)
         recovered.insert(str_ref.line_num, str_ref.get_mutated_line(f"%spi{ind}"))
@@ -141,23 +142,21 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
             recovered.insert(cst_ref.line_num, constants)
 
     else:
-        raise ValueError(f"Unknown Type: {str_ref.type}")
+        raise ValueError(f"Unknown ref type: {str_ref.type} or string type: {type(string)}")
 
     recovered.delete(str_ref.line_num)
 
     recovered.write()
 
-def generate_llvm_xor_string_code(string, var, infos, ind, format : str = "i32", add_null_byte : bool = True):
-    string = get_string_in_python_format(string).encode()
-    if add_null_byte:
-        string = string + (b"\00" if string[-1] != 0 else b"")
+def generate_llvm_xor_string_code(string : bytes, var, infos, ind, format : str = "i32"):
+    
     length = len(string)
     
     xor_string = ""
-    xor_key = ""
+    xor_key = b""
     xor_string_list = ""
     while len(xor_string_list) != length:
-        xor_key = ''.join(random.choices(ascii_letters + digits, k=length)).encode()
+        xor_key = ''.join(random.choices(ascii_letters + digits, k=length)).encode("latin-1") # latin-1 to keep the same length
         try :
             xor_string_list= [f"\\{c:02X}" for c in bytes(a ^ b for a, b in zip(string, xor_key))]
             xor_string = "".join(xor_string_list)
@@ -165,7 +164,7 @@ def generate_llvm_xor_string_code(string, var, infos, ind, format : str = "i32",
             continue
             #raise Exception("xor ko:"+ str(e))
     
-    xor_key = xor_key.decode()
+    xor_key = get_bytes_in_llvm_format(xor_key)
     #xor_string = get_string_in_llvm_format(xor_string)
     
     code = f""";-------------------------------
@@ -202,19 +201,17 @@ def generate_llvm_xor_string_code(string, var, infos, ind, format : str = "i32",
         raise ValueError("format must be ptr, string or i32")
     return code
 
-def generate_llvm_xor_string_code_with_constants(string, var, infos, ind, format : str = "i32", add_null_byte : bool = True):
+def generate_llvm_xor_string_code_with_constants(string : bytes, var, infos, ind, format : str = "i32"):
     """Generate the LLVM code to inject a xored version of <string> in recovered.ll.
          <var> is the name of the variable to store the string."""
-    string = get_string_in_python_format(string).encode()
-    if add_null_byte:
-        string = string + (b"\00" if string[-1] != 0 else b"")
+    
     length = len(string)
     
     xor_string = ""
-    xor_key = ""
-    xor_string_list = ""
+    xor_key = b""
+    xor_string_list = []
     while len(xor_string_list) != length:
-        xor_key = ''.join(random.choices(ascii_letters + digits, k=length)).encode()
+        xor_key = ''.join(random.choices(ascii_letters + digits, k=length)).encode("latin-1") # latin-1 to keep the same length
         try :
             xor_string_list= [f"\\{c:02X}" for c in bytes(a ^ b for a, b in zip(string, xor_key))]
             xor_string = "".join(xor_string_list)
@@ -222,8 +219,8 @@ def generate_llvm_xor_string_code_with_constants(string, var, infos, ind, format
             continue
             #raise Exception("xor ko:"+ str(e))
 
-    xor_key = xor_key.decode()
-    #xor_string = get_string_in_llvm_format(xor_string)
+    xor_key = get_bytes_in_llvm_format(xor_key)
+    # xor_string = get_string_in_llvm_format(xor_string)
 
     constants =  f""";-------------------------------
 ; Replace: {infos}

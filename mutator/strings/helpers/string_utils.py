@@ -4,6 +4,8 @@ from .string_ref import stringRef, TYPES
 from ...helpers.ref import *
 import re
 
+WARNING = '\033[93m'
+ENDC = '\033[0m'
 
 def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
     """find string offsets in the binary
@@ -26,10 +28,10 @@ def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
             if len(match[0].replace("\\00", "")) <= 1:
                 continue
             if re.match(r"@.*=", no_comment_line):
-                string = get_string_in_python_format(match[0])
+                string = get_bytes_from_string(match[0])
                 list.append(recovered.stringRef(i, TYPES.GLB_CST, -1, string))
             else:
-                string = get_string_in_python_format(match[0])
+                string = get_bytes_from_string(match[0])
                 list.append(recovered.stringRef(i, TYPES.LCL_CST, -1, string))
         if i > begin_main.line_num and i < end_main.line_num and match_KO == None:
             match = re.findall(r"i32 (\d{4,})", no_comment_line)
@@ -92,13 +94,30 @@ def get_string_from_binary(project, offset):
     Return: string (decoded from utf-8)
     """
 
+    print(WARNING + "The get_string_from_binary should not be used anymore" + ENDC)
+
     string = b''
     with open("s2e/projects/" + project + "/binary", 'br') as f:
         string = f.read()[offset:]
     
     return string.split(b'\x00')[0].decode("utf-8") #FIXME We assume the string encoding
 
-def remove_string_from_binary(project, offset, length):
+def get_bytes_from_binary(project, offset):
+    """get bytes at <offset> in binary of <project> 
+    
+    Keyword arguments:
+    project -- project name
+    offset -- offset in binary
+    Return: bytes
+    """
+
+    bytes = b''
+    with open("s2e/projects/" + project + "/binary", 'br') as f:
+        bytes = f.read()[offset:]
+    
+    return bytes.split(b'\x00')[0]
+
+def remove_bytes_from_binary(project, offset, length):
     """ Remove <length> bytes at <offset> in binary of <project>
     
     Keyword arguments:
@@ -128,6 +147,7 @@ def get_string_in_python_format(string: str):
     Return: string in python format
     """
     
+    print(WARNING + "The get_string_in_python_format should not be used anymore" + ENDC)
     return re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
 
 def get_string_in_llvm_format( string: str):
@@ -137,5 +157,26 @@ def get_string_in_llvm_format( string: str):
     string -- string to convert
     Return: string in llvm format
     """
+    print(WARNING + "The get_string_in_llvm_format should not be used anymore" + ENDC)
     
     return "".join([f"\\{ord(c):02x}" for c in string])
+
+def get_bytes_in_llvm_format(bytes: bytes):
+    """Return a string in llvm format (with escape sequences)
+    
+    Keyword arguments:
+    string -- string to convert
+    Return: string in llvm format
+    """
+    
+    return "".join([f"\\{c:02x}" for c in bytes])
+
+def get_bytes_from_string(string: str):
+    """Return a string in bytes
+    
+    Keyword arguments:
+    string -- string to convert
+    Return: string in bytes
+    """
+    real_bytes = re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
+    return bytes(real_bytes, "utf-8")
