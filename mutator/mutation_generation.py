@@ -8,6 +8,17 @@ from .helpers.file_representation import fileRepresentation as fileRep
 import urllib
 from urllib.request import urlopen
 import shutil
+import logging
+import logging.handlers
+import os
+ 
+handler = logging.handlers.WatchedFileHandler("mut_gen.log")
+formatter = logging.Formatter(logging.BASIC_FORMAT)
+handler.setFormatter(formatter)
+
+log = logging.getLogger("MUT_GEN")
+log.setLevel(os.environ.get("LOGLEVEL", "INFO"))
+log.addHandler(handler)
 
 
 def mutation_selection(project, num_of_mutations: int):
@@ -29,8 +40,9 @@ def mutation_selection(project, num_of_mutations: int):
             mutation_to_append = mutations[random.randrange(0, len(mutations))]
         mutations_to_do.append(mutation_to_append)
     #mutations_to_do = ["clean_adder", "strings_split"]
-    mutations_to_do = [mutations[num_of_mutations-1]]
+    # mutations_to_do = [mutations[num_of_mutations-1]]
     just_com = "mutations : " + str(num_of_mutations) + "\n"
+    log.info("mutations : " + str(num_of_mutations))
     for mutation in mutations_to_do :
         if mutation == "strings_split":
             just_com += mutate_strings(project, "split")
@@ -103,17 +115,20 @@ def mutate_basic_if(project):
     for i in range(num_words):
         words += words_liste[random.randrange(len(words_liste))]
     command = f"""just mutate {project} basic_if --words {words}"""
+    log.info(command)
     subprocess.check_output(command, shell=True)
     return command
 
 def mutate_sys_adder(project):
     number_add = random.randrange(1,22)
     command = f"""just mutate {project} sys_adder --number_add {number_add}"""
+    log.info(command)
     subprocess.check_output(command, shell=True)
     return command
 
 def mutate_replace_puts(project):
     command = f"""just mutate {project} replace_puts"""
+    log.info(command)
     subprocess.check_output(command, shell=True)
     return command
 
@@ -122,6 +137,7 @@ def mutate_escape(project, kind):
     if kind == "envvar":
         var_name = "--var_name DEBUG GDB VM_ENABLED"
     command = f"""just mutate {project} escape {kind} """ +var_name
+    log.info(command)
     subprocess.check_output(command, shell=True)
     return command
 
@@ -129,12 +145,14 @@ def mutate_random_if(project):
     max_random = random.randrange(2,11)
     number = random.randrange(1,11)
     command = f"""just mutate {project} random_if --max_random {max_random} --number {number}"""
+    log.info(command)
     subprocess.check_output(command, shell=True)
     return command
 
 def mutate_clean_adder(project):
     number = random.randrange(1,11)
     command = f"""just mutate {project} clean_adder --number_add {number}"""
+    log.info(command)
     subprocess.check_output(command, shell=True)
     return command
 
@@ -147,6 +165,7 @@ def mutate_strings(project, choice):
     command = f"""just mutate {project} strings {choice} --ncuts {ncuts}"""
     if text==0:
         command += " --text"
+    log.info(command)
     output = subprocess.check_output(command, shell=True)
     print(output.decode())
     return command
@@ -160,6 +179,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    log.info("New command : " + args.number + " mutations for " + args.project)
     mutation_selection(args.project, int(args.number))
 
 
