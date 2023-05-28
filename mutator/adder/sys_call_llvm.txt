@@ -10,9 +10,6 @@ i32,string,int
 declare void @perror(i32) local_unnamed_addr noinline
 tail call void @perror
 void,string
-declare i32 @htons(i32) local_unnamed_addr noinline
-= tail call i32 @htons
-i32,int
 declare i32 @htonl(i32) local_unnamed_addr nofree noinline nosync nounwind readnone
 = tail call i32 @htonl
 i32,int

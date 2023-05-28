@@ -36,7 +36,7 @@ def xor_string_at(project, recovered: fileRep, str_ref: stringRef, cst_ref: ref,
     elif(str_ref.type == TYPES.GLB_CST):
         recovered.delete(str_ref.line_num)
 
-        var_name = re.findall(r'(@.*) =', str_ref.line)[0]
+        var_name = re.findall(r'(@.*?) =', str_ref.line)[0]
         var_refs = find_var_usage(recovered, var_name, exclude_line=[str_ref.line_num])
 
         for var_ref in var_refs:
@@ -148,20 +148,23 @@ def inject_xored_string(recovered: fileRep, string, str_ref: stringRef, cst_ref:
     recovered.write()
 
 def generate_llvm_xor_string_code(string, var, infos, ind, format : str = "i32", add_null_byte : bool = True):
-    string = string.replace("\\00", "\00").encode()
+    string = get_string_in_python_format(string).encode()
     if add_null_byte:
         string = string + (b"\00" if string[-1] != 0 else b"")
     length = len(string)
     
     xor_string = ""
     xor_key = ""
-    while len(xor_string) != length or "\"" in xor_string:
+    while len(xor_string) != length or "\"" in xor_string or "\\" in xor_string :
         xor_key = ''.join(random.choices(ascii_letters + digits, k=length))
         try :
             xor_string_list = [chr(a ^ ord(b)) for a,b in zip(string, xor_key)]
             xor_string = "".join(xor_string_list)
         except Exception as e:
             raise Exception("xor ko:"+ str(e))
+    
+    xor_string = get_string_in_llvm_format(xor_string)
+    
     code = f""";-------------------------------
 ; Replace: {infos}
   %sp0.{ind} = alloca [{length} x i8]
@@ -199,20 +202,22 @@ def generate_llvm_xor_string_code(string, var, infos, ind, format : str = "i32",
 def generate_llvm_xor_string_code_with_constants(string, var, infos, ind, format : str = "i32", add_null_byte : bool = True):
     """Generate the LLVM code to inject a xored version of <string> in recovered.ll.
          <var> is the name of the variable to store the string."""
-    string = string.replace("\\00", "\00").encode()
+    string = get_string_in_python_format(string).encode()
     if add_null_byte:
         string = string + (b"\00" if string[-1] != 0 else b"")
     length = len(string)
     
     xor_string = ""
     xor_key = ""
-    while len(xor_string) != length or "\"" in xor_string:
+    while len(xor_string) != length or "\"" in xor_string  or "\\" in xor_string :
         xor_key = ''.join(random.choices(ascii_letters + digits, k=length))
         try :
             xor_string_list = [chr(a ^ ord(b)) for a,b in zip(string, xor_key)]
             xor_string = "".join(xor_string_list)
         except :
             print("xor ko")
+
+    xor_string = get_string_in_llvm_format(xor_string)
 
     constants =  f""";-------------------------------
 ; Replace: {infos}
