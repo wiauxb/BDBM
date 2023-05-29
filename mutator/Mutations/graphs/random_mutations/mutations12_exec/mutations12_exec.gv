@@ -1,0 +1,28 @@
+// Global SCDG with merge call
+digraph {
+	0 [label="151300448.main
+mutations12_exec"]
+	1 [label="0x904a991.__libc_start_main
+151294512
+1
+2147418032
+151300736
+151300848"]
+	2 [label="0x904aacc.__libc_start_main
+151294512
+1
+2147418032
+151300736
+151300848"]
+	1 -> 2 [label="(1-->1)"]
+	1 -> 2 [label="(2-->2)"]
+	1 -> 2 [label="(3-->3)"]
+	1 -> 2 [label="(4-->4)"]
+	1 -> 2 [label="(5-->5)"]
+	1 -> 2 [label="(0-->0)"]
+	3 [label="0x9049283.ptrace
+"]
+	4 [label="0x90492b7.getenv
+"]
+	3 -> 4 [label="(0-->0)"]
+}

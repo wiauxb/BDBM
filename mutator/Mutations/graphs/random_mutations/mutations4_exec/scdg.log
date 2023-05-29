@@ -1,0 +1,452 @@
+[1;33;40mWARNING - 2023-05-29 07:10:34,864 - [34mangr.project[0m - [34mDisabling IRSB translation cache because support for self-modifying code is enabled.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:34,972 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc000800c with 4 unconstrained bytes referenced from 0x9049de0 (_start+0x0 in mutations4_exec (0x9049de0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:38,739 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0010014 with 4 unconstrained bytes referenced from 0x9049de0 (_start+0x0 in mutations4_exec (0x9049de0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:42,005 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc001801c with 4 unconstrained bytes referenced from 0x9049de0 (_start+0x0 in mutations4_exec (0x9049de0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:45,301 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020024 with 4 unconstrained bytes referenced from 0x9049de0 (_start+0x0 in mutations4_exec (0x9049de0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,422 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x30 with 4 unconstrained bytes referenced from 0x9049de0 (_start+0x0 in mutations4_exec (0x9049de0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:48,528 - [36mCustomSimProcedure[0m - [36mcustom_hook_static[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,529 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,529 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fgets>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,529 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure tolower>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,529 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,530 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,530 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure perror>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,530 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,530 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure usleep>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,531 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure puts>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,531 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,531 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,531 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure atol>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,531 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,532 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strncpy>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,532 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,532 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure htonl>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,532 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure toupper>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,532 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,533 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,533 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strstr>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,533 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,533 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fgets>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,533 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure tolower>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,534 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,534 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,534 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure perror>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,534 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,535 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure usleep>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,535 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure puts>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,535 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,535 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,535 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure atol>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,536 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,536 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strncpy>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,536 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,536 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure htonl>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,536 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure toupper>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,537 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,537 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,537 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x9049060, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,538 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100000, <SimProcedure strstr>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,538 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100004, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,538 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100008, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,538 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10000c, <SimProcedure fgets>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,538 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100010, <SimProcedure tolower>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,539 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100014, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,539 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100018, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,539 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100028, <SimProcedure perror>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,539 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10002c, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,539 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100030, <SimProcedure usleep>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,540 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100034, <SimProcedure puts>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,540 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10003c, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,540 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100040, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,540 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100044, <SimProcedure atol>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,540 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100048, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,541 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10004c, <SimProcedure strncpy>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,541 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100050, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,541 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100058, <SimProcedure htonl>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,541 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10005c, <SimProcedure toupper>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,541 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100060, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,542 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100068, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:48,542 - [36mCustomSimProcedure[0m - [36mcustom_hook_no_symbols[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,658 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002032c with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:48,709 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x300>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,740 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002033c with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:48,791 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,841 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020944 with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:48,891 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:48,923 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020954 with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:48,973 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:49,023 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f5c with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,071 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:49,104 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f6c with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,155 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:49,204 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f7c with 4 unconstrained bytes referenced from 0xa100040 (__libc_start_main+0x0 in extern-address space (0x40))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,252 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,261 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[<BV32 0x90491f0>, <BV32 0x1>, <BV32 0x7ffeffb0>, <BV32 0x9049f00>, <BV32 0x9049f70>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:49,281 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register edi with 4 unconstrained bytes referenced from 0x9049f10 (__libc_csu_init+0x10 in mutations4_exec (0x9049f10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,379 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,427 - [36mCustomSimProcedure[0m - [36mSyscall found:  sysconf[<BV32 0x54>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,465 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,466 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 2 active>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,466 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,466 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,522 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a074>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,548 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a074>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,603 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,604 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,604 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,604 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,639 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,640 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,645 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,646 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:49,773 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xfffffff8 with 4 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:49,814 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 3 and opened b'/tmp/angr_implicit_0'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:49,865 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409635_32{UNINITIALIZED}>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:50,018 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xfffffffe with 1 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,057 - [32mSemaExplorerCDFS[0m - [32mEnd of the trace number 0 with errors[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,057 - [32mSemaExplorerCDFS[0m - <SimState @ 0xa10000c>[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,058 - [32mSemaExplorerCDFS[0m - Tried to do operation on symbolic but partially constrained file descriptor[0m
+[1;33;40mWARNING - 2023-05-29 07:10:50,091 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x38 with 4 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:50,116 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 3 and opened b'/tmp/angr_implicit_0'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,167 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409635_32{UNINITIALIZED}>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:50,260 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 3 and opened b'/tmp/angr_implicit_0'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,313 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409636_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,393 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a094>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,394 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe30>, <BV32 0x904a094>, <BV32 0x22>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,395 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe30>, <BV32 0x904a094>, <BV32 0x22>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,448 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a094>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,450 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe30>, <BV32 0x904a094>, <BV32 0x22>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,450 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe30>, <BV32 0x904a094>, <BV32 0x22>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,471 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a094>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,473 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe30>, <BV32 0x904a094>, <BV32 0x22>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,474 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe30>, <BV32 0x904a094>, <BV32 0x22>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,506 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a094>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,516 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe30>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,524 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a094>, <BV32 0x7ffefe30>, <BV32 0x21>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,524 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a094>, <BV32 0x7ffefe30>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,560 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a094>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,570 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe30>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,580 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a094>, <BV32 0x7ffefe30>, <BV32 0x21>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,580 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a094>, <BV32 0x7ffefe30>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,603 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a094>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,613 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe30>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,621 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a094>, <BV32 0x7ffefe30>, <BV32 0x21>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,621 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a094>, <BV32 0x7ffefe30>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,655 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409635_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,790 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,790 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active (1 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,790 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,790 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,792 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409635_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:50,911 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409636_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,048 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,052 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,083 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,083 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active (1 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,083 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,083 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,140 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,144 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,186 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a0b6>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,262 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,262 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active (1 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,262 - [32mSemaExplorerCDFS[0m - [32mpause stash len :1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,262 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,265 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a0b6>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,314 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a0b6>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,360 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,361 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,384 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,384 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 7 active (1 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,385 - [32mSemaExplorerCDFS[0m - [32mpause stash len :2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,385 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,401 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a0b6>, <BV32 0x904a0da>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:51,551 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x40038 with 4 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:51,596 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 4 and opened b'/tmp/angr_implicit_1'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,649 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409649_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,693 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,694 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,729 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,729 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active (1 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,729 - [32mSemaExplorerCDFS[0m - [32mpause stash len :4[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,729 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:51,847 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3 with 2 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:51,920 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 4 and opened b'/tmp/angr_implicit_1'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:51,971 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409649_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,008 - [32mSemaExplorerCDFS[0m - [32mEnd of the trace number 6 with errors[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,009 - [32mSemaExplorerCDFS[0m - <SimState @ 0xa10000c>[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,009 - [32mSemaExplorerCDFS[0m - Tried to do operation on symbolic but partially constrained file descriptor[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,016 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,017 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,126 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409650_32{UNINITIALIZED}>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:52,298 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 4 and opened b'/tmp/angr_implicit_1'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,348 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409652_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,422 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,423 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,423 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,508 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409652_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,559 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,560 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,561 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,599 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,600 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,601 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,623 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,625 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,625 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,633 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,637 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,640 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,640 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,668 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,671 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,674 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,678 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,694 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,696 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,696 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,724 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,727 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,729 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,730 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,746 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,749 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,752 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,752 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,796 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409649_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,923 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,926 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,929 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,929 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:52,948 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409649_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,090 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,091 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,091 - [32mSemaExplorerCDFS[0m - [32mpause stash len :4[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,091 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,128 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,128 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,129 - [32mSemaExplorerCDFS[0m - [32mpause stash len :5[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,129 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,131 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409650_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,252 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409652_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,465 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,465 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 7 active (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,465 - [32mSemaExplorerCDFS[0m - [32mpause stash len :6[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,465 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,484 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409652_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,618 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,622 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,667 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,668 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,668 - [32mSemaExplorerCDFS[0m - [32mpause stash len :8[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,668 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,731 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,749 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,753 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,797 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,797 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 1 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,800 - [32mSemaExplorerCDFS[0m - [32mpause stash len :9[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,842 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,892 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,892 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 2 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,892 - [32mSemaExplorerCDFS[0m - [32mpause stash len :8[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,894 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,896 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,927 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,942 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,946 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,949 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,949 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 3 active, 4 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,949 - [32mSemaExplorerCDFS[0m - [32mpause stash len :7[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,952 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,972 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,972 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 5 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:53,973 - [32mSemaExplorerCDFS[0m - [32mpause stash len :5[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,003 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,007 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,015 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,016 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 6 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,016 - [32mSemaExplorerCDFS[0m - [32mpause stash len :4[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,055 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,059 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,094 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,096 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,114 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,159 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,160 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 7 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,160 - [32mSemaExplorerCDFS[0m - [32mpause stash len :3[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,163 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,259 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409651_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,323 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,324 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 8 deadended (2 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,324 - [32mSemaExplorerCDFS[0m - [32mpause stash len :2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,326 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:54,463 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xfffffffc with 2 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,491 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a0b6>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,515 - [32mSemaExplorerCDFS[0m - [32mEnd of the trace number 5 with errors[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,515 - [32mSemaExplorerCDFS[0m - <SimState @ 0xa10000c>[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,516 - [32mSemaExplorerCDFS[0m - Tried to do operation on symbolic but partially constrained file descriptor[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,520 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,548 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,549 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 5 active, 9 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,549 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,549 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,556 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,558 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,558 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,589 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,593 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,595 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,595 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 10 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,595 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,611 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,612 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:54,745 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1d with 4 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:54,786 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 4 and opened b'/tmp/angr_implicit_1'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,838 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409671_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,885 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,888 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,890 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:54,890 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:54,960 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 4 and opened b'/tmp/angr_implicit_1'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,010 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409671_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,080 - [36mCustomSimProcedure[0m - [36mSyscall found:  popen[<BV32 0x904a0b6>, <BV32 0x904a0da>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,122 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,123 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,123 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,152 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,152 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 5 active, 10 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,152 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,152 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,155 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409651_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,303 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,304 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,304 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,312 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,313 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,318 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,318 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active, 10 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,318 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,318 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,345 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,348 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,350 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,350 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,387 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,391 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,427 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,430 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,432 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,432 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,506 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409676_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,583 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409671_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,743 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,743 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 6 active, 10 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,744 - [32mSemaExplorerCDFS[0m - [32mpause stash len :1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,744 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,746 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,756 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409671_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,941 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,945 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,947 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,947 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 5 active, 11 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,947 - [32mSemaExplorerCDFS[0m - [32mpause stash len :2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,947 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,950 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:55,999 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,003 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,018 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,018 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 12 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,018 - [32mSemaExplorerCDFS[0m - [32mpause stash len :2[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,053 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,054 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,054 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,112 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,146 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,149 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,153 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,153 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,155 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,155 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 4 active, 13 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,155 - [32mSemaExplorerCDFS[0m - [32mpause stash len :1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,158 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,170 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:56,305 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x40038 with 4 unconstrained bytes referenced from 0xa10000c (fgets+0x0 in extern-address space (0xc))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:10:56,350 - [33mangr.state_plugins.posix[0m - [33mTried to look up a symbolic fd - constrained to 4 and opened b'/tmp/angr_implicit_1'[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,403 - [36mCustomSimProcedure[0m - [36mSyscall found:  fgets[<BV32 0x7ffefe68>, <BV32 0x80>, <BV32 unconstrained_ret_popen_3409676_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,468 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,468 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 3 active, 15 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,469 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,471 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,495 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409676_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,591 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,591 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 2 active, 16 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,591 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,619 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,621 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,621 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0x7ffefe50>, <BV32 0x904a0dc>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,624 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,624 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 3 active, 16 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,624 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,624 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,676 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,680 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,710 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0dc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,713 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,716 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>, <BV32 0x6>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,716 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x904a0dc>, <BV32 0x7ffefe50>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,793 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,802 - [36mCustomSimProcedure[0m - [36mSyscall found:  pclose[<BV32 unconstrained_ret_popen_3409676_32{UNINITIALIZED}>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,945 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,945 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 3 active, 17 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,945 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,945 - [32mSemaExplorerCDFS[0m - [32mfork_stack : 1[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,948 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,988 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,991 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904a0e9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,994 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,995 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 2 active, 18 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:56,995 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,047 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,062 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,063 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 1 active, 19 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,063 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,066 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294448, 1, 2147418032, 151297792, 151297904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,068 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,068 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 20 deadended (3 errored)>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,069 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,069 - [32mSemaExplorerCDFS[0m - [32mlen(simgr.active) <= 0 or deadended >= self.max_end_state)[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:57,088 - [37mGraphBuilder[0m - [37mOutput dir :src/output/runs/132//random_mutations[0m[0m

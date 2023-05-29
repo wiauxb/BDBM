@@ -1,0 +1,71 @@
+// Global SCDG with merge call
+digraph {
+	0 [label="151310688.main
+mutations6_exec"]
+	1 [label="0x904d191.__libc_start_main
+151294432
+1
+2147418032
+151310976
+151311088"]
+	2 [label="0x904d2cc.__libc_start_main
+151294432
+1
+2147418032
+151310976
+151311088"]
+	1 -> 2 [label="(1-->1)"]
+	1 -> 2 [label="(2-->2)"]
+	1 -> 2 [label="(3-->3)"]
+	1 -> 2 [label="(4-->4)"]
+	1 -> 2 [label="(5-->5)"]
+	1 -> 2 [label="(0-->0)"]
+	3 [label="0x904cdcd.sysconf
+84"]
+	4 [label="0x904ce16.popen
+151314791
+151314893"]
+	5 [label="0x904ce55.fgets
+2147417704
+128
+unconstrained_ret_popen_4458817_32"]
+	6 [label="0x904ce90.strncpy
+2147417648
+151314823
+34"]
+	7 [label="0x904ceac.strcmp
+151314823
+2147417648"]
+	6 -> 7 [label="(2-->1)"]
+	6 -> 7 [label="(1-->2)"]
+	6 -> 7 [label="(0-->2)"]
+	8 [label="0x904ced2.pclose
+unconstrained_ret_popen_4458817_32"]
+	5 -> 8 [label="(3-->1)"]
+	9 [label="0x904ceeb.printf
+151314908"]
+	10 [label="0x904ce16.popen
+151314857
+151314893"]
+	4 -> 10 [label="(2-->2)"]
+	11 [label="0x904ce55.fgets
+2147417704
+128
+unconstrained_ret_popen_4458850_32"]
+	5 -> 11 [label="(1-->1)"]
+	5 -> 11 [label="(2-->2)"]
+	5 -> 11 [label="(0-->0)"]
+	12 [label="0x904ce90.strncpy
+2147417680
+151314895
+6"]
+	13 [label="0x904ceac.strcmp
+151314895
+2147417680"]
+	12 -> 13 [label="(2-->1)"]
+	12 -> 13 [label="(1-->2)"]
+	12 -> 13 [label="(0-->2)"]
+	14 [label="0x904ced2.pclose
+unconstrained_ret_popen_4458850_32"]
+	11 -> 14 [label="(3-->1)"]
+}

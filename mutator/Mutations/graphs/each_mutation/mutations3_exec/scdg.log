@@ -1,0 +1,125 @@
+[1;33;40mWARNING - 2023-05-29 07:21:50,485 - [34mangr.project[0m - [34mDisabling IRSB translation cache because support for self-modifying code is enabled.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:21:50,568 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc000800c with 4 unconstrained bytes referenced from 0x9049610 (_start+0x0 in mutations3_exec (0x9049610))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:21:54,475 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0010014 with 4 unconstrained bytes referenced from 0x9049610 (_start+0x0 in mutations3_exec (0x9049610))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:21:57,653 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc001801c with 4 unconstrained bytes referenced from 0x9049610 (_start+0x0 in mutations3_exec (0x9049610))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:00,889 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020024 with 4 unconstrained bytes referenced from 0x9049610 (_start+0x0 in mutations3_exec (0x9049610))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:01,640 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:22:01] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:01,641 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:22:01] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,516 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x30 with 4 unconstrained bytes referenced from 0x9049610 (_start+0x0 in mutations3_exec (0x9049610))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:04,632 - [36mCustomSimProcedure[0m - [36mcustom_hook_static[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,633 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,633 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,633 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,633 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,634 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,634 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,634 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,634 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,634 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,634 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,635 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,635 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,635 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,635 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x9049050, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,636 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100000, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,636 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100004, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,636 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100008, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,636 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10000c, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,636 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100010, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,637 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100014, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,637 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100018, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,637 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10001c, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:04,637 - [36mCustomSimProcedure[0m - [36mcustom_hook_no_symbols[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,767 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002032c with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:04,822 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x300>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,856 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002033c with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:04,912 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:04,967 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020944 with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,023 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,058 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020954 with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,113 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,168 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f5c with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,223 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,258 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f6c with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,314 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,369 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f7c with 4 unconstrained bytes referenced from 0xa100010 (__libc_start_main+0x0 in extern-address space (0x10))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,425 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,433 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[<BV32 0x90491c0>, <BV32 0x1>, <BV32 0x7ffeffb0>, <BV32 0x9049730>, <BV32 0x90497a0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,449 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register edi with 4 unconstrained bytes referenced from 0x9049740 (__libc_csu_init+0x10 in mutations3_exec (0x9049740))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,553 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294400, 1, 2147418032, 151295792, 151295904][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,612 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,613 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x4 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,614 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x5 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,614 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x6 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,615 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x7 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,616 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x8 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,617 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x9 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,618 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xa with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,619 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xb with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,620 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,621 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xd with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,626 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xe with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,627 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xf with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,628 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x10 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,628 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x11 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,629 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x12 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,630 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x13 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,630 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x14 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,632 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x15 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,633 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x16 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,635 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x17 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,636 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x18 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,637 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x19 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,638 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1a with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,639 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1b with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,640 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1c with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,641 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1d with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,642 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1e with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,643 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1f with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,644 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x20 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,644 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x21 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,645 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x22 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,646 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x23 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,646 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x24 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,648 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x25 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,651 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x26 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,653 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x27 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,656 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x28 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,657 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x29 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,658 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2a with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,660 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2b with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,662 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2c with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,664 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2d with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,666 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2e with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,668 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2f with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,672 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x34 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,673 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x35 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,675 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x36 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,679 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x37 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,681 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x38 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,683 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x39 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,684 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3a with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,686 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3b with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,690 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3c with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,692 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3d with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,715 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,717 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffeff5a>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,721 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x0>, <BV32 0x7ffeff5a>, <BV32 0x3b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,722 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x0>, <BV32 0x7ffeff5a>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,864 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:05,866 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x7ffeff22 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,866 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffeff20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,870 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x0>, <BV32 0x7ffeff20>, <BV32 0x3b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:05,870 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x0>, <BV32 0x7ffeff20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,036 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:06,038 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x7ffefef2 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,038 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefef0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,041 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x0>, <BV32 0x7ffefef0>, <BV32 0x3b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,042 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x0>, <BV32 0x7ffefef0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,205 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294400, 1, 2147418032, 151295792, 151295904][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,206 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,207 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 1 deadended>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,207 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,207 - [32mSemaExplorerCDFS[0m - [32mlen(simgr.active) <= 0 or deadended >= self.max_end_state)[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:06,221 - [37mGraphBuilder[0m - [37mOutput dir :src/output/runs/132//each_mutation[0m[0m

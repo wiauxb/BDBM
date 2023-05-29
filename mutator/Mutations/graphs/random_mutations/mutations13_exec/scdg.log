@@ -1,0 +1,135 @@
+[1;33;40mWARNING - 2023-05-29 07:06:37,305 - [34mangr.project[0m - [34mDisabling IRSB translation cache because support for self-modifying code is enabled.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:37,521 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc000800c with 4 unconstrained bytes referenced from 0x904a420 (_start+0x0 in mutations13_exec (0x904a420))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:40,480 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0010014 with 4 unconstrained bytes referenced from 0x904a420 (_start+0x0 in mutations13_exec (0x904a420))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:43,361 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc001801c with 4 unconstrained bytes referenced from 0x904a420 (_start+0x0 in mutations13_exec (0x904a420))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:46,273 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020024 with 4 unconstrained bytes referenced from 0x904a420 (_start+0x0 in mutations13_exec (0x904a420))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:55,942 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x30 with 4 unconstrained bytes referenced from 0x904a420 (_start+0x0 in mutations13_exec (0x904a420))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,110 - [36mCustomSimProcedure[0m - [36mcustom_hook_static[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,110 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,110 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,111 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,111 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure malloc>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,111 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,111 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strlen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,111 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,112 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,112 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure putchar>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,112 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,112 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,112 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,113 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,113 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,113 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,113 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,113 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure malloc>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,114 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,114 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strlen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,114 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,114 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,115 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure putchar>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,115 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,115 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,116 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,116 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x9049050, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,117 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100000, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,118 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100004, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,118 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100008, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,118 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10000c, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,119 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100010, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,119 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100014, <SimProcedure malloc>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,119 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100018, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,119 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10001c, <SimProcedure strlen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,119 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100020, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,120 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100024, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,120 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100028, <SimProcedure putchar>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,120 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10002c, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,120 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100030, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,121 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100034, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,121 - [36mCustomSimProcedure[0m - [36mcustom_hook_no_symbols[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,252 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002032c with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,304 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x300>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,335 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002033c with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,386 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,436 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020944 with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,488 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,519 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020954 with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,570 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,619 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f5c with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,671 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,703 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f6c with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,782 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,857 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f7c with 4 unconstrained bytes referenced from 0xa100020 (__libc_start_main+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,928 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:56,937 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[<BV32 0x9049120>, <BV32 0x1>, <BV32 0x7ffeffb0>, <BV32 0x904a540>, <BV32 0x904a5b0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:56,954 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register edi with 4 unconstrained bytes referenced from 0x904a550 (__libc_csu_init+0x10 in mutations13_exec (0x904a550))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:57,059 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294240, 1, 2147418032, 151299392, 151299504][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:57,843 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x7ffeff0d with 1 unconstrained bytes referenced from 0xa10001c (strlen+0x0 in extern-address space (0x1c))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:57,844 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefef0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:06:57,896 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f9c with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:06:57,952 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:01,017 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:07:01] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:01,021 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:07:01] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:23,336 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020f80>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:23,340 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0020f80>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:07:23,351 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm7 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:07:23,529 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x7ffefeed with 1 unconstrained bytes referenced from 0xa10001c (strlen+0x0 in extern-address space (0x1c))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:23,530 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefed0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:07:23,577 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fbc with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:23,632 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:29,743 - [32mSemaExplorerCDFS[0m - [32mA state has been discarded because of simple loop[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:31,013 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:07:31] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:31,014 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:07:31] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:48,313 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fa0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:48,316 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0020fa0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:07:48,325 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm0 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:48,444 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefeb0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:07:48,493 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fdc with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:07:48,547 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:01,014 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:08:01] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:01,020 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:08:01] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:01,991 - [32mSemaExplorerCDFS[0m - [32mA state has been discarded because of simple loop[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:14,749 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fc0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:14,752 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0020fc0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:08:14,760 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm1 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:14,877 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe90>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:08:14,925 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020ffc with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:14,981 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:31,013 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:08:31] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:31,024 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:08:31] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:34,736 - [32mSemaExplorerCDFS[0m - [32mA state has been discarded because of simple loop[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:40,818 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fe0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:40,821 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0020fe0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:08:40,828 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm2 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:40,945 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe70>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:08:40,991 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002101c with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:08:41,040 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:01,016 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:09:01] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:01,017 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:09:01] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:08,073 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021000>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:08,076 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0021000>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:09:08,083 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm3 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:08,178 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:08,235 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe50>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:09:08,284 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002103c with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:08,336 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:08,757 - [32mSemaExplorerCDFS[0m - [32mA state has been discarded because of simple loop[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:31,017 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:09:31] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:31,028 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:09:31] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:31,564 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021020>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:31,568 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0021020>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:09:31,575 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm4 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:31,690 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe30>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:09:31,737 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002105c with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:31,794 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:41,235 - [32mSemaExplorerCDFS[0m - [32mA state has been discarded because of simple loop[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:56,639 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021040>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:56,642 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0xc0021040>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:09:56,649 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm5 with 8 unconstrained bytes referenced from 0x9049baa (helper_stub_trampoline+0x1a in mutations13_exec (0x9049baa))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:56,768 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x7ffefe10>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:09:56,819 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002107c with 4 unconstrained bytes referenced from 0xa100014 (malloc+0x0 in extern-address space (0x14))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:09:56,874 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x15>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:01,015 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:10:01] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:01,020 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:10:01] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:11,477 - [32mSemaExplorerCDFS[0m - [32mA state has been discarded because of simple loop[0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:16,157 - [32mSemaExplorerCDFS[0m - [32mTimeout expired for simulation ![0m[0m
+[1;32;40mINFO - 2023-05-29 07:10:16,171 - [37mGraphBuilder[0m - [37mOutput dir :src/output/runs/132//random_mutations[0m[0m

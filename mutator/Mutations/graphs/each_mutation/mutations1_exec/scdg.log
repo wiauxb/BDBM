@@ -1,0 +1,859 @@
+[1;33;40mWARNING - 2023-05-29 07:22:21,246 - [34mangr.project[0m - [34mDisabling IRSB translation cache because support for self-modifying code is enabled.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:21,604 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc000800c with 4 unconstrained bytes referenced from 0x904cbf0 (_start+0x0 in mutations1_exec (0x904cbf0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:25,454 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0010014 with 4 unconstrained bytes referenced from 0x904cbf0 (_start+0x0 in mutations1_exec (0x904cbf0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:28,846 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc001801c with 4 unconstrained bytes referenced from 0x904cbf0 (_start+0x0 in mutations1_exec (0x904cbf0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:31,976 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:22:31] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:31,998 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:22:31] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:32,306 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020024 with 4 unconstrained bytes referenced from 0x904cbf0 (_start+0x0 in mutations1_exec (0x904cbf0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,067 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x30 with 4 unconstrained bytes referenced from 0x904cbf0 (_start+0x0 in mutations1_exec (0x904cbf0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,179 - [36mCustomSimProcedure[0m - [36mcustom_hook_static[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,180 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure free>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,180 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,180 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,180 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,180 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure usleep>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,181 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcpy>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,181 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure malloc>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,181 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure puts>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,181 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,181 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strchr>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,181 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strlen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,182 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,182 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,182 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure putchar>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,182 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,182 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure toupper>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,182 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,183 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,183 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,183 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure free>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,183 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,183 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,183 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,184 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure usleep>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,184 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strcpy>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,184 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure malloc>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,184 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure puts>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,184 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,184 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strchr>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,185 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure strlen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,185 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,186 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,186 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure putchar>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,186 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,186 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure toupper>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,187 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,187 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x0, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,187 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0x9049050, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,189 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100000, <SimProcedure strcmp>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,189 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100004, <SimProcedure printf>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,190 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100008, <SimProcedure free>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,190 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10000c, <SimProcedure fclose>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,190 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100010, <SimProcedure time>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,190 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100014, <SimProcedure fwrite>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,191 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100018, <SimProcedure usleep>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,191 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10001c, <SimProcedure strcpy>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,191 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100020, <SimProcedure malloc>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,191 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100024, <SimProcedure puts>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,191 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100028, <SimProcedure srand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,191 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10002c, <SimProcedure strchr>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,192 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100030, <SimProcedure strlen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,192 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100034, <SimProcedure __libc_start_main>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,192 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100038, <SimProcedure fopen>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,192 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10003c, <SimProcedure putchar>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,192 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100040, <SimProcedure rand>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,193 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100044, <SimProcedure toupper>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,193 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa100048, <SimProcedure socket>). Not re-hooking.[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,193 - [34mangr.project[0m - [34mAddress is already hooked, during hook(0xa10004c, <SimProcedure close>). Not re-hooking.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,193 - [36mCustomSimProcedure[0m - [36mcustom_hook_no_symbols[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,328 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002032c with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,383 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x300>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,416 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002033c with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,470 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,523 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020944 with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,578 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,612 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020954 with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,666 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,718 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f5c with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,772 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x600>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,807 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f6c with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,860 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,912 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020f7c with 4 unconstrained bytes referenced from 0xa100034 (__libc_start_main+0x0 in extern-address space (0x34))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,966 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:35,976 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[<BV32 0x9049280>, <BV32 0x1>, <BV32 0x7ffeffb0>, <BV32 0x904cd10>, <BV32 0x904cd80>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:35,992 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register edi with 4 unconstrained bytes referenced from 0x904cd20 (__libc_csu_init+0x10 in mutations1_exec (0x904cd20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,096 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294592, 1, 2147418032, 151309584, 151309696][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,610 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907eef1>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,658 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,660 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x54>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,698 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,699 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x54>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,737 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,738 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,775 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,776 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,830 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,831 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,867 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,868 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,902 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,903 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,938 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,939 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,973 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:36,974 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,030 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,031 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,066 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,066 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,100 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,101 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,136 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,138 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,174 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,175 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x72>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,216 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,217 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,271 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,272 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,307 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,309 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,345 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,346 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,384 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,385 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,421 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,422 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,457 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,458 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,513 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,513 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,548 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,550 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,587 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,589 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,628 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,630 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,666 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,667 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,722 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,723 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,757 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,758 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,792 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,793 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,828 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,834 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,868 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,869 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,924 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,925 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,960 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,961 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,995 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:37,996 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,032 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,034 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,068 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,069 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x68>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,103 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,104 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x61>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,138 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,139 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,173 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,174 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,227 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,228 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,262 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,264 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,296 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,297 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,330 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,332 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x73>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,368 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,369 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,425 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,425 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,460 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,462 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,499 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,501 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,542 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,544 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x68>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,580 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,582 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,619 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,620 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,676 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,677 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,711 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,713 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x71>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,751 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,752 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x71>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,787 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,789 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x75>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,827 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,828 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,867 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,868 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x73>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,904 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,906 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,945 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,946 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,983 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:38,984 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,021 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,022 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,058 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,060 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,115 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,116 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2e>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:39,194 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fac with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,250 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x28>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,293 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,295 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x54>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,333 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,335 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x54>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,380 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,382 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,426 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,426 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,456 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:39,504 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fbc with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,555 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,577 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,580 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0020fb0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,581 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0020fb0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,581 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0020fb0>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,622 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,622 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,656 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,657 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,691 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,693 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,734 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,735 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,783 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,784 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,810 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:39,856 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fcc with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,908 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,928 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,930 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0020fc0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,930 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0020fc0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,930 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0020fc0>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,977 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:39,978 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,013 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,013 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,050 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,051 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,089 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,091 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,138 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,140 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x72>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,185 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,186 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,213 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:40,260 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fdc with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,312 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,332 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,333 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0020fd0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,334 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0020fd0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,334 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0020fd0>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,375 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,375 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,413 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,414 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,448 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,450 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,491 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,492 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,536 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,538 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,579 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,579 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,607 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:40,653 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020fec with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,706 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,726 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,728 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0020fe0>, <BV32 0x907aebc>, <BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,728 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0020fe0>, <BV32 0x907aebc>, <BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,729 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0020fe0>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,777 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,777 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,812 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,813 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,850 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,851 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,893 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,895 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,939 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,940 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:40,966 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:41,013 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0020ffc with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,066 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,086 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,087 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0020ff0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,088 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0020ff0>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,088 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0020ff0>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,135 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,135 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,170 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,172 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,206 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,207 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x62>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,249 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,250 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,292 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,292 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,321 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:41,366 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002100c with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,419 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,439 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,440 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0021000>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,441 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0021000>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,441 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0021000>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,484 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,485 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,520 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,520 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,555 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,556 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,590 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,592 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,633 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,635 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x68>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,676 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,678 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x61>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,723 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,725 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,768 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,768 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,797 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:41,843 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002101c with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,895 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,914 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,917 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0021010>, <BV32 0x907aebc>, <BV32 0x5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,917 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0021010>, <BV32 0x907aebc>, <BV32 0x5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,917 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0021010>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,957 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,957 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,991 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:41,992 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,028 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,030 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,075 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,076 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x73>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,121 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,122 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,150 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:42,201 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002102c with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,255 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,276 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,278 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0021020>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,279 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0021020>, <BV32 0x907aebc>, <BV32 0x3>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,279 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0021020>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,321 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,322 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,358 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,359 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,398 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,400 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,447 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,449 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x68>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,496 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,497 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,543 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,544 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,571 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:42,619 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc002103c with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,673 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,694 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,696 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0021030>, <BV32 0x907aebc>, <BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,696 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0021030>, <BV32 0x907aebc>, <BV32 0x4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,696 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0021030>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,738 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,739 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,775 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,777 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x71>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,812 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,814 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x71>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,856 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,858 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x75>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,903 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,905 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,950 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,951 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x73>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,997 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:42,999 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,046 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,047 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,093 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,094 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,140 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,141 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,187 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,188 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,217 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:43,266 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0021054 with 4 unconstrained bytes referenced from 0xa100020 (malloc+0x0 in extern-address space (0x20))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,320 - [36mCustomSimProcedure[0m - [36mSyscall found:  malloc[<BV32 0x9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,341 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,343 - [36mCustomSimProcedure[0m - [36mSyscall found:  memcpy[<BV32 0xc0021040>, <BV32 0x907aebc>, <BV32 0x9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,343 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncpy[<BV32 0xc0021040>, <BV32 0x907aebc>, <BV32 0x9>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,343 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcpy[<BV32 0xc0021040>, <BV32 0x907aebc>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,387 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0b2>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,389 - [36mCustomSimProcedure[0m - [36mSyscall found:  strchr[<BV32 0x904d0b2>, <BV32 0x2e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,454 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fb0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,455 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0020fb0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,482 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fc0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,482 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0020fc0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,509 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fd0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,509 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0020fd0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,536 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020fe0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,537 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0020fe0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,564 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0020ff0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,564 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0020ff0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,592 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021000>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,593 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0021000>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,623 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021010>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,623 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0021010>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,651 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021020>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,651 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0021020>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,679 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021030>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,680 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0021030>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:43,710 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc0021049 with 1 unconstrained bytes referenced from 0xa100024 (puts+0x0 in extern-address space (0x24))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,711 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0xc0021040>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,711 - [36mCustomSimProcedure[0m - [36mSyscall found:  puts[<BV32 0xc0021040>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,843 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0020fb0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:43,940 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0020fc0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,049 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0020fd0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,144 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0020fe0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,251 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0020ff0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,362 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0021000>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,470 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0021010>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,577 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0021020>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,686 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0021030>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,761 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0021040>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,823 - [36mCustomSimProcedure[0m - [36mSyscall found:  free[<BV32 0xc0020f80>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,898 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d047>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:44,900 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d047>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:44,907 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm7 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,013 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d030>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,016 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d030>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,024 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm0 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,127 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d010>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,129 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d010>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,137 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm1 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,259 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d120>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,262 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d120>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,270 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm2 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,367 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d100>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,370 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d100>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,377 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm3 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,481 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0e0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,483 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0e0>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,491 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm4 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,581 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,581 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x4 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,582 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x5 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,583 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x6 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,583 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x7 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,584 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x8 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,585 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x9 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,587 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xa with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,588 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xb with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,590 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xc with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,591 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xd with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,592 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xe with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,593 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0xf with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,594 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x10 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,595 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x11 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,596 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x12 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,597 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x13 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,598 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x14 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,599 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x15 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,600 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x16 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,601 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x17 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,602 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x18 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,603 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x19 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,604 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1a with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,604 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1b with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,605 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1c with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,606 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1d with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,607 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1e with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,608 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x1f with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,609 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x20 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,609 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x21 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,610 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x22 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,611 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x23 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,611 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x24 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,612 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x25 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,613 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x26 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,614 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x27 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,616 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x28 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,617 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x29 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,618 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2a with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,619 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2b with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,620 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2c with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,620 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2d with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,621 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2e with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,622 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x2f with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,624 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x34 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,626 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x35 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,628 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x36 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,630 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x37 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,630 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x38 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,632 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x39 with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,633 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3a with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,634 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3b with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,635 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3c with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:45,635 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling memory at 0x3d with 1 unconstrained bytes referenced from 0xa100000 (strcmp+0x0 in extern-address space (0x0))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,656 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,659 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x804a044>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,663 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x0>, <BV32 0x804a044>, <BV32 0x3b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,664 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x0>, <BV32 0x804a044>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,846 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,870 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x49>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,922 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,945 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:45,993 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,017 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x27>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,049 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,072 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x73>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,122 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,146 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,176 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,200 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x61>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,248 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,272 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,304 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,329 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x77>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,361 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,385 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,433 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,455 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6e>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,507 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,529 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x64>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,576 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,599 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,648 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,670 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x72>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,722 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,745 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x66>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,792 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,817 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x75>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,865 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,887 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,936 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,959 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:46,991 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,016 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,064 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,087 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,137 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,159 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x66>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,205 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,226 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,274 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,297 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x21>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,325 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ed5>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,399 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,420 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x4c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,467 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,489 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x75>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,536 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,561 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,608 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,630 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,676 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,699 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,728 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,752 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x49>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,800 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,821 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,852 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,877 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x61>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,926 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,948 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6d>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:47,997 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,019 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,049 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,073 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x79>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,105 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,129 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,177 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,200 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x75>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,248 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,271 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x72>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,320 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,343 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x20>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,374 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,398 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x46>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,447 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,470 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x61>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,520 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,543 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x74>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,592 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,615 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x68>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,665 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,688 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,738 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,760 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x72>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,807 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096ebf>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,873 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,894 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x41>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,939 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:48,961 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x61>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,006 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,028 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x45>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,074 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,096 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x65>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,141 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,164 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x49>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,209 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,230 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x69>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,274 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,299 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x4f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,344 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,367 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x6f>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,419 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,442 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x55>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,485 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,509 - [36mCustomSimProcedure[0m - [36mSyscall found:  toupper[<BV32 0x75>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,552 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x9096eb4>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,610 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x804a008>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,612 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x804a008>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:49,620 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm5 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,721 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x804a01c>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,722 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x804a01c>][0m[0m
+[1;33;40mWARNING - 2023-05-29 07:22:49,728 - [32mangr.storage.memory_mixins.default_filler_mixin[0m - [32mFilling register mm6 with 8 unconstrained bytes referenced from 0x904920a (helper_stub_trampoline+0x1a in mutations1_exec (0x904920a))[0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,823 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x804a030>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,824 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x804a030>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,949 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,951 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x804a046>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,953 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x0>, <BV32 0x804a046>, <BV32 0x3b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:49,954 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x0>, <BV32 0x804a046>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,130 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,132 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,256 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,257 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,382 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,383 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,506 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,507 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,628 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:50,629 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,274 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,275 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,398 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,399 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,526 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,527 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,652 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,653 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,795 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,798 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:51,964 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,016 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,018 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,209 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,211 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,404 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,406 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,598 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,600 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,770 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,772 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,894 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:52,895 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,015 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,017 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,139 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,141 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,262 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,264 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,387 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,388 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,492 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,528 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,529 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,650 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,651 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,773 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,774 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,895 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:53,896 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,018 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,020 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,142 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,143 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,265 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,266 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,387 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,388 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,511 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,512 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,634 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,635 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,739 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,774 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,775 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,898 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:54,899 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,020 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,021 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,145 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,146 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,269 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,270 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,394 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,395 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,519 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,520 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,642 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,644 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,764 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,765 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,887 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,888 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:55,992 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,029 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,030 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,151 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,152 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,275 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,276 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,399 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,400 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,524 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,525 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,647 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,648 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,772 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,773 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,895 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:56,897 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,028 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,029 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,151 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,152 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,258 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,294 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,295 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,418 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,419 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,542 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,543 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,666 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,668 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,789 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,790 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,914 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:57,916 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,038 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,039 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,163 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,164 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,288 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,290 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,413 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,415 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,528 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,564 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,565 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,687 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,688 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,812 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,813 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,937 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:58,938 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,064 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,066 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,190 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,191 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,315 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,316 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,442 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,443 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,572 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,573 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,693 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,694 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,799 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,834 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,835 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,958 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:22:59,959 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,080 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,082 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,203 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,204 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,333 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,334 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,461 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,462 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,584 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,585 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,711 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,712 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,834 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,835 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,958 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:00,960 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,064 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,098 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,099 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,222 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,224 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,347 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,348 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,470 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,471 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,594 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,595 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,654 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:23:01] "GET /iteration-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,664 - [33mwerkzeug[0m - [33m172.17.0.1 - - [29/May/2023 07:23:01] "GET /progress-scdg HTTP/1.1" 200 -[0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,729 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,731 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,859 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,860 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,982 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:01,983 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,108 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,110 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,232 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,233 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,339 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,374 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,375 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,499 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,500 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,623 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,625 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,748 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,750 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,871 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,872 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,997 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:02,998 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,122 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,123 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,245 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,246 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,368 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,369 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,490 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,491 - [36mCustomSimProcedure[0m - [36mSyscall found:  printf[<BV32 0x904d0ba>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,595 - [36mCustomSimProcedure[0m - [36mSyscall found:  putchar[<BV32 0xa>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,660 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x0>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,662 - [36mCustomSimProcedure[0m - [36mSyscall found:  strlen[<BV32 0x804a048>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,664 - [36mCustomSimProcedure[0m - [36mSyscall found:  strncmp[<BV32 0x0>, <BV32 0x804a048>, <BV32 0x3b>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,664 - [36mCustomSimProcedure[0m - [36mSyscall found:  strcmp[<BV32 0x0>, <BV32 0x804a048>][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,841 - [36mCustomSimProcedure[0m - [36mSyscall found:  __libc_start_main[151294592, 1, 2147418032, 151309584, 151309696][0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,843 - [32mSemaExplorerCDFS[0m - [32mA new block of execution have been executed with changes in sim_manager.[0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,843 - [32mSemaExplorerCDFS[0m - [32mCurrently, simulation manager is :
+<SimulationManager with 1 deadended>[0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,843 - [32mSemaExplorerCDFS[0m - [32mpause stash len :0[0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,843 - [32mSemaExplorerCDFS[0m - [32mlen(simgr.active) <= 0 or deadended >= self.max_end_state)[0m[0m
+[1;32;40mINFO - 2023-05-29 07:23:03,865 - [37mGraphBuilder[0m - [37mOutput dir :src/output/runs/132//each_mutation[0m[0m
