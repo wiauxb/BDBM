@@ -1,170 +1,159 @@
 mutations : 20
-just mutate to_mutate basic_if --words troisieme zefiĵht troisieme troisieme Deuxième troisieme troisieme okiojvi,er dergbjzeka zefiĵht okiojvi,er 
+just mutate to_mutate escape traced  
 
 mutations : 19
+just mutate to_mutate clean_adder --number_add 17
+just mutate to_mutate strings xor --ncuts -1 --text
 just mutate to_mutate replace_puts
-just mutate to_mutate escape vm  
-just mutate to_mutate strings split --ncuts 11 --text
+just mutate to_mutate basic_if --words dergbjzeka Deuxième troisieme Premier okiojvi,er okiojvi,er Deuxième okiojvi,er troisieme 
+just mutate to_mutate strings split --ncuts 8
+just mutate to_mutate strings base64 --ncuts -1 --text
 
 mutations : 18
 just mutate to_mutate escape traced  
+just mutate to_mutate random_if --max_random 7 --number 5
+just mutate to_mutate sys_adder --number_add 17
 just mutate to_mutate escape vm  
-
-just mutate to_mutate basic_if --words Premier dergbjzeka Premier Premier 
+just mutate to_mutate strings split --ncuts 6
+just mutate to_mutate basic_if --words troisieme zefiĵht troisieme Deuxième dergbjzeka troisieme troisieme okiojvi,er zefiĵht dergbjzeka 
+just mutate to_mutate clean_adder --number_add 19
+just mutate to_mutate strings base64 --ncuts -1 --text
 
 mutations : 17
-just mutate to_mutate escape traced  
-just mutate to_mutate random_if --max_random 8 --number 2
-just mutate to_mutate strings base64 --ncuts -1 --text
 just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate basic_if --words Premier zefiĵht troisieme 
-
-mutations : 16
-just mutate to_mutate basic_if --words troisieme dergbjzeka okiojvi,er Premier Premier Deuxième dergbjzeka zefiĵht Premier dergbjzeka 
-just mutate to_mutate strings split --ncuts 6 --text
-just mutate to_mutate clean_adder --number_add 1
-just mutate to_mutate escape traced  
-
-just mutate to_mutate random_if --max_random 2 --number 9
-just mutate to_mutate replace_puts
+just mutate to_mutate strings xor --ncuts -1
 just mutate to_mutate strings base64 --ncuts -1
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate escape vm  
-
-mutations : 15
-
-
-mutations : 14
-just mutate to_mutate clean_adder --number_add 8
-just mutate to_mutate escape vm  
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate basic_if --words troisieme troisieme zefiĵht 
-just mutate to_mutate strings split --ncuts 9 --text
-just mutate to_mutate sys_adder --number_add 14
-just mutate to_mutate replace_puts
-
-mutations : 13
-just mutate to_mutate escape vm  
-just mutate to_mutate sys_adder --number_add 19
-just mutate to_mutate random_if --max_random 3 --number 10
-just mutate to_mutate clean_adder --number_add 10
-just mutate to_mutate strings base64 --ncuts -1 --text
-just mutate to_mutate basic_if --words troisieme zefiĵht Deuxième 
-just mutate to_mutate strings split --ncuts 11 --text
-just mutate to_mutate replace_puts
+just mutate to_mutate basic_if --words zefiĵht zefiĵht Deuxième zefiĵht troisieme troisieme troisieme okiojvi,er zefiĵht okiojvi,er Premier okiojvi,er Premier Deuxième 
+just mutate to_mutate random_if --max_random 5 --number 6
 just mutate to_mutate escape traced  
-
-
-mutations : 12
-just mutate to_mutate clean_adder --number_add 10
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-
-just mutate to_mutate escape traced  
-just mutate to_mutate basic_if --words Deuxième dergbjzeka zefiĵht troisieme 
+just mutate to_mutate sys_adder --number_add 12
+just mutate to_mutate clean_adder --number_add 5
 just mutate to_mutate replace_puts
-just mutate to_mutate strings base64 --ncuts -1 --text
-
-mutations : 11
-just mutate to_mutate random_if --max_random 7 --number 10
-just mutate to_mutate sys_adder --number_add 15
-just mutate to_mutate strings split --ncuts 11
-just mutate to_mutate escape vm  
-just mutate to_mutate strings base64 --ncuts -1
-just mutate to_mutate basic_if --words okiojvi,er zefiĵht troisieme Deuxième Premier Premier okiojvi,er troisieme dergbjzeka okiojvi,er 
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate clean_adder --number_add 4
-just mutate to_mutate replace_puts
-
-
-mutations : 10
 just mutate to_mutate strings split --ncuts 7 --text
 just mutate to_mutate escape vm  
-just mutate to_mutate escape traced  
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate replace_puts
-just mutate to_mutate strings base64 --ncuts -1
-just mutate to_mutate random_if --max_random 2 --number 9
-just mutate to_mutate basic_if --words troisieme okiojvi,er troisieme 
 
-mutations : 9
-just mutate to_mutate sys_adder --number_add 8
-just mutate to_mutate escape traced  
-just mutate to_mutate replace_puts
-just mutate to_mutate random_if --max_random 2 --number 2
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate escape vm  
-just mutate to_mutate basic_if --words zefiĵht troisieme troisieme dergbjzeka dergbjzeka zefiĵht Deuxième okiojvi,er 
-just mutate to_mutate strings base64 --ncuts -1
-just mutate to_mutate clean_adder --number_add 9
-just mutate to_mutate strings split --ncuts 14 --text
-
-
-mutations : 8
-just mutate to_mutate basic_if --words Deuxième okiojvi,er troisieme Premier 
-just mutate to_mutate escape vm  
-just mutate to_mutate escape traced  
-just mutate to_mutate clean_adder --number_add 6
-
-just mutate to_mutate sys_adder --number_add 12
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate strings base64 --ncuts -1
-
-mutations : 7
-just mutate to_mutate clean_adder --number_add 7
-
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate escape vm  
-just mutate to_mutate sys_adder --number_add 9
-just mutate to_mutate replace_puts
-
-mutations : 6
-just mutate to_mutate strings split --ncuts 3 --text
-
-just mutate to_mutate sys_adder --number_add 19
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate strings base64 --ncuts -1
-just mutate to_mutate basic_if --words okiojvi,er dergbjzeka dergbjzeka Deuxième zefiĵht 
-just mutate to_mutate escape traced  
-just mutate to_mutate replace_puts
-just mutate to_mutate clean_adder --number_add 9
-just mutate to_mutate escape vm  
-just mutate to_mutate random_if --max_random 5 --number 9
-
-mutations : 5
+mutations : 16
+just mutate to_mutate random_if --max_random 7 --number 10
 just mutate to_mutate strings split --ncuts 5
-just mutate to_mutate escape vm  
-just mutate to_mutate escape traced  
-
-mutations : 4
-just mutate to_mutate escape traced  
-just mutate to_mutate sys_adder --number_add 5
-
-mutations : 3
 just mutate to_mutate replace_puts
-
-just mutate to_mutate clean_adder --number_add 7
-just mutate to_mutate strings split --ncuts 2
-just mutate to_mutate random_if --max_random 8 --number 9
-just mutate to_mutate strings base64 --ncuts -1 --text
-just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate sys_adder --number_add 2
+just mutate to_mutate sys_adder --number_add 9
 just mutate to_mutate escape vm  
-just mutate to_mutate basic_if --words dergbjzeka zefiĵht okiojvi,er troisieme okiojvi,er troisieme 
-
-mutations : 2
-just mutate to_mutate sys_adder --number_add 17
-just mutate to_mutate clean_adder --number_add 9
-
-mutations : 1
+just mutate to_mutate strings base64 --ncuts -1
 just mutate to_mutate escape traced  
-just mutate to_mutate sys_adder --number_add 1
+just mutate to_mutate strings xor --ncuts -1
 just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
-just mutate to_mutate escape vm  
+
+mutations : 15
+just mutate to_mutate basic_if --words zefiĵht troisieme okiojvi,er Premier troisieme Premier zefiĵht Premier troisieme troisieme dergbjzeka Deuxième dergbjzeka 
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate strings base64 --ncuts -1 --text
 just mutate to_mutate strings split --ncuts 9 --text
 just mutate to_mutate replace_puts
-just mutate to_mutate clean_adder --number_add 6
-just mutate to_mutate strings base64 --ncuts -1
-just mutate to_mutate random_if --max_random 8 --number 7
-just mutate to_mutate basic_if --words troisieme Premier troisieme 
+just mutate to_mutate random_if --max_random 8 --number 3
+just mutate to_mutate escape vm  
+just mutate to_mutate strings xor --ncuts -1 --text
 
+mutations : 14
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate replace_puts
+just mutate to_mutate basic_if --words troisieme troisieme dergbjzeka Premier okiojvi,er Deuxième troisieme dergbjzeka 
+just mutate to_mutate escape vm  
+just mutate to_mutate strings xor --ncuts -1
+just mutate to_mutate random_if --max_random 6 --number 9
+just mutate to_mutate escape traced  
+
+mutations : 13
+just mutate to_mutate replace_puts
+just mutate to_mutate clean_adder --number_add 5
+just mutate to_mutate strings base64 --ncuts -1 --text
+
+mutations : 12
+just mutate to_mutate strings base64 --ncuts -1
+just mutate to_mutate random_if --max_random 3 --number 10
+just mutate to_mutate escape vm  
+just mutate to_mutate replace_puts
+just mutate to_mutate sys_adder --number_add 14
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate basic_if --words Premier dergbjzeka okiojvi,er zefiĵht zefiĵht zefiĵht dergbjzeka okiojvi,er okiojvi,er troisieme troisieme 
+just mutate to_mutate escape traced  
+just mutate to_mutate clean_adder --number_add 8
+
+mutations : 11
+just mutate to_mutate escape vm  
+just mutate to_mutate basic_if --words troisieme dergbjzeka zefiĵht okiojvi,er Premier zefiĵht Premier zefiĵht Premier 
+just mutate to_mutate escape traced  
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate random_if --max_random 4 --number 7
+just mutate to_mutate clean_adder --number_add 14
+
+mutations : 10
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate escape vm  
+just mutate to_mutate strings split --ncuts 6
+
+mutations : 9
+just mutate to_mutate strings split --ncuts 6 --text
+just mutate to_mutate clean_adder --number_add 6
+just mutate to_mutate escape traced  
+just mutate to_mutate random_if --max_random 8 --number 8
+just mutate to_mutate sys_adder --number_add 5
+just mutate to_mutate replace_puts
+just mutate to_mutate strings xor --ncuts -1
+
+mutations : 8
+just mutate to_mutate escape traced  
+just mutate to_mutate strings split --ncuts 7
+just mutate to_mutate replace_puts
+just mutate to_mutate clean_adder --number_add 6
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate strings xor --ncuts -1 --text
+
+mutations : 7
+just mutate to_mutate strings split --ncuts 7
+
+mutations : 6
+just mutate to_mutate random_if --max_random 4 --number 7
+just mutate to_mutate strings base64 --ncuts -1
+just mutate to_mutate escape vm  
+just mutate to_mutate clean_adder --number_add 11
+just mutate to_mutate sys_adder --number_add 8
+
+mutations : 5
+just mutate to_mutate basic_if --words zefiĵht Deuxième Deuxième Premier dergbjzeka zefiĵht Premier dergbjzeka okiojvi,er 
+just mutate to_mutate sys_adder --number_add 18
+just mutate to_mutate escape traced  
+just mutate to_mutate strings base64 --ncuts -1
+just mutate to_mutate random_if --max_random 7 --number 7
+just mutate to_mutate strings split --ncuts 9 --text
+just mutate to_mutate strings xor --ncuts -1 --text
+just mutate to_mutate replace_puts
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate clean_adder --number_add 5
+
+mutations : 4
+just mutate to_mutate replace_puts
+just mutate to_mutate strings xor --ncuts -1
+just mutate to_mutate random_if --max_random 5 --number 6
+just mutate to_mutate strings split --ncuts 6
+just mutate to_mutate escape vm  
+just mutate to_mutate sys_adder --number_add 14
+
+mutations : 3
+just mutate to_mutate strings xor --ncuts -1
+just mutate to_mutate escape vm  
+just mutate to_mutate random_if --max_random 8 --number 10
+just mutate to_mutate clean_adder --number_add 8
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate escape traced  
+
+mutations : 2
+just mutate to_mutate escape traced  
+just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED
+just mutate to_mutate strings base64 --ncuts -1 --text
+
+mutations : 1
+just mutate to_mutate clean_adder --number_add 17
+just mutate to_mutate strings base64 --ncuts -1 --text
+just mutate to_mutate strings xor --ncuts -1
+just mutate to_mutate strings split --ncuts 8
 
