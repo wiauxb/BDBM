@@ -168,7 +168,7 @@ def generate_llvm_xor_string_code(string : bytes, var, infos, ind, format : str 
     #xor_string = get_string_in_llvm_format(xor_string)
     
     code = f""";-------------------------------
-; Replace: {infos}
+; XOR Replace: {infos}
   %sp0.{ind} = alloca [{length} x i8]
   store [{length} x i8] c"{xor_string}", [{length} x i8]* %sp0.{ind}
   %sp0.1.{ind} = bitcast [{length} x i8]* %sp0.{ind} to i{length*8}*
@@ -223,13 +223,13 @@ def generate_llvm_xor_string_code_with_constants(string : bytes, var, infos, ind
     # xor_string = get_string_in_llvm_format(xor_string)
 
     constants =  f""";-------------------------------
-; Replace: {infos}
+; XOR Replace: {infos}
 @str.{ind} = private unnamed_addr constant [{length} x i8] c"{xor_string}", align 1
 @key.{ind} = private unnamed_addr constant [{length} x i8] c"{xor_key}", align 1
 """
 
     code = f""";-------------------------------
-; Replace: {infos}
+; XOR Replace: {infos}
   %sp0.1.{ind} = bitcast [{length} x i8]* @str.{ind} to i{length*8}*
   %i0.{ind} = load i{length*8}, i{length*8}* %sp0.1.{ind}
 
@@ -260,7 +260,7 @@ def generate_llvm_xor_string_code_with_constants(string : bytes, var, infos, ind
     return code, constants
 
 
-def xor_strings(project, rodata: bool, probability: float = 1.0, number: int = 1):
+def xor_strings(project, rodata: bool):
     """Mutation of <project> by removing strings from their data section
        and xoring them in the text section
 

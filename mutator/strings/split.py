@@ -7,7 +7,7 @@ from random import shuffle
 from ..helpers.file_representation import fileRepresentation as fileRep
 import copy
 
-def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs: ref, rodata: bool = False, ncuts: int = -1):
+def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs: ref, rodata: bool = False, ncuts: int = -1, do_shuffle: bool = True):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the string.
@@ -26,7 +26,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             return
 
         remove_bytes_from_binary(project, offset, len(string))
-        inject_splitted_string(recovered, string+b"\00", str_ref, constantsRefs, rodata, ncuts)
+        inject_splitted_string(recovered, string+b"\00", str_ref, constantsRefs, rodata, ncuts, do_shuffle)
 
     elif(str_ref.type == TYPES.TWO_ADDR):
         offsets = str_ref.offset
@@ -39,7 +39,7 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
         for i, offset in enumerate(offsets):
             remove_bytes_from_binary(project, offset, len(strings[i]))
 
-        inject_splitted_string(recovered, strings, str_ref, constantsRefs, rodata, ncuts)
+        inject_splitted_string(recovered, strings, str_ref, constantsRefs, rodata, ncuts, do_shuffle)
 
     elif(str_ref.type == TYPES.GLB_CST):
         if len(str_ref.string) < 2:
@@ -54,15 +54,15 @@ def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRe
             var_ref.type = TYPES.GLB_CST
             var_ref.offset = -1
             var_ref.string = str_ref.string
-            inject_splitted_string(recovered, str_ref.string, var_ref, constantsRefs, rodata, ncuts)
+            inject_splitted_string(recovered, str_ref.string, var_ref, constantsRefs, rodata, ncuts, do_shuffle)
     
     elif(str_ref.type == TYPES.LCL_CST):
         if len(str_ref.string) < 2:
             return
-        inject_splitted_string(recovered, str_ref.string, str_ref, constantsRefs, rodata, ncuts)
+        inject_splitted_string(recovered, str_ref.string, str_ref, constantsRefs, rodata, ncuts, do_shuffle)
 
 
-def inject_splitted_string(recovered: fileRep, string : Union[bytes, list[bytes]], str_ref: stringRef, cst_ref: ref, rodata: bool = False, ncuts: int = -1):
+def inject_splitted_string(recovered: fileRep, string : Union[bytes, list[bytes]], str_ref: stringRef, cst_ref: ref, rodata: bool = False, ncuts: int = -1, do_shuffle: bool = True):
     """Replace the reference at line <line_num> in recovered.ll
        by an hardcoded splitted version of the <string>.
     
@@ -80,7 +80,7 @@ def inject_splitted_string(recovered: fileRep, string : Union[bytes, list[bytes]
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, ncuts)
+            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, ncuts, do_shuffle)
         else:
             code = generate_llvm_split_string_code(string, "spi", str_ref.line.strip(), ind, ncuts)
 
@@ -98,14 +98,14 @@ def inject_splitted_string(recovered: fileRep, string : Union[bytes, list[bytes]
         constants1 = constants2 = ""
 
         if rodata:
-            code, constants1 = generate_llvm_split_string_code_with_constants(string[0], "spi", str_ref.line.strip(), ind1, ncuts)
+            code, constants1 = generate_llvm_split_string_code_with_constants(string[0], "spi", str_ref.line.strip(), ind1, ncuts, do_shuffle)
         else:
             code = generate_llvm_split_string_code(string[0], "spi", str_ref.line.strip(), ind1, ncuts)
 
         recovered.insert(str_ref.line_num, code)
 
         if rodata:
-            code, constants2 = generate_llvm_split_string_code_with_constants(string[1], "spi", str_ref.line.strip(), ind2, ncuts)
+            code, constants2 = generate_llvm_split_string_code_with_constants(string[1], "spi", str_ref.line.strip(), ind2, ncuts, do_shuffle)
         else:
             code = generate_llvm_split_string_code(string[1], "spi", str_ref.line.strip(), ind2, ncuts)
         
@@ -124,7 +124,7 @@ def inject_splitted_string(recovered: fileRep, string : Union[bytes, list[bytes]
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_split_string_code_with_constants(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, format="ptr")
+            code, constants = generate_llvm_split_string_code_with_constants(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, do_shuffle, format="ptr")
         else:
             code = generate_llvm_split_string_code(string, f"spi{ind}", str_ref.line.strip(), ind, ncuts, format="ptr")
 
@@ -141,7 +141,7 @@ def inject_splitted_string(recovered: fileRep, string : Union[bytes, list[bytes]
         constants = ""
 
         if rodata:
-            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, ncuts, format="string")
+            code, constants = generate_llvm_split_string_code_with_constants(string, "spi", str_ref.line.strip(), ind, ncuts, do_shuffle, format="string")
         else:
             code = generate_llvm_split_string_code(string, "spi", str_ref.line.strip(), ind, ncuts, format="string")
 
@@ -167,7 +167,7 @@ def generate_llvm_split_string_code(string : bytes, var, infos, ind, ncuts, form
     length = len(string)
 
     code = f""";-------------------------------
-; Replace: {infos}
+; Split Replace: {infos}
   %{var if format == "ptr" else f"sp{ind}"} = alloca [{length} x i8]
 
   """
@@ -212,7 +212,7 @@ def generate_llvm_split_string_code(string : bytes, var, infos, ind, ncuts, form
 
     return code
 
-def generate_llvm_split_string_code_with_constants(string : bytes, var, infos, ind, ncuts, format : str = "i32"):
+def generate_llvm_split_string_code_with_constants(string : bytes, var, infos, ind, ncuts, do_shuffle : bool = True, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string.
          <format> is the format of the ending <var>. Can be "ptr" or "string".
@@ -229,13 +229,14 @@ def generate_llvm_split_string_code_with_constants(string : bytes, var, infos, i
 @str.{i}.{ind} = constant [{split_len} x i8] c\"{sp}\"""")
     constants.append(f"""
 @str.{len(splits)-1}.{ind} = constant [{len(splits[-1])} x i8] c\"{get_bytes_in_llvm_format(splits[-1])}\"""")
-    shuffle(constants)
+    if do_shuffle:
+        shuffle(constants)
     cst_str = f""";-------------------------------
-; Replace: {infos}{"".join(constants)}
+; Split Replace: {infos}{"".join(constants)}
 """
 
     code = f""";-------------------------------
-; Replace: {infos}
+; Split Replace: {infos}
   %{var if format == "ptr" else f"sp{ind}"} = alloca [{length} x i8]
   """
     
@@ -296,7 +297,7 @@ def generate_splitted_string(string : bytes, ncuts = -1):
         splitted.append(split)
     return splitted
 
-def split_strings(project, rodata = False, probability = 1, number = 1, ncuts = -1):
+def split_strings(project, rodata = False, do_shuffle: bool = True, ncuts = -1):
     """Mutation of <project> by removing strings from their data section
        and splitting them in the text section
     
@@ -307,4 +308,4 @@ def split_strings(project, rodata = False, probability = 1, number = 1, ncuts = 
     constants = find_constant_declaration_block(recovered)
     refs = find_strings(project, recovered, start_main, end_main)
     for ref in refs:
-        split_string_at(project, recovered, ref, constants, rodata, ncuts)
+        split_string_at(project, recovered, ref, constants, rodata, ncuts, do_shuffle)
