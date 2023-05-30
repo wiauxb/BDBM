@@ -9,6 +9,6 @@ done
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo -e "\tMUTATED:"
 for rule in programs/yara/*.yar; do
-    yara $rule s2e/projects/$1/s2e-out/mutations 2>/dev/null
+    yara $rule s2e/projects/$1/s2e-out/custom_recovered 2>/dev/null
 done
 echo "-------------------------------"

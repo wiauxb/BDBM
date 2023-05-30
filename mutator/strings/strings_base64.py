@@ -190,12 +190,12 @@ def generate_llvm_base64_string_code_with_constants(string : bytes, var, infos, 
     plain_length = len(string)
 
     cst_str = f""";-------------------------------
-; Replace: {infos}
+; B64 Replace: {infos}
 @cipher.{ind} = constant [{cipher_length} x i8] c\"{llvm_cipher}\"
 """
 
     code = f""";-------------------------------
-; Replace: {infos}
+; B64 Replace: {infos}
   %cipher.ptr.{ind} = getelementptr inbounds [{cipher_length} x i8], [{cipher_length} x i8]* @cipher.{ind}, i32 0, i32 0
   %plain.ptr.{ind} = tail call i8* @base64_decode(i8* %cipher.ptr.{ind})
 """
@@ -227,7 +227,7 @@ def generate_llvm_base64_string_code(string : bytes, var, infos, ind, format : s
     plain_length = len(string)
 
     code = f""";-------------------------------
-; Replace: {infos}
+; B64 Replace: {infos}
   %cipher.ptr.{ind} = alloca [{cipher_length} x i8]
   store [{cipher_length} x i8] c\"{llvm_cipher}\", [{cipher_length} x i8]* %cipher.ptr.{ind}
   %cipher.{ind} = getelementptr inbounds [{cipher_length} x i8], [{cipher_length} x i8]* %cipher.ptr.{ind}, i32 0, i32 0

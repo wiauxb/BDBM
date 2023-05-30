@@ -54,12 +54,12 @@ def find_var_usage(recovered : fileRep, var_name, exclude_line = []):
     for i,line in enumerate(recovered.lines):
         no_comment_line = line.split(";")[0]
         # print(no_comment_line)
-        match = re.search(r'%s[ \n,]' % var_name, no_comment_line)
+        match = re.search(r'%s[ \n,]' % re.escape(var_name), no_comment_line)
         if match and i not in exclude_line:
             list.append(recovered.ref(i))
-    #print(f"Found {len(list)} usages of {var_name}")
-    #print("Excluded lines: " + str(exclude_line))
-    #print("Usages: " + str(list))
+    print(f"Found {len(list)} usages of {var_name}")
+    print("Excluded lines: " + str(exclude_line))
+    print("Usages: " + str([str(e) for e in list]))
     return list
 
 def find_constant_declaration_block(recovered : fileRep):

@@ -22,8 +22,6 @@ just mutate to_mutate replace_puts
 mutations : 4
 just mutate to_mutate random_if --max_random 4 --number 10
 
-mutations : 3
-just mutate to_mutate strings xor --ncuts -1 --text
 
 mutations : 2
 just mutate to_mutate escape envvar --var_name DEBUG GDB VM_ENABLED

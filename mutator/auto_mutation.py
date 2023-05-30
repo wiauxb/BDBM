@@ -17,8 +17,7 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     string_parser.add_argument("kind", choices=["split", "xor", "base64"])
     string_parser.add_argument("--text", action='store_true')
     string_parser.add_argument("--ncuts", help="Number of cuts to perform, -1 to split every char", default=-1)
-    string_parser.add_argument("-p", "--probability", help="Probability of mutation", default=1.0)
-    string_parser.add_argument("-n", "--number", help="Number of mutations to generate", default=1)
+    string_parser.add_argument("--no-shuffle", action='store_true', help="Do not shuffle the cuts, has no effect if --text is set")
     
     clean_parser = subparsers.add_parser("sleep")
     clean_parser = subparsers.add_parser("clean_adder")
@@ -51,9 +50,9 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
 
     if args.command == "strings":
         if args.kind == "split":
-            split.split_strings(project, not args.text, int(args.probability), int(args.number), int(args.ncuts))
+            split.split_strings(project, not args.text, not args.no_shuffle, int(args.ncuts))
         elif args.kind == "xor":
-            xor.xor_strings(project, not args.text, int(args.probability), int(args.number))
+            xor.xor_strings(project, not args.text)
         elif args.kind == "base64":
             strings_base64.b64_strings(project, not args.text)
     elif args.command == "sleep":
