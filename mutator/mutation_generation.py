@@ -30,17 +30,19 @@ def mutation_selection(project, num_of_mutations: int):
     subprocess.check_output(command, shell=True, timeout = 30)
     if not os.path.exists("s2e/projects/"+project+"/mutations"):
         os.makedirs("s2e/projects/"+project+"/mutations")
-    a_raj = []
-    mutations = ["clean_adder", "escape_envvar", "string_xor" , "random_if", "replace_puts", "sys_adder", "basic_if", "escape_traced", "escape_vm", "strings_split", "strings_base64"]
+    a_raj = [ "escape_traced", "escape_vm","escape_envvar"]
+    mutations = ["clean_adder", "strings_base64" , "strings_xor" , "random_if", "replace_puts", "sys_adder", "basic_if", "strings_split"]
     nombre_mutations = random.randrange(1, len(mutations)+1)
+    #nombre_mutations  = 11
     mutations_to_do = []
     for i in range(nombre_mutations):
         mutation_to_append = mutations[random.randrange(0, len(mutations))]
         while mutation_to_append in mutations_to_do:
             mutation_to_append = mutations[random.randrange(0, len(mutations))]
         mutations_to_do.append(mutation_to_append)
-    #mutations_to_do = ["clean_adder", "strings_split"]
-    mutations_to_do = [mutations[num_of_mutations-1]]
+    #mutations_to_do = ["sys_adder"]
+    #mutations_to_do = [mutations[num_of_mutations-1]]
+    #mutations_to_do = mutations
     just_com = "mutations : " + str(num_of_mutations) + "\n"
     log.info("mutations : " + str(num_of_mutations))
     for mutation in mutations_to_do :
@@ -110,7 +112,7 @@ def mutation_selection(project, num_of_mutations: int):
 
 def mutate_basic_if(project):
     words_liste = ["Premier ", "Deuxième ", "troisieme ", "okiojvi,er ", "dergbjzeka ", "zefiĵht "]
-    num_words = random.randrange(1,15)
+    num_words = random.randrange(15,20)
     words = ""
     for i in range(num_words):
         words += words_liste[random.randrange(len(words_liste))]
@@ -120,7 +122,7 @@ def mutate_basic_if(project):
     return command
 
 def mutate_sys_adder(project):
-    number_add = random.randrange(1,21)
+    number_add = random.randrange(17,21)
     command = f"""just mutate {project} sys_adder --number_add {number_add}"""
     log.info(command)
     subprocess.check_output(command, shell=True)
@@ -142,7 +144,7 @@ def mutate_escape(project, kind):
     return command
 
 def mutate_random_if(project):
-    max_random = random.randrange(2,11)
+    max_random = random.randrange(15,20)
     number = random.randrange(1,11)
     command = f"""just mutate {project} random_if --max_random {max_random} --number {number}"""
     log.info(command)
@@ -150,7 +152,7 @@ def mutate_random_if(project):
     return command
 
 def mutate_clean_adder(project):
-    number = random.randrange(1,11)
+    number = random.randrange(200,220)
     command = f"""just mutate {project} clean_adder --number_add {number}"""
     log.info(command)
     subprocess.check_output(command, shell=True)
@@ -158,13 +160,10 @@ def mutate_clean_adder(project):
 
 def mutate_strings(project, choice):
     ncuts = -1
-    text = random.randrange(2)
-    print("text : " + str(text))
+
     if choice == "split":
-        ncuts = random.randrange(2, 15) #15 arbitrairy, we can choose whatever we want
+        ncuts = random.randrange(10, 15) #15 arbitrairy, we can choose whatever we want
     command = f"""just mutate {project} strings {choice} --ncuts {ncuts}"""
-    if text==0:
-        command += " --text"
     log.info(command)
     output = subprocess.check_output(command, shell=True)
     print(output.decode())
