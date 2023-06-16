@@ -48,7 +48,6 @@ def update_index(recovered : fileRep):
     else:
         recovered.insert(0, f"; Mutation {current_index}\n")
 
-
 def init_mutation(project):
     """ Execute all the initialization functions before mutation
 
@@ -84,23 +83,39 @@ def clone_recovered(project):
     return 0
 
 def get_default_return_line(recovered : fileRep, begin_main):
+    """Get the default return line of the recovered.ll
 
+    Keyword arguments:
+    recovered -- fileRep of the recovered.ll
+    begin_main -- line number of the beginning of @Func_main
+    Return: type of the return, line of the return
+    """
+
+    ret_type = None
     for line in recovered.lines:
         ret_type = re.search(r"define internal fastcc (.*) @Func_main", line)
         if ret_type != None:
             break
     
     if(ret_type == None):
-        print("Error, no func_main found")
-        return
+        raise Exception("Error, no func_main found")
     
     if ret_type[1] == "void":
         return "void", """  ret void\n"""
     elif ret_type[1] == "i32":
         return "i32", """   ret i32 0\n"""
-
+    else:
+        raise Exception("Error, return type not supported")
 
 def address_to_offset(project, address):
+    """Convert an address to a byte offset in the binary of the project
+
+    Keyword arguments:
+    project - Project name
+    address - address to convert
+    Return: offset in bytes
+    """
+
     table = get_section_table(project)
     i = 0
     while table[i][1] < address:
@@ -110,6 +125,12 @@ def address_to_offset(project, address):
     return table[i-1][2] + (address - table[i-1][1])
 
 def get_section_table(project):
+    """Extract sections table from the binary of the project
+
+    Keyword arguments:
+    project - Project name
+    Return: table of sections as an array of tuples (name, address, offset)
+    """
     
     binary_path = "s2e/projects/" + project + "/s2e-out/binary"
 
@@ -182,7 +203,6 @@ def find_main(recovered : fileRep):
             break
 
     return recovered.ref(begin_main), recovered.ref(end_main)
-
 
 def ro_txt_addresses(project):
     """ Find the address and length of the rodata and text section
@@ -294,7 +314,6 @@ def recompile(project):
     except subprocess.CalledProcessError as e:
         raise ValueError(f"Failed to recompile {project}: {e}")
     return 0
-
 
 def get_bytes_in_llvm_format(bytes: bytes):
     """Return a string in llvm format (with escape sequences)

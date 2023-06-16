@@ -1,14 +1,13 @@
 from .escape import envvar, traced, vmdetect
-from .sleeper import sleeper
 from .strings import split, strings_base64, xor, cleanware_from_recovered
 import argparse
 from .adder import code_adder,cleanware_adder,if_adder,puts_replace
-import os
-import subprocess
 
 
-if __name__ == "__main__": #FIXME think about ordering the mutations
+if __name__ == "__main__":
 
+
+    # Define the parser arguments
     main_parser = argparse.ArgumentParser()
     main_parser.add_argument("project_name")
     subparsers = main_parser.add_subparsers(help="Operation", dest='command')
@@ -19,7 +18,6 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
     string_parser.add_argument("--ncuts", help="Number of cuts to perform, -1 to split every char", default=-1)
     string_parser.add_argument("--no-shuffle", action='store_true', help="Do not shuffle the cuts, has no effect if --text is set")
     
-    clean_parser = subparsers.add_parser("sleep")
     clean_parser = subparsers.add_parser("clean_adder")
     clean_parser.add_argument("--number_add", help="Number of calls to add", default=1)
     
@@ -42,12 +40,16 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
 
     get_clean_parser = subparsers.add_parser("get_clean")
 
+
+    # Parse the arguments
     args = main_parser.parse_args()
  
     print(args)
 
     project = args.project_name
 
+
+    # Execute the command
     if args.command == "strings":
         if args.kind == "split":
             split.split_strings(project, not args.text, not args.no_shuffle, int(args.ncuts))
@@ -55,8 +57,6 @@ if __name__ == "__main__": #FIXME think about ordering the mutations
             xor.xor_strings(project, not args.text)
         elif args.kind == "base64":
             strings_base64.b64_strings(project, not args.text)
-    elif args.command == "sleep":
-        sleeper.add_sleeps(project)
     elif args.command == "clean_adder":
         code_adder.clone_recovered(project)
         cleanware_adder.clean_loop(int(args.number_add), project)

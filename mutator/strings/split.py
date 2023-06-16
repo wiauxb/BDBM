@@ -5,7 +5,7 @@ from .helpers.string_ref import TYPES, stringRef
 from ..helpers.ref import ref
 from random import shuffle
 from ..helpers.file_representation import fileRepresentation as fileRep
-import copy
+
 
 def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs: ref, rodata: bool = False, ncuts: int = -1, do_shuffle: bool = True):
     """get and remove string(s) at <offset> in the binary of <project>
@@ -212,6 +212,7 @@ def generate_llvm_split_string_code(string : bytes, var, infos, ind, ncuts, form
 
     return code
 
+
 def generate_llvm_split_string_code_with_constants(string : bytes, var, infos, ind, ncuts, do_shuffle : bool = True, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string.
@@ -279,6 +280,7 @@ def generate_llvm_split_string_code_with_constants(string : bytes, var, infos, i
 
     return code, cst_str
 
+
 def generate_splitted_string(string : bytes, ncuts = -1):
     """Split <string> in <ncuts> parts.
          If <ncuts> is -1, the string is splitted in chars.
@@ -296,6 +298,7 @@ def generate_splitted_string(string : bytes, ncuts = -1):
         split = string[i * len(string)//cut:(i + 1) * len(string)//cut]
         splitted.append(split)
     return splitted
+
 
 def split_strings(project, rodata = False, do_shuffle: bool = True, ncuts = -1):
     """Mutation of <project> by removing strings from their data section

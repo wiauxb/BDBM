@@ -1,6 +1,7 @@
 from ..helpers.utils import *
 from ..helpers.file_representation import fileRepresentation as fileRep
 
+
 def inject_detect_vm(project):
     """
     Injects the code to detect and escape the debug environment
@@ -12,6 +13,7 @@ def inject_detect_vm(project):
     (start_main, end_main), recovered = init_mutation(project)
 
     inject_vm_detect_at(recovered, start_main, end_main)
+
 
 def inject_vm_detect_at(recovered: fileRep, start_main : ref, end_main : ref):
     """

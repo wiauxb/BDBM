@@ -45,7 +45,6 @@ def inject_debug_detect_at(recovered: fileRep, var_name, start_main : ref, end_m
 
     recovered.write()
 
-
 def get_debug_detect_code(i, ind, var: str):
     """
     Returns the code to detect and escape the debug environment

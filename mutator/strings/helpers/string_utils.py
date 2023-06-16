@@ -4,8 +4,6 @@ from .string_ref import stringRef, TYPES
 from ...helpers.ref import *
 import re
 
-WARNING = '\033[93m'
-ENDC = '\033[0m'
 
 def find_strings(project, recovered: fileRep, begin_main : ref, end_main : ref):
     """find string offsets in the binary
@@ -79,28 +77,12 @@ def find_constant_declaration_block(recovered : fileRep):
     return recovered.get_ref(end_block)
 
 def all_addresses_could_be_string(project, addresses: list):
+    """return True if all addresses in <addresses> could be a string following the heuristic of the function address_could_be_string"""
+
     for address in addresses:
         if not address_could_be_string(project, int(address)):
             return False
     return True
-
-
-def get_string_from_binary(project, offset):
-    """get string at <offset> in binary of <project> 
-    
-    Keyword arguments:
-    project -- project name
-    offset -- offset in binary
-    Return: string (decoded from utf-8)
-    """
-
-    print(WARNING + "The get_string_from_binary should not be used anymore" + ENDC)
-
-    string = b''
-    with open("s2e/projects/" + project + "/binary", 'br') as f:
-        string = f.read()[offset:]
-    
-    return string.split(b'\x00')[0].decode("utf-8") #FIXME We assume the string encoding
 
 def get_bytes_from_binary(project, offset):
     """get bytes at <offset> in binary of <project> 
@@ -138,25 +120,3 @@ def remove_bytes_from_binary(project, offset, length):
     content[offset: offset+length] = b'\x00'*length
     with open(copy, 'bw') as f:
         f.write(content)
-
-def get_string_in_python_format(string: str):
-    """Return a string in python format (with escape sequences)
-    
-    Keyword arguments:
-    string -- string to convert
-    Return: string in python format
-    """
-    
-    print(WARNING + "The get_string_in_python_format should not be used anymore" + ENDC)
-    return re.sub(r"\\([0-9a-fA-F]{2})", lambda x: chr(int(x.group(1), 16)), string)
-
-def get_string_in_llvm_format( string: str):
-    """Return a string in llvm format (with escape sequences)
-    
-    Keyword arguments:
-    string -- string to convert
-    Return: string in llvm format
-    """
-    print(WARNING + "The get_string_in_llvm_format should not be used anymore" + ENDC)
-    
-    return "".join([f"\\{ord(c):02x}" for c in string])

@@ -1,15 +1,12 @@
-from .helpers.adder_utils import *
-from ..helpers.file_representation import fileRepresentation as fileRep
 from ..helpers.utils import *
-from ..helpers.ref import ref
+
 
 def find_last_meta(recovered):
     last = recovered.lines[-1]
 
     match = re.search(r"!(\d{1,}) = .*", last)
-    if last == None: 
-        print("Couldn't find last metadata, return.")
-        return
+    if match == None: 
+        raise Exception("Couldn't find last metadata, return.")
     
     num_new_last = int(match[1])+1
 
@@ -21,7 +18,6 @@ def print_decl():
 declare dso_local i32 @printf(i8* noundef, ...) local_unnamed_addr  naked noinline "frame-pointer"="none" "no-builtins" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="pentium4" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" 
 """
 
-
 def generate_new_print(var, arg, num_meta, line_var, recovered):
     ind = str(get_new_index(recovered))
     cast = "%cast" + ind
@@ -32,7 +28,7 @@ def generate_new_print(var, arg, num_meta, line_var, recovered):
 
 def replace_puts(project):
 
-    (begin_main, end_main), recovered = init_mutation(project)
+    (begin_main, _), recovered = init_mutation(project)
 
 
     string_to_print = "@.str"+str(get_new_index(recovered))
@@ -70,11 +66,3 @@ def replace_puts(project):
             recovered.insert(i, f";-------------------------------\n")
             recovered.insert(i+3, f";-------------------------------\n")
     recovered.write()
-
-
-
-if __name__ == "__main__":
-    with open("s2e/projects/" + "twoprints" + "/s2e-out/recovered.ll", 'r') as f:
-        lines = f.readlines()
-    
-    replace_puts("twoprints")

@@ -1,5 +1,4 @@
 from ..helpers.utils import *
-from ..helpers.file_representation import fileRepresentation as fileRep
 import random
 import copy
 
@@ -158,9 +157,3 @@ def sys_calls(num_calls, project):
             except:
                 list_calls.remove(call_to_insert)
                 recovered = copy.deepcopy(deep_recovered)
-
-if __name__ == "__main__":
-    begin_main = 38,
-    end_main = 38
-    clone_recovered("hello")
-    pass

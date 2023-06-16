@@ -1,10 +1,7 @@
-from .helpers.adder_utils import *
 from .helpers.adder_ref import TYPES, adderRef
-from ..helpers.file_representation import fileRepresentation as fileRep
 from ..helpers.utils import *
 import random
 import os
-import copy
 
 
 def change_exc(cleanware, recovered):
@@ -74,7 +71,6 @@ def change_var(cleanware, recovered):
     
     return copy_clean
     
-
 def find_ref(cleanware_lines):
     """return a list of the references declared in cleanware
     
@@ -122,7 +118,6 @@ def find_ref(cleanware_lines):
         i+=1
     return clean_code    
 
-
 def add_cleanware(begin_main, end_main, recovered, clean_code):
     """Add all the references in a project.
     
@@ -135,6 +130,7 @@ def add_cleanware(begin_main, end_main, recovered, clean_code):
     """
     
     insert_meta = len(recovered.lines)
+    call = ""
     clean_code.reverse()
     for obj in clean_code:
         if(obj.type == TYPES.CALL):
@@ -205,9 +201,5 @@ def clean_loop(num_to_add, project):
         add_cleanware(begin_main, end_main, recovered, clean_code)
 
     recovered.write()
-
-
-if __name__ == "__main__":
-    res = []
 
 

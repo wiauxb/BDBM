@@ -1,14 +1,10 @@
-from .helpers.adder_utils import *
-from .helpers.adder_ref import TYPES, adderRef
 from ..helpers.file_representation import fileRepresentation as fileRep
 from ..helpers.utils import *
-
-
 import random
+
 
 def generate_basic_if_print(print_var, len_m, recovered):
     """
-    TODO : la length est pas correcte en LLVM quand il y a des accents
     Generate basic if that is always true
 
     print_var -- name of the variable we want to print
@@ -28,6 +24,7 @@ next{const}:\n"""
   br label %next{const}
 """
     return cond_bloc, if_bloc
+
 
 def insert_basic_if_print(project, messages):
     """Insert basic if 0=0 in the project that print the messages (1 if per message)"""
@@ -127,6 +124,7 @@ def generate_random_main(recovered : fileRep, max_rand):
 
     return main_decl, rand_fin
 
+
 def generate_random_if(max_rand, rand_var, recovered, if_name, ret_line):
     """
     Generate the random if condition and the return bloc.
@@ -149,6 +147,7 @@ next{const}:\n"""
     if_bloc += ret_line
 
     return cond_bloc, if_bloc, if_name
+
 
 def add_random_in_main(project, max_rand, iterations):
     """
@@ -203,10 +202,3 @@ def add_random_in_main(project, max_rand, iterations):
             recovered.insert(begin_main.line_num-2, f";-------------------------------\n")
         
         recovered.write()
-
-    
-
-
-if __name__ == "__main__":
-    #insert_basic_if_print("hello", ["Premier\0a", "Deuxieme\0a", "Troisième\0a"])
-    add_random_in_main("toy3", 3, 2)

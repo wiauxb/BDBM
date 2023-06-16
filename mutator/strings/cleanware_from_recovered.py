@@ -1,13 +1,11 @@
 import os
 import re
 import shutil
-import time
 import subprocess
 from .helpers.string_utils import *
-from .helpers.string_ref import TYPES, stringRef
+from .helpers.string_ref import TYPES
 from ..helpers.file_representation import fileRepresentation as fileRep
 from ..helpers.utils import *
-
 
 
 def to_replace(recovered : fileRep):
@@ -51,8 +49,6 @@ def remove_after_segs(recovered : fileRep):
         if match1 != None and match2 != None and match3 != None :
             recovered.lines[i] = f"""  {match2[1]} = inttoptr i32 %arg_esp to i32*\n"""
 
-
-
 def replace_hash(recovered : fileRep, liste):
     """replace liste[X][0] by liste[X][1] in the whole project
     
@@ -90,7 +86,6 @@ def change_stack(recovered : fileRep):
 
     return index
 
-
 def auto_llvm(recovered : fileRep, project, index):
     """Generate the cleanware that will be used for mutation
     
@@ -119,8 +114,6 @@ def auto_llvm(recovered : fileRep, project, index):
 
     shutil.move(file_name, "mutator/adder/cleanware/"+file_name)
     return
-
-
 
 def replace_strings(project, begin_main, end_main, recovered):
     decl_block = find_constant_declaration_block(recovered)
@@ -170,7 +163,6 @@ def replace_strings(project, begin_main, end_main, recovered):
     for const in consts :
         recovered.insert(decl_block.line_num, const)
 
-
 def change_glob_var(recovered : fileRep):
     """Changes the name of global variables, adds an index to them"""
 
@@ -182,7 +174,6 @@ def change_glob_var(recovered : fileRep):
                 if recovered.lines[j].find(match[1]) >= 0:
                     recovered.lines[j] = recovered.lines[j].replace(match[1], new_global_var)
         
-
 def gen_all_clean():
     """Loop for every step of the cleanware creation
     
@@ -214,9 +205,3 @@ def gen_all_clean():
                 lift = True
             except:
                 liste = 1
-
-
-if __name__ == "__main__":
-    const, repl = replace_strings("hello")
-    print(const)
-    print(repl)

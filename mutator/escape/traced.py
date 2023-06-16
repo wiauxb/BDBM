@@ -44,6 +44,7 @@ def get_ptrace_detect_code(ind):
 
     :return: the string of the code
     """
+    
     code = f""";----------------------------
   ; Detect tracing running
   %result.{ind} = tail call i32 @ptrace(i32 0, i32 0, i32 0, i32 0)

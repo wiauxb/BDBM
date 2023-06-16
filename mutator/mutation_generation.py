@@ -1,12 +1,7 @@
 import subprocess
 import os
 import random
-import sys
 import argparse
-import requests
-from .helpers.file_representation import fileRepresentation as fileRep
-import urllib
-from urllib.request import urlopen
 import shutil
 import logging
 import logging.handlers
@@ -42,7 +37,7 @@ def mutation_selection(project, num_of_mutations: int):
         mutations_to_do.append(mutation_to_append)
     #mutations_to_do = ["sys_adder"]
     #mutations_to_do = [mutations[num_of_mutations-1]]
-    #mutations_to_do = mutations
+    mutations_to_do = mutations
     just_com = "mutations : " + str(num_of_mutations) + "\n"
     log.info("mutations : " + str(num_of_mutations))
     for mutation in mutations_to_do :

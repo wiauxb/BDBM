@@ -7,6 +7,7 @@ from ..helpers.file_representation import fileRepresentation as fileRep
 import random
 from string import ascii_letters, digits
 
+
 def xor_string_at(project, recovered: fileRep, str_ref: stringRef, cst_ref: ref, rodata: bool):
     """get and remove string(s) at <offset> in the binary of <project>
        Then replace the reference at line <line_num> in recovered.ll
@@ -49,8 +50,6 @@ def xor_string_at(project, recovered: fileRep, str_ref: stringRef, cst_ref: ref,
 
     elif(str_ref.type == TYPES.LCL_CST):
         inject_xored_string(recovered, str_ref.string, str_ref, cst_ref, rodata)
-
-
 
 
 def inject_xored_string(recovered: fileRep, string : Union[bytes, list[bytes]], str_ref: stringRef, cst_ref: ref, rodata: bool):
@@ -148,6 +147,7 @@ def inject_xored_string(recovered: fileRep, string : Union[bytes, list[bytes]], 
 
     recovered.write()
 
+
 def generate_llvm_xor_string_code(string : bytes, var, infos, ind, format : str = "i32"):
     
     length = len(string)
@@ -200,6 +200,7 @@ def generate_llvm_xor_string_code(string : bytes, var, infos, ind, format : str 
     else:
         raise ValueError("format must be ptr, string or i32")
     return code
+
 
 def generate_llvm_xor_string_code_with_constants(string : bytes, var, infos, ind, format : str = "i32"):
     """Generate the LLVM code to inject a xored version of <string> in recovered.ll.

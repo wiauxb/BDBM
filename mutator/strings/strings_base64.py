@@ -6,6 +6,7 @@ from .helpers.string_ref import TYPES, stringRef
 from ..helpers.ref import ref
 from ..helpers.file_representation import fileRepresentation as fileRep
 
+
 def b64_strings(project, rodata = False):
     """Mutation of <project> by removing strings from their data section
        and splitting them in the text section
@@ -19,6 +20,7 @@ def b64_strings(project, rodata = False):
     test_and_set_base64_decode_func(recovered, constants)
     for ref in refs:
         b64_string_at(project, recovered, ref, constants, rodata)
+
 
 def test_and_set_base64_decode_func(recovered: fileRep, cst_ref: ref):
     """Test if base64_decode function is already defined in the file
@@ -215,6 +217,7 @@ def generate_llvm_base64_string_code_with_constants(string : bytes, var, infos, 
 
     return code, cst_str
 
+
 def generate_llvm_base64_string_code(string : bytes, var, infos, ind, format : str = "i32"):
     """Generate the LLVM code to inject a splitted version of <string> in recovered.ll.
          <var> is the name of the variable to store the string.
@@ -248,6 +251,7 @@ def generate_llvm_base64_string_code(string : bytes, var, infos, ind, format : s
         raise ValueError("format must be ptr or string")
 
     return code
+
 
 def generate_b64_cipher(string : bytes):
     """Generate the base64 cipher of <string>"""
