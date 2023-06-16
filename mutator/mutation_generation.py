@@ -160,7 +160,6 @@ def mutate_clean_adder(project):
 
 def mutate_strings(project, choice):
     ncuts = -1
-
     if choice == "split":
         ncuts = random.randrange(10, 15) #15 arbitrairy, we can choose whatever we want
     command = f"""just mutate {project} strings {choice} --ncuts {ncuts}"""
