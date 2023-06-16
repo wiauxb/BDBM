@@ -1,1 +1,0 @@
-gcc bot$1/*.c -DMIRAI_TELNET --no-pie -m32 -o custom/bot$1
