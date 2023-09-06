@@ -32,3 +32,7 @@ rule all_letters {
     condition:
         all of them
 }
+
+
+
+

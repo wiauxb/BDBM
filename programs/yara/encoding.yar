@@ -11,6 +11,9 @@ rule XORed {
 rule Base64 {
     strings:
         $a = "I am evil" base64
+        $b = "I am evil" base64wide
     condition:
-        $a
+        any of them
 }
+
+
