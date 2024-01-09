@@ -1,6 +1,5 @@
 _mnt
 .vscode/
-*.bc
 *.dat
 *.dot
 *.exe

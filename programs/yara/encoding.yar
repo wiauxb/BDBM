@@ -12,6 +12,12 @@ rule Base64 {
     strings:
         $a = "I am evil" base64
         $b = "I am evil" base64wide
+        $c = "I am evil\n" base64
+        $d = "I am evil\n" base64wide
+        $e = "I am evil\x00" base64
+        $f = "I am evil\x00" base64wide
+        $i = "I am evil\x00\n" base64
+        $j = "I am evil\x00\n" base64wide
     condition:
         any of them
 }

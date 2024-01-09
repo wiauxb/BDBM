@@ -7,6 +7,11 @@ justdir := justfile_directory()
 binrec *args:
     cd "{{justdir}}"/all_the_things/binrec_module; just {{args}}
 
+init-bdbm-addon:
+  test -f Pipfile.lock || pipenv lock --dev
+  pipenv sync --dev
+  # ./init_project.sh
+
 # [Memoire] recompile recovered.ll to custom_recovered.
 recompile project *flags:
   llvm-as-14 "all_the_things/binrec_module/s2e/projects/{{project}}/s2e-out/recovered.ll"
@@ -27,7 +32,7 @@ mutate project *flags:
 # [Memoire] Mutate a project binary
 full-mutate project *flags:
   @just binrec lift-trace {{project}}
-  @just binrec mutate {{project}} {{flags}}
+  @just mutate {{project}} {{flags}}
 
 # [Memoire] Test yara rules from programs/yara onto original binary and mutated one
 yara project:
