@@ -1,7 +1,7 @@
 from .escape import envvar, traced, vmdetect
 from .strings import split, strings_base64, xor, cleanware_from_recovered
 import argparse
-from .adder import code_adder,cleanware_adder,if_adder,puts_replace
+from .adder import code_adder,cleanware_adder,if_adder,puts_replace, fwrite_replace
 
 
 if __name__ == "__main__":
@@ -34,6 +34,7 @@ if __name__ == "__main__":
     debug_parser.add_argument("--var_name", nargs= '+', action='extend', help="Name of the environment variable to escape")
 
     replace_puts_parser = subparsers.add_parser("replace_puts")
+    replace_puts_parser = subparsers.add_parser("replace_fwrite")
 
     basic_if_parser = subparsers.add_parser("basic_if")
     basic_if_parser.add_argument("--words", nargs = '+', help= "Words to print in the if conditions")
@@ -77,6 +78,8 @@ if __name__ == "__main__":
             vmdetect.inject_detect_vm(project)
         elif args.kind == "random":
             raise NotImplementedError("Random not implemented yet")
+    elif args.command == "replace_fwrite":
+        fwrite_replace.replace_fwrite(project)
     elif args.command == "replace_puts":
         puts_replace.replace_puts(project)
     elif args.command == "basic_if":

@@ -4,13 +4,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 include($ENV{S2E_PREFIX}/lib/cmake/llvm/LLVMConfig.cmake)
 
-add_executable(main_mutator src/mutator.cpp src/main.cpp src/mutator.hpp)
-target_compile_definitions(main_mutator PUBLIC ${LLVM_DEFINITIONS})
-target_compile_options(main_mutator PUBLIC -fno-rtti -fpic)
-target_include_directories(main_mutator PUBLIC ${LLVM_INCLUDE_DIRS} ${CMAKE_CURRENT_LIST_DIR}/src)
-llvm_map_components_to_libnames(llvm_libs CodeGen Core ipo IRReader Passes ScalarOpts Support TransformUtils)
+# add_executable(main_mutator src/mutator.cpp src/main.cpp src/mutator.hpp)
+# target_compile_definitions(main_mutator PUBLIC ${LLVM_DEFINITIONS})
+# target_compile_options(main_mutator PUBLIC -fno-rtti -fpic)
+# target_include_directories(main_mutator PUBLIC ${LLVM_INCLUDE_DIRS} ${CMAKE_CURRENT_LIST_DIR}/src)
+# llvm_map_components_to_libnames(llvm_libs CodeGen Core ipo IRReader Passes ScalarOpts Support TransformUtils)
 
-target_link_libraries(main_mutator PUBLIC ${llvm_libs})
+# target_link_libraries(main_mutator PUBLIC ${llvm_libs})
 
 # add_compile_options(-Wall -pedantic -Wno-comment)
 add_library(mutator SHARED src/mutator.cpp)
