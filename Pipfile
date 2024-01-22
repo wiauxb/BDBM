@@ -8,6 +8,7 @@ python-dotenv = "*"
 flask = "*"
 jinja-markdown = "*"
 jsonschema = "*"
+llvmlite = "*"
 
 [dev-packages]
 black = "==22.8.0"
@@ -20,6 +21,7 @@ sphinx = "*"
 pytest-rerunfailures = "*"
 sphinxcontrib-spelling = "*"
 doc8 = "*"
+"pybind11[global]" = "*"
 
 [requires]
 python_version = "3.9"

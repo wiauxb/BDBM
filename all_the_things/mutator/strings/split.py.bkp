@@ -5,7 +5,7 @@ from .helpers.string_ref import TYPES, stringRef
 from ..helpers.ref import ref
 from random import shuffle
 from ..helpers.file_representation import fileRepresentation as fileRep
-from ..lib import mutator
+
 
 def split_string_at(project, recovered: fileRep, str_ref: stringRef, constantsRefs: ref, rodata: bool = False, ncuts: int = -1, do_shuffle: bool = True):
     """get and remove string(s) at <offset> in the binary of <project>
@@ -307,11 +307,8 @@ def split_strings(project, rodata = False, do_shuffle: bool = True, ncuts = -1):
     Keyword arguments:
     project -- project name
     """
-    print("Check1")
-    mutator.init_module(s2e_dir, project)
-    print("Check2")
-    print(mutator.find_maybe_string_addresses())
-    mutator.close_module()
-    print("Check3")
-    # for ref in refs:
-    #     split_string_at(project, recovered, ref, constants, rodata, ncuts, do_shuffle)
+    (start_main, end_main), recovered = init_mutation(project)
+    constants = find_constant_declaration_block(recovered)
+    refs = find_strings(project, recovered, start_main, end_main)
+    for ref in refs:
+        split_string_at(project, recovered, ref, constants, rodata, ncuts, do_shuffle)
