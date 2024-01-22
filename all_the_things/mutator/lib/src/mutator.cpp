@@ -102,7 +102,6 @@ Function *create_fwrite_repl(Module *module, LLVMContext &llvm_context){
                                             Type::getInt32Ty(llvm_context)}, false);
     Function *fwriteRepl = Function::Create(ftype, Function::ExternalLinkage, "fwrite_repl", module);
 
-    outs() << "Loop to replace fwrite with fputc\n";
     // Loop to replace fwrite with fputc
     BasicBlock *entryBlock = BasicBlock::Create(llvm_context, "entry", fwriteRepl);
     BasicBlock *loopHeaderBlock = BasicBlock::Create(llvm_context, "loop.header", fwriteRepl);
@@ -121,42 +120,32 @@ Function *create_fwrite_repl(Module *module, LLVMContext &llvm_context){
     nmemb->setName("nmemb");
     Argument *filePtr = fwriteRepl->getArg(3);
     filePtr->setName("filePtr");
-
+    
+    Value *numChar = Builder.CreateMul(size, nmemb);
     Builder.CreateBr(loopHeaderBlock);
     Builder.SetInsertPoint(loopHeaderBlock);
 
-    outs() << "1\n";
     // Loop counter variable
     PHINode *counter = Builder.CreatePHI(Type::getInt32Ty(llvm_context), 2, "counter");
     counter->addIncoming(Builder.getInt32(0), entryBlock);
 
-    outs() << "2\n";
     // Condition (counter < size * nmemb)
-    Value *condition = Builder.CreateICmpSLT(counter, Builder.CreateMul(size, nmemb), "condition");
+    Value *condition = Builder.CreateICmpSLT(counter, numChar, "condition");
     Builder.CreateCondBr(condition, loopBodyBlock, loopExitBlock);
 
-    outs() << "3\n";
     // Loop body
     Builder.SetInsertPoint(loopBodyBlock);
 
-    outs() << "4\n";
     // Load the character from ptr + counter
-    ptr->print(outs());
     Value *charPtr = Builder.CreateGEP(Type::getInt8Ty(llvm_context),
                                     Builder.CreateIntToPtr(ptr, Type::getInt8PtrTy(llvm_context)),
                                     {counter});
-    outs() << "4.5\n";
     // Value *loadedChar = Builder.CreateLoad(Type::getInt8Ty(llvm_context), charPtr);
     Value *loadedChar = Builder.CreateLoad(Type::getInt8Ty(llvm_context), Builder.CreateIntToPtr(charPtr, Type::getInt8PtrTy(llvm_context)));
 
-    outs() << "5\n";
     // Call fputc with the loaded character
-    // Value *loadedValue = Builder.CreateLoad(Type::getInt8Ty(llvm_context), Builder.CreateIntToPtr(ptr, Type::getInt8PtrTy(llvm_context)));
-    // Value *extendedValue = Builder.CreateSExt(loadedValue, Type::getInt32Ty(llvm_context));
-    // CallInst *FputcCall = Builder.CreateCall(FputcFunc, {extendedValue, filePtr});
     CallInst *FputcCall = Builder.CreateCall(FputcFunc, {Builder.CreateSExt(loadedChar, Type::getInt32Ty(llvm_context)), filePtr});
 
-    outs() << "6\n";
     // Increment the counter
     Value *incrementedCounter = Builder.CreateAdd(counter, Builder.getInt32(1), "inc");
     counter->addIncoming(incrementedCounter, loopBodyBlock);
